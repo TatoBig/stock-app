@@ -3,10 +3,9 @@ schema {
 }
 
 type Post {
-    id: ID!
-    title: String!
-    description: String!
-    created_at: String!
+    brand: String!
+    model: String!
+    year: Int!
 }
 
 type PostResult {
@@ -15,13 +14,35 @@ type PostResult {
     post: Post
 }
 
+type Company {
+    zip: String
+    sector: String
+    full_time_employees: String
+    compensationRisk: String
+    auditRisk: String
+    longBusinessSummary: String
+    city: String
+    phone: String
+    state: String
+    shareHolderRightsRisk: String
+    compensationAsOfEpochDate: String
+    governanceEpochDate: String
+    boardRisk: String
+    country: String
+    website: String
+    maxAge: String
+    overallRisk: String
+    address: String
+}
+
 type PostsResult {
     success: Boolean!
     errors: [String]
-    post: [Post]
+    post: Company
 }
 
 type Query {
     listPosts: PostsResult!
+    getCompany: Company!
     getPost(id: ID!): PostResult!
 }
