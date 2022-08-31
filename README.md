@@ -28,10 +28,10 @@ Web client:
 
 ### Credits
 
-Santiago José Navas Maldonado 1551619
-Paolo Giovanni Veliz Sulecio 1543219
-Alison Carolina Ramos Carrera 1510819
-Jeffrey Manrique Reyes Váquez 1603719
+* Santiago José Navas Maldonado 1551619
+* Paolo Giovanni Veliz Sulecio 1543219
+* Alison Carolina Ramos Carrera 1510819
+* Jeffrey Manrique Reyes Váquez 1603719
 
   
 
