@@ -33,5 +33,15 @@ Web client:
 * Alison Carolina Ramos Carrera 1510819
 * Jeffrey Manrique Reyes Váquez 1603719
 
+### Installation
+* Create a virtual enviroment using 
+Python3 -mvenv venv
+
+* Activate your venv using
+Source venv/Scripts/Activate
+(Use git bash)
+
+* For the package installation use
+Pip install -r requirements.txt
   
 

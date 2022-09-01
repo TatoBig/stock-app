@@ -1,0 +1,9 @@
+datetime
+feedparser
+pyftpdlib
+requires.io
+requires.io
+pandas
+requests
+requests-html
+yahoo_fin

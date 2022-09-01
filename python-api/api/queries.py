@@ -1,3 +1,4 @@
+from re import I
 from yahoo_fin.stock_info import *
 
 
