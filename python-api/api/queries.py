@@ -2,7 +2,7 @@ from re import I
 from yahoo_fin.stock_info import *
 
 
-def listPosts_resolver(obj, info):
+def getCompany_resolver(obj, info):
     try:
         company = get_company_info("aapl").to_dict()["Value"]
 
@@ -39,3 +39,6 @@ def listPosts_resolver(obj, info):
             "errors": [str(error)]
         }
     return payload
+
+def getRevenue_resolver(obj, info, ticker):
+    revenue = get_earnings("aapl")["Value"]

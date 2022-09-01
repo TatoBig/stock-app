@@ -35,14 +35,21 @@ type Company {
     address: String
 }
 
-type PostsResult {
+type CompanyResult {
     success: Boolean!
     errors: [String]
-    post: Company
+    data: Company
+}
+
+type RevenueResult {
+    success: Boolean!
+    errors: [String]
+    data: Revenue
 }
 
 type Query {
-    listPosts: PostsResult!
-    getCompany: Company!
+    getCompany: CompanyResult!
     getPost(id: ID!): PostResult!
+    getRevenue(id: ID!): RevenueResult!
 }
+
