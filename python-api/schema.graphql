@@ -35,6 +35,20 @@ type Company {
     address: String
 }
 
+type HistorialData {
+    date: String
+    open: String
+    high: String
+    volume: String
+    ticker: String
+}
+
+type Revenue {
+    date: String
+    revenue: String
+    earning: String
+}
+
 type CompanyResult {
     success: Boolean!
     errors: [String]
@@ -47,9 +61,17 @@ type RevenueResult {
     data: Revenue
 }
 
+type HistorialDataResult {
+    success: Boolean!
+    errors: [String]
+    data: HistorialData
+}
+
 type Query {
     getCompany: CompanyResult!
     getPost(id: ID!): PostResult!
     getRevenue(id: ID!): RevenueResult!
+    getHistoricalData: HistorialDataResult!
 }
+
 
