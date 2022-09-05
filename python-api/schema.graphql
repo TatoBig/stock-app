@@ -84,21 +84,21 @@ type HistorialDataResult {
 type YearlyResult {
     success: Boolean!
     errors: [String]
-    data: Yearly
+    data: [Yearly]
 }
 
 type QuarterlyResult {
     success: Boolean!
     errors: [String]
-    data: Quarterly
+    data: [Quarterly]
 }
 
 type Query {
     getCompanyInfo(ticker: String!): CompanyResult!
     getRevenue(id: ID!): RevenueResult!
     getHistoricalData: HistorialDataResult!
-    getYearly: Yearly!
-    getQuarterly: Quarterly!
+    getYearly: YearlyResult!
+    getQuarterly: QuarterlyResult!
 }
 
 

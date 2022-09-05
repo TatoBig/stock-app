@@ -85,18 +85,24 @@ def getHistoricalData_resolver(obj, info):
     return payload
 
 def getQuarterly_resolver(obj, info):
-    revenue = get_earnings("aapl")["quarterly_revenue_earnings"]
+    print("hi")
+    quarterly = get_earnings("aapl")["quarterly_revenue_earnings"]
+    data = [] 
+    rows = len(quarterly)
+    for i in range(rows):
+        temp = {
+            "date": str(quarterly["date"][i]),
+            "revenue": str(quarterly["revenue"][i]),
+            "earnings": str(quarterly["earnings"][i]),
+            "ticker": "appl",
+        } 
+        data.append(temp)
     try:
         payload = {
         "success": True,
-        "data": {
-            "date": str(revenue["date"]),
-            "revenue": str(revenue["revenue"]),
-            "earnings": str(revenue["earnings"]),
-                # aqui va el ticker hasta que sepamos como se pone xd
-            "ticker":"aapl",
-            }
+        "data": data
         }
+        print(payload)
     except Exception as error:
         payload = {
             "success": False,
@@ -107,16 +113,20 @@ def getQuarterly_resolver(obj, info):
 
 def getYearly_resolver(obj, info):
     revenue = get_earnings("aapl")["yearly_revenue_earnings"]
+    data = [] 
+    rows = len(revenue)
+    for i in range(rows):
+        temp = {
+            "date": str(revenue["date"][i]),
+            "revenue": str(revenue["revenue"][i]),
+            "earnings": str(revenue["earnings"][i]),
+            "ticker": "appl",
+        } 
+        data.append(temp)
     try:
         payload = {
         "success": True,
-        "data": {
-            "date": str(revenue["date"]),
-            "revenue": str(revenue["revenue"]),
-            "earnings": str(revenue["earnings"]),
-                # aqui va el ticker hasta que sepamos como se pone xd
-            "ticker":"aapl",
-            }
+        "data": data
         }
         print(payload)
     except Exception as error:
