@@ -1,36 +1,64 @@
 from re import I
+from this import d
 from yahoo_fin.stock_info import *
 
 
-def getCompany_resolver(obj, info):
+def getCompanyInfo_resolver(obj, info, ticker):
     try:
-        company = get_company_info("aapl").to_dict()["Value"]
-
-        print(company["address1"])
-        print(type(company["address1"]))
-
+        company = get_company_info(ticker).to_dict()["Value"]
+        print(company)
         payload = {
             "success": True,
-            "post": {
-                "zip": str(company["zip"]),
-                "sector": str(company["sector"]),
-                "full_time_employees": str(company["fullTimeEmployees"]),
-                "compensationRisk": str(company["compensationRisk"]),
-                "auditRisk": str(company["auditRisk"]),
-                "longBusinessSummary": str(company["longBusinessSummary"]),
-                "city": str(company["city"]),
-                "phone": str(company["phone"]),
-                "state": str(company["state"]),
-                "shareHolderRightsRisk": str(company["shareHolderRightsRisk"]),
-                "compensationAsOfEpochDate": str(company["compensationAsOfEpochDate"]),
-                "governanceEpochDate": str(company["governanceEpochDate"]),
-                "boardRisk": str(company["boardRisk"]),
-                "country": str(company["country"]),
-                "website": str(company["website"]),
-                "maxAge": str(company["maxAge"]),
-                "overallRisk": str(company["overallRisk"]),
-                "address": str(company["address1"]),
+            "data": {
+                "zip": company["zip"],
+                "sector": company["sector"],
+                "full_time_employees": company["fullTimeEmployees"],
+                "compensation_risk": company["compensationRisk"],
+                "audit_risk": company["auditRisk"],
+                "long_business_summary": company["longBusinessSummary"],
+                "city": company["city"],
+                "phone": company["phone"],
+                "state": company["state"],
+                "share_holder_rights_risk": company["shareHolderRightsRisk"],
+                "compensation_as_of_epoch_date": company["compensationAsOfEpochDate"],
+                "governance_epoch_date": company["governanceEpochDate"],
+                "board_risk": company["boardRisk"],
+                "country": company["country"],
+                "website": company["website"],
+                "max_age": company["maxAge"],
+                "overall_risk": company["overallRisk"],
+                "address": company["address1"],
             }
+        }
+    except Exception as error:
+        payload = {
+            "success": False,
+            "errors": [str(error)]
+        }
+    return payload
+
+def getHistoricalData_resolver(obj, info, ticker):
+    try:
+        historical_data = get_data(ticker)
+        before = historical_data.index
+
+        historical_data.insert(0, "date", before, True)
+        data = []
+        rows = len(historical_data)
+
+        for i in range(rows):
+            temp = {
+                "date": historical_data["date"][i],
+                "open": historical_data["open"][i],
+                "high": historical_data["high"][i],
+                "volume": historical_data["volume"][i],
+                "ticker": historical_data["ticker"][i]
+            }
+            data.append(temp)
+        
+        payload = {
+            "success": True,
+            "data": data
         }
         print(payload)
     except Exception as error:
@@ -40,5 +68,53 @@ def getCompany_resolver(obj, info):
         }
     return payload
 
-def getRevenue_resolver(obj, info, ticker):
-    revenue = get_earnings("aapl")["Value"]
+
+def getQuarterly_resolver(obj, info, ticker):
+    quarterly = get_earnings(ticker)["quarterly_revenue_earnings"]
+    data = []
+    rows = len(quarterly)
+    for i in range(rows):
+        temp = {
+            "date": quarterly["date"][i],
+            "revenue": quarterly["revenue"][i],
+            "earnings": quarterly["earnings"][i],
+            "ticker": ticker,
+        }
+        data.append(temp)
+    try:
+        payload = {
+            "success": True,
+            "data": data
+        }
+        print(payload)
+    except Exception as error:
+        payload = {
+            "success": False,
+            "errors": [str(error)]
+        }
+    return payload
+
+
+def getYearly_resolver(obj, info, ticker):
+    revenue = get_earnings(ticker)["yearly_revenue_earnings"]
+    data = []
+    rows = len(revenue)
+    for i in range(rows):
+        temp = {
+            "date": revenue["date"][i],
+            "revenue": revenue["revenue"][i],
+            "earnings": revenue["earnings"][i],
+            "ticker": ticker,
+        }
+        data.append(temp)
+    try:
+        payload = {
+            "success": True,
+            "data": data
+        }
+    except Exception as error:
+        payload = {
+            "success": False,
+            "errors": [str(error)]
+        }
+    return payload

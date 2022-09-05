@@ -30,7 +30,6 @@ Web client:
 
 * Santiago José Navas Maldonado 1551619
 * Paolo Giovanni Veliz Sulecio 1543219
-* Jeffrey Manrique Reyes Váquez 1603719
 
 ### Installation
 * Create a virtual enviroment using 
