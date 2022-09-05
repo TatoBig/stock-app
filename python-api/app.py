@@ -8,6 +8,8 @@ query = ObjectType("Query")
 query.set_field("getCompany", getCompany_resolver)
 query.set_field("getRevenue", getRevenue_resolver)
 query.set_field("getHistoricalData", getHistoricalData_resolver)
+query.set_field("getQuarterly", getQuarterly_resolver)
+query.set_field("getYearly", getYearly_resolver)
 
 type_defs = load_schema_from_path("schema.graphql")
 schema = make_executable_schema(

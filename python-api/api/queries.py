@@ -81,16 +81,21 @@ def getHistoricalData_resolver(obj, info):
     before = historical_data.index
     historical_data.insert(0, "date", before, True)
     # get_history_item("aapl")["Value"]
+    data = [] 
+    rows = len(historical_data)
+    for i in range(rows):
+        temp = {
+            "date": str(historical_data["date"][i]),
+            "open": str(historical_data["open"][i]),
+            "high": str(historical_data["high"][i]),
+            "volume": str(historical_data["volume"][i]),
+            "ticker": str(historical_data["ticker"][i])
+        } 
+        data.append(temp)
     try:
         payload = {
             "success": True,
-            "data": [{
-                "date": str(historical_data["date"]),
-                "open": str(historical_data["open"]),
-                "high": str(historical_data["high"]),
-                "volume": str(historical_data["volume"]),
-                "ticker": str(historical_data["ticker"]),
-            }]
+            "data": data
         }
         print(payload)
     except Exception as error:
@@ -100,18 +105,44 @@ def getHistoricalData_resolver(obj, info):
         }
     return payload
 
-def getQuarterly_resolver(obj, info, ticker):
-    pass
+def getQuarterly_resolver(obj, info):
+    revenue = get_earnings("aapl")["quarterly_revenue_earnings"]
+    try:
+        payload = {
+        "success": True,
+        "data": {
+            "date": str(revenue["date"]),
+            "revenue": str(revenue["revenue"]),
+            "earnings": str(revenue["earnings"]),
+                # aqui va el ticker hasta que sepamos como se pone xd
+            "ticker":"aapl",
+            }
+        }
+    except Exception as error:
+        payload = {
+            "success": False,
+            "errors": [str(error)]
+        }
+    return payload
+    
 
-
-
-def prooving_shit():
-    revenue = get_data("aapl") 
-    before = revenue.index
-    revenue.insert(0, "date", before, True)
-    revenue.to_dict()
-    # get_earnings("aapl")['yearly_revenue_earnings']
-
-    print(revenue)
-
-prooving_shit()
+def getYearly_resolver(obj, info):
+    revenue = get_earnings("aapl")["yearly_revenue_earnings"]
+    try:
+        payload = {
+        "success": True,
+        "data": {
+            "date": str(revenue["date"]),
+            "revenue": str(revenue["revenue"]),
+            "earnings": str(revenue["earnings"]),
+                # aqui va el ticker hasta que sepamos como se pone xd
+            "ticker":"aapl",
+            }
+        }
+        print(payload)
+    except Exception as error:
+        payload = {
+            "success": False,
+            "errors": [str(error)]
+        }
+    return payload

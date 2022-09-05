@@ -49,6 +49,20 @@ type Revenue {
     earning: String
 }
 
+type Yearly {
+    date: String
+    revenue: String
+    earnings: String
+    ticker: String
+}
+
+type Quarterly {
+    date: String
+    revenue: String
+    earnings: String
+    ticker: String
+}
+
 type CompanyResult {
     success: Boolean!
     errors: [String]
@@ -64,7 +78,19 @@ type RevenueResult {
 type HistorialDataResult {
     success: Boolean!
     errors: [String]
-    data: HistorialData
+    data: [HistorialData]
+}
+
+type YearlyResult {
+    success: Boolean!
+    errors: [String]
+    data: Yearly
+}
+
+type QuarterlyResult {
+    success: Boolean!
+    errors: [String]
+    data: Quarterly
 }
 
 type Query {
@@ -72,6 +98,8 @@ type Query {
     getPost(id: ID!): PostResult!
     getRevenue(id: ID!): RevenueResult!
     getHistoricalData: HistorialDataResult!
+    getYearly: Yearly!
+    getQuarterly: Quarterly!
 }
 
 
