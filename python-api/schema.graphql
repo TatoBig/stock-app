@@ -15,24 +15,24 @@ type PostResult {
 }
 
 type Company {
-    zip: String
-    sector: String
-    full_time_employees: String
-    compensationRisk: String
-    auditRisk: String
-    longBusinessSummary: String
-    city: String
-    phone: String
-    state: String
-    shareHolderRightsRisk: String
-    compensationAsOfEpochDate: String
-    governanceEpochDate: String
-    boardRisk: String
-    country: String
-    website: String
-    maxAge: String
-    overallRisk: String
-    address: String
+    zip: String!
+    sector: String!
+    full_time_employees: Int!
+    compensation_risk: Int!
+    audit_risk: Int!
+    long_business_summary: String!
+    city: String!
+    phone: String!
+    state: String!
+    share_holder_rights_risk: Int!
+    compensation_as_of_epoch_date: Int!
+    governance_epoch_date: Int!
+    board_risk: Int!
+    country: String!
+    website: String!
+    max_age: Int!
+    overall_risk: Int!
+    address: String!
 }
 
 type HistorialData {
@@ -68,10 +68,9 @@ type HistorialDataResult {
 }
 
 type Query {
-    getCompany: CompanyResult!
-    getPost(id: ID!): PostResult!
+    getCompanyInfo(ticker: String!): CompanyResult!
     getRevenue(id: ID!): RevenueResult!
-    getHistoricalData: HistorialDataResult!
+    getHistoricalData(id: ID!): HistorialDataResult!
 }
 
 
