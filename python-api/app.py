@@ -7,7 +7,6 @@ from api.queries import *
 
 query = ObjectType("Query")
 query.set_field("getCompanyInfo", getCompanyInfo_resolver)
-query.set_field("getRevenue", getRevenue_resolver)
 query.set_field("getHistoricalData", getHistoricalData_resolver)
 query.set_field("getQuarterly", getQuarterly_resolver)
 query.set_field("getYearly", getYearly_resolver)
