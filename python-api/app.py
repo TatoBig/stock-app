@@ -4,8 +4,9 @@ from ariadne import load_schema_from_path, make_executable_schema, \
 from ariadne.constants import PLAYGROUND_HTML
 from flask import request, jsonify
 from api.queries import *
+
 query = ObjectType("Query")
-query.set_field("getCompany", getCompany_resolver)
+query.set_field("getCompanyInfo", getCompanyInfo_resolver)
 query.set_field("getRevenue", getRevenue_resolver)
 query.set_field("getHistoricalData", getHistoricalData_resolver)
 query.set_field("getQuarterly", getQuarterly_resolver)
