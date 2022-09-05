@@ -28,6 +28,12 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  Company: { // root type
+    country: string; // String!
+    id: string; // String!
+    name: string; // String!
+    sector: string; // String!
+  }
   Query: {};
 }
 
@@ -42,14 +48,26 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
+  Company: { // field return type
+    country: string; // String!
+    id: string; // String!
+    name: string; // String!
+    sector: string; // String!
+  }
   Query: { // field return type
-    ok: boolean; // Boolean!
+    companies: NexusGenRootTypes['Company'][]; // [Company!]!
   }
 }
 
 export interface NexusGenFieldTypeNames {
+  Company: { // field return type name
+    country: 'String'
+    id: 'String'
+    name: 'String'
+    sector: 'String'
+  }
   Query: { // field return type name
-    ok: 'Boolean'
+    companies: 'Company'
   }
 }
 

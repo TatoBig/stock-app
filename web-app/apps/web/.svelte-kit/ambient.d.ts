@@ -51,6 +51,7 @@ declare module '$env/static/private' {
 	export const ZSH: string;
 	export const LSCOLORS: string;
 	export const NVM_INC: string;
+	export const COREPACK_ROOT: string;
 	export const npm_package_engines_node: string;
 	export const npm_config_init_license: string;
 	export const npm_package_devDependencies_svelte_preprocess: string;
@@ -65,14 +66,18 @@ declare module '$env/static/private' {
 	export const WSL_DISTRO_NAME: string;
 	export const COLORTERM: string;
 	export const npm_package_description: string;
+	export const npm_package_dependencies__apollo_client: string;
 	export const npm_package_devDependencies_typescript: string;
 	export const NVM_DIR: string;
 	export const npm_package_readmeFilename: string;
+	export const WAYLAND_DISPLAY: string;
 	export const npm_package_devDependencies_prettier: string;
 	export const npm_package_scripts_dev: string;
 	export const LOGNAME: string;
+	export const npm_package_dependencies_svelte_apollo: string;
 	export const npm_package_type: string;
 	export const WSL_INTEROP: string;
+	export const PULSE_SERVER: string;
 	export const NAME: string;
 	export const _: string;
 	export const npm_package_private: string;
@@ -89,7 +94,10 @@ declare module '$env/static/private' {
 	export const NODE: string;
 	export const npm_package_name: string;
 	export const TURBO_HASH: string;
+	export const XDG_RUNTIME_DIR: string;
+	export const DISPLAY: string;
 	export const LANG: string;
+	export const VSCODE_INJECTION: string;
 	export const npm_package_devDependencies_eslint: string;
 	export const LS_COLORS: string;
 	export const TERM_PROGRAM: string;
@@ -102,6 +110,7 @@ declare module '$env/static/private' {
 	export const npm_package_version: string;
 	export const npm_config_argv: string;
 	export const npm_package_scripts_build: string;
+	export const npm_package_dependencies_graphql: string;
 	export const npm_package_devDependencies_tslib: string;
 	export const npm_package_devDependencies_svelte: string;
 	export const npm_package_devDependencies_eslint_config_custom: string;
@@ -109,12 +118,13 @@ declare module '$env/static/private' {
 	export const npm_config_version_git_sign: string;
 	export const npm_config_strict_ssl: string;
 	export const VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
-	export const VIRTUAL_ENV: string;
 	export const npm_package_scripts_format: string;
 	export const PWD: string;
 	export const npm_execpath: string;
 	export const NVM_CD_FLAGS: string;
+	export const ZDOTDIR: string;
 	export const npm_package_engines_npm: string;
+	export const npm_package_scripts_dev_db: string;
 	export const STARSHIP_SESSION_KEY: string;
 	export const npm_config_save_prefix: string;
 	export const npm_config_ignore_optional: string;
@@ -122,6 +132,7 @@ declare module '$env/static/private' {
 	export const npm_package_devDependencies_prettier_plugin_svelte: string;
 	export const npm_package_scripts_preview: string;
 	export const HOSTTYPE: string;
+	export const npm_package_scripts_dev_web: string;
 	export const INIT_CWD: string;
 	export const WSLENV: string;
 }
@@ -176,6 +187,7 @@ declare module '$env/dynamic/private' {
 		ZSH: string;
 		LSCOLORS: string;
 		NVM_INC: string;
+		COREPACK_ROOT: string;
 		npm_package_engines_node: string;
 		npm_config_init_license: string;
 		npm_package_devDependencies_svelte_preprocess: string;
@@ -190,14 +202,18 @@ declare module '$env/dynamic/private' {
 		WSL_DISTRO_NAME: string;
 		COLORTERM: string;
 		npm_package_description: string;
+		npm_package_dependencies__apollo_client: string;
 		npm_package_devDependencies_typescript: string;
 		NVM_DIR: string;
 		npm_package_readmeFilename: string;
+		WAYLAND_DISPLAY: string;
 		npm_package_devDependencies_prettier: string;
 		npm_package_scripts_dev: string;
 		LOGNAME: string;
+		npm_package_dependencies_svelte_apollo: string;
 		npm_package_type: string;
 		WSL_INTEROP: string;
+		PULSE_SERVER: string;
 		NAME: string;
 		_: string;
 		npm_package_private: string;
@@ -214,7 +230,10 @@ declare module '$env/dynamic/private' {
 		NODE: string;
 		npm_package_name: string;
 		TURBO_HASH: string;
+		XDG_RUNTIME_DIR: string;
+		DISPLAY: string;
 		LANG: string;
+		VSCODE_INJECTION: string;
 		npm_package_devDependencies_eslint: string;
 		LS_COLORS: string;
 		TERM_PROGRAM: string;
@@ -227,6 +246,7 @@ declare module '$env/dynamic/private' {
 		npm_package_version: string;
 		npm_config_argv: string;
 		npm_package_scripts_build: string;
+		npm_package_dependencies_graphql: string;
 		npm_package_devDependencies_tslib: string;
 		npm_package_devDependencies_svelte: string;
 		npm_package_devDependencies_eslint_config_custom: string;
@@ -234,12 +254,13 @@ declare module '$env/dynamic/private' {
 		npm_config_version_git_sign: string;
 		npm_config_strict_ssl: string;
 		VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
-		VIRTUAL_ENV: string;
 		npm_package_scripts_format: string;
 		PWD: string;
 		npm_execpath: string;
 		NVM_CD_FLAGS: string;
+		ZDOTDIR: string;
 		npm_package_engines_npm: string;
+		npm_package_scripts_dev_db: string;
 		STARSHIP_SESSION_KEY: string;
 		npm_config_save_prefix: string;
 		npm_config_ignore_optional: string;
@@ -247,6 +268,7 @@ declare module '$env/dynamic/private' {
 		npm_package_devDependencies_prettier_plugin_svelte: string;
 		npm_package_scripts_preview: string;
 		HOSTTYPE: string;
+		npm_package_scripts_dev_web: string;
 		INIT_CWD: string;
 		WSLENV: string;
 		[key: string]: string | undefined;
