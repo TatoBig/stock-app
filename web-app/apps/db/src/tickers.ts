@@ -1,10724 +1,2551 @@
-const tickers = [
-  {
-      ticker: "A",
-      name: "Agilent Technologies, Inc."
-  },
-  {
-      ticker: "AA",
-      name: "Alcoa Corporation"
-  },
-  {
-      ticker: "AAC",
-      name: "AAC Holdings, Inc."
-  },
-  {
-      ticker: "AAN",
-      name: "Aaron&#39;s,  Inc."
-  },
-  {
-      ticker: "AAP",
-      name: "Advance Auto Parts Inc"
-  },
-  {
-      ticker: "AAT",
-      name: "American Assets Trust, Inc."
-  },
-  {
-      ticker: "AB",
-      name: "AllianceBernstein Holding L.P."
-  },
-  {
-      ticker: "ABB",
-      name: "ABB Ltd"
-  },
-  {
-      ticker: "ABBV",
-      name: "AbbVie Inc."
-  },
-  {
-      ticker: "ABC",
-      name: "AmerisourceBergen Corporation (Holding Co)"
-  },
-  {
-      ticker: "ABEV",
-      name: "Ambev S.A."
-  },
-  {
-      ticker: "ABG",
-      name: "Asbury Automotive Group Inc"
-  },
-  {
-      ticker: "ABM",
-      name: "ABM Industries Incorporated"
-  },
-  {
-      ticker: "ABR",
-      name: "Arbor Realty Trust"
-  },
-  {
-      ticker: "ABT",
-      name: "Abbott Laboratories"
-  },
-  {
-      ticker: "AC",
-      name: "Associated Capital Group, Inc."
-  },
-  {
-      ticker: "ACA",
-      name: "Arcosa, Inc."
-  },
-  {
-      ticker: "ACB",
-      name: "Aurora Cannabis Inc."
-  },
-  {
-      ticker: "ACC",
-      name: "American Campus Communities Inc"
-  },
-  {
-      ticker: "ACCO",
-      name: "Acco Brands Corporation"
-  },
-  {
-      ticker: "ACH",
-      name: "Aluminum Corporation of China Limited"
-  },
-  {
-      ticker: "ACM",
-      name: "AECOM"
-  },
-  {
-      ticker: "ACN",
-      name: "Accenture plc"
-  },
-  {
-      ticker: "ACP",
-      name: "Aberdeen Income Credit Strategies Fund"
-  },
-  {
-      ticker: "ACRE",
-      name: "Ares Commercial Real Estate Corporation"
-  },
-  {
-      ticker: "ACV",
-      name: "AllianzGI Diversified Income & Convertible Fund"
-  },
-  {
-      ticker: "ADC",
-      name: "Agree Realty Corporation"
-  },
-  {
-      ticker: "ADM",
-      name: "Archer-Daniels-Midland Company"
-  },
-  {
-      ticker: "ADNT",
-      name: "Adient plc"
-  },
-  {
-      ticker: "ADS",
-      name: "Alliance Data Systems Corporation"
-  },
-  {
-      ticker: "ADSW",
-      name: "Advanced Disposal Services, Inc."
-  },
-  {
-      ticker: "ADT",
-      name: "ADT Inc."
-  },
-  {
-      ticker: "ADX",
-      name: "Adams Diversified Equity Fund, Inc."
-  },
-  {
-      ticker: "AEB",
-      name: "Aegon NV"
-  },
-  {
-      ticker: "AEE",
-      name: "Ameren Corporation"
-  },
-  {
-      ticker: "AEG",
-      name: "Aegon NV"
-  },
-  {
-      ticker: "AEH",
-      name: "Aegon NV"
-  },
-  {
-      ticker: "AEL",
-      name: "American Equity Investment Life Holding Company"
-  },
-  {
-      ticker: "AEM",
-      name: "Agnico Eagle Mines Limited"
-  },
-  {
-      ticker: "AEO",
-      name: "American Eagle Outfitters, Inc."
-  },
-  {
-      ticker: "AEP",
-      name: "American Electric Power Company, Inc."
-  },
-  {
-      ticker: "AER",
-      name: "Aercap Holdings N.V."
-  },
-  {
-      ticker: "AES",
-      name: "The AES Corporation"
-  },
-  {
-      ticker: "AFB",
-      name: "Alliance National Municipal Income Fund Inc"
-  },
-  {
-      ticker: "AFC",
-      name: "Ares Capital Corporation"
-  },
-  {
-      ticker: "AFG",
-      name: "American Financial Group, Inc."
-  },
-  {
-      ticker: "AFGB",
-      name: "American Financial Group, Inc."
-  },
-  {
-      ticker: "AFGE",
-      name: "American Financial Group, Inc."
-  },
-  {
-      ticker: "AFGH",
-      name: "American Financial Group, Inc."
-  },
-  {
-      ticker: "AFI",
-      name: "Armstrong Flooring, Inc."
-  },
-  {
-      ticker: "AFL",
-      name: "Aflac Incorporated"
-  },
-  {
-      ticker: "AFT",
-      name: "Apollo Senior Floating Rate Fund Inc."
-  },
-  {
-      ticker: "AG",
-      name: "First Majestic Silver Corp."
-  },
-  {
-      ticker: "AGCO",
-      name: "AGCO Corporation"
-  },
-  {
-      ticker: "AGD",
-      name: "Aberdeen Global Dynamic Dividend Fund"
-  },
-  {
-      ticker: "AGI",
-      name: "Alamos Gold Inc."
-  },
-  {
-      ticker: "AGM",
-      name: "Federal Agricultural Mortgage Corporation"
-  },
-  {
-      ticker: "AGM.A",
-      name: "Federal Agricultural Mortgage Corporation"
-  },
-  {
-      ticker: "AGN",
-      name: "Allergan plc."
-  },
-  {
-      ticker: "AGO",
-      name: "Assured Guaranty Ltd."
-  },
-  {
-      ticker: "AGR",
-      name: "Avangrid, Inc."
-  },
-  {
-      ticker: "AGRO",
-      name: "Adecoagro S.A."
-  },
-  {
-      ticker: "AGS",
-      name: "PlayAGS, Inc."
-  },
-  {
-      ticker: "AGX",
-      name: "Argan, Inc."
-  },
-  {
-      ticker: "AHC",
-      name: "A.H. Belo Corporation"
-  },
-  {
-      ticker: "AHH",
-      name: "Armada Hoffler Properties, Inc."
-  },
-  {
-      ticker: "AHT",
-      name: "Ashford Hospitality Trust Inc"
-  },
-  {
-      ticker: "AI",
-      name: "Arlington Asset Investment Corp"
-  },
-  {
-      ticker: "AIC",
-      name: "Arlington Asset Investment Corp"
-  },
-  {
-      ticker: "AIF",
-      name: "Apollo Tactical Income Fund Inc."
-  },
-  {
-      ticker: "AIG",
-      name: "American International Group, Inc."
-  },
-  {
-      ticker: "AIG.WS",
-      name: "American International Group, Inc."
-  },
-  {
-      ticker: "AIN",
-      name: "Albany International Corporation"
-  },
-  {
-      ticker: "AIR",
-      name: "AAR Corp."
-  },
-  {
-      ticker: "AIT",
-      name: "Applied Industrial Technologies, Inc."
-  },
-  {
-      ticker: "AIV",
-      name: "Apartment Investment and Management Company"
-  },
-  {
-      ticker: "AIW",
-      name: "Arlington Asset Investment Corp"
-  },
-  {
-      ticker: "AIZ",
-      name: "Assurant, Inc."
-  },
-  {
-      ticker: "AIZP",
-      name: "Assurant, Inc."
-  },
-  {
-      ticker: "AJG",
-      name: "Arthur J. Gallagher & Co."
-  },
-  {
-      ticker: "AJRD",
-      name: "Aerojet Rocketdyne Holdings, Inc. "
-  },
-  {
-      ticker: "AJX",
-      name: "Great Ajax Corp."
-  },
-  {
-      ticker: "AJXA",
-      name: "Great Ajax Corp."
-  },
-  {
-      ticker: "AKO.A",
-      name: "Embotelladora Andina S.A."
-  },
-  {
-      ticker: "AKO.B",
-      name: "Embotelladora Andina S.A."
-  },
-  {
-      ticker: "AKR",
-      name: "Acadia Realty Trust"
-  },
-  {
-      ticker: "AKS",
-      name: "AK Steel Holding Corporation"
-  },
-  {
-      ticker: "AL",
-      name: "Air Lease Corporation"
-  },
-  {
-      ticker: "ALB",
-      name: "Albemarle Corporation"
-  },
-  {
-      ticker: "ALC",
-      name: "Alcon Inc."
-  },
-  {
-      ticker: "ALE",
-      name: "Allete, Inc."
-  },
-  {
-      ticker: "ALEX",
-      name: "Alexander & Baldwin, Inc."
-  },
-  {
-      ticker: "ALG",
-      name: "Alamo Group, Inc."
-  },
-  {
-      ticker: "ALK",
-      name: "Alaska Air Group, Inc."
-  },
-  {
-      ticker: "ALL",
-      name: "Allstate Corporation (The)"
-  },
-  {
-      ticker: "ALLE",
-      name: "Allegion plc"
-  },
-  {
-      ticker: "ALLY",
-      name: "Ally Financial Inc."
-  },
-  {
-      ticker: "ALSN",
-      name: "Allison Transmission Holdings, Inc."
-  },
-  {
-      ticker: "ALV",
-      name: "Autoliv, Inc."
-  },
-  {
-      ticker: "ALX",
-      name: "Alexander&#39;s, Inc."
-  },
-  {
-      ticker: "AM",
-      name: "Antero Midstream Corporation"
-  },
-  {
-      ticker: "AMC",
-      name: "AMC Entertainment Holdings, Inc."
-  },
-  {
-      ticker: "AMCR",
-      name: "Amcor plc"
-  },
-  {
-      ticker: "AME",
-      name: "AMTEK, Inc."
-  },
-  {
-      ticker: "AMG",
-      name: "Affiliated Managers Group, Inc."
-  },
-  {
-      ticker: "AMH",
-      name: "American Homes 4 Rent"
-  },
-  {
-      ticker: "AMK",
-      name: "AssetMark Financial Holdings, Inc."
-  },
-  {
-      ticker: "AMN",
-      name: "AMN Healthcare Services Inc"
-  },
-  {
-      ticker: "AMOV",
-      name: "America Movil, S.A.B. de C.V."
-  },
-  {
-      ticker: "AMP",
-      name: "AMERIPRISE FINANCIAL SERVICES, INC."
-  },
-  {
-      ticker: "AMPY",
-      name: "MIDSTATES PETROLEUM COMPANY, INC."
-  },
-  {
-      ticker: "AMRC",
-      name: "Ameresco, Inc."
-  },
-  {
-      ticker: "AMRX",
-      name: "Amneal Pharmaceuticals, Inc."
-  },
-  {
-      ticker: "AMT",
-      name: "American Tower Corporation (REIT)"
-  },
-  {
-      ticker: "AMX",
-      name: "America Movil, S.A.B. de C.V."
-  },
-  {
-      ticker: "AN",
-      name: "AutoNation, Inc."
-  },
-  {
-      ticker: "ANET",
-      name: "Arista Networks, Inc."
-  },
-  {
-      ticker: "ANF",
-      name: "Abercrombie & Fitch Company"
-  },
-  {
-      ticker: "ANFI",
-      name: "Amira Nature Foods Ltd"
-  },
-  {
-      ticker: "ANH",
-      name: "Anworth Mortgage Asset  Corporation"
-  },
-  {
-      ticker: "ANTM",
-      name: "Anthem, Inc."
-  },
-  {
-      ticker: "AOD",
-      name: "Aberdeen Total Dynamic Dividend Fund"
-  },
-  {
-      ticker: "AON",
-      name: "Aon plc"
-  },
-  {
-      ticker: "AOS",
-      name: "A.O Smith Corporation"
-  },
-  {
-      ticker: "AP",
-      name: "Ampco-Pittsburgh Corporation"
-  },
-  {
-      ticker: "APA",
-      name: "Apache Corporation"
-  },
-  {
-      ticker: "APAM",
-      name: "Artisan Partners Asset Management Inc."
-  },
-  {
-      ticker: "APD",
-      name: "Air Products and Chemicals, Inc."
-  },
-  {
-      ticker: "APH",
-      name: "Amphenol Corporation"
-  },
-  {
-      ticker: "APHA",
-      name: "Aphria Inc."
-  },
-  {
-      ticker: "APLE",
-      name: "Apple Hospitality REIT, Inc."
-  },
-  {
-      ticker: "APO",
-      name: "Apollo Global Management, Inc"
-  },
-  {
-      ticker: "APRN",
-      name: "Blue Apron Holdings, Inc."
-  },
-  {
-      ticker: "APTS",
-      name: "Preferred Apartment Communities, Inc."
-  },
-  {
-      ticker: "APTV",
-      name: "Aptiv PLC"
-  },
-  {
-      ticker: "APY",
-      name: "Apergy Corporation"
-  },
-  {
-      ticker: "AQ",
-      name: "Aquantia Corp."
-  },
-  {
-      ticker: "AQN",
-      name: "Algonquin Power & Utilities Corp."
-  },
-  {
-      ticker: "AQNA",
-      name: "Algonquin Power & Utilities Corp."
-  },
-  {
-      ticker: "AQNB",
-      name: "Algonquin Power & Utilities Corp."
-  },
-  {
-      ticker: "AQUA",
-      name: "Evoqua Water Technologies Corp."
-  },
-  {
-      ticker: "AR",
-      name: "Antero Resources Corporation"
-  },
-  {
-      ticker: "ARA",
-      name: "American Renal Associates Holdings, Inc"
-  },
-  {
-      ticker: "ARC",
-      name: "ARC Document Solutions, Inc."
-  },
-  {
-      ticker: "ARCH",
-      name: "Arch Coal, Inc."
-  },
-  {
-      ticker: "ARCO",
-      name: "Arcos Dorados Holdings Inc."
-  },
-  {
-      ticker: "ARD",
-      name: "Ardagh Group S.A."
-  },
-  {
-      ticker: "ARDC",
-      name: "Ares Dynamic Credit Allocation Fund, Inc."
-  },
-  {
-      ticker: "ARE",
-      name: "Alexandria Real Estate Equities, Inc."
-  },
-  {
-      ticker: "ARES",
-      name: "Ares Management Corporation"
-  },
-  {
-      ticker: "ARGD",
-      name: "Argo Group International Holdings, Ltd."
-  },
-  {
-      ticker: "ARGO",
-      name: "Argo Group International Holdings, Ltd."
-  },
-  {
-      ticker: "ARI",
-      name: "Apollo Commercial Real Estate Finance"
-  },
-  {
-      ticker: "ARL",
-      name: "American Realty Investors, Inc."
-  },
-  {
-      ticker: "ARLO",
-      name: "Arlo Technologies, Inc."
-  },
-  {
-      ticker: "ARMK",
-      name: "Aramark"
-  },
-  {
-      ticker: "ARNC",
-      name: "Arconic Inc."
-  },
-  {
-      ticker: "AROC",
-      name: "Archrock, Inc."
-  },
-  {
-      ticker: "ARR",
-      name: "ARMOUR Residential REIT, Inc."
-  },
-  {
-      ticker: "ARW",
-      name: "Arrow Electronics, Inc."
-  },
-  {
-      ticker: "ASA",
-      name: "ASA Gold and Precious Metals Limited"
-  },
-  {
-      ticker: "ASB",
-      name: "Associated Banc-Corp"
-  },
-  {
-      ticker: "ASC",
-      name: "Ardmore Shipping Corporation"
-  },
-  {
-      ticker: "ASG",
-      name: "Liberty All-Star Growth Fund, Inc."
-  },
-  {
-      ticker: "ASGN",
-      name: "ASGN Incorporated"
-  },
-  {
-      ticker: "ASH",
-      name: "Ashland Global Holdings Inc."
-  },
-  {
-      ticker: "ASIX",
-      name: "AdvanSix Inc."
-  },
-  {
-      ticker: "ASPN",
-      name: "Aspen Aerogels, Inc."
-  },
-  {
-      ticker: "ASR",
-      name: "Grupo Aeroportuario del Sureste, S.A. de C.V."
-  },
-  {
-      ticker: "ASX",
-      name: "ASE Technology Holding Co., Ltd."
-  },
-  {
-      ticker: "AT",
-      name: "Atlantic Power Corporation"
-  },
-  {
-      ticker: "ATEN",
-      name: "A10 Networks, Inc."
-  },
-  {
-      ticker: "ATGE",
-      name: "Adtalem Global Education Inc."
-  },
-  {
-      ticker: "ATH",
-      name: "Athene Holding Ltd."
-  },
-  {
-      ticker: "ATHM",
-      name: "Autohome Inc."
-  },
-  {
-      ticker: "ATI",
-      name: "Allegheny Technologies Incorporated"
-  },
-  {
-      ticker: "ATKR",
-      name: "Atkore International Group Inc."
-  },
-  {
-      ticker: "ATO",
-      name: "Atmos Energy Corporation"
-  },
-  {
-      ticker: "ATR",
-      name: "AptarGroup, Inc."
-  },
-  {
-      ticker: "ATTO",
-      name: "Atento S.A."
-  },
-  {
-      ticker: "ATU",
-      name: "Actuant Corporation"
-  },
-  {
-      ticker: "ATUS",
-      name: "Altice USA, Inc."
-  },
-  {
-      ticker: "ATV",
-      name: "Acorn International, Inc."
-  },
-  {
-      ticker: "AU",
-      name: "AngloGold Ashanti Limited"
-  },
-  {
-      ticker: "AUO",
-      name: "AU Optronics Corp"
-  },
-  {
-      ticker: "AUY",
-      name: "Yamana Gold Inc."
-  },
-  {
-      ticker: "AVA",
-      name: "Avista Corporation"
-  },
-  {
-      ticker: "AVAL",
-      name: "Grupo Aval Acciones y Valores S.A."
-  },
-  {
-      ticker: "AVB",
-      name: "AvalonBay Communities, Inc."
-  },
-  {
-      ticker: "AVD",
-      name: "American Vanguard Corporation"
-  },
-  {
-      ticker: "AVH",
-      name: "Avianca Holdings S.A."
-  },
-  {
-      ticker: "AVK",
-      name: "Advent Convertible and Income Fund"
-  },
-  {
-      ticker: "AVLR",
-      name: "Avalara, Inc."
-  },
-  {
-      ticker: "AVNS",
-      name: "Avanos Medical, Inc."
-  },
-  {
-      ticker: "AVP",
-      name: "Avon Products, Inc."
-  },
-  {
-      ticker: "AVTR",
-      name: "Avantor, Inc."
-  },
-  {
-      ticker: "AVX",
-      name: "AVX Corporation"
-  },
-  {
-      ticker: "AVY",
-      name: "Avery Dennison Corporation"
-  },
-  {
-      ticker: "AVYA",
-      name: "Avaya Holdings Corp."
-  },
-  {
-      ticker: "AWF",
-      name: "Alliance World Dollar Government Fund II"
-  },
-  {
-      ticker: "AWI",
-      name: "Armstrong World Industries Inc"
-  },
-  {
-      ticker: "AWK",
-      name: "American Water Works"
-  },
-  {
-      ticker: "AWP",
-      name: "Aberdeen Global Premier Properties Fund"
-  },
-  {
-      ticker: "AWR",
-      name: "American States Water Company"
-  },
-  {
-      ticker: "AX",
-      name: "Axos Financial, Inc."
-  },
-  {
-      ticker: "AXE",
-      name: "Anixter International Inc."
-  },
-  {
-      ticker: "AXL",
-      name: "American Axle & Manufacturing Holdings, Inc."
-  },
-  {
-      ticker: "AXO",
-      name: "Axos Financial, Inc."
-  },
-  {
-      ticker: "AXP",
-      name: "American Express Company"
-  },
-  {
-      ticker: "AXR",
-      name: "AMREP Corporation"
-  },
-  {
-      ticker: "AXS",
-      name: "Axis Capital Holdings Limited"
-  },
-  {
-      ticker: "AXTA",
-      name: "Axalta Coating Systems Ltd."
-  },
-  {
-      ticker: "AYI",
-      name: "Acuity Brands, Inc. "
-  },
-  {
-      ticker: "AYR",
-      name: "Aircastle Limited"
-  },
-  {
-      ticker: "AYX",
-      name: "Alteryx, Inc."
-  },
-  {
-      ticker: "AZN",
-      name: "Astrazeneca PLC"
-  },
-  {
-      ticker: "AZO",
-      name: "AutoZone, Inc."
-  },
-  {
-      ticker: "AZRE",
-      name: "Azure Power Global Limited"
-  },
-  {
-      ticker: "AZUL",
-      name: "Azul S.A."
-  },
-  {
-      ticker: "AZZ",
-      name: "AZZ Inc."
-  },
-  {
-      ticker: "B",
-      name: "Barnes Group, Inc."
-  },
-  {
-      ticker: "BA",
-      name: "Boeing Company (The)"
-  },
-  {
-      ticker: "BABA",
-      name: "Alibaba Group Holding Limited"
-  },
-  {
-      ticker: "BAC",
-      name: "Bank of America Corporation"
-  },
-  {
-      ticker: "BAF",
-      name: "BlackRock Income Investment Quality Trust"
-  },
-  {
-      ticker: "BAH",
-      name: "Booz Allen Hamilton Holding Corporation"
-  },
-  {
-      ticker: "BAM",
-      name: "Brookfield Asset Management Inc"
-  },
-  {
-      ticker: "BANC",
-      name: "Banc of California, Inc."
-  },
-  {
-      ticker: "BAP",
-      name: "Credicorp Ltd."
-  },
-  {
-      ticker: "BAS",
-      name: "Basic Energy Services, Inc."
-  },
-  {
-      ticker: "BAX",
-      name: "Baxter International Inc."
-  },
-  {
-      ticker: "BB",
-      name: "BlackBerry Limited"
-  },
-  {
-      ticker: "BBAR",
-      name: "BBVA Banco Frances S.A."
-  },
-  {
-      ticker: "BBD",
-      name: "Banco Bradesco Sa"
-  },
-  {
-      ticker: "BBDC",
-      name: "Barings BDC, Inc."
-  },
-  {
-      ticker: "BBDO",
-      name: "Banco Bradesco Sa"
-  },
-  {
-      ticker: "BBF",
-      name: "BlackRock Municipal Income Investment Trust"
-  },
-  {
-      ticker: "BBK",
-      name: "Blackrock Municipal Bond Trust"
-  },
-  {
-      ticker: "BBL",
-      name: "BHP Group Plc"
-  },
-  {
-      ticker: "BBN",
-      name: "BalckRock Taxable Municipal Bond Trust"
-  },
-  {
-      ticker: "BBT",
-      name: "BB&T Corporation"
-  },
-  {
-      ticker: "BBU",
-      name: "Brookfield Business Partners L.P."
-  },
-  {
-      ticker: "BBVA",
-      name: "Banco Bilbao Viscaya Argentaria S.A."
-  },
-  {
-      ticker: "BBW",
-      name: "Build-A-Bear Workshop, Inc."
-  },
-  {
-      ticker: "BBX",
-      name: "BBX Capital Corporation"
-  },
-  {
-      ticker: "BBY",
-      name: "Best Buy Co., Inc."
-  },
-  {
-      ticker: "BC",
-      name: "Brunswick Corporation"
-  },
-  {
-      ticker: "BCC",
-      name: "Boise Cascade, L.L.C."
-  },
-  {
-      ticker: "BCE",
-      name: "BCE, Inc."
-  },
-  {
-      ticker: "BCEI",
-      name: "Bonanza Creek Energy, Inc."
-  },
-  {
-      ticker: "BCH",
-      name: "Banco De Chile"
-  },
-  {
-      ticker: "BCO",
-      name: "Brink&#39;s Company (The)"
-  },
-  {
-      ticker: "BCRH",
-      name: "Blue Capital Reinsurance Holdings Ltd."
-  },
-  {
-      ticker: "BCS",
-      name: "Barclays PLC"
-  },
-  {
-      ticker: "BCSF",
-      name: "Bain Capital Specialty Finance, Inc."
-  },
-  {
-      ticker: "BCX",
-      name: "BlackRock Resources"
-  },
-  {
-      ticker: "BDC",
-      name: "Belden Inc"
-  },
-  {
-      ticker: "BDJ",
-      name: "Blackrock Enhanced Equity Dividend Trust"
-  },
-  {
-      ticker: "BDN",
-      name: "Brandywine Realty Trust"
-  },
-  {
-      ticker: "BDX",
-      name: "Becton, Dickinson and Company"
-  },
-  {
-      ticker: "BDXA",
-      name: "Becton, Dickinson and Company"
-  },
-  {
-      ticker: "BE",
-      name: "Bloom Energy Corporation"
-  },
-  {
-      ticker: "BEDU",
-      name: "Bright Scholar Education Holdings Limited"
-  },
-  {
-      ticker: "BEN",
-      name: "Franklin Resources, Inc."
-  },
-  {
-      ticker: "BEP",
-      name: "Brookfield Renewable Partners L.P."
-  },
-  {
-      ticker: "BERY",
-      name: "Berry Global Group, Inc."
-  },
-  {
-      ticker: "BEST",
-      name: "BEST Inc."
-  },
-  {
-      ticker: "BF.A",
-      name: "Brown Forman Corporation"
-  },
-  {
-      ticker: "BFAM",
-      name: "Bright Horizons Family Solutions Inc."
-  },
-  {
-      ticker: "BF.B",
-      name: "Brown Forman Corporation"
-  },
-  {
-      ticker: "BFK",
-      name: "BlackRock Municipal Income Trust"
-  },
-  {
-      ticker: "BFO",
-      name: "Blackrock Florida Municipal 2020 Term Trust"
-  },
-  {
-      ticker: "BFS",
-      name: "Saul Centers, Inc."
-  },
-  {
-      ticker: "BFY",
-      name: "BlackRock New York Municipal Income Trust II"
-  },
-  {
-      ticker: "BFZ",
-      name: "BlackRock California Municipal Income Trust"
-  },
-  {
-      ticker: "BG",
-      name: "Bunge Limited"
-  },
-  {
-      ticker: "BGB",
-      name: "Blackstone / GSO Strategic Credit Fund"
-  },
-  {
-      ticker: "BGG",
-      name: "Briggs & Stratton Corporation"
-  },
-  {
-      ticker: "BGH",
-      name: "Babson Global Short Duration High Yield Fund"
-  },
-  {
-      ticker: "BGIO",
-      name: "BlackRock 2022 Global Income Opportunity Trust"
-  },
-  {
-      ticker: "BGR",
-      name: "BlackRock Energy and Resources Trust"
-  },
-  {
-      ticker: "BGS",
-      name: "B&G Foods, Inc."
-  },
-  {
-      ticker: "BGT",
-      name: "Blackrock Global"
-  },
-  {
-      ticker: "BGX",
-      name: "Blackstone GSO Long Short Credit Income Fund"
-  },
-  {
-      ticker: "BGY",
-      name: "BLACKROCK INTERNATIONAL, LTD."
-  },
-  {
-      ticker: "BH",
-      name: "Biglari Holdings Inc."
-  },
-  {
-      ticker: "BH.A",
-      name: "Biglari Holdings Inc."
-  },
-  {
-      ticker: "BHC",
-      name: "Bausch Health Companies Inc."
-  },
-  {
-      ticker: "BHE",
-      name: "Benchmark Electronics, Inc."
-  },
-  {
-      ticker: "BHGE",
-      name: "Baker Hughes, a GE company"
-  },
-  {
-      ticker: "BHK",
-      name: "Blackrock Core Bond Trust"
-  },
-  {
-      ticker: "BHLB",
-      name: "Berkshire Hills Bancorp, Inc."
-  },
-  {
-      ticker: "BHP",
-      name: "BHP Group Limited"
-  },
-  {
-      ticker: "BHR",
-      name: "Braemar Hotels & Resorts Inc."
-  },
-  {
-      ticker: "BHV",
-      name: "BlackRock Virginia Municipal Bond Trust"
-  },
-  {
-      ticker: "BHVN",
-      name: "Biohaven Pharmaceutical Holding Company Ltd."
-  },
-  {
-      ticker: "BID",
-      name: "Sotheby&#39;s"
-  },
-  {
-      ticker: "BIF",
-      name: "USLIFE Income Fund, Inc."
-  },
-  {
-      ticker: "BIG",
-      name: "Big Lots, Inc."
-  },
-  {
-      ticker: "BIO",
-      name: "Bio-Rad Laboratories, Inc."
-  },
-  {
-      ticker: "BIO.B",
-      name: "Bio-Rad Laboratories, Inc."
-  },
-  {
-      ticker: "BIP",
-      name: "Brookfield Infrastructure Partners LP"
-  },
-  {
-      ticker: "BIT",
-      name: "BlackRock Multi-Sector Income Trust"
-  },
-  {
-      ticker: "BITA",
-      name: "Bitauto Holdings Limited"
-  },
-  {
-      ticker: "BJ",
-      name: "BJ&#39;s Wholesale Club Holdings, Inc."
-  },
-  {
-      ticker: "BK",
-      name: "Bank Of New York Mellon Corporation (The)"
-  },
-  {
-      ticker: "BKD",
-      name: "Brookdale Senior Living Inc."
-  },
-  {
-      ticker: "BKE",
-      name: "Buckle, Inc. (The)"
-  },
-  {
-      ticker: "BKH",
-      name: "Black Hills Corporation"
-  },
-  {
-      ticker: "BKI",
-      name: "Black Knight, Inc."
-  },
-  {
-      ticker: "BKK",
-      name: "Blackrock Municipal 2020 Term Trust"
-  },
-  {
-      ticker: "BKN",
-      name: "BlackRock Investment Quality Municipal Trust Inc. (The)"
-  },
-  {
-      ticker: "BKT",
-      name: "BlackRock Income Trust Inc. (The)"
-  },
-  {
-      ticker: "BKU",
-      name: "BankUnited, Inc."
-  },
-  {
-      ticker: "BLD",
-      name: "TopBuild Corp."
-  },
-  {
-      ticker: "BLE",
-      name: "BlackRock Municipal Income Trust II"
-  },
-  {
-      ticker: "BLK",
-      name: "BlackRock, Inc."
-  },
-  {
-      ticker: "BLL",
-      name: "Ball Corporation"
-  },
-  {
-      ticker: "BLW",
-      name: "Citigroup Inc."
-  },
-  {
-      ticker: "BLX",
-      name: "Banco Latinoamericano de Comercio Exterior, S.A."
-  },
-  {
-      ticker: "BMA",
-      name: "Macro Bank Inc."
-  },
-  {
-      ticker: "BME",
-      name: "Blackrock Health Sciences Trust"
-  },
-  {
-      ticker: "BMI",
-      name: "Badger Meter, Inc."
-  },
-  {
-      ticker: "BMO",
-      name: "Bank Of Montreal"
-  },
-  {
-      ticker: "BMY",
-      name: "Bristol-Myers Squibb Company"
-  },
-  {
-      ticker: "BNED",
-      name: "Barnes & Noble Education, Inc"
-  },
-  {
-      ticker: "BNS",
-      name: "Bank of Nova Scotia (The)"
-  },
-  {
-      ticker: "BNY",
-      name: "BlackRock New York Investment Quality Municipal Trust Inc. (Th"
-  },
-  {
-      ticker: "BOE",
-      name: "Blackrock Global"
-  },
-  {
-      ticker: "BOH",
-      name: "Bank of Hawaii Corporation"
-  },
-  {
-      ticker: "BOOT",
-      name: "Boot Barn Holdings, Inc."
-  },
-  {
-      ticker: "BORR",
-      name: "Borr Drilling Limited"
-  },
-  {
-      ticker: "BOX",
-      name: "Box, Inc."
-  },
-  {
-      ticker: "BP",
-      name: "BP p.l.c."
-  },
-  {
-      ticker: "BPL",
-      name: "Buckeye Partners L.P."
-  },
-  {
-      ticker: "BPMP",
-      name: "BP Midstream Partners LP"
-  },
-  {
-      ticker: "BPT",
-      name: "BP Prudhoe Bay Royalty Trust"
-  },
-  {
-      ticker: "BQH",
-      name: "Blackrock New York Municipal Bond Trust"
-  },
-  {
-      ticker: "BR",
-      name: "Broadridge Financial Solutions, Inc."
-  },
-  {
-      ticker: "BRC",
-      name: "Brady Corporation"
-  },
-  {
-      ticker: "BRFS",
-      name: "BRF S.A."
-  },
-  {
-      ticker: "BRK.A",
-      name: "Berkshire Hathaway Inc."
-  },
-  {
-      ticker: "BRK.B",
-      name: "Berkshire Hathaway Inc."
-  },
-  {
-      ticker: "BRO",
-      name: "Brown & Brown, Inc."
-  },
-  {
-      ticker: "BRPM",
-      name: "B. Riley Principal Merger Corp."
-  },
-  {
-      ticker: "BRPM.U",
-      name: "B. Riley Principal Merger Corp."
-  },
-  {
-      ticker: "BRPM.WS",
-      name: "B. Riley Principal Merger Corp."
-  },
-  {
-      ticker: "BRT",
-      name: "BRT Apartments Corp."
-  },
-  {
-      ticker: "BRX",
-      name: "Brixmor Property Group Inc."
-  },
-  {
-      ticker: "BSA",
-      name: "BrightSphere Investment Group Inc."
-  },
-  {
-      ticker: "BSAC",
-      name: "Banco Santander Chile"
-  },
-  {
-      ticker: "BSBR",
-      name: "Banco Santander Brasil SA"
-  },
-  {
-      ticker: "BSD",
-      name: "BlackRock Strategic Municipal Trust Inc. (The)"
-  },
-  {
-      ticker: "BSE",
-      name: "Blackrock New York Municipal Income Quality Trust"
-  },
-  {
-      ticker: "BSIG",
-      name: "BrightSphere Investment Group Inc."
-  },
-  {
-      ticker: "BSL",
-      name: "Blackstone GSO Senior Floating Rate Term Fund"
-  },
-  {
-      ticker: "BSM",
-      name: "Black Stone Minerals, L.P."
-  },
-  {
-      ticker: "BSMX",
-      name: "Banco Santander Mexico, S.A., Institucion de Ban"
-  },
-  {
-      ticker: "BST",
-      name: "BlackRock Science and Technology Trust"
-  },
-  {
-      ticker: "BSTZ",
-      name: "BlackRock Science and Technology Trust II"
-  },
-  {
-      ticker: "BSX",
-      name: "Boston Scientific Corporation"
-  },
-  {
-      ticker: "BT",
-      name: "BT Group plc"
-  },
-  {
-      ticker: "BTA",
-      name: "BlackRock Long-Term Municipal Advantage Trust"
-  },
-  {
-      ticker: "BTE",
-      name: "Baytex Energy Corp"
-  },
-  {
-      ticker: "BTI",
-      name: "British American Tobacco p.l.c."
-  },
-  {
-      ticker: "BTO",
-      name: "John Hancock Financial Opportunities Fund"
-  },
-  {
-      ticker: "BTT",
-      name: "BlackRock Municipal Target Term Trust Inc. (The)"
-  },
-  {
-      ticker: "BTU",
-      name: "Peabody Energy Corporation"
-  },
-  {
-      ticker: "BTZ",
-      name: "BlackRock Credit Allocation Income Trust"
-  },
-  {
-      ticker: "BUD",
-      name: "Anheuser-Busch Inbev SA"
-  },
-  {
-      ticker: "BUI",
-      name: "BlackRock Utility, Infrastructure & Power Opportun"
-  },
-  {
-      ticker: "BURL",
-      name: "Burlington Stores, Inc."
-  },
-  {
-      ticker: "BV",
-      name: "BrightView Holdings, Inc."
-  },
-  {
-      ticker: "BVN",
-      name: "Buenaventura Mining Company Inc."
-  },
-  {
-      ticker: "BW",
-      name: "Babcock"
-  },
-  {
-      ticker: "BWA",
-      name: "BorgWarner Inc."
-  },
-  {
-      ticker: "BWG",
-      name: "BrandywineGLOBAL Global Income Opportunities Fund "
-  },
-  {
-      ticker: "BWXT",
-      name: "BWX Technologies, Inc."
-  },
-  {
-      ticker: "BX",
-      name: "The Blackstone Group Inc."
-  },
-  {
-      ticker: "BXC",
-      name: "BlueLinx Holdings Inc."
-  },
-  {
-      ticker: "BXG",
-      name: "Bluegreen Vacations Corporation"
-  },
-  {
-      ticker: "BXMT",
-      name: "Capital Trust, Inc."
-  },
-  {
-      ticker: "BXMX",
-      name: "Nuveen S&P 500 Buy-Write Income Fund"
-  },
-  {
-      ticker: "BXP",
-      name: "Boston Properties, Inc."
-  },
-  {
-      ticker: "BXS",
-      name: "BancorpSouth Bank"
-  },
-  {
-      ticker: "BY",
-      name: "Byline Bancorp, Inc."
-  },
-  {
-      ticker: "BYD",
-      name: "Boyd Gaming Corporation"
-  },
-  {
-      ticker: "BYM",
-      name: "Blackrock Municipal Income Quality Trust"
-  },
-  {
-      ticker: "BZH",
-      name: "Beazer Homes USA, Inc."
-  },
-  {
-      ticker: "BZM",
-      name: "BlackRock Maryland Municipal Bond Trust"
-  },
-  {
-      ticker: "C",
-      name: "Citigroup Inc."
-  },
-  {
-      ticker: "CAAP",
-      name: "Corporacion America Airports SA"
-  },
-  {
-      ticker: "CABO",
-      name: "Cable One, Inc."
-  },
-  {
-      ticker: "CACI",
-      name: "CACI International, Inc."
-  },
-  {
-      ticker: "CADE",
-      name: "Cadence Bancorporation"
-  },
-  {
-      ticker: "CAE",
-      name: "CAE Inc"
-  },
-  {
-      ticker: "CAF",
-      name: "Morgan Stanley China A Share Fund Inc."
-  },
-  {
-      ticker: "CAG",
-      name: "ConAgra Brands, Inc."
-  },
-  {
-      ticker: "CAH",
-      name: "Cardinal Health, Inc."
-  },
-  {
-      ticker: "CAI",
-      name: "CAI International, Inc."
-  },
-  {
-      ticker: "CAJ",
-      name: "Canon, Inc."
-  },
-  {
-      ticker: "CAL",
-      name: "Caleres, Inc."
-  },
-  {
-      ticker: "CALX",
-      name: "Calix, Inc"
-  },
-  {
-      ticker: "CANG",
-      name: "Cango Inc."
-  },
-  {
-      ticker: "CAPL",
-      name: "CrossAmerica Partners LP"
-  },
-  {
-      ticker: "CARS",
-      name: "Cars.com Inc."
-  },
-  {
-      ticker: "CAT",
-      name: "Caterpillar, Inc."
-  },
-  {
-      ticker: "CATO",
-      name: "Cato Corporation (The)"
-  },
-  {
-      ticker: "CB",
-      name: "Chubb Limited"
-  },
-  {
-      ticker: "CBB",
-      name: "Cincinnati Bell Inc"
-  },
-  {
-      ticker: "CBD",
-      name: "Companhia Brasileira de Distribuicao"
-  },
-  {
-      ticker: "CBH",
-      name: "AllianzGI Convertible & Income 2024 Target Term Fund"
-  },
-  {
-      ticker: "CBL",
-      name: "CBL & Associates Properties, Inc."
-  },
-  {
-      ticker: "CBM",
-      name: "Cambrex Corporation"
-  },
-  {
-      ticker: "CBO",
-      name: "CBO (Listing Market - NYSE - Networks A/E)"
-  },
-  {
-      ticker: "CBPX",
-      name: "Continental Building Products, Inc."
-  },
-  {
-      ticker: "CBRE",
-      name: "CBRE Group, Inc."
-  },
-  {
-      ticker: "CBS",
-      name: "CBS Corporation"
-  },
-  {
-      ticker: "CBS.A",
-      name: "CBS Corporation"
-  },
-  {
-      ticker: "CBT",
-      name: "Cabot Corporation"
-  },
-  {
-      ticker: "CBU",
-      name: "Community Bank System, Inc."
-  },
-  {
-      ticker: "CBX",
-      name: "CBX (Listing Market NYSE Networks AE"
-  },
-  {
-      ticker: "CBZ",
-      name: "CBIZ, Inc."
-  },
-  {
-      ticker: "CC",
-      name: "Chemours Company (The)"
-  },
-  {
-      ticker: "CCC",
-      name: "Clarivate Analytics Plc"
-  },
-  {
-      ticker: "CCEP",
-      name: "Coca-Cola European Partners plc"
-  },
-  {
-      ticker: "CCH",
-      name: "Collier Creek Holdings"
-  },
-  {
-      ticker: "CCH.U",
-      name: "Collier Creek Holdings"
-  },
-  {
-      ticker: "CCH.WS",
-      name: "Collier Creek Holdings"
-  },
-  {
-      ticker: "CCI",
-      name: "Crown Castle International Corporation"
-  },
-  {
-      ticker: "CCJ",
-      name: "Cameco Corporation"
-  },
-  {
-      ticker: "CCK",
-      name: "Crown Holdings, Inc."
-  },
-  {
-      ticker: "CCL",
-      name: "Carnival Corporation"
-  },
-  {
-      ticker: "CCM",
-      name: "Concord Medical Services Holdings Limited"
-  },
-  {
-      ticker: "CCO",
-      name: "Clear Channel Outdoor Holdings, Inc."
-  },
-  {
-      ticker: "CCR",
-      name: "CONSOL Coal Resources LP"
-  },
-  {
-      ticker: "CCS",
-      name: "Century Communities, Inc."
-  },
-  {
-      ticker: "CCU",
-      name: "Compania Cervecerias Unidas, S.A."
-  },
-  {
-      ticker: "CCX",
-      name: "Churchill Capital Corp II"
-  },
-  {
-      ticker: "CCX.U",
-      name: "Churchill Capital Corp II"
-  },
-  {
-      ticker: "CCX.WS",
-      name: "Churchill Capital Corp II"
-  },
-  {
-      ticker: "CCZ",
-      name: "Comcast Corporation"
-  },
-  {
-      ticker: "CDAY",
-      name: "Ceridian HCM Holding Inc."
-  },
-  {
-      ticker: "CDE",
-      name: "Coeur Mining, Inc."
-  },
-  {
-      ticker: "CDR",
-      name: "Cedar Realty Trust, Inc."
-  },
-  {
-      ticker: "CE",
-      name: "Celanese Corporation"
-  },
-  {
-      ticker: "CEA",
-      name: "China Eastern Airlines Corporation Ltd."
-  },
-  {
-      ticker: "CEE",
-      name: "The Central and Eastern Europe Fund, Inc."
-  },
-  {
-      ticker: "CEIX",
-      name: "CNX Resources Corporation"
-  },
-  {
-      ticker: "CEL",
-      name: "Cellcom Israel, Ltd."
-  },
-  {
-      ticker: "CELP",
-      name: "Cypress Energy Partners, L.P."
-  },
-  {
-      ticker: "CEM",
-      name: "ClearBridge MLP and Midstream Fund Inc."
-  },
-  {
-      ticker: "CEN",
-      name: "Center Coast Brookfield MLP & Energy Infrastructur"
-  },
-  {
-      ticker: "CEO",
-      name: "CNOOC Limited"
-  },
-  {
-      ticker: "CEPU",
-      name: "Central Puerto S.A."
-  },
-  {
-      ticker: "CEQP",
-      name: "Crestwood Equity Partners LP"
-  },
-  {
-      ticker: "CF",
-      name: "CF Industries Holdings, Inc."
-  },
-  {
-      ticker: "CFG",
-      name: "Citizens Financial Group, Inc."
-  },
-  {
-      ticker: "CFR",
-      name: "Cullen/Frost Bankers, Inc."
-  },
-  {
-      ticker: "CFX",
-      name: "Colfax Corporation"
-  },
-  {
-      ticker: "CFXA",
-      name: "Colfax Corporation"
-  },
-  {
-      ticker: "CGA",
-      name: "China Green Agriculture, Inc."
-  },
-  {
-      ticker: "CGC",
-      name: "Canopy Growth Corporation"
-  },
-  {
-      ticker: "CHA",
-      name: "China Telecom Corp Ltd"
-  },
-  {
-      ticker: "CHAP",
-      name: "Chaparral Energy, Inc."
-  },
-  {
-      ticker: "CHCT",
-      name: "Community Healthcare Trust Incorporated"
-  },
-  {
-      ticker: "CHD",
-      name: "Church & Dwight Company, Inc."
-  },
-  {
-      ticker: "CHE",
-      name: "Chemed Corp."
-  },
-  {
-      ticker: "CHGG",
-      name: "Chegg, Inc."
-  },
-  {
-      ticker: "CHH",
-      name: "Choice Hotels International, Inc."
-  },
-  {
-      ticker: "CHK",
-      name: "Chesapeake Energy Corporation"
-  },
-  {
-      ticker: "CHKR",
-      name: "Chesapeake Granite Wash Trust"
-  },
-  {
-      ticker: "CHL",
-      name: "China Mobile (Hong Kong) Ltd."
-  },
-  {
-      ticker: "CHMI",
-      name: "Cherry Hill Mortgage Investment Corporation"
-  },
-  {
-      ticker: "CHN",
-      name: "China Fund, Inc. (The)"
-  },
-  {
-      ticker: "CHRA",
-      name: "Charah Solutions, Inc."
-  },
-  {
-      ticker: "CHS",
-      name: "Chico&#39;s FAS, Inc."
-  },
-  {
-      ticker: "CHSP",
-      name: "Chesapeake Lodging Trust"
-  },
-  {
-      ticker: "CHT",
-      name: "Chunghwa Telecom Co., Ltd."
-  },
-  {
-      ticker: "CHU",
-      name: "China Unicom (Hong Kong) Ltd"
-  },
-  {
-      ticker: "CHWY",
-      name: "Chewy, Inc."
-  },
-  {
-      ticker: "CI",
-      name: "Cigna Corporation"
-  },
-  {
-      ticker: "CIA",
-      name: "Citizens, Inc."
-  },
-  {
-      ticker: "CIB",
-      name: "BanColombia S.A."
-  },
-  {
-      ticker: "CIEN",
-      name: "Ciena Corporation"
-  },
-  {
-      ticker: "CIF",
-      name: "Colonial Intermediate High Income Fund"
-  },
-  {
-      ticker: "CIG",
-      name: "Comp En De Mn Cemig ADS"
-  },
-  {
-      ticker: "CIG.C",
-      name: "Comp En De Mn Cemig ADS"
-  },
-  {
-      ticker: "CII",
-      name: "Blackrock Capital and Income Strategies Fund Inc"
-  },
-  {
-      ticker: "CIM",
-      name: "Chimera Investment Corporation"
-  },
-  {
-      ticker: "CINR",
-      name: "Ciner Resources LP"
-  },
-  {
-      ticker: "CIO",
-      name: "City Office REIT, Inc."
-  },
-  {
-      ticker: "CIR",
-      name: "CIRCOR International, Inc."
-  },
-  {
-      ticker: "CISN",
-      name: "Cision Ltd."
-  },
-  {
-      ticker: "CIT",
-      name: "CIT Group Inc (DEL)"
-  },
-  {
-      ticker: "CJ",
-      name: "C&J Energy Services, Inc"
-  },
-  {
-      ticker: "CKH",
-      name: "SEACOR Holdings, Inc."
-  },
-  {
-      ticker: "CL",
-      name: "Colgate-Palmolive Company"
-  },
-  {
-      ticker: "CLB",
-      name: "Core Laboratories N.V."
-  },
-  {
-      ticker: "CLDR",
-      name: "Cloudera, Inc."
-  },
-  {
-      ticker: "CLDT",
-      name: "Chatham Lodging Trust (REIT)"
-  },
-  {
-      ticker: "CLF",
-      name: "Cleveland-Cliffs Inc."
-  },
-  {
-      ticker: "CLGX",
-      name: "CoreLogic, Inc."
-  },
-  {
-      ticker: "CLH",
-      name: "Clean Harbors, Inc."
-  },
-  {
-      ticker: "CLI",
-      name: "Mack-Cali Realty Corporation"
-  },
-  {
-      ticker: "CLNC",
-      name: "Colony Credit Real Estate, Inc."
-  },
-  {
-      ticker: "CLNY",
-      name: "Colony Capital, Inc."
-  },
-  {
-      ticker: "CLPR",
-      name: "Clipper Realty Inc."
-  },
-  {
-      ticker: "CLR",
-      name: "Continental Resources, Inc."
-  },
-  {
-      ticker: "CLS",
-      name: "Celestica, Inc."
-  },
-  {
-      ticker: "CLW",
-      name: "Clearwater Paper Corporation"
-  },
-  {
-      ticker: "CLX",
-      name: "Clorox Company (The)"
-  },
-  {
-      ticker: "CM",
-      name: "Canadian Imperial Bank of Commerce"
-  },
-  {
-      ticker: "CMA",
-      name: "Comerica Incorporated"
-  },
-  {
-      ticker: "CMC",
-      name: "Commercial Metals Company"
-  },
-  {
-      ticker: "CMCM",
-      name: "Cheetah Mobile Inc."
-  },
-  {
-      ticker: "CMD",
-      name: "Cantel Medical Corp."
-  },
-  {
-      ticker: "CMG",
-      name: "Chipotle Mexican Grill, Inc."
-  },
-  {
-      ticker: "CMI",
-      name: "Cummins Inc."
-  },
-  {
-      ticker: "CMO",
-      name: "Capstead Mortgage Corporation"
-  },
-  {
-      ticker: "CMP",
-      name: "Compass Minerals International, Inc."
-  },
-  {
-      ticker: "CMRE",
-      name: "Costamare Inc."
-  },
-  {
-      ticker: "CMS",
-      name: "CMS Energy Corporation"
-  },
-  {
-      ticker: "CMSA",
-      name: "CMS Energy Corporation"
-  },
-  {
-      ticker: "CMSC",
-      name: "CMS Energy Corporation"
-  },
-  {
-      ticker: "CMSD",
-      name: "CMS Energy Corporation"
-  },
-  {
-      ticker: "CMU",
-      name: "Colonial Municipal Income Trust"
-  },
-  {
-      ticker: "CNA",
-      name: "CNA Financial Corporation"
-  },
-  {
-      ticker: "CNC",
-      name: "Centene Corporation"
-  },
-  {
-      ticker: "CNDT",
-      name: "Conduent Incorporated"
-  },
-  {
-      ticker: "CNF",
-      name: "CNFinance Holdings Limited"
-  },
-  {
-      ticker: "CNHI",
-      name: "CNH Industrial N.V."
-  },
-  {
-      ticker: "CNI",
-      name: "Canadian National Railway Company"
-  },
-  {
-      ticker: "CNK",
-      name: "Cinemark Holdings Inc"
-  },
-  {
-      ticker: "CNNE",
-      name: "Cannae Holdings, Inc."
-  },
-  {
-      ticker: "CNO",
-      name: "CNO Financial Group, Inc."
-  },
-  {
-      ticker: "CNP",
-      name: "CenterPoint Energy, Inc."
-  },
-  {
-      ticker: "CNQ",
-      name: "Canadian Natural Resources Limited"
-  },
-  {
-      ticker: "CNR",
-      name: "Cornerstone Building Brands, Inc."
-  },
-  {
-      ticker: "CNS",
-      name: "Cohen & Steers Inc"
-  },
-  {
-      ticker: "CNX",
-      name: "CNX Resources Corporation"
-  },
-  {
-      ticker: "CNXM",
-      name: "CNX Midstream Partners LP"
-  },
-  {
-      ticker: "CO",
-      name: "Global Cord Blood Corporation"
-  },
-  {
-      ticker: "CODI",
-      name: "Compass Diversified Holdings"
-  },
-  {
-      ticker: "COE",
-      name: "China Online Education Group"
-  },
-  {
-      ticker: "COF",
-      name: "Capital One Financial Corporation"
-  },
-  {
-      ticker: "COG",
-      name: "Cabot Oil & Gas Corporation"
-  },
-  {
-      ticker: "COLD",
-      name: "Americold Realty Trust"
-  },
-  {
-      ticker: "COO",
-      name: "The Cooper Companies, Inc. "
-  },
-  {
-      ticker: "COP",
-      name: "ConocoPhillips"
-  },
-  {
-      ticker: "COR",
-      name: "CoreSite Realty Corporation"
-  },
-  {
-      ticker: "CORR",
-      name: "CorEnergy Infrastructure Trust, Inc."
-  },
-  {
-      ticker: "COT",
-      name: "Cott Corporation"
-  },
-  {
-      ticker: "COTY",
-      name: "Coty Inc."
-  },
-  {
-      ticker: "CP",
-      name: "Canadian Pacific Railway Limited"
-  },
-  {
-      ticker: "CPA",
-      name: "Copa Holdings, S.A."
-  },
-  {
-      ticker: "CPAC",
-      name: "Cementos Pacasmayo S.A.A."
-  },
-  {
-      ticker: "CPB",
-      name: "Campbell Soup Company"
-  },
-  {
-      ticker: "CPE",
-      name: "Callon Petroleum Company"
-  },
-  {
-      ticker: "CPF",
-      name: "CPB Inc."
-  },
-  {
-      ticker: "CPG",
-      name: "Crescent Point Energy Corporation"
-  },
-  {
-      ticker: "CPK",
-      name: "Chesapeake Utilities Corporation"
-  },
-  {
-      ticker: "CPL",
-      name: "CPFL Energia S.A."
-  },
-  {
-      ticker: "CPLG",
-      name: "CorePoint Lodging Inc."
-  },
-  {
-      ticker: "CPRI",
-      name: "Capri Holdings Limited"
-  },
-  {
-      ticker: "CPS",
-      name: "Cooper-Standard Holdings Inc."
-  },
-  {
-      ticker: "CPT",
-      name: "Camden Property Trust"
-  },
-  {
-      ticker: "CR",
-      name: "Crane Co."
-  },
-  {
-      ticker: "CRC",
-      name: "California Resources Corporation"
-  },
-  {
-      ticker: "CRCM",
-      name: "Care.com, Inc."
-  },
-  {
-      ticker: "CRD.A",
-      name: "Crawford & Company"
-  },
-  {
-      ticker: "CRD.B",
-      name: "Crawford & Company"
-  },
-  {
-      ticker: "CRH",
-      name: "CRH PLC"
-  },
-  {
-      ticker: "CRI",
-      name: "Carter&#39;s, Inc."
-  },
-  {
-      ticker: "CRK",
-      name: "Comstock Resources, Inc."
-  },
-  {
-      ticker: "CRL",
-      name: "Charles River Laboratories International, Inc."
-  },
-  {
-      ticker: "CRM",
-      name: "Salesforce.com Inc"
-  },
-  {
-      ticker: "CRR",
-      name: "Carbo Ceramics, Inc."
-  },
-  {
-      ticker: "CRS",
-      name: "Carpenter Technology Corporation"
-  },
-  {
-      ticker: "CRT",
-      name: "Cross Timbers Royalty Trust"
-  },
-  {
-      ticker: "CRY",
-      name: "CryoLife, Inc."
-  },
-  {
-      ticker: "CS",
-      name: "Credit Suisse Group"
-  },
-  {
-      ticker: "CSL",
-      name: "Carlisle Companies Incorporated"
-  },
-  {
-      ticker: "CSLT",
-      name: "Castlight Health, inc."
-  },
-  {
-      ticker: "CSS",
-      name: "CSS Industries, Inc."
-  },
-  {
-      ticker: "CSTM",
-      name: "Constellium SE"
-  },
-  {
-      ticker: "CSU",
-      name: "Capital Senior Living Corporation"
-  },
-  {
-      ticker: "CSV",
-      name: "Carriage Services, Inc."
-  },
-  {
-      ticker: "CTAA",
-      name: "Qwest Corporation"
-  },
-  {
-      ticker: "CTB",
-      name: "Cooper Tire & Rubber Company"
-  },
-  {
-      ticker: "CTBB",
-      name: "Qwest Corporation"
-  },
-  {
-      ticker: "CTDD",
-      name: "Qwest Corporation"
-  },
-  {
-      ticker: "CTEST",
-      name: "NYSE Test One"
-  },
-  {
-      ticker: "CTEST.E",
-      name: "NYSE Test One"
-  },
-  {
-      ticker: "CTEST.G",
-      name: "NYSE Test One"
-  },
-  {
-      ticker: "CTEST.L",
-      name: "NYSE Test One"
-  },
-  {
-      ticker: "CTEST.O",
-      name: "NYSE Test One"
-  },
-  {
-      ticker: "CTEST.S",
-      name: "NYSE Test One"
-  },
-  {
-      ticker: "CTEST.V",
-      name: "NYSE Test One"
-  },
-  {
-      ticker: "CTK",
-      name: "CooTek (Cayman) Inc."
-  },
-  {
-      ticker: "CTL",
-      name: "CenturyLink, Inc."
-  },
-  {
-      ticker: "CTLT",
-      name: "Catalent, Inc."
-  },
-  {
-      ticker: "CTR",
-      name: "ClearBridge MLP and Midstream Total Return Fund In"
-  },
-  {
-      ticker: "CTRA",
-      name: "Contura Energy, Inc."
-  },
-  {
-      ticker: "CTS",
-      name: "CTS Corporation"
-  },
-  {
-      ticker: "CTST",
-      name: "CannTrust Holdings Inc."
-  },
-  {
-      ticker: "CTT           ",
-      name: "CatchMark Timber Trust, Inc."
-  },
-  {
-      ticker: "CTV",
-      name: "Qwest Corporation"
-  },
-  {
-      ticker: "CTVA",
-      name: "Corteva, Inc."
-  },
-  {
-      ticker: "CTY",
-      name: "Qwest Corporation"
-  },
-  {
-      ticker: "CTZ",
-      name: "Qwest Corporation"
-  },
-  {
-      ticker: "CUB",
-      name: "Cubic Corporation"
-  },
-  {
-      ticker: "CUBE",
-      name: "CubeSmart"
-  },
-  {
-      ticker: "CUBI",
-      name: "Customers Bancorp, Inc"
-  },
-  {
-      ticker: "CUK",
-      name: "Carnival Corporation"
-  },
-  {
-      ticker: "CULP",
-      name: "Culp, Inc."
-  },
-  {
-      ticker: "CURO",
-      name: "CURO Group Holdings Corp."
-  },
-  {
-      ticker: "CUZ",
-      name: "Cousins Properties Incorporated"
-  },
-  {
-      ticker: "CVA",
-      name: "Covanta Holding Corporation"
-  },
-  {
-      ticker: "CVE",
-      name: "Cenovus Energy Inc"
-  },
-  {
-      ticker: "CVEO",
-      name: "Civeo Corporation"
-  },
-  {
-      ticker: "CVI",
-      name: "CVR Energy Inc."
-  },
-  {
-      ticker: "CVIA",
-      name: "Covia Holdings Corporation"
-  },
-  {
-      ticker: "CVNA",
-      name: "Carvana Co."
-  },
-  {
-      ticker: "CVS",
-      name: "CVS Health Corporation"
-  },
-  {
-      ticker: "CVX",
-      name: "Chevron Corporation"
-  },
-  {
-      ticker: "CW",
-      name: "Curtiss-Wright Corporation"
-  },
-  {
-      ticker: "CWEN",
-      name: "Clearway Energy, Inc."
-  },
-  {
-      ticker: "CWEN.A",
-      name: "Clearway Energy, Inc."
-  },
-  {
-      ticker: "CWH",
-      name: "Camping World Holdings, Inc."
-  },
-  {
-      ticker: "CWK",
-      name: "Cushman & Wakefield plc"
-  },
-  {
-      ticker: "CWT",
-      name: "California Water  Service Group Holding"
-  },
-  {
-      ticker: "CX",
-      name: "Cemex S.A.B. de C.V."
-  },
-  {
-      ticker: "CXE",
-      name: "Colonial High Income Municipal Trust"
-  },
-  {
-      ticker: "CXH",
-      name: "Colonial Investment Grade Municipal Trust"
-  },
-  {
-      ticker: "CXO",
-      name: "Concho Resources Inc."
-  },
-  {
-      ticker: "CXP",
-      name: "Columbia Property Trust, Inc."
-  },
-  {
-      ticker: "CXW",
-      name: "CoreCivic, Inc."
-  },
-  {
-      ticker: "CYD",
-      name: "China Yuchai International Limited"
-  },
-  {
-      ticker: "CYH",
-      name: "Community Health Systems, Inc."
-  },
-  {
-      ticker: "CZZ",
-      name: "Cosan Limited"
-  },
-  {
-      ticker: "D",
-      name: "Dominion Energy, Inc."
-  },
-  {
-      ticker: "DAC",
-      name: "Danaos Corporation"
-  },
-  {
-      ticker: "DAL",
-      name: "Delta Air Lines, Inc."
-  },
-  {
-      ticker: "DAN",
-      name: "Dana Incorporated"
-  },
-  {
-      ticker: "DAR",
-      name: "Darling Ingredients Inc."
-  },
-  {
-      ticker: "DAVA",
-      name: "Endava plc"
-  },
-  {
-      ticker: "DB",
-      name: "Deutsche Bank AG"
-  },
-  {
-      ticker: "DBD",
-      name: "Diebold Nixdorf Incorporated"
-  },
-  {
-      ticker: "DBI",
-      name: "Designer Brands Inc."
-  },
-  {
-      ticker: "DBL",
-      name: "DoubleLine Opportunistic Credit Fund"
-  },
-  {
-      ticker: "DCF",
-      name: "BNY Mellon Alcentra Global Credit Income 2024 Target Term Fund"
-  },
-  {
-      ticker: "DCI",
-      name: "Donaldson Company, Inc."
-  },
-  {
-      ticker: "DCO",
-      name: "Ducommun Incorporated"
-  },
-  {
-      ticker: "DCP",
-      name: "DCP Midstream LP"
-  },
-  {
-      ticker: "DCUE",
-      name: "Dominion Energy, Inc."
-  },
-  {
-      ticker: "DD",
-      name: "DuPont de Nemours, Inc."
-  },
-  {
-      ticker: "DDD",
-      name: "3D Systems Corporation"
-  },
-  {
-      ticker: "DDF",
-      name: "Delaware Investments Dividend & Income Fund, Inc."
-  },
-  {
-      ticker: "DDS",
-      name: "Dillard&#39;s, Inc."
-  },
-  {
-      ticker: "DDT",
-      name: "Dillard&#39;s, Inc."
-  },
-  {
-      ticker: "DE",
-      name: "Deere & Company"
-  },
-  {
-      ticker: "DEA",
-      name: "Easterly Government Properties, Inc."
-  },
-  {
-      ticker: "DECK",
-      name: "Deckers Outdoor Corporation"
-  },
-  {
-      ticker: "DEI",
-      name: "Douglas Emmett, Inc."
-  },
-  {
-      ticker: "DELL",
-      name: "Dell Technologies Inc."
-  },
-  {
-      ticker: "DEO",
-      name: "Diageo plc"
-  },
-  {
-      ticker: "DESP",
-      name: "Despegar.com, Corp."
-  },
-  {
-      ticker: "DEX",
-      name: "Delaware Enhanced Global Dividend"
-  },
-  {
-      ticker: "DF",
-      name: "Dean Foods Company"
-  },
-  {
-      ticker: "DFIN",
-      name: "Donnelley Financial Solutions, Inc."
-  },
-  {
-      ticker: "DFP",
-      name: "Flaherty & Crumrine Dynamic Preferred and Income Fund Inc."
-  },
-  {
-      ticker: "DFS",
-      name: "Discover Financial Services"
-  },
-  {
-      ticker: "DG",
-      name: "Dollar General Corporation"
-  },
-  {
-      ticker: "DGX",
-      name: "Quest Diagnostics Incorporated"
-  },
-  {
-      ticker: "DHF",
-      name: "BNY Mellon High Yield Strategies Fund"
-  },
-  {
-      ticker: "DHI",
-      name: "D.R. Horton, Inc."
-  },
-  {
-      ticker: "DHR",
-      name: "Danaher Corporation"
-  },
-  {
-      ticker: "DHT",
-      name: "DHT Holdings, Inc."
-  },
-  {
-      ticker: "DHX",
-      name: "DHI Group, Inc."
-  },
-  {
-      ticker: "DIAX",
-      name: "Nuveen Dow 30SM Dynamic Overwrite Fund"
-  },
-  {
-      ticker: "DIN",
-      name: "Dine Brands Global, Inc."
-  },
-  {
-      ticker: "DIS",
-      name: "Walt Disney Company (The)"
-  },
-  {
-      ticker: "DK",
-      name: "Delek US Holdings, Inc."
-  },
-  {
-      ticker: "DKL",
-      name: "Delek Logistics Partners, L.P."
-  },
-  {
-      ticker: "DKS",
-      name: "Dick&#39;s Sporting Goods Inc"
-  },
-  {
-      ticker: "DKT",
-      name: "Deutsch Bk Contingent Cap Tr V"
-  },
-  {
-      ticker: "DL",
-      name: "China Distance Education Holdings Limited"
-  },
-  {
-      ticker: "DLB",
-      name: "Dolby Laboratories"
-  },
-  {
-      ticker: "DLNG",
-      name: "Dynagas LNG Partners LP"
-  },
-  {
-      ticker: "DLPH",
-      name: "Delphi Technologies PLC"
-  },
-  {
-      ticker: "DLR",
-      name: "Digital Realty Trust, Inc."
-  },
-  {
-      ticker: "DLX",
-      name: "Deluxe Corporation"
-  },
-  {
-      ticker: "DMB",
-      name: "BNY Mellon Municipal Bond Infrastructure Fund, Inc"
-  },
-  {
-      ticker: "DMO",
-      name: "Western Asset Mortgage Defined Opportunity Fund Inc"
-  },
-  {
-      ticker: "DNI",
-      name: "Dividend and Income Fund"
-  },
-  {
-      ticker: "DNOW",
-      name: "NOW Inc."
-  },
-  {
-      ticker: "DNP",
-      name: "Duff & Phelps Utilities Income, Inc."
-  },
-  {
-      ticker: "DNR",
-      name: "Denbury Resources Inc."
-  },
-  {
-      ticker: "DO",
-      name: "Diamond Offshore Drilling, Inc."
-  },
-  {
-      ticker: "DOC",
-      name: "Physicians Realty Trust"
-  },
-  {
-      ticker: "DOOR",
-      name: "Masonite International Corporation"
-  },
-  {
-      ticker: "DOV",
-      name: "Dover Corporation"
-  },
-  {
-      ticker: "DOW",
-      name: "Dow Inc."
-  },
-  {
-      ticker: "DPG",
-      name: "Duff & Phelps Global Utility Income Fund Inc."
-  },
-  {
-      ticker: "DPLO",
-      name: "Diplomat Pharmacy, Inc."
-  },
-  {
-      ticker: "DPZ",
-      name: "Domino&#39;s Pizza Inc"
-  },
-  {
-      ticker: "DQ",
-      name: "DAQO New Energy Corp."
-  },
-  {
-      ticker: "DRD",
-      name: "DRDGOLD Limited"
-  },
-  {
-      ticker: "DRE",
-      name: "Duke Realty Corporation"
-  },
-  {
-      ticker: "DRH",
-      name: "Diamondrock Hospitality Company"
-  },
-  {
-      ticker: "DRI",
-      name: "Darden Restaurants, Inc."
-  },
-  {
-      ticker: "DRQ",
-      name: "Dril-Quip, Inc."
-  },
-  {
-      ticker: "DRUA",
-      name: "Dominion Energy, Inc."
-  },
-  {
-      ticker: "DS",
-      name: "Drive Shack Inc."
-  },
-  {
-      ticker: "DSE",
-      name: "Duff & Phelps Select MLP and Midstream Energy Fund"
-  },
-  {
-      ticker: "DSL",
-      name: "DoubleLine Income Solutions Fund"
-  },
-  {
-      ticker: "DSM",
-      name: "BNY Mellon Strategic Municipal Bond Fund, Inc."
-  },
-  {
-      ticker: "DSSI",
-      name: "Diamond S Shipping Inc."
-  },
-  {
-      ticker: "DSU",
-      name: "Blackrock Debt Strategies Fund, Inc."
-  },
-  {
-      ticker: "DSX",
-      name: "Diana Shipping inc."
-  },
-  {
-      ticker: "DT",
-      name: "Dynatrace, Inc."
-  },
-  {
-      ticker: "DTE",
-      name: "DTE Energy Company"
-  },
-  {
-      ticker: "DTF",
-      name: "Duff & Phelps Utilities Tax-Free Income, Inc."
-  },
-  {
-      ticker: "DTJ",
-      name: "DTE Energy Company"
-  },
-  {
-      ticker: "DTQ",
-      name: "DTE Energy Company"
-  },
-  {
-      ticker: "DTV",
-      name: "DTE Energy Company"
-  },
-  {
-      ticker: "DTW",
-      name: "DTE Energy Company"
-  },
-  {
-      ticker: "DTY",
-      name: "DTE Energy Company"
-  },
-  {
-      ticker: "DUC",
-      name: "Duff & Phelps Utility & Corporate Bond Trust, Inc."
-  },
-  {
-      ticker: "DUK",
-      name: "Duke Energy Corporation"
-  },
-  {
-      ticker: "DUKB",
-      name: "Duke Energy Corporation"
-  },
-  {
-      ticker: "DUKH",
-      name: "Duke Energy Corporation"
-  },
-  {
-      ticker: "DVA",
-      name: "DaVita Inc."
-  },
-  {
-      ticker: "DVD",
-      name: "Dover Motorsports, Inc."
-  },
-  {
-      ticker: "DVN",
-      name: "Devon Energy Corporation"
-  },
-  {
-      ticker: "DX",
-      name: "Dynex Capital, Inc."
-  },
-  {
-      ticker: "DXB",
-      name: "Deutsche Bank AG"
-  },
-  {
-      ticker: "DXC",
-      name: "DXC Technology Company"
-  },
-  {
-      ticker: "DY",
-      name: "Dycom Industries, Inc."
-  },
-  {
-      ticker: "E",
-      name: "ENI S.p.A."
-  },
-  {
-      ticker: "EAB",
-      name: "Entergy Arkansas, LLC"
-  },
-  {
-      ticker: "EAE",
-      name: "Entergy Arkansas, LLC"
-  },
-  {
-      ticker: "EAF",
-      name: "GrafTech International Ltd."
-  },
-  {
-      ticker: "EAI",
-      name: "Entergy Arkansas, LLC"
-  },
-  {
-      ticker: "EARN",
-      name: "Ellington Residential Mortgage REIT"
-  },
-  {
-      ticker: "EAT",
-      name: "Brinker International, Inc."
-  },
-  {
-      ticker: "EB",
-      name: "Eventbrite, Inc."
-  },
-  {
-      ticker: "EBF",
-      name: "Ennis, Inc."
-  },
-  {
-      ticker: "EBR",
-      name: "Centrais Electricas Brasileiras S.A.- Eletrobras"
-  },
-  {
-      ticker: "EBR.B",
-      name: "Centrais Electricas Brasileiras S.A.- Eletrobras"
-  },
-  {
-      ticker: "EBS",
-      name: "Emergent Biosolutions, Inc."
-  },
-  {
-      ticker: "EC",
-      name: "Ecopetrol S.A."
-  },
-  {
-      ticker: "ECA",
-      name: "Encana Corporation"
-  },
-  {
-      ticker: "ECC           ",
-      name: "Eagle Point Credit Company Inc."
-  },
-  {
-      ticker: "ECCA",
-      name: "Eagle Point Credit Company Inc."
-  },
-  {
-      ticker: "ECCB",
-      name: "Eagle Point Credit Company Inc."
-  },
-  {
-      ticker: "ECCX",
-      name: "Eagle Point Credit Company Inc."
-  },
-  {
-      ticker: "ECCY",
-      name: "Eagle Point Credit Company Inc."
-  },
-  {
-      ticker: "ECL",
-      name: "Ecolab Inc."
-  },
-  {
-      ticker: "ECOM          ",
-      name: "ChannelAdvisor Corporation"
-  },
-  {
-      ticker: "ECT",
-      name: "ECA Marcellus Trust I"
-  },
-  {
-      ticker: "ED",
-      name: "Consolidated Edison Inc"
-  },
-  {
-      ticker: "EDD",
-      name: "Morgan Stanley Emerging Markets Domestic Debt Fund, Inc."
-  },
-  {
-      ticker: "EDF",
-      name: "Stone Harbor Emerging Markets Income Fund"
-  },
-  {
-      ticker: "EDI",
-      name: "Stone Harbor Emerging Markets Total Income Fund"
-  },
-  {
-      ticker: "EDN",
-      name: "Empresa Distribuidora Y Comercializadora Norte S.A. (Edenor)"
-  },
-  {
-      ticker: "EDU",
-      name: "New Oriental Education & Technology Group, Inc."
-  },
-  {
-      ticker: "EE",
-      name: "El Paso Electric Company"
-  },
-  {
-      ticker: "EEA",
-      name: "European Equity Fund, Inc. (The)"
-  },
-  {
-      ticker: "EEX",
-      name: "Emerald Expositions Events, Inc."
-  },
-  {
-      ticker: "EFC",
-      name: "Ellington Financial Inc."
-  },
-  {
-      ticker: "EFF",
-      name: "Eaton vance Floating-Rate Income Plus Fund"
-  },
-  {
-      ticker: "EFL",
-      name: "Eaton Vance Floating-Rate 2022 Target Term Trust"
-  },
-  {
-      ticker: "EFR",
-      name: "Eaton Vance Senior Floating-Rate Fund"
-  },
-  {
-      ticker: "EFT",
-      name: "Eaton Vance Floating Rate Income Trust"
-  },
-  {
-      ticker: "EFX",
-      name: "Equifax, Inc."
-  },
-  {
-      ticker: "EGF",
-      name: "Blackrock Enhanced Government Fund, Inc"
-  },
-  {
-      ticker: "EGHT",
-      name: "8x8 Inc"
-  },
-  {
-      ticker: "EGIF",
-      name: "Eagle Growth and Income Opportunities Fund"
-  },
-  {
-      ticker: "EGO",
-      name: "Eldorado Gold Corporation"
-  },
-  {
-      ticker: "EGP",
-      name: "EastGroup Properties, Inc."
-  },
-  {
-      ticker: "EGY",
-      name: "VAALCO Energy, Inc. "
-  },
-  {
-      ticker: "EHC",
-      name: "Encompass Health Corporation"
-  },
-  {
-      ticker: "EHI",
-      name: "Western Asset Global High Income Fund Inc"
-  },
-  {
-      ticker: "EHT",
-      name: "Eaton Vance High Income 2021 Target Term Trust"
-  },
-  {
-      ticker: "EIC",
-      name: "Eagle Point Income Company Inc."
-  },
-  {
-      ticker: "EIG",
-      name: "Employers Holdings Inc"
-  },
-  {
-      ticker: "EIX",
-      name: "Edison International"
-  },
-  {
-      ticker: "EL",
-      name: "Estee Lauder Companies, Inc. (The)"
-  },
-  {
-      ticker: "ELAN",
-      name: "Elanco Animal Health Incorporated"
-  },
-  {
-      ticker: "ELC",
-      name: "Entergy Louisiana, Inc."
-  },
-  {
-      ticker: "ELF",
-      name: "e.l.f. Beauty, Inc."
-  },
-  {
-      ticker: "ELJ",
-      name: "Entergy Louisiana, Inc."
-  },
-  {
-      ticker: "ELP",
-      name: "Companhia Paranaense de Energia (COPEL)"
-  },
-  {
-      ticker: "ELS",
-      name: "Equity Lifestyle Properties, Inc."
-  },
-  {
-      ticker: "ELU",
-      name: "Entergy Louisiana, Inc."
-  },
-  {
-      ticker: "ELVT",
-      name: "Elevate Credit, Inc."
-  },
-  {
-      ticker: "ELY",
-      name: "Callaway Golf Company"
-  },
-  {
-      ticker: "EMD",
-      name: "Western Asset Emerging Markets Debt Fund Inc"
-  },
-  {
-      ticker: "EME",
-      name: "EMCOR Group, Inc."
-  },
-  {
-      ticker: "EMF",
-      name: "Templeton Emerging Markets Fund"
-  },
-  {
-      ticker: "EMN",
-      name: "Eastman Chemical Company"
-  },
-  {
-      ticker: "EMO",
-      name: "ClearBridge Energy Midstream Opportunity Fund Inc."
-  },
-  {
-      ticker: "EMP",
-      name: "Entergy Mississippi, LLC"
-  },
-  {
-      ticker: "EMR",
-      name: "Emerson Electric Company"
-  },
-  {
-      ticker: "ENB",
-      name: "Enbridge Inc"
-  },
-  {
-      ticker: "ENBA",
-      name: "Enbridge Inc"
-  },
-  {
-      ticker: "ENBL",
-      name: "Enable Midstream Partners, LP"
-  },
-  {
-      ticker: "ENIA",
-      name: "Enel Americas S.A."
-  },
-  {
-      ticker: "ENIC",
-      name: "Enel Chile S.A."
-  },
-  {
-      ticker: "ENJ",
-      name: "Entergy New Orleans, LLC"
-  },
-  {
-      ticker: "ENLC",
-      name: "EnLink Midstream, LLC"
-  },
-  {
-      ticker: "ENO",
-      name: "Entergy New Orleans, LLC"
-  },
-  {
-      ticker: "ENR",
-      name: "Energizer Holdings, Inc."
-  },
-  {
-      ticker: "ENS",
-      name: "Enersys"
-  },
-  {
-      ticker: "ENV",
-      name: "Envestnet, Inc"
-  },
-  {
-      ticker: "ENVA",
-      name: "Enova International, Inc."
-  },
-  {
-      ticker: "ENZ",
-      name: "Enzo Biochem, Inc."
-  },
-  {
-      ticker: "EOD",
-      name: "Wells Fargo Global Dividend Opportunity Fund"
-  },
-  {
-      ticker: "EOG",
-      name: "EOG Resources, Inc."
-  },
-  {
-      ticker: "EOI",
-      name: "Eaton Vance Enhance Equity Income Fund"
-  },
-  {
-      ticker: "EOS",
-      name: "Eaton Vance Enhanced Equity Income Fund II"
-  },
-  {
-      ticker: "EOT",
-      name: "Eaton Vance Municipal Income Trust"
-  },
-  {
-      ticker: "EPAM",
-      name: "EPAM Systems, Inc."
-  },
-  {
-      ticker: "EPC",
-      name: "Energizer Holdings, Inc."
-  },
-  {
-      ticker: "EPD",
-      name: "Enterprise Products Partners L.P."
-  },
-  {
-      ticker: "EPR",
-      name: "EPR Properties"
-  },
-  {
-      ticker: "EPRT",
-      name: "Essential Properties Realty Trust, Inc."
-  },
-  {
-      ticker: "EQC",
-      name: "Equity Commonwealth"
-  },
-  {
-      ticker: "EQH",
-      name: "AXA Equitable Holdings, Inc."
-  },
-  {
-      ticker: "EQM",
-      name: "EQM Midstream Partners, LP"
-  },
-  {
-      ticker: "EQNR",
-      name: "Equinor ASA"
-  },
-  {
-      ticker: "EQR",
-      name: "Equity Residential"
-  },
-  {
-      ticker: "EQS",
-      name: "Equus Total Return, Inc."
-  },
-  {
-      ticker: "EQT",
-      name: "EQT Corporation"
-  },
-  {
-      ticker: "ERA",
-      name: "Era Group, Inc."
-  },
-  {
-      ticker: "ERF",
-      name: "Enerplus Corporation"
-  },
-  {
-      ticker: "ERJ",
-      name: "Embraer S.A."
-  },
-  {
-      ticker: "EROS",
-      name: "Eros International PLC"
-  },
-  {
-      ticker: "ES",
-      name: "Eversource Energy"
-  },
-  {
-      ticker: "ESE",
-      name: "ESCO Technologies Inc."
-  },
-  {
-      ticker: "ESI",
-      name: "Element Solutions Inc."
-  },
-  {
-      ticker: "ESNT",
-      name: "Essent Group Ltd."
-  },
-  {
-      ticker: "ESRT",
-      name: "Empire State Realty Trust, Inc."
-  },
-  {
-      ticker: "ESS",
-      name: "Essex Property Trust, Inc."
-  },
-  {
-      ticker: "ESTC",
-      name: "Elastic N.V."
-  },
-  {
-      ticker: "ESTE",
-      name: "Earthstone Energy, Inc."
-  },
-  {
-      ticker: "ET",
-      name: "Energy Transfer L.P."
-  },
-  {
-      ticker: "ETB",
-      name: "Eaton Vance Tax-Managed Buy-Write Income Fund"
-  },
-  {
-      ticker: "ETG",
-      name: "Eaton Vance Tax-Advantaged Global Dividend Income Fund"
-  },
-  {
-      ticker: "ETH",
-      name: "Ethan Allen Interiors Inc."
-  },
-  {
-      ticker: "ETJ",
-      name: "Eaton Vance Risk-Managed Diversified Equity Income Fund"
-  },
-  {
-      ticker: "ETM",
-      name: "Entercom Communications Corp."
-  },
-  {
-      ticker: "ETN",
-      name: "Eaton Corporation, PLC"
-  },
-  {
-      ticker: "ETO",
-      name: "Eaton Vance Tax-Advantage Global Dividend Opp"
-  },
-  {
-      ticker: "ETR",
-      name: "Entergy Corporation"
-  },
-  {
-      ticker: "ETRN",
-      name: "Equitrans Midstream Corporation"
-  },
-  {
-      ticker: "ETV",
-      name: "Eaton Vance Corporation"
-  },
-  {
-      ticker: "ETW",
-      name: "Eaton Vance Corporation"
-  },
-  {
-      ticker: "ETX           ",
-      name: "Eaton Vance Municipal Income 2028 Term Trust"
-  },
-  {
-      ticker: "ETY",
-      name: "Eaton Vance Tax-Managed Diversified Equity Income Fund"
-  },
-  {
-      ticker: "EURN",
-      name: "Euronav NV"
-  },
-  {
-      ticker: "EV",
-      name: "Eaton Vance Corporation"
-  },
-  {
-      ticker: "EVA",
-      name: "Enviva Partners, LP"
-  },
-  {
-      ticker: "EVC",
-      name: "Entravision Communications Corporation"
-  },
-  {
-      ticker: "EVF",
-      name: "Eaton Vance Senior Income Trust"
-  },
-  {
-      ticker: "EVG",
-      name: "Eaton Vance Short Diversified Income Fund"
-  },
-  {
-      ticker: "EVH",
-      name: "Evolent Health, Inc"
-  },
-  {
-      ticker: "EVN",
-      name: "Eaton Vance Municipal Income Trust"
-  },
-  {
-      ticker: "EVR",
-      name: "Evercore Inc."
-  },
-  {
-      ticker: "EVRG",
-      name: "Evergy, Inc."
-  },
-  {
-      ticker: "EVRI",
-      name: "Everi Holdings Inc."
-  },
-  {
-      ticker: "EVT",
-      name: "Eaton Vance Tax Advantaged Dividend Income Fund"
-  },
-  {
-      ticker: "EVTC",
-      name: "Evertec, Inc."
-  },
-  {
-      ticker: "EW",
-      name: "Edwards Lifesciences Corporation"
-  },
-  {
-      ticker: "EXC",
-      name: "Exelon Corporation"
-  },
-  {
-      ticker: "EXD",
-      name: "Eaton Vance Tax-Managed Buy-Write Strategy Fund"
-  },
-  {
-      ticker: "EXG",
-      name: "Eaton Vance Tax-Managed Global Diversified Equity Income Fund"
-  },
-  {
-      ticker: "EXK",
-      name: "Endeavour Silver Corporation"
-  },
-  {
-      ticker: "EXP",
-      name: "Eagle Materials Inc"
-  },
-  {
-      ticker: "EXPR",
-      name: "Express, Inc."
-  },
-  {
-      ticker: "EXR",
-      name: "Extra Space Storage Inc"
-  },
-  {
-      ticker: "EXTN",
-      name: "Exterran Corporation"
-  },
-  {
-      ticker: "EZT",
-      name: "Entergy Texas Inc"
-  },
-  {
-      ticker: "F",
-      name: "Ford Motor Company"
-  },
-  {
-      ticker: "FAF",
-      name: "First American Corporation (The)"
-  },
-  {
-      ticker: "FAM",
-      name: "First Trust/Aberdeen Global Opportunity Income Fund"
-  },
-  {
-      ticker: "FBC",
-      name: "Flagstar Bancorp, Inc."
-  },
-  {
-      ticker: "FBHS",
-      name: "Fortune Brands Home & Security, Inc."
-  },
-  {
-      ticker: "FBK",
-      name: "FB Financial Corporation"
-  },
-  {
-      ticker: "FBM",
-      name: "Foundation Building Materials, Inc."
-  },
-  {
-      ticker: "FBP",
-      name: "First BanCorp."
-  },
-  {
-      ticker: "FC",
-      name: "Franklin Covey Company"
-  },
-  {
-      ticker: "FCAU",
-      name: "Fiat Chrysler Automobiles N.V."
-  },
-  {
-      ticker: "FCF",
-      name: "First Commonwealth Financial Corporation"
-  },
-  {
-      ticker: "FCN",
-      name: "FTI Consulting, Inc."
-  },
-  {
-      ticker: "FCPT",
-      name: "Four Corners Property Trust, Inc."
-  },
-  {
-      ticker: "FCT",
-      name: "First Trust Senior Floating Rate Income Fund II"
-  },
-  {
-      ticker: "FCX",
-      name: "Freeport-McMoran, Inc."
-  },
-  {
-      ticker: "FDEU",
-      name: "First Trust Dynamic Europe Equity Income Fund"
-  },
-  {
-      ticker: "FDP",
-      name: "Fresh Del Monte Produce, Inc."
-  },
-  {
-      ticker: "FDS",
-      name: "FactSet Research Systems Inc."
-  },
-  {
-      ticker: "FDX",
-      name: "FedEx Corporation"
-  },
-  {
-      ticker: "FE",
-      name: "FirstEnergy Corp."
-  },
-  {
-      ticker: "FEDU",
-      name: "Four Seasons Education (Cayman) Inc."
-  },
-  {
-      ticker: "FEI           ",
-      name: "First Trust MLP and Energy Income Fund"
-  },
-  {
-      ticker: "FELP",
-      name: "Foresight Energy LP"
-  },
-  {
-      ticker: "FENG",
-      name: "Phoenix New Media Limited"
-  },
-  {
-      ticker: "FEO",
-      name: "First Trust/Aberdeen Emerging Opportunity Fund"
-  },
-  {
-      ticker: "FET",
-      name: "Forum Energy Technologies, Inc."
-  },
-  {
-      ticker: "FF",
-      name: "FutureFuel Corp."
-  },
-  {
-      ticker: "FFA",
-      name: "First Trust"
-  },
-  {
-      ticker: "FFC",
-      name: "Flaherty & Crumrine Preferred and Income Securitie"
-  },
-  {
-      ticker: "FFG",
-      name: "FBL Financial Group, Inc."
-  },
-  {
-      ticker: "FG",
-      name: "FGL Holdings"
-  },
-  {
-      ticker: "FGB",
-      name: "First Trust Specialty Finance and Financial Opportunities Fund"
-  },
-  {
-      ticker: "FGP",
-      name: "Ferrellgas Partners, L.P."
-  },
-  {
-      ticker: "FG.WS",
-      name: "FGL Holdings"
-  },
-  {
-      ticker: "FHN",
-      name: "First Horizon National Corporation"
-  },
-  {
-      ticker: "FI",
-      name: "Frank&#39;s International N.V."
-  },
-  {
-      ticker: "FICO",
-      name: "Fair Isaac Corporation"
-  },
-  {
-      ticker: "FIF",
-      name: "First Trust Energy Infrastructure Fund"
-  },
-  {
-      ticker: "FII",
-      name: "Federated Investors, Inc."
-  },
-  {
-      ticker: "FINS",
-      name: "Angel Oak Financial Strategies Income Term Trust"
-  },
-  {
-      ticker: "FIS",
-      name: "Fidelity National Information Services, Inc."
-  },
-  {
-      ticker: "FIT",
-      name: "Fitbit, Inc."
-  },
-  {
-      ticker: "FIV",
-      name: "First Trust Senior Floating Rate 2022 Target Term Fund"
-  },
-  {
-      ticker: "FIX",
-      name: "Comfort Systems USA, Inc."
-  },
-  {
-      ticker: "FL",
-      name: "Foot Locker, Inc."
-  },
-  {
-      ticker: "FLC",
-      name: "Flaherty & Crumrine Total Return Fund Inc"
-  },
-  {
-      ticker: "FLNG",
-      name: "FLEX LNG Ltd."
-  },
-  {
-      ticker: "FLO",
-      name: "Flowers Foods, Inc."
-  },
-  {
-      ticker: "FLOW",
-      name: "SPX FLOW, Inc."
-  },
-  {
-      ticker: "FLR",
-      name: "Fluor Corporation"
-  },
-  {
-      ticker: "FLS",
-      name: "Flowserve Corporation"
-  },
-  {
-      ticker: "FLT",
-      name: "FleetCor Technologies, Inc."
-  },
-  {
-      ticker: "FLY",
-      name: "Fly Leasing Limited"
-  },
-  {
-      ticker: "FMC",
-      name: "FMC Corporation"
-  },
-  {
-      ticker: "FMN",
-      name: "Federated Premier Municipal Income Fund"
-  },
-  {
-      ticker: "FMO",
-      name: "Fiduciary/Claymore Energy Infrastructure Fund"
-  },
-  {
-      ticker: "FMS",
-      name: "Fresenius Medical Care Corporation"
-  },
-  {
-      ticker: "FMX",
-      name: "Fomento Economico Mexicano S.A.B. de C.V."
-  },
-  {
-      ticker: "FMY",
-      name: "First Trust"
-  },
-  {
-      ticker: "FN",
-      name: "Fabrinet"
-  },
-  {
-      ticker: "FNB",
-      name: "F.N.B. Corporation"
-  },
-  {
-      ticker: "FND",
-      name: "Floor & Decor Holdings, Inc."
-  },
-  {
-      ticker: "FNF",
-      name: "Fidelity National Financial, Inc."
-  },
-  {
-      ticker: "FNV",
-      name: "Franco-Nevada Corporation"
-  },
-  {
-      ticker: "FOE",
-      name: "Ferro Corporation"
-  },
-  {
-      ticker: "FOF",
-      name: "Cohen & Steers Closed-End Opportunity Fund, Inc."
-  },
-  {
-      ticker: "FOR",
-      name: "Forestar Group Inc"
-  },
-  {
-      ticker: "FPAC",
-      name: "Far Point Acquisition Corporation"
-  },
-  {
-      ticker: "FPAC.U",
-      name: "Far Point Acquisition Corporation"
-  },
-  {
-      ticker: "FPAC.WS",
-      name: "Far Point Acquisition Corporation"
-  },
-  {
-      ticker: "FPF",
-      name: "First Trust Intermediate Duration Preferred & Income Fund"
-  },
-  {
-      ticker: "FPH",
-      name: "Five Point Holdings, LLC"
-  },
-  {
-      ticker: "FPI",
-      name: "Farmland Partners Inc."
-  },
-  {
-      ticker: "FPL",
-      name: "First Trust New Opportunities MLP & Energy Fund"
-  },
-  {
-      ticker: "FR",
-      name: "First Industrial Realty Trust, Inc."
-  },
-  {
-      ticker: "FRA",
-      name: "Blackrock Floating Rate Income Strategies Fund Inc"
-  },
-  {
-      ticker: "FRAC",
-      name: "Keane Group, Inc."
-  },
-  {
-      ticker: "FRC",
-      name: "FIRST REPUBLIC BANK"
-  },
-  {
-      ticker: "FRO",
-      name: "Frontline Ltd."
-  },
-  {
-      ticker: "FRT",
-      name: "Federal Realty Investment Trust"
-  },
-  {
-      ticker: "FSB",
-      name: "Franklin Financial Network, Inc."
-  },
-  {
-      ticker: "FSD",
-      name: "First Trust High Income Long Short Fund"
-  },
-  {
-      ticker: "FSK",
-      name: "FS KKR Capital Corp."
-  },
-  {
-      ticker: "FSLY",
-      name: "Fastly, Inc."
-  },
-  {
-      ticker: "FSM",
-      name: "Fortuna Silver Mines Inc."
-  },
-  {
-      ticker: "FSS",
-      name: "Federal Signal Corporation"
-  },
-  {
-      ticker: "FT",
-      name: "Franklin Universal Trust"
-  },
-  {
-      ticker: "FTAI",
-      name: "Fortress Transportation and Infrastructure Investors LLC"
-  },
-  {
-      ticker: "FTCH",
-      name: "Farfetch Limited"
-  },
-  {
-      ticker: "FTI",
-      name: "TechnipFMC plc"
-  },
-  {
-      ticker: "FTK",
-      name: "Flotek Industries, Inc."
-  },
-  {
-      ticker: "FTS",
-      name: "Fortis Inc."
-  },
-  {
-      ticker: "FTSI",
-      name: "FTS International, Inc."
-  },
-  {
-      ticker: "FTV",
-      name: "Fortive Corporation"
-  },
-  {
-      ticker: "FUL",
-      name: "H. B. Fuller Company"
-  },
-  {
-      ticker: "FUN",
-      name: "Cedar Fair, L.P."
-  },
-  {
-      ticker: "FVRR",
-      name: "Fiverr International Ltd."
-  },
-  {
-      ticker: "G",
-      name: "Genpact Limited"
-  },
-  {
-      ticker: "GAB",
-      name: "Gabelli Equity Trust, Inc. (The)"
-  },
-  {
-      ticker: "GAM",
-      name: "General American Investors, Inc."
-  },
-  {
-      ticker: "GATX",
-      name: "GATX Corporation"
-  },
-  {
-      ticker: "GBAB",
-      name: "Guggenheim Taxable Municipal Managed Duration Trst"
-  },
-  {
-      ticker: "GBL",
-      name: "Gamco Investors, Inc."
-  },
-  {
-      ticker: "GBX",
-      name: "Greenbrier Companies, Inc. (The)"
-  },
-  {
-      ticker: "GCAP",
-      name: "GAIN Capital Holdings, Inc."
-  },
-  {
-      ticker: "GCI",
-      name: "TEGNA Inc."
-  },
-  {
-      ticker: "GCO",
-      name: "Genesco Inc."
-  },
-  {
-      ticker: "GCP",
-      name: "GCP Applied Technologies Inc."
-  },
-  {
-      ticker: "GCV",
-      name: "Gabelli Convertible and Income Securities Fund, Inc. (The)"
-  },
-  {
-      ticker: "GD",
-      name: "General Dynamics Corporation"
-  },
-  {
-      ticker: "GDDY",
-      name: "GoDaddy Inc."
-  },
-  {
-      ticker: "GDI",
-      name: "Gardner Denver Holdings, Inc."
-  },
-  {
-      ticker: "GDL",
-      name: "The GDL Fund"
-  },
-  {
-      ticker: "GDO",
-      name: "Western Asset Global Corporate Defined Opportunity Fund Inc."
-  },
-  {
-      ticker: "GDOT",
-      name: "Green Dot Corporation"
-  },
-  {
-      ticker: "GDV",
-      name: "The Gabelli Dividend & Income Trust"
-  },
-  {
-      ticker: "GE",
-      name: "General Electric Company"
-  },
-  {
-      ticker: "GEF",
-      name: "Greif Bros. Corporation"
-  },
-  {
-      ticker: "GEF.B",
-      name: "Greif Bros. Corporation"
-  },
-  {
-      ticker: "GEL",
-      name: "Genesis Energy, L.P."
-  },
-  {
-      ticker: "GEN           ",
-      name: "Genesis Healthcare, Inc."
-  },
-  {
-      ticker: "GEO",
-      name: "Geo Group Inc (The)"
-  },
-  {
-      ticker: "GER",
-      name: "Goldman Sachs MLP Energy Renaissance Fund"
-  },
-  {
-      ticker: "GES",
-      name: "Guess?, Inc."
-  },
-  {
-      ticker: "GF",
-      name: "New Germany Fund, Inc. (The)"
-  },
-  {
-      ticker: "GFF",
-      name: "Griffon Corporation"
-  },
-  {
-      ticker: "GFI",
-      name: "Gold Fields Limited"
-  },
-  {
-      ticker: "GFY",
-      name: "Western Asset Variable Rate Strategic Fund Inc."
-  },
-  {
-      ticker: "GGB",
-      name: "Gerdau S.A."
-  },
-  {
-      ticker: "GGG",
-      name: "Graco Inc."
-  },
-  {
-      ticker: "GGM",
-      name: "Guggenheim Credit Allocation Fund"
-  },
-  {
-      ticker: "GGT",
-      name: "Gabelli Multi-Media Trust Inc. (The)"
-  },
-  {
-      ticker: "GGZ",
-      name: "Gabelli Global Small and Mid Cap Value Trust (The)"
-  },
-  {
-      ticker: "GHC",
-      name: "Graham Holdings Company"
-  },
-  {
-      ticker: "GHG",
-      name: "GreenTree Hospitality Group Ltd."
-  },
-  {
-      ticker: "GHL",
-      name: "Greenhill & Co., Inc."
-  },
-  {
-      ticker: "GHM",
-      name: "Graham Corporation"
-  },
-  {
-      ticker: "GHY",
-      name: "PGIM Global High Yield Fund, Inc."
-  },
-  {
-      ticker: "GIB",
-      name: "CGI Inc."
-  },
-  {
-      ticker: "GIG",
-      name: "GigCapital, Inc."
-  },
-  {
-      ticker: "GIG~",
-      name: "GigCapital, Inc."
-  },
-  {
-      ticker: "GIG.U",
-      name: "GigCapital, Inc."
-  },
-  {
-      ticker: "GIG.WS",
-      name: "GigCapital, Inc."
-  },
-  {
-      ticker: "GIL",
-      name: "Gildan Activewear, Inc."
-  },
-  {
-      ticker: "GIM",
-      name: "Templeton Global Income Fund, Inc."
-  },
-  {
-      ticker: "GIS",
-      name: "General Mills, Inc."
-  },
-  {
-      ticker: "GIX",
-      name: "GigCapital2, Inc."
-  },
-  {
-      ticker: "GIX~",
-      name: "GigCapital2, Inc."
-  },
-  {
-      ticker: "GIX.U",
-      name: "GigCapital2, Inc."
-  },
-  {
-      ticker: "GIX.WS",
-      name: "GigCapital2, Inc."
-  },
-  {
-      ticker: "GJH",
-      name: "STRATS Trust"
-  },
-  {
-      ticker: "GJO",
-      name: "STRATS Trust"
-  },
-  {
-      ticker: "GJP",
-      name: "Synthetic Fixed-Income Securities, Inc."
-  },
-  {
-      ticker: "GJR",
-      name: "Synthetic Fixed-Income Securities, Inc."
-  },
-  {
-      ticker: "GJS",
-      name: "STRATS Trust"
-  },
-  {
-      ticker: "GJT",
-      name: "Synthetic Fixed-Income Securities, Inc."
-  },
-  {
-      ticker: "GJV",
-      name: "Synthetic Fixed-Income Securities, Inc."
-  },
-  {
-      ticker: "GKOS",
-      name: "Glaukos Corporation"
-  },
-  {
-      ticker: "GL",
-      name: "Globe Life Inc."
-  },
-  {
-      ticker: "GLOB",
-      name: "Globant S.A."
-  },
-  {
-      ticker: "GLOG",
-      name: "GasLog LP."
-  },
-  {
-      ticker: "GLOP",
-      name: "GasLog Partners LP"
-  },
-  {
-      ticker: "GLP",
-      name: "Global Partners LP"
-  },
-  {
-      ticker: "GLT",
-      name: "Glatfelter"
-  },
-  {
-      ticker: "GLW",
-      name: "Corning Incorporated"
-  },
-  {
-      ticker: "GM",
-      name: "General Motors Company"
-  },
-  {
-      ticker: "GME",
-      name: "Gamestop Corporation"
-  },
-  {
-      ticker: "GMED",
-      name: "Globus Medical, Inc."
-  },
-  {
-      ticker: "GMRE",
-      name: "Global Medical REIT Inc."
-  },
-  {
-      ticker: "GMS",
-      name: "GMS Inc."
-  },
-  {
-      ticker: "GMTA",
-      name: "GATX Corporation"
-  },
-  {
-      ticker: "GMZ",
-      name: "Goldman Sachs MLP Income Opportunities Fund"
-  },
-  {
-      ticker: "GNC",
-      name: "GNC Holdings, Inc."
-  },
-  {
-      ticker: "GNE",
-      name: "Genie Energy Ltd."
-  },
-  {
-      ticker: "GNK",
-      name: "Genco Shipping & Trading Limited "
-  },
-  {
-      ticker: "GNL",
-      name: "Global Net Lease, Inc."
-  },
-  {
-      ticker: "GNRC",
-      name: "Generac Holdlings Inc."
-  },
-  {
-      ticker: "GNT",
-      name: "GAMCO Natural Resources, Gold & Income Tust "
-  },
-  {
-      ticker: "GNW",
-      name: "Genworth Financial Inc"
-  },
-  {
-      ticker: "GOF",
-      name: "Guggenheim Strategic Opportunities Fund"
-  },
-  {
-      ticker: "GOL",
-      name: "Gol Linhas Aereas Inteligentes S.A."
-  },
-  {
-      ticker: "GOLD",
-      name: "Barrick Gold Corporation"
-  },
-  {
-      ticker: "GOLF",
-      name: "Acushnet Holdings Corp."
-  },
-  {
-      ticker: "GOOS",
-      name: "Canada Goose Holdings Inc."
-  },
-  {
-      ticker: "GPC",
-      name: "Genuine Parts Company"
-  },
-  {
-      ticker: "GPI",
-      name: "Group 1 Automotive, Inc."
-  },
-  {
-      ticker: "GPJA",
-      name: "Georgia Power Company"
-  },
-  {
-      ticker: "GPK",
-      name: "Graphic Packaging Holding Company"
-  },
-  {
-      ticker: "GPM",
-      name: "Guggenheim Enhanced Equity Income Fund"
-  },
-  {
-      ticker: "GPMT",
-      name: "Granite Point Mortgage Trust Inc."
-  },
-  {
-      ticker: "GPN",
-      name: "Global Payments Inc."
-  },
-  {
-      ticker: "GPRK",
-      name: "Geopark Ltd"
-  },
-  {
-      ticker: "GPS",
-      name: "Gap, Inc. (The)"
-  },
-  {
-      ticker: "GPX",
-      name: "GP Strategies Corporation"
-  },
-  {
-      ticker: "GRA",
-      name: "W.R. Grace & Co."
-  },
-  {
-      ticker: "GRAF",
-      name: "Graf Industrial Corp."
-  },
-  {
-      ticker: "GRAF.U",
-      name: "Graf Industrial Corp."
-  },
-  {
-      ticker: "GRAF.WS",
-      name: "Graf Industrial Corp."
-  },
-  {
-      ticker: "GRAM",
-      name: "Grana y Montero S.A.A."
-  },
-  {
-      ticker: "GRC",
-      name: "Gorman-Rupp Company (The)"
-  },
-  {
-      ticker: "GRP.U",
-      name: "Granite Real Estate Inc."
-  },
-  {
-      ticker: "GRUB",
-      name: "GrubHub Inc."
-  },
-  {
-      ticker: "GRX",
-      name: "The Gabelli Healthcare & Wellness Trust"
-  },
-  {
-      ticker: "GS",
-      name: "Goldman Sachs Group, Inc. (The)"
-  },
-  {
-      ticker: "GSAH",
-      name: "GS Acquisition Holdings Corp."
-  },
-  {
-      ticker: "GSAH.U",
-      name: "GS Acquisition Holdings Corp."
-  },
-  {
-      ticker: "GSAH.WS",
-      name: "GS Acquisition Holdings Corp."
-  },
-  {
-      ticker: "GSBD",
-      name: "Goldman Sachs BDC, Inc."
-  },
-  {
-      ticker: "GSH",
-      name: "Guangshen Railway Company Limited"
-  },
-  {
-      ticker: "GSK",
-      name: "GlaxoSmithKline PLC"
-  },
-  {
-      ticker: "GSL",
-      name: "Global Ship Lease, Inc."
-  },
-  {
-      ticker: "GSX",
-      name: "GSX Techedu Inc."
-  },
-  {
-      ticker: "GTES",
-      name: "Gates Industrial Corporation plc"
-  },
-  {
-      ticker: "GTN",
-      name: "Gray Television, Inc."
-  },
-  {
-      ticker: "GTN.A",
-      name: "Gray Television, Inc."
-  },
-  {
-      ticker: "GTS",
-      name: "Triple-S Management Corporation"
-  },
-  {
-      ticker: "GTT",
-      name: "GTT Communications, Inc."
-  },
-  {
-      ticker: "GTX",
-      name: "Garrett Motion Inc."
-  },
-  {
-      ticker: "GTY",
-      name: "Getty Realty Corporation"
-  },
-  {
-      ticker: "GUT",
-      name: "Gabelli Utility Trust (The)"
-  },
-  {
-      ticker: "GVA",
-      name: "Granite Construction Incorporated"
-  },
-  {
-      ticker: "GWB",
-      name: "Great Western Bancorp, Inc."
-  },
-  {
-      ticker: "GWR",
-      name: "Genesee & Wyoming, Inc."
-  },
-  {
-      ticker: "GWRE",
-      name: "Guidewire Software, Inc."
-  },
-  {
-      ticker: "GWW",
-      name: "W.W. Grainger, Inc."
-  },
-  {
-      ticker: "GYB",
-      name: "CABCO Series 2004-101 Trust"
-  },
-  {
-      ticker: "GYC",
-      name: "Corporate Asset Backed Corp CABCO"
-  },
-  {
-      ticker: "H",
-      name: "Hyatt Hotels Corporation"
-  },
-  {
-      ticker: "HAE",
-      name: "Haemonetics Corporation"
-  },
-  {
-      ticker: "HAL",
-      name: "Halliburton Company"
-  },
-  {
-      ticker: "HASI",
-      name: "Hannon Armstrong Sustainable Infrastructure Capital, Inc."
-  },
-  {
-      ticker: "HBB",
-      name: "Hamilton Beach Brands Holding Company"
-  },
-  {
-      ticker: "HBI",
-      name: "Hanesbrands Inc."
-  },
-  {
-      ticker: "HBM",
-      name: "Hudbay Minerals Inc."
-  },
-  {
-      ticker: "HCA",
-      name: "HCA Healthcare, Inc."
-  },
-  {
-      ticker: "HCC",
-      name: "Warrior Met Coal, Inc."
-  },
-  {
-      ticker: "HCFT",
-      name: "Hunt Companies Finance Trust, Inc."
-  },
-  {
-      ticker: "HCHC",
-      name: "HC2 Holdings, Inc."
-  },
-  {
-      ticker: "HCI",
-      name: "HCI Group, Inc."
-  },
-  {
-      ticker: "HCP",
-      name: "HCP, Inc."
-  },
-  {
-      ticker: "HCR",
-      name: "Hi-Crush Inc."
-  },
-  {
-      ticker: "HCXY",
-      name: "Hercules Capital, Inc."
-  },
-  {
-      ticker: "HCXZ",
-      name: "Hercules Capital, Inc."
-  },
-  {
-      ticker: "HD",
-      name: "Home Depot, Inc. (The)"
-  },
-  {
-      ticker: "HDB",
-      name: "HDFC Bank Limited"
-  },
-  {
-      ticker: "HE",
-      name: "Hawaiian Electric Industries, Inc."
-  },
-  {
-      ticker: "HEI",
-      name: "Heico Corporation"
-  },
-  {
-      ticker: "HEI.A",
-      name: "Heico Corporation"
-  },
-  {
-      ticker: "HEP",
-      name: "Holly Energy Partners, L.P."
-  },
-  {
-      ticker: "HEQ",
-      name: "John Hancock Hedged Equity & Income Fund"
-  },
-  {
-      ticker: "HES",
-      name: "Hess Corporation"
-  },
-  {
-      ticker: "HESM",
-      name: "Hess Midstream Partners LP"
-  },
-  {
-      ticker: "HEXO",
-      name: "HEXO Corp."
-  },
-  {
-      ticker: "HFC",
-      name: "HollyFrontier Corporation"
-  },
-  {
-      ticker: "HFRO",
-      name: "Highland Income Fund"
-  },
-  {
-      ticker: "HGH",
-      name: "Hartford Financial Services Group, Inc. (The)"
-  },
-  {
-      ticker: "HGLB",
-      name: "Highland Global Allocation Fund"
-  },
-  {
-      ticker: "HGV",
-      name: "Hilton Grand Vacations Inc."
-  },
-  {
-      ticker: "HHC",
-      name: "Howard Hughes Corporation (The)"
-  },
-  {
-      ticker: "HHS",
-      name: "Harte-Hanks, Inc."
-  },
-  {
-      ticker: "HI",
-      name: "Hillenbrand Inc"
-  },
-  {
-      ticker: "HIE",
-      name: "Miller/Howard High Income Equity Fund"
-  },
-  {
-      ticker: "HIG",
-      name: "Hartford Financial Services Group, Inc. (The)"
-  },
-  {
-      ticker: "HII",
-      name: "Huntington Ingalls Industries, Inc."
-  },
-  {
-      ticker: "HIL",
-      name: "Hill International, Inc."
-  },
-  {
-      ticker: "HIO",
-      name: "Western Asset High Income Opportunity Fund, Inc."
-  },
-  {
-      ticker: "HIW",
-      name: "Highwoods Properties, Inc."
-  },
-  {
-      ticker: "HIX",
-      name: "Western Asset High Income Fund II Inc."
-  },
-  {
-      ticker: "HJV",
-      name: "MS Structured Asset Corp Saturns GE Cap Corp Series 2002-14"
-  },
-  {
-      ticker: "HKIB",
-      name: "AMTD International Inc."
-  },
-  {
-      ticker: "HL",
-      name: "Hecla Mining Company"
-  },
-  {
-      ticker: "HLF",
-      name: "Herbalife Nutrition Ltd."
-  },
-  {
-      ticker: "HLI",
-      name: "Houlihan Lokey, Inc."
-  },
-  {
-      ticker: "HLT",
-      name: "Hilton Worldwide Holdings Inc."
-  },
-  {
-      ticker: "HLX",
-      name: "Helix Energy Solutions Group, Inc."
-  },
-  {
-      ticker: "HMC",
-      name: "Honda Motor Company, Ltd."
-  },
-  {
-      ticker: "HMI",
-      name: "Huami Corporation"
-  },
-  {
-      ticker: "HMLP",
-      name: "Hoegh LNG Partners LP"
-  },
-  {
-      ticker: "HMN",
-      name: "Horace Mann Educators Corporation"
-  },
-  {
-      ticker: "HMY",
-      name: "Harmony Gold Mining Company Limited"
-  },
-  {
-      ticker: "HNGR",
-      name: "Hanger, Inc."
-  },
-  {
-      ticker: "HNI",
-      name: "HNI Corporation"
-  },
-  {
-      ticker: "HNP",
-      name: "Huaneng Power International, Inc."
-  },
-  {
-      ticker: "HOG",
-      name: "Harley-Davidson, Inc."
-  },
-  {
-      ticker: "HOME",
-      name: "At Home Group Inc."
-  },
-  {
-      ticker: "HON",
-      name: "Honeywell International Inc."
-  },
-  {
-      ticker: "HOS",
-      name: "Hornbeck Offshore Services"
-  },
-  {
-      ticker: "HOV",
-      name: "Hovnanian Enterprises Inc"
-  },
-  {
-      ticker: "HP",
-      name: "Helmerich & Payne, Inc."
-  },
-  {
-      ticker: "HPE",
-      name: "Hewlett Packard Enterprise Company"
-  },
-  {
-      ticker: "HPF",
-      name: "John Hancock Pfd Income Fund II"
-  },
-  {
-      ticker: "HPI",
-      name: "John Hancock Preferred Income Fund"
-  },
-  {
-      ticker: "HPP",
-      name: "Hudson Pacific Properties, Inc."
-  },
-  {
-      ticker: "HPQ",
-      name: "HP Inc."
-  },
-  {
-      ticker: "HPR",
-      name: "HighPoint Resources Corporation"
-  },
-  {
-      ticker: "HPS",
-      name: "John Hancock Preferred Income Fund III"
-  },
-  {
-      ticker: "HQH",
-      name: "Tekla Healthcare Investors"
-  },
-  {
-      ticker: "HQL",
-      name: "Tekla Life Sciences Investors"
-  },
-  {
-      ticker: "HR",
-      name: "Healthcare Realty Trust Incorporated"
-  },
-  {
-      ticker: "HRB",
-      name: "H&R Block, Inc."
-  },
-  {
-      ticker: "HRC",
-      name: "Hill-Rom Holdings Inc"
-  },
-  {
-      ticker: "HRI",
-      name: "Herc Holdings Inc."
-  },
-  {
-      ticker: "HRL",
-      name: "Hormel Foods Corporation"
-  },
-  {
-      ticker: "HRTG",
-      name: "Heritage Insurance Holdings, Inc."
-  },
-  {
-      ticker: "HSBC",
-      name: "HSBC Holdings plc"
-  },
-  {
-      ticker: "HSC",
-      name: "Harsco Corporation"
-  },
-  {
-      ticker: "HST",
-      name: "Host Hotels & Resorts, Inc."
-  },
-  {
-      ticker: "HSY",
-      name: "Hershey Company (The)"
-  },
-  {
-      ticker: "HT",
-      name: "Hersha Hospitality Trust"
-  },
-  {
-      ticker: "HTA",
-      name: "Healthcare Trust of America, Inc."
-  },
-  {
-      ticker: "HTD",
-      name: "John Hancock Tax Advantaged Dividend Income Fund"
-  },
-  {
-      ticker: "HTFA",
-      name: "Horizon Technology Finance Corporation"
-  },
-  {
-      ticker: "HTGC",
-      name: "Hercules Capital, Inc."
-  },
-  {
-      ticker: "HTH",
-      name: "Hilltop Holdings Inc."
-  },
-  {
-      ticker: "HTY",
-      name: "John Hancock Tax-Advantaged Global Shareholder Yield Fund"
-  },
-  {
-      ticker: "HTZ",
-      name: "Hertz Global Holdings, Inc"
-  },
-  {
-      ticker: "HUBB",
-      name: "Hubbell Inc"
-  },
-  {
-      ticker: "HUBS",
-      name: "HubSpot, Inc."
-  },
-  {
-      ticker: "HUD",
-      name: "Hudson Ltd."
-  },
-  {
-      ticker: "HUM",
-      name: "Humana Inc."
-  },
-  {
-      ticker: "HUN",
-      name: "Huntsman Corporation"
-  },
-  {
-      ticker: "HUYA",
-      name: "HUYA Inc."
-  },
-  {
-      ticker: "HVT",
-      name: "Haverty Furniture Companies, Inc."
-  },
-  {
-      ticker: "HVT.A",
-      name: "Haverty Furniture Companies, Inc."
-  },
-  {
-      ticker: "HXL",
-      name: "Hexcel Corporation"
-  },
-  {
-      ticker: "HY",
-      name: "Hyster-Yale Materials Handling, Inc."
-  },
-  {
-      ticker: "HYB",
-      name: "New America High Income Fund, Inc. (The)"
-  },
-  {
-      ticker: "HYI",
-      name: "Western Asset High Yield Defined Opportunity Fund Inc."
-  },
-  {
-      ticker: "HYT",
-      name: "Blackrock Corporate High Yield Fund, Inc."
-  },
-  {
-      ticker: "HZN",
-      name: "Horizon Global Corporation"
-  },
-  {
-      ticker: "HZO",
-      name: "MarineMax, Inc."
-  },
-  {
-      ticker: "I",
-      name: "Intelsat S.A."
-  },
-  {
-      ticker: "IAA",
-      name: "IAA, Inc."
-  },
-  {
-      ticker: "IAE",
-      name: "Voya Asia Pacific High Dividend Equity Income Fund"
-  },
-  {
-      ticker: "IAG",
-      name: "Iamgold Corporation"
-  },
-  {
-      ticker: "IBA",
-      name: "Industrias Bachoco, S.A. de C.V."
-  },
-  {
-      ticker: "IBM",
-      name: "International Business Machines Corporation"
-  },
-  {
-      ticker: "IBN",
-      name: "ICICI Bank Limited"
-  },
-  {
-      ticker: "IBP",
-      name: "Installed Building Products, Inc."
-  },
-  {
-      ticker: "ICD",
-      name: "Independence Contract Drilling, Inc."
-  },
-  {
-      ticker: "ICE",
-      name: "Intercontinental Exchange Inc."
-  },
-  {
-      ticker: "ICL",
-      name: "Israel Chemicals Shs"
-  },
-  {
-      ticker: "IDA",
-      name: "IDACORP, Inc."
-  },
-  {
-      ticker: "IDE",
-      name: "Voya Infrastructure, Industrials and Materials Fund"
-  },
-  {
-      ticker: "IDT",
-      name: "IDT Corporation"
-  },
-  {
-      ticker: "IEX",
-      name: "IDEX Corporation"
-  },
-  {
-      ticker: "IFF",
-      name: "International Flavors & Fragrances, Inc."
-  },
-  {
-      ticker: "IFFT",
-      name: "International Flavors & Fragrances, Inc."
-  },
-  {
-      ticker: "IFN",
-      name: "India Fund, Inc. (The)"
-  },
-  {
-      ticker: "IFS",
-      name: "Intercorp Financial Services Inc."
-  },
-  {
-      ticker: "IGA",
-      name: "Voya Global Advantage and Premium Opportunity Fund"
-  },
-  {
-      ticker: "IGD",
-      name: "Voya Global Equity Dividend and Premium Opportunity Fund"
-  },
-  {
-      ticker: "IGI",
-      name: "Western Asset Investment Grade Defined Opportunity Trust Inc."
-  },
-  {
-      ticker: "IGR",
-      name: "CBRE Clarion Global Real Estate Income Fund"
-  },
-  {
-      ticker: "IGT",
-      name: "International Game Technology"
-  },
-  {
-      ticker: "IHC",
-      name: "Independence Holding Company"
-  },
-  {
-      ticker: "IHD",
-      name: "Voya Emerging Markets High Income Dividend Equity Fund"
-  },
-  {
-      ticker: "IHG",
-      name: "Intercontinental Hotels Group"
-  },
-  {
-      ticker: "IHIT",
-      name: "Invesco High Income 2023 Target Term Fund"
-  },
-  {
-      ticker: "IHTA",
-      name: "Invesco High Income 2024 Target Term Fund"
-  },
-  {
-      ticker: "IID",
-      name: "Voya International High Dividend Equity Income Fund"
-  },
-  {
-      ticker: "IIF",
-      name: "Morgan Stanley India Investment Fund, Inc."
-  },
-  {
-      ticker: "IIM",
-      name: "Invesco Value Municipal Income Trust"
-  },
-  {
-      ticker: "IIPR",
-      name: "Innovative Industrial Properties, Inc."
-  },
-  {
-      ticker: "IMAX",
-      name: "Imax Corporation"
-  },
-  {
-      ticker: "INB",
-      name: "Cohen & Steers Global Income Builder, Inc."
-  },
-  {
-      ticker: "INF",
-      name: "Brookfield Global Listed Infrastructure Income Fund"
-  },
-  {
-      ticker: "INFO",
-      name: "IHS Markit Ltd."
-  },
-  {
-      ticker: "INFY",
-      name: "Infosys Limited"
-  },
-  {
-      ticker: "ING",
-      name: "ING Group, N.V."
-  },
-  {
-      ticker: "INGR",
-      name: "Ingredion Incorporated"
-  },
-  {
-      ticker: "INN",
-      name: "Summit Hotel Properties, Inc."
-  },
-  {
-      ticker: "INSI",
-      name: "Insight Select Income Fund"
-  },
-  {
-      ticker: "INSP",
-      name: "Inspire Medical Systems, Inc."
-  },
-  {
-      ticker: "INST",
-      name: "Instructure, Inc."
-  },
-  {
-      ticker: "INSW",
-      name: "International Seaways, Inc."
-  },
-  {
-      ticker: "INT",
-      name: "World Fuel Services Corporation"
-  },
-  {
-      ticker: "INVH",
-      name: "Invitation Homes Inc."
-  },
-  {
-      ticker: "INXN",
-      name: "InterXion Holding N.V."
-  },
-  {
-      ticker: "IO",
-      name: "Ion Geophysical Corporation"
-  },
-  {
-      ticker: "IP",
-      name: "International Paper Company"
-  },
-  {
-      ticker: "IPG",
-      name: "Interpublic Group of Companies, Inc. (The)"
-  },
-  {
-      ticker: "IPHI",
-      name: "Inphi Corporation"
-  },
-  {
-      ticker: "IPI",
-      name: "Intrepid Potash, Inc"
-  },
-  {
-      ticker: "IPOA",
-      name: "Social Capital Hedosophia Holdings Corp."
-  },
-  {
-      ticker: "IPOA.U",
-      name: "Social Capital Hedosophia Holdings Corp."
-  },
-  {
-      ticker: "IPOA.WS",
-      name: "Social Capital Hedosophia Holdings Corp."
-  },
-  {
-      ticker: "IQI",
-      name: "Invesco Quality Municipal Income Trust"
-  },
-  {
-      ticker: "IQV",
-      name: "IQVIA Holdings, Inc."
-  },
-  {
-      ticker: "IR",
-      name: "Ingersoll-Rand plc (Ireland)"
-  },
-  {
-      ticker: "IRET",
-      name: "Investors Real Estate Trust"
-  },
-  {
-      ticker: "IRL",
-      name: "New Ireland Fund, Inc. (The)"
-  },
-  {
-      ticker: "IRM",
-      name: "Iron Mountain Incorporated"
-  },
-  {
-      ticker: "IRR",
-      name: "Voya Natural Resources Equity Income Fund"
-  },
-  {
-      ticker: "IRS",
-      name: "IRSA Inversiones Y Representaciones S.A."
-  },
-  {
-      ticker: "IRT",
-      name: "Independence Realty Trust, Inc."
-  },
-  {
-      ticker: "ISD",
-      name: "PGIM High Yield Bond Fund, Inc."
-  },
-  {
-      ticker: "ISG",
-      name: "ING Group, N.V."
-  },
-  {
-      ticker: "IT",
-      name: "Gartner, Inc."
-  },
-  {
-      ticker: "ITCB",
-      name: "Ita? CorpBanca"
-  },
-  {
-      ticker: "ITGR",
-      name: "Integer Holdings Corporation"
-  },
-  {
-      ticker: "ITT",
-      name: "ITT Inc."
-  },
-  {
-      ticker: "ITUB",
-      name: "Itau Unibanco Banco Holding SA"
-  },
-  {
-      ticker: "ITW",
-      name: "Illinois Tool Works Inc."
-  },
-  {
-      ticker: "IVC",
-      name: "Invacare Corporation"
-  },
-  {
-      ticker: "IVH",
-      name: "Ivy High Income Opportunities Fund"
-  },
-  {
-      ticker: "IVR",
-      name: "INVESCO MORTGAGE CAPITAL INC"
-  },
-  {
-      ticker: "IVZ",
-      name: "Invesco Plc"
-  },
-  {
-      ticker: "IX",
-      name: "Orix Corp Ads"
-  },
-  {
-      ticker: "JAG",
-      name: "Jagged Peak Energy Inc."
-  },
-  {
-      ticker: "JAX",
-      name: "J. Alexander&#39;s Holdings, Inc."
-  },
-  {
-      ticker: "JBGS",
-      name: "JBG SMITH Properties"
-  },
-  {
-      ticker: "JBK",
-      name: "Lehman ABS Corporation"
-  },
-  {
-      ticker: "JBL",
-      name: "Jabil Inc."
-  },
-  {
-      ticker: "JBN",
-      name: "Select Asset Inc."
-  },
-  {
-      ticker: "JBR",
-      name: "Select Asset Inc."
-  },
-  {
-      ticker: "JBT",
-      name: "John Bean Technologies Corporation"
-  },
-  {
-      ticker: "JCAP",
-      name: "Jernigan Capital, Inc."
-  },
-  {
-      ticker: "JCE",
-      name: "Nuveen Core Equity Alpha Fund"
-  },
-  {
-      ticker: "JCI",
-      name: "Johnson Controls International plc"
-  },
-  {
-      ticker: "JCO",
-      name: "Nuveen Credit Opportunities 2022 Target Term Fund"
-  },
-  {
-      ticker: "JCP",
-      name: "J.C. Penney Company, Inc. Holding Company"
-  },
-  {
-      ticker: "JDD",
-      name: "Nuveen Diversified Dividend and Income Fund"
-  },
-  {
-      ticker: "JE",
-      name: "Just Energy Group, Inc."
-  },
-  {
-      ticker: "JEC",
-      name: "Jacobs Engineering Group Inc."
-  },
-  {
-      ticker: "JEF",
-      name: "Jefferies Financial Group Inc."
-  },
-  {
-      ticker: "JELD",
-      name: "JELD-WEN Holding, Inc."
-  },
-  {
-      ticker: "JEMD",
-      name: "Nuveen Emerging Markets Debt 2022 Target Term Fund"
-  },
-  {
-      ticker: "JEQ",
-      name: "Aberdeen Japan Equity Fund, Inc. "
-  },
-  {
-      ticker: "JFR",
-      name: "Nuveen Floating Rate Income Fund"
-  },
-  {
-      ticker: "JGH",
-      name: "Nuveen Global High Income Fund"
-  },
-  {
-      ticker: "JHAA",
-      name: "Nuveen High Income 2023 Target Term Fund"
-  },
-  {
-      ticker: "JHB",
-      name: "Nuveen High Income November 2021 Target Term Fund"
-  },
-  {
-      ticker: "JHD",
-      name: "Nuveen High Income December 2019 Target Term Fund"
-  },
-  {
-      ticker: "JHG",
-      name: "Janus Henderson Group plc"
-  },
-  {
-      ticker: "JHI",
-      name: "John Hancock Investors Trust"
-  },
-  {
-      ticker: "JHS",
-      name: "John Hancock Income Securities Trust"
-  },
-  {
-      ticker: "JHX",
-      name: "James Hardie Industries plc."
-  },
-  {
-      ticker: "JHY",
-      name: "Nuveen High Income 2020 Target Term Fund"
-  },
-  {
-      ticker: "JILL",
-      name: "J. Jill, Inc."
-  },
-  {
-      ticker: "JKS",
-      name: "JinkoSolar Holding Company Limited"
-  },
-  {
-      ticker: "JLL",
-      name: "Jones Lang LaSalle Incorporated"
-  },
-  {
-      ticker: "JLS",
-      name: "Nuveen Mortgage Opportunity Term Fund"
-  },
-  {
-      ticker: "JMEI",
-      name: "Jumei International Holding Limited"
-  },
-  {
-      ticker: "JMF",
-      name: "Nuveen Energy MLP Total Return Fund"
-  },
-  {
-      ticker: "JMIA",
-      name: "Jumia Technologies AG"
-  },
-  {
-      ticker: "JMLP",
-      name: "Nuveen All Cap Energy MLP Opportunities Fund"
-  },
-  {
-      ticker: "JMM",
-      name: "Nuveen Multi-Market Income Fund"
-  },
-  {
-      ticker: "JMP",
-      name: "JMP Group LLC"
-  },
-  {
-      ticker: "JMPB",
-      name: "JMP Group LLC"
-  },
-  {
-      ticker: "JMPD",
-      name: "JMP Group LLC"
-  },
-  {
-      ticker: "JMT",
-      name: "Nuven Mortgage Opportunity Term Fund 2"
-  },
-  {
-      ticker: "JNJ",
-      name: "Johnson & Johnson"
-  },
-  {
-      ticker: "JNPR",
-      name: "Juniper Networks, Inc."
-  },
-  {
-      ticker: "JOE",
-      name: "St. Joe Company (The)"
-  },
-  {
-      ticker: "JOF",
-      name: "Japan Smaller Capitalization Fund Inc"
-  },
-  {
-      ticker: "JP",
-      name: "Jupai Holdings Limited"
-  },
-  {
-      ticker: "JPC",
-      name: "Nuveen Preferred & Income Opportunities Fund"
-  },
-  {
-      ticker: "JPI",
-      name: "Nuveen Preferred and Income Term Fund"
-  },
-  {
-      ticker: "JPM",
-      name: "J P Morgan Chase & Co"
-  },
-  {
-      ticker: "JPS",
-      name: "Nuveen Preferred & Income Securities Fund"
-  },
-  {
-      ticker: "JPT",
-      name: "Nuveen Preferred and Income 2022 Term Fund"
-  },
-  {
-      ticker: "JQC",
-      name: "Nuveen Credit Strategies Income Fund"
-  },
-  {
-      ticker: "JRI",
-      name: "Nuveen Real Asset Income and Growth Fund"
-  },
-  {
-      ticker: "JRO",
-      name: "Nuveen Floating Rate Income Opportuntiy Fund"
-  },
-  {
-      ticker: "JRS",
-      name: "Nuveen Real Estate Fund"
-  },
-  {
-      ticker: "JSD",
-      name: "Nuveen Short Duration Credit Opportunities Fund"
-  },
-  {
-      ticker: "JT",
-      name: "Jianpu Technology Inc."
-  },
-  {
-      ticker: "JTA",
-      name: "Nuveen Tax-Advantaged Total Return Strategy Fund"
-  },
-  {
-      ticker: "JTD",
-      name: "Nuveen Tax-Advantaged Dividend Growth Fund"
-  },
-  {
-      ticker: "JW.A",
-      name: "John Wiley & Sons, Inc."
-  },
-  {
-      ticker: "JW.B",
-      name: "John Wiley & Sons, Inc."
-  },
-  {
-      ticker: "JWN",
-      name: "Nordstrom, Inc."
-  },
-  {
-      ticker: "K",
-      name: "Kellogg Company"
-  },
-  {
-      ticker: "KAI",
-      name: "Kadant Inc"
-  },
-  {
-      ticker: "KAMN",
-      name: "Kaman Corporation"
-  },
-  {
-      ticker: "KAR",
-      name: "KAR Auction Services, Inc"
-  },
-  {
-      ticker: "KB",
-      name: "KB Financial Group Inc"
-  },
-  {
-      ticker: "KBH",
-      name: "KB Home"
-  },
-  {
-      ticker: "KBR",
-      name: "KBR, Inc."
-  },
-  {
-      ticker: "KDMN",
-      name: "Kadmon Holdings, Inc."
-  },
-  {
-      ticker: "KDP",
-      name: "Keurig Dr Pepper Inc."
-  },
-  {
-      ticker: "KEG",
-      name: "Key Energy Services, Inc."
-  },
-  {
-      ticker: "KEM",
-      name: "Kemet Corporation"
-  },
-  {
-      ticker: "KEN",
-      name: "Kenon Holdings Ltd."
-  },
-  {
-      ticker: "KEP",
-      name: "Korea Electric Power Corporation"
-  },
-  {
-      ticker: "KEX",
-      name: "Kirby Corporation"
-  },
-  {
-      ticker: "KEY",
-      name: "KeyCorp"
-  },
-  {
-      ticker: "KEYS",
-      name: "Keysight Technologies Inc."
-  },
-  {
-      ticker: "KF",
-      name: "Korea Fund, Inc. (The)"
-  },
-  {
-      ticker: "KFS",
-      name: "Kingsway Financial Services, Inc."
-  },
-  {
-      ticker: "KFY",
-      name: "Korn Ferry "
-  },
-  {
-      ticker: "KGC",
-      name: "Kinross Gold Corporation"
-  },
-  {
-      ticker: "KIM",
-      name: "Kimco Realty Corporation"
-  },
-  {
-      ticker: "KIO",
-      name: "KKR Income Opportunities Fund"
-  },
-  {
-      ticker: "KKR",
-      name: "KKR & Co. Inc."
-  },
-  {
-      ticker: "KL",
-      name: "Kirkland Lake Gold Ltd."
-  },
-  {
-      ticker: "KMB",
-      name: "Kimberly-Clark Corporation"
-  },
-  {
-      ticker: "KMF",
-      name: "Kayne Anderson Midstream Energy Fund, Inc"
-  },
-  {
-      ticker: "KMI",
-      name: "Kinder Morgan, Inc."
-  },
-  {
-      ticker: "KMPR",
-      name: "Kemper Corporation"
-  },
-  {
-      ticker: "KMT",
-      name: "Kennametal Inc."
-  },
-  {
-      ticker: "KMX",
-      name: "CarMax Inc"
-  },
-  {
-      ticker: "KN",
-      name: "Knowles Corporation"
-  },
-  {
-      ticker: "KNL",
-      name: "Knoll, Inc."
-  },
-  {
-      ticker: "KNOP",
-      name: "KNOT Offshore Partners LP"
-  },
-  {
-      ticker: "KNX",
-      name: "Knight Transportation, Inc."
-  },
-  {
-      ticker: "KO",
-      name: "Coca-Cola Company (The)"
-  },
-  {
-      ticker: "KODK",
-      name: "Eastman Kodak Company"
-  },
-  {
-      ticker: "KOF",
-      name: "Coca Cola Femsa S.A.B. de C.V."
-  },
-  {
-      ticker: "KOP",
-      name: "Koppers Holdings Inc."
-  },
-  {
-      ticker: "KOS",
-      name: "Kosmos Energy Ltd."
-  },
-  {
-      ticker: "KR",
-      name: "Kroger Company (The)"
-  },
-  {
-      ticker: "KRA",
-      name: "Kraton Corporation"
-  },
-  {
-      ticker: "KRC",
-      name: "Kilroy Realty Corporation"
-  },
-  {
-      ticker: "KREF",
-      name: "KKR Real Estate Finance Trust Inc."
-  },
-  {
-      ticker: "KRG",
-      name: "Kite Realty Group Trust"
-  },
-  {
-      ticker: "KRO",
-      name: "Kronos Worldwide Inc"
-  },
-  {
-      ticker: "KRP",
-      name: "Kimbell Royalty Partners"
-  },
-  {
-      ticker: "KSM",
-      name: "Scudder Strategic Municiple Income Trust"
-  },
-  {
-      ticker: "KSS",
-      name: "Kohl&#39;s Corporation"
-  },
-  {
-      ticker: "KSU",
-      name: "Kansas City Southern"
-  },
-  {
-      ticker: "KT",
-      name: "KT Corporation"
-  },
-  {
-      ticker: "KTB",
-      name: "Kontoor Brands, Inc."
-  },
-  {
-      ticker: "KTF",
-      name: "Scudder Municiple Income Trust"
-  },
-  {
-      ticker: "KTH",
-      name: "Lehman ABS Corporation"
-  },
-  {
-      ticker: "KTN",
-      name: "Lehman ABS Corporation"
-  },
-  {
-      ticker: "KTP",
-      name: "Lehman ABS Corporation"
-  },
-  {
-      ticker: "KW",
-      name: "Kennedy-Wilson Holdings Inc."
-  },
-  {
-      ticker: "KWR",
-      name: "Quaker Chemical Corporation"
-  },
-  {
-      ticker: "KYN",
-      name: "Kayne Anderson MLP/Midstream Investment Company"
-  },
-  {
-      ticker: "L",
-      name: "Loews Corporation"
-  },
-  {
-      ticker: "LAC",
-      name: "Lithium Americas Corp."
-  },
-  {
-      ticker: "LAD",
-      name: "Lithia Motors, Inc."
-  },
-  {
-      ticker: "LADR",
-      name: "Ladder Capital Corp"
-  },
-  {
-      ticker: "LAIX",
-      name: "LAIX Inc."
-  },
-  {
-      ticker: "LAZ",
-      name: "Lazard Ltd."
-  },
-  {
-      ticker: "LB",
-      name: "L Brands, Inc."
-  },
-  {
-      ticker: "LBRT",
-      name: "Liberty Oilfield Services Inc."
-  },
-  {
-      ticker: "LC",
-      name: "LendingClub Corporation"
-  },
-  {
-      ticker: "LCI",
-      name: "Lannett Co Inc"
-  },
-  {
-      ticker: "LCII",
-      name: "LCI Industries "
-  },
-  {
-      ticker: "LDL",
-      name: "Lydall, Inc."
-  },
-  {
-      ticker: "LDOS",
-      name: "Leidos Holdings, Inc."
-  },
-  {
-      ticker: "LDP",
-      name: "Cohen & Steers Limited Duration Preferred and Income Fund, Inc"
-  },
-  {
-      ticker: "LEA",
-      name: "Lear Corporation"
-  },
-  {
-      ticker: "LEAF",
-      name: "Leaf Group Ltd."
-  },
-  {
-      ticker: "LEE",
-      name: "Lee Enterprises, Incorporated"
-  },
-  {
-      ticker: "LEG",
-      name: "Leggett & Platt, Incorporated"
-  },
-  {
-      ticker: "LEJU",
-      name: "Leju Holdings Limited"
-  },
-  {
-      ticker: "LEN",
-      name: "Lennar Corporation"
-  },
-  {
-      ticker: "LEN.B",
-      name: "Lennar Corporation"
-  },
-  {
-      ticker: "LEO",
-      name: "BNY Mellon Strategic Municipals, Inc."
-  },
-  {
-      ticker: "LEVI",
-      name: "Levi Strauss & Co"
-  },
-  {
-      ticker: "LFC",
-      name: "China Life Insurance Company Limited"
-  },
-  {
-      ticker: "LGC",
-      name: "Legacy Acquisition Corp."
-  },
-  {
-      ticker: "LGC.U",
-      name: "Legacy Acquisition Corp."
-  },
-  {
-      ticker: "LGC.WS",
-      name: "Legacy Acquisition Corp."
-  },
-  {
-      ticker: "LGF.A",
-      name: "Lions Gate Entertainment Corporation"
-  },
-  {
-      ticker: "LGF.B",
-      name: "Lions Gate Entertainment Corporation"
-  },
-  {
-      ticker: "LGI",
-      name: "Lazard Global Total Return and Income Fund"
-  },
-  {
-      ticker: "LH",
-      name: "Laboratory Corporation of America Holdings"
-  },
-  {
-      ticker: "LHC",
-      name: "Leo Holdings Corp."
-  },
-  {
-      ticker: "LHC.U",
-      name: "Leo Holdings Corp."
-  },
-  {
-      ticker: "LHC.WS",
-      name: "Leo Holdings Corp."
-  },
-  {
-      ticker: "LHX",
-      name: "L3Harris Technologies, Inc."
-  },
-  {
-      ticker: "LII",
-      name: "Lennox International, Inc."
-  },
-  {
-      ticker: "LIN",
-      name: "Linde plc"
-  },
-  {
-      ticker: "LINX",
-      name: "Linx S.A."
-  },
-  {
-      ticker: "LITB",
-      name: "LightInTheBox Holding Co., Ltd."
-  },
-  {
-      ticker: "LKSD",
-      name: "LSC Communications, Inc."
-  },
-  {
-      ticker: "LL",
-      name: "Lumber Liquidators Holdings, Inc"
-  },
-  {
-      ticker: "LLY",
-      name: "Eli Lilly and Company"
-  },
-  {
-      ticker: "LM",
-      name: "Legg Mason, Inc."
-  },
-  {
-      ticker: "LMHA",
-      name: "Legg Mason, Inc."
-  },
-  {
-      ticker: "LMHB",
-      name: "Legg Mason, Inc."
-  },
-  {
-      ticker: "LMT",
-      name: "Lockheed Martin Corporation"
-  },
-  {
-      ticker: "LN",
-      name: "LINE Corporation"
-  },
-  {
-      ticker: "LNC",
-      name: "Lincoln National Corporation"
-  },
-  {
-      ticker: "LND",
-      name: "Brasilagro Cia Brasileira De Propriedades Agricolas"
-  },
-  {
-      ticker: "LNN",
-      name: "Lindsay Corporation"
-  },
-  {
-      ticker: "LOMA",
-      name: "Loma Negra Compania Industrial Argentina Sociedad Anonima"
-  },
-  {
-      ticker: "LOR",
-      name: "Lazard World Dividend & Income Fund, Inc."
-  },
-  {
-      ticker: "LOW",
-      name: "Lowe&#39;s Companies, Inc."
-  },
-  {
-      ticker: "LPG",
-      name: "Dorian LPG Ltd."
-  },
-  {
-      ticker: "LPI",
-      name: "Laredo Petroleum, Inc."
-  },
-  {
-      ticker: "LPL",
-      name: "LG Display Co., Ltd."
-  },
-  {
-      ticker: "LPT",
-      name: "Liberty Property Trust"
-  },
-  {
-      ticker: "LPX",
-      name: "Louisiana-Pacific Corporation"
-  },
-  {
-      ticker: "LRN",
-      name: "K12 Inc"
-  },
-  {
-      ticker: "LSI",
-      name: "Life Storage, Inc."
-  },
-  {
-      ticker: "LTC",
-      name: "LTC Properties, Inc."
-  },
-  {
-      ticker: "LTHM",
-      name: "Livent Corporation"
-  },
-  {
-      ticker: "LTM",
-      name: "LATAM Airlines Group S.A."
-  },
-  {
-      ticker: "LUB",
-      name: "Luby&#39;s, Inc."
-  },
-  {
-      ticker: "LUV",
-      name: "Southwest Airlines Company"
-  },
-  {
-      ticker: "LVS",
-      name: "Las Vegas Sands Corp."
-  },
-  {
-      ticker: "LW",
-      name: "Lamb Weston Holdings, Inc."
-  },
-  {
-      ticker: "LXFR",
-      name: "Luxfer Holdings PLC"
-  },
-  {
-      ticker: "LXP",
-      name: "Lexington Realty Trust"
-  },
-  {
-      ticker: "LXU",
-      name: "Lsb Industries Inc."
-  },
-  {
-      ticker: "LYB",
-      name: "LyondellBasell Industries NV"
-  },
-  {
-      ticker: "LYG",
-      name: "Lloyds Banking Group Plc"
-  },
-  {
-      ticker: "LYV",
-      name: "Live Nation Entertainment, Inc."
-  },
-  {
-      ticker: "LZB",
-      name: "La-Z-Boy Incorporated"
-  },
-  {
-      ticker: "M",
-      name: "Macy&#39;s Inc"
-  },
-  {
-      ticker: "MA",
-      name: "Mastercard Incorporated"
-  },
-  {
-      ticker: "MAA",
-      name: "Mid-America Apartment Communities, Inc."
-  },
-  {
-      ticker: "MAC",
-      name: "Macerich Company (The)"
-  },
-  {
-      ticker: "MAIN",
-      name: "Main Street Capital Corporation"
-  },
-  {
-      ticker: "MAN",
-      name: "ManpowerGroup"
-  },
-  {
-      ticker: "MANU",
-      name: "Manchester United Ltd."
-  },
-  {
-      ticker: "MAS",
-      name: "Masco Corporation"
-  },
-  {
-      ticker: "MATX",
-      name: "Matson, Inc."
-  },
-  {
-      ticker: "MAV",
-      name: "Pioneer Municipal High Income Advantage Trust"
-  },
-  {
-      ticker: "MAXR",
-      name: "Maxar Technologies Inc."
-  },
-  {
-      ticker: "MBI",
-      name: "MBIA, Inc."
-  },
-  {
-      ticker: "MBT",
-      name: "Mobile TeleSystems OJSC"
-  },
-  {
-      ticker: "MC",
-      name: "Moelis & Company"
-  },
-  {
-      ticker: "MCA",
-      name: "Blackrock MuniYield California Insured Fund, Inc."
-  },
-  {
-      ticker: "MCB",
-      name: "Metropolitan Bank Holding Corp."
-  },
-  {
-      ticker: "MCC",
-      name: "Medley Capital Corporation"
-  },
-  {
-      ticker: "MCD",
-      name: "McDonald&#39;s Corporation"
-  },
-  {
-      ticker: "MCI",
-      name: "Barings Corporate Investors"
-  },
-  {
-      ticker: "MCK",
-      name: "McKesson Corporation"
-  },
-  {
-      ticker: "MCN",
-      name: "Madison Covered Call & Equity Strategy Fund"
-  },
-  {
-      ticker: "MCO",
-      name: "Moody&#39;s Corporation"
-  },
-  {
-      ticker: "MCR",
-      name: "MFS Charter Income Trust"
-  },
-  {
-      ticker: "MCRN",
-      name: "Milacron Holdings Corp."
-  },
-  {
-      ticker: "MCS",
-      name: "Marcus Corporation (The)"
-  },
-  {
-      ticker: "MCV",
-      name: "Medley Capital Corporation"
-  },
-  {
-      ticker: "MCX",
-      name: "Medley Capital Corporation"
-  },
-  {
-      ticker: "MCY",
-      name: "Mercury General Corporation"
-  },
-  {
-      ticker: "MD",
-      name: "Mednax, Inc"
-  },
-  {
-      ticker: "MDC",
-      name: "M.D.C. Holdings, Inc."
-  },
-  {
-      ticker: "MDLA",
-      name: "Medallia, Inc."
-  },
-  {
-      ticker: "MDLQ",
-      name: "Medley LLC"
-  },
-  {
-      ticker: "MDLX",
-      name: "Medley LLC"
-  },
-  {
-      ticker: "MDLY",
-      name: "Medley Management Inc."
-  },
-  {
-      ticker: "MDP",
-      name: "Meredith Corporation"
-  },
-  {
-      ticker: "MDR",
-      name: "McDermott International, Inc."
-  },
-  {
-      ticker: "MDT",
-      name: "Medtronic plc"
-  },
-  {
-      ticker: "MDU",
-      name: "MDU Resources Group, Inc."
-  },
-  {
-      ticker: "MEC",
-      name: "Mayville Engineering Company, Inc."
-  },
-  {
-      ticker: "MED",
-      name: "MEDIFAST INC"
-  },
-  {
-      ticker: "MEI",
-      name: "Methode Electronics, Inc."
-  },
-  {
-      ticker: "MEN",
-      name: "Blackrock MuniEnhanced Fund, Inc."
-  },
-  {
-      ticker: "MET",
-      name: "MetLife, Inc."
-  },
-  {
-      ticker: "MFA",
-      name: "MFA Financial, Inc."
-  },
-  {
-      ticker: "MFAC",
-      name: "Megalith Financial Acquisition Corp."
-  },
-  {
-      ticker: "MFAC.U",
-      name: "Megalith Financial Acquisition Corp."
-  },
-  {
-      ticker: "MFAC.WS",
-      name: "Megalith Financial Acquisition Corp."
-  },
-  {
-      ticker: "MFC",
-      name: "Manulife Financial Corp"
-  },
-  {
-      ticker: "MFD",
-      name: "Macquarie First Trust Global"
-  },
-  {
-      ticker: "MFG",
-      name: "Mizuho Financial Group, Inc."
-  },
-  {
-      ticker: "MFGP",
-      name: "Micro Focus Intl PLC"
-  },
-  {
-      ticker: "MFL",
-      name: "Blackrock MuniHoldings Investment Quality Fund"
-  },
-  {
-      ticker: "MFM",
-      name: "MFS Municipal Income Trust"
-  },
-  {
-      ticker: "MFO",
-      name: "MFA Financial, Inc."
-  },
-  {
-      ticker: "MFT",
-      name: "Blackrock MuniYield Investment QualityFund"
-  },
-  {
-      ticker: "MFV",
-      name: "MFS Special Value Trust"
-  },
-  {
-      ticker: "MG",
-      name: "Mistras Group Inc"
-  },
-  {
-      ticker: "MGA",
-      name: "Magna International, Inc."
-  },
-  {
-      ticker: "MGF",
-      name: "MFS Government Markets Income Trust"
-  },
-  {
-      ticker: "MGM",
-      name: "MGM Resorts International"
-  },
-  {
-      ticker: "MGP",
-      name: "MGM Growth Properties LLC"
-  },
-  {
-      ticker: "MGR",
-      name: "Affiliated Managers Group, Inc."
-  },
-  {
-      ticker: "MGU",
-      name: "Macquarie Global Infrastructure Total Return Fund Inc."
-  },
-  {
-      ticker: "MGY",
-      name: "Magnolia Oil & Gas Corporation"
-  },
-  {
-      ticker: "MHD",
-      name: "Blackrock MuniHoldings Fund, Inc."
-  },
-  {
-      ticker: "MHE",
-      name: "BlackRock Massachusetts Tax-Exempt Trust"
-  },
-  {
-      ticker: "MHF",
-      name: "Western Asset Municipal High Income Fund, Inc."
-  },
-  {
-      ticker: "MHI",
-      name: "Pioneer Municipal High Income Trust"
-  },
-  {
-      ticker: "MHK",
-      name: "Mohawk Industries, Inc."
-  },
-  {
-      ticker: "MHLA",
-      name: "Maiden Holdings, Ltd."
-  },
-  {
-      ticker: "MHN",
-      name: "Blackrock MuniHoldings New York Quality Fund, Inc."
-  },
-  {
-      ticker: "MHNC",
-      name: "Maiden Holdings, Ltd."
-  },
-  {
-      ticker: "MHO",
-      name: "M/I Homes, Inc."
-  },
-  {
-      ticker: "MIC",
-      name: "Macquarie Infrastructure Corporation "
-  },
-  {
-      ticker: "MIE",
-      name: "Cohen & Steers MLP Income and Energy Opportunity Fund, Inc."
-  },
-  {
-      ticker: "MIN",
-      name: "MFS Intermediate Income Trust"
-  },
-  {
-      ticker: "MITT",
-      name: "AG Mortgage Investment Trust, Inc."
-  },
-  {
-      ticker: "MIXT",
-      name: "MiX Telematics Limited"
-  },
-  {
-      ticker: "MIY",
-      name: "Blackrock MuniYield Michigan Quality Fund, Inc."
-  },
-  {
-      ticker: "MKC",
-      name: "McCormick & Company, Incorporated"
-  },
-  {
-      ticker: "MKC.V",
-      name: "McCormick & Company, Incorporated"
-  },
-  {
-      ticker: "MKL",
-      name: "Markel Corporation"
-  },
-  {
-      ticker: "MLI",
-      name: "Mueller Industries, Inc."
-  },
-  {
-      ticker: "MLM",
-      name: "Martin Marietta Materials, Inc."
-  },
-  {
-      ticker: "MLP",
-      name: "Maui Land & Pineapple Company, Inc."
-  },
-  {
-      ticker: "MLR",
-      name: "Miller Industries, Inc."
-  },
-  {
-      ticker: "MMC",
-      name: "Marsh & McLennan Companies, Inc."
-  },
-  {
-      ticker: "MMD",
-      name: "MainStay MacKay DefinedTerm Municipal Opportunitie"
-  },
-  {
-      ticker: "MMI",
-      name: "Marcus & Millichap, Inc."
-  },
-  {
-      ticker: "MMM",
-      name: "3M Company"
-  },
-  {
-      ticker: "MMP",
-      name: "Magellan Midstream Partners L.P."
-  },
-  {
-      ticker: "MMS",
-      name: "Maximus, Inc."
-  },
-  {
-      ticker: "MMT",
-      name: "MFS Multimarket Income Trust"
-  },
-  {
-      ticker: "MMU",
-      name: "Western Asset Managed Municipals Fund, Inc."
-  },
-  {
-      ticker: "MN",
-      name: "Manning & Napier, Inc."
-  },
-  {
-      ticker: "MNE",
-      name: "Blackrock Muni New York Intermediate Duration Fund Inc"
-  },
-  {
-      ticker: "MNK",
-      name: "Mallinckrodt plc"
-  },
-  {
-      ticker: "MNP",
-      name: "Western Asset Municipal Partners Fund, Inc."
-  },
-  {
-      ticker: "MNR",
-      name: "Monmouth Real Estate Investment Corporation"
-  },
-  {
-      ticker: "MNRL",
-      name: "Brigham Minerals, Inc."
-  },
-  {
-      ticker: "MO",
-      name: "Altria Group"
-  },
-  {
-      ticker: "MOD",
-      name: "Modine Manufacturing Company"
-  },
-  {
-      ticker: "MODN",
-      name: "Model N, Inc."
-  },
-  {
-      ticker: "MOG.A",
-      name: "Moog Inc."
-  },
-  {
-      ticker: "MOG.B",
-      name: "Moog Inc."
-  },
-  {
-      ticker: "MOGU",
-      name: "MOGU Inc."
-  },
-  {
-      ticker: "MOH",
-      name: "Molina Healthcare Inc"
-  },
-  {
-      ticker: "MOS",
-      name: "Mosaic Company (The)"
-  },
-  {
-      ticker: "MOSC",
-      name: "Mosaic Acquisition Corp."
-  },
-  {
-      ticker: "MOSC.U",
-      name: "Mosaic Acquisition Corp."
-  },
-  {
-      ticker: "MOSC.WS",
-      name: "Mosaic Acquisition Corp."
-  },
-  {
-      ticker: "MOV",
-      name: "Movado Group Inc."
-  },
-  {
-      ticker: "MPA",
-      name: "Blackrock MuniYield Pennsylvania Quality Fund"
-  },
-  {
-      ticker: "MPC",
-      name: "Marathon Petroleum Corporation"
-  },
-  {
-      ticker: "MPLX",
-      name: "MPLX LP"
-  },
-  {
-      ticker: "MPV",
-      name: "Barings Participation Investors"
-  },
-  {
-      ticker: "MPW",
-      name: "Medical Properties Trust, Inc."
-  },
-  {
-      ticker: "MPX",
-      name: "Marine Products Corporation"
-  },
-  {
-      ticker: "MQT",
-      name: "Blackrock MuniYield Quality Fund II, Inc."
-  },
-  {
-      ticker: "MQY",
-      name: "Blackrock MuniYield Quality Fund, Inc."
-  },
-  {
-      ticker: "MR",
-      name: "Montage Resources Corporation"
-  },
-  {
-      ticker: "MRC",
-      name: "MRC Global Inc."
-  },
-  {
-      ticker: "MRK",
-      name: "Merck & Company, Inc."
-  },
-  {
-      ticker: "MRO",
-      name: "Marathon Oil Corporation"
-  },
-  {
-      ticker: "MS",
-      name: "Morgan Stanley"
-  },
-  {
-      ticker: "MSA",
-      name: "MSA Safety Incorporporated"
-  },
-  {
-      ticker: "MSB",
-      name: "Mesabi Trust"
-  },
-  {
-      ticker: "MSC",
-      name: "Studio City International Holdings Limited"
-  },
-  {
-      ticker: "MSCI",
-      name: "MSCI Inc"
-  },
-  {
-      ticker: "MSD",
-      name: "Morgan Stanley Emerging Markets Debt Fund, Inc."
-  },
-  {
-      ticker: "MSG",
-      name: "The Madison Square Garden Company"
-  },
-  {
-      ticker: "MSGN",
-      name: "MSG Networks Inc."
-  },
-  {
-      ticker: "MSI",
-      name: "Motorola Solutions, Inc."
-  },
-  {
-      ticker: "MSL",
-      name: "MidSouth Bancorp"
-  },
-  {
-      ticker: "MSM",
-      name: "MSC Industrial Direct Company, Inc."
-  },
-  {
-      ticker: "MT",
-      name: "ArcelorMittal"
-  },
-  {
-      ticker: "MTB",
-      name: "M&T Bank Corporation"
-  },
-  {
-      ticker: "MTD",
-      name: "Mettler-Toledo International, Inc."
-  },
-  {
-      ticker: "MTDR",
-      name: "Matador Resources Company"
-  },
-  {
-      ticker: "MTG",
-      name: "MGIC Investment Corporation"
-  },
-  {
-      ticker: "MTH",
-      name: "Meritage Corporation"
-  },
-  {
-      ticker: "MTL",
-      name: "Mechel PAO"
-  },
-  {
-      ticker: "MTN",
-      name: "Vail Resorts, Inc."
-  },
-  {
-      ticker: "MTOR",
-      name: "Meritor, Inc."
-  },
-  {
-      ticker: "MTR",
-      name: "Mesa Royalty Trust"
-  },
-  {
-      ticker: "MTRN",
-      name: "Materion Corporation"
-  },
-  {
-      ticker: "MTT",
-      name: "Western Asset Municipal Defined Opportunity Trust Inc"
-  },
-  {
-      ticker: "MTW",
-      name: "Manitowoc Company, Inc. (The)"
-  },
-  {
-      ticker: "MTX",
-      name: "Minerals Technologies Inc."
-  },
-  {
-      ticker: "MTZ",
-      name: "MasTec, Inc."
-  },
-  {
-      ticker: "MUA",
-      name: "Blackrock MuniAssets Fund, Inc."
-  },
-  {
-      ticker: "MUC",
-      name: "Blackrock MuniHoldings California Quality Fund,  Inc."
-  },
-  {
-      ticker: "MUE",
-      name: "Blackrock MuniHoldings Quality Fund II, Inc."
-  },
-  {
-      ticker: "MUFG",
-      name: "Mitsubishi UFJ Financial Group Inc"
-  },
-  {
-      ticker: "MUH",
-      name: "Blackrock MuniHoldings Fund II, Inc."
-  },
-  {
-      ticker: "MUI",
-      name: "Blackrock Muni Intermediate Duration Fund Inc"
-  },
-  {
-      ticker: "MUJ",
-      name: "Blackrock MuniHoldings New Jersey Insured Fund, Inc."
-  },
-  {
-      ticker: "MUR",
-      name: "Murphy Oil Corporation"
-  },
-  {
-      ticker: "MUS",
-      name: "Blackrock MuniHoldings Quality Fund, Inc."
-  },
-  {
-      ticker: "MUSA",
-      name: "Murphy USA Inc."
-  },
-  {
-      ticker: "MUX",
-      name: "McEwen Mining Inc."
-  },
-  {
-      ticker: "MVC",
-      name: "MVC Capital, Inc."
-  },
-  {
-      ticker: "MVCD",
-      name: "MVC Capital, Inc."
-  },
-  {
-      ticker: "MVF",
-      name: "MuniVest Fund, Inc."
-  },
-  {
-      ticker: "MVO",
-      name: "MV Oil Trust"
-  },
-  {
-      ticker: "MVT",
-      name: "Blackrock MuniVest Fund II, Inc."
-  },
-  {
-      ticker: "MWA",
-      name: "Mueller Water Products Inc"
-  },
-  {
-      ticker: "MX",
-      name: "MagnaChip Semiconductor Corporation"
-  },
-  {
-      ticker: "MXE",
-      name: "Mexico Equity and Income Fund, Inc. (The)"
-  },
-  {
-      ticker: "MXF",
-      name: "Mexico Fund, Inc. (The)"
-  },
-  {
-      ticker: "MXL",
-      name: "MaxLinear, Inc"
-  },
-  {
-      ticker: "MYC",
-      name: "Blackrock MuniYield California Fund, Inc."
-  },
-  {
-      ticker: "MYD",
-      name: "Blackrock MuniYield Fund, Inc."
-  },
-  {
-      ticker: "MYE",
-      name: "Myers Industries, Inc."
-  },
-  {
-      ticker: "MYF",
-      name: "Blackrock MuniYield Investment Fund"
-  },
-  {
-      ticker: "MYI",
-      name: "Blackrock MuniYield Quality Fund III, Inc."
-  },
-  {
-      ticker: "MYJ",
-      name: "Blackrock MuniYield New Jersey Fund, Inc."
-  },
-  {
-      ticker: "MYN",
-      name: "Blackrock MuniYield New York Quality Fund, Inc."
-  },
-  {
-      ticker: "MYOV",
-      name: "Myovant Sciences Ltd."
-  },
-  {
-      ticker: "MZA",
-      name: "MuniYield Arizona Fund, Inc."
-  },
-  {
-      ticker: "NAC",
-      name: "Nuveen California Quality Municipal Income Fund"
-  },
-  {
-      ticker: "NAD",
-      name: "Nuveen Quality Municipal Income Fund"
-  },
-  {
-      ticker: "NAN",
-      name: "Nuveen New York Quality Municipal Income Fund"
-  },
-  {
-      ticker: "NAT",
-      name: "Nordic American Tankers Limited"
-  },
-  {
-      ticker: "NAV",
-      name: "Navistar International Corporation"
-  },
-  {
-      ticker: "NAZ",
-      name: "Nuveen Arizona Quality Municipal Income Fund"
-  },
-  {
-      ticker: "NBB",
-      name: "Nuveen Taxable Municipal Income Fund"
-  },
-  {
-      ticker: "NBHC",
-      name: "National Bank Holdings Corporation"
-  },
-  {
-      ticker: "NBL",
-      name: "Noble Energy Inc."
-  },
-  {
-      ticker: "NBLX",
-      name: "Noble Midstream Partners LP"
-  },
-  {
-      ticker: "NBR",
-      name: "Nabors Industries Ltd."
-  },
-  {
-      ticker: "NC",
-      name: "NACCO Industries, Inc."
-  },
-  {
-      ticker: "NCA",
-      name: "Nuveen California Municipal Value Fund, Inc."
-  },
-  {
-      ticker: "NCB",
-      name: "Nuveen California Municipal Value Fund 2"
-  },
-  {
-      ticker: "NCI",
-      name: "Navigant Consulting, Inc."
-  },
-  {
-      ticker: "NCLH",
-      name: "Norwegian Cruise Line Holdings Ltd."
-  },
-  {
-      ticker: "NCR",
-      name: "NCR Corporation"
-  },
-  {
-      ticker: "NCV",
-      name: "AllianzGI Convertible & Income Fund"
-  },
-  {
-      ticker: "NCZ",
-      name: "AllianzGI Convertible & Income Fund II"
-  },
-  {
-      ticker: "NDP",
-      name: "Tortoise Energy Independence Fund, Inc."
-  },
-  {
-      ticker: "NE",
-      name: "Noble Corporation"
-  },
-  {
-      ticker: "NEA",
-      name: "Nuveen AMT-Free Quality Municipal Income Fund"
-  },
-  {
-      ticker: "NEE",
-      name: "NextEra Energy, Inc."
-  },
-  {
-      ticker: "NEM",
-      name: "Newmont Goldcorp Corporation"
-  },
-  {
-      ticker: "NEP",
-      name: "NextEra Energy Partners, LP"
-  },
-  {
-      ticker: "NEU",
-      name: "NewMarket Corporation"
-  },
-  {
-      ticker: "NEV",
-      name: "Nuveen Enhanced Municipal Value Fund"
-  },
-  {
-      ticker: "NEW",
-      name: "Puxin Limited"
-  },
-  {
-      ticker: "NEWM",
-      name: "New Media Investment Group Inc."
-  },
-  {
-      ticker: "NEWR",
-      name: "New Relic, Inc."
-  },
-  {
-      ticker: "NEXA",
-      name: "Nexa Resources S.A."
-  },
-  {
-      ticker: "NFC",
-      name: "New Frontier Corporation"
-  },
-  {
-      ticker: "NFC.U",
-      name: "New Frontier Corporation"
-  },
-  {
-      ticker: "NFC.WS",
-      name: "New Frontier Corporation"
-  },
-  {
-      ticker: "NFG",
-      name: "National Fuel Gas Company"
-  },
-  {
-      ticker: "NFJ",
-      name: "AllianzGI NFJ Dividend, Interest & Premium Strategy Fund"
-  },
-  {
-      ticker: "NGG",
-      name: "National Grid Transco, PLC"
-  },
-  {
-      ticker: "NGL",
-      name: "NGL ENERGY PARTNERS LP"
-  },
-  {
-      ticker: "NGS",
-      name: "Natural Gas Services Group, Inc."
-  },
-  {
-      ticker: "NGVC",
-      name: "Natural Grocers by Vitamin Cottage, Inc."
-  },
-  {
-      ticker: "NGVT",
-      name: "Ingevity Corporation"
-  },
-  {
-      ticker: "NHA",
-      name: "Nuveen Municipal 2021 Target Term Fund"
-  },
-  {
-      ticker: "NHF",
-      name: "NexPoint Strategic Opportunities Fund"
-  },
-  {
-      ticker: "NHI",
-      name: "National Health Investors, Inc."
-  },
-  {
-      ticker: "NI",
-      name: "NiSource, Inc"
-  },
-  {
-      ticker: "NID",
-      name: "Nuveen Intermediate Duration Municipal Term Fund"
-  },
-  {
-      ticker: "NIE",
-      name: "AllianzGI Equity & Convertible Income Fund"
-  },
-  {
-      ticker: "NIM",
-      name: "Nuveen Select Maturities Municipal Fund"
-  },
-  {
-      ticker: "NINE",
-      name: "Nine Energy Service, Inc."
-  },
-  {
-      ticker: "NIO",
-      name: "NIO Inc."
-  },
-  {
-      ticker: "NIQ",
-      name: "Nuveenn Intermediate Duration Quality Municipal Term Fund"
-  },
-  {
-      ticker: "NJR",
-      name: "NewJersey Resources Corporation"
-  },
-  {
-      ticker: "NJV",
-      name: "Nuveen New Jersey Municipal Value Fund"
-  },
-  {
-      ticker: "NKE",
-      name: "Nike, Inc."
-  },
-  {
-      ticker: "NKG",
-      name: "Nuveen Georgia Quality Municipal Income Fund "
-  },
-  {
-      ticker: "NKX",
-      name: "Nuveen California AMT-Free Quality Municipal Income Fund"
-  },
-  {
-      ticker: "NL",
-      name: "NL Industries, Inc."
-  },
-  {
-      ticker: "NLS",
-      name: "Nautilus Group, Inc. (The)"
-  },
-  {
-      ticker: "NLSN",
-      name: "Nielsen N.V."
-  },
-  {
-      ticker: "NLY",
-      name: "Annaly Capital Management Inc"
-  },
-  {
-      ticker: "NM",
-      name: "Navios Maritime Holdings Inc."
-  },
-  {
-      ticker: "NMFC",
-      name: "New Mountain Finance Corporation"
-  },
-  {
-      ticker: "NMFX",
-      name: "New Mountain Finance Corporation"
-  },
-  {
-      ticker: "NMI",
-      name: "Nuveen Municipal Income Fund, Inc."
-  },
-  {
-      ticker: "NMM",
-      name: "Navios Maritime Partners LP"
-  },
-  {
-      ticker: "NMR",
-      name: "Nomura Holdings Inc ADR"
-  },
-  {
-      ticker: "NMS",
-      name: "Nuveen Minnesota Quality Municipal Income Fund"
-  },
-  {
-      ticker: "NMT",
-      name: "Nuveen Massachusetts Municipal Income Fund"
-  },
-  {
-      ticker: "NMY",
-      name: "Nuveen Maryland Quality Municipal Income Fund"
-  },
-  {
-      ticker: "NMZ",
-      name: "Nuveen Municipal High Income Opportunity Fund"
-  },
-  {
-      ticker: "NNA",
-      name: "Navios Maritime Acquisition Corporation"
-  },
-  {
-      ticker: "NNC",
-      name: "Nuveen North Carolina Quality Municipal Income Fd"
-  },
-  {
-      ticker: "NNI",
-      name: "Nelnet, Inc."
-  },
-  {
-      ticker: "NNN",
-      name: "National Retail Properties"
-  },
-  {
-      ticker: "NNY",
-      name: "Nuveen New York Municipal Value Fund, Inc."
-  },
-  {
-      ticker: "NOA",
-      name: "North American Construction Group Ltd."
-  },
-  {
-      ticker: "NOAH",
-      name: "Noah Holdings Ltd."
-  },
-  {
-      ticker: "NOC",
-      name: "Northrop Grumman Corporation"
-  },
-  {
-      ticker: "NOK",
-      name: "Nokia Corporation"
-  },
-  {
-      ticker: "NOM",
-      name: "Nuveen Missouri Quality Municipal Income Fund"
-  },
-  {
-      ticker: "NOMD",
-      name: "Nomad Foods Limited"
-  },
-  {
-      ticker: "NOV",
-      name: "National Oilwell Varco, Inc."
-  },
-  {
-      ticker: "NOVA",
-      name: "Sunnova Energy International Inc."
-  },
-  {
-      ticker: "NOW",
-      name: "ServiceNow, Inc."
-  },
-  {
-      ticker: "NP",
-      name: "Neenah, Inc."
-  },
-  {
-      ticker: "NPK",
-      name: "National Presto Industries, Inc."
-  },
-  {
-      ticker: "NPN",
-      name: "Nuveen Pennsylvania Municipal Value Fund"
-  },
-  {
-      ticker: "NPO",
-      name: "EnPro Industries"
-  },
-  {
-      ticker: "NPTN",
-      name: "NeoPhotonics Corporation"
-  },
-  {
-      ticker: "NPV",
-      name: "Nuveen Virginia Quality Municipal Income Fund"
-  },
-  {
-      ticker: "NQP",
-      name: "Nuveen Pennsylvania Quality Municipal Income Fund"
-  },
-  {
-      ticker: "NR",
-      name: "Newpark Resources, Inc."
-  },
-  {
-      ticker: "NRE",
-      name: "NorthStar Realty Europe Corp."
-  },
-  {
-      ticker: "NRG",
-      name: "NRG Energy, Inc."
-  },
-  {
-      ticker: "NRGX",
-      name: "PIMCO Energy and Tactical Credit Opportunities Fund"
-  },
-  {
-      ticker: "NRK",
-      name: "Nuveen New York AMT-Free Quality Municipal"
-  },
-  {
-      ticker: "NRP",
-      name: "Natural Resource Partners LP"
-  },
-  {
-      ticker: "NRT",
-      name: "North European Oil Royality Trust"
-  },
-  {
-      ticker: "NRUC",
-      name: "National Rural Utilities Cooperative Finance Corporation"
-  },
-  {
-      ticker: "NRZ",
-      name: "New Residential Investment Corp."
-  },
-  {
-      ticker: "NS",
-      name: "Nustar Energy L.P."
-  },
-  {
-      ticker: "NSA",
-      name: "National Storage Affiliates Trust"
-  },
-  {
-      ticker: "NSC",
-      name: "Norfolk Southern Corporation"
-  },
-  {
-      ticker: "NSCO",
-      name: "Nesco Holdings, Inc."
-  },
-  {
-      ticker: "NSCO.WS",
-      name: "Nesco Holdings, Inc."
-  },
-  {
-      ticker: "NSL",
-      name: "Nuveen Senior Income Fund"
-  },
-  {
-      ticker: "NSP",
-      name: "Insperity, Inc."
-  },
-  {
-      ticker: "NSS",
-      name: "NuStar Logistics, L.P."
-  },
-  {
-      ticker: "NTB",
-      name: "Bank of N.T. Butterfield & Son Limited (The)"
-  },
-  {
-      ticker: "NTC",
-      name: "Nuveen Connecticut Quality Municipal Income Fund"
-  },
-  {
-      ticker: "NTEST",
-      name: "NASDAQ TEST STOCK"
-  },
-  {
-      ticker: "NTEST.A",
-      name: "NASDAQ TEST STOCK"
-  },
-  {
-      ticker: "NTEST.B",
-      name: "NASDAQ TEST STOCK"
-  },
-  {
-      ticker: "NTEST.C",
-      name: "NASDAQ TEST STOCK"
-  },
-  {
-      ticker: "NTG",
-      name: "Tortoise Midstream Energy Fund, Inc."
-  },
-  {
-      ticker: "NTP",
-      name: "Nam Tai Property Inc."
-  },
-  {
-      ticker: "NTR",
-      name: "Nutrien Ltd."
-  },
-  {
-      ticker: "NTX",
-      name: "Nuveen Texas Quality Municipal Income Fund"
-  },
-  {
-      ticker: "NTZ",
-      name: "Natuzzi, S.p.A."
-  },
-  {
-      ticker: "NUE",
-      name: "Nucor Corporation"
-  },
-  {
-      ticker: "NUM",
-      name: "Nuveen Michigan Quality Municipal Income Fund"
-  },
-  {
-      ticker: "NUO",
-      name: "Nuveen Ohio Quality Municipal Income Fund"
-  },
-  {
-      ticker: "NUS",
-      name: "Nu Skin Enterprises, Inc."
-  },
-  {
-      ticker: "NUV",
-      name: "Nuveen AMT-Free Municipal Value Fund"
-  },
-  {
-      ticker: "NUW",
-      name: "Nuveen AMT-Free Municipal Value Fund"
-  },
-  {
-      ticker: "NVG",
-      name: "Nuveen AMT-Free Municipal Credit Income Fund"
-  },
-  {
-      ticker: "NVGS",
-      name: "Navigator Holdings Ltd."
-  },
-  {
-      ticker: "NVO",
-      name: "Novo Nordisk A/S"
-  },
-  {
-      ticker: "NVR",
-      name: "NVR, Inc."
-  },
-  {
-      ticker: "NVRO",
-      name: "Nevro Corp."
-  },
-  {
-      ticker: "NVS",
-      name: "Novartis AG"
-  },
-  {
-      ticker: "NVT",
-      name: "nVent Electric plc"
-  },
-  {
-      ticker: "NVTA",
-      name: "Invitae Corporation"
-  },
-  {
-      ticker: "NWE",
-      name: "NorthWestern Corporation"
-  },
-  {
-      ticker: "NWHM",
-      name: "New Home Company Inc. (The)"
-  },
-  {
-      ticker: "NWN",
-      name: "Northwest Natural Holding Company"
-  },
-  {
-      ticker: "NX",
-      name: "Quanex Building Products Corporation"
-  },
-  {
-      ticker: "NXC",
-      name: "Nuveen Insured California Select Tax-Free Income Portfolio"
-  },
-  {
-      ticker: "NXJ",
-      name: "Nuveen New Jersey Quality Municipal Income Fund"
-  },
-  {
-      ticker: "NXN",
-      name: "Nuveen Insured New York Select Tax-Free Income Portfolio"
-  },
-  {
-      ticker: "NXP",
-      name: "Nuveen Select Tax Free Income Portfolio"
-  },
-  {
-      ticker: "NXQ",
-      name: "Nuveen Select Tax Free Income Portfolio II"
-  },
-  {
-      ticker: "NXR",
-      name: "Nuveen Select Tax Free Income Portfolio III"
-  },
-  {
-      ticker: "NXRT",
-      name: "NexPoint Residential Trust, Inc."
-  },
-  {
-      ticker: "NYCB",
-      name: "New York Community Bancorp, Inc."
-  },
-  {
-      ticker: "NYT",
-      name: "New York Times Company (The)"
-  },
-  {
-      ticker: "NYV",
-      name: "Nuveen New York Municipal Value Fund 2"
-  },
-  {
-      ticker: "NZF",
-      name: "Nuveen Municipal Credit Income Fund"
-  },
-  {
-      ticker: "O",
-      name: "Realty Income Corporation"
-  },
-  {
-      ticker: "OAC",
-      name: "Oaktree Acquisition Corp."
-  },
-  {
-      ticker: "OAC.U",
-      name: "Oaktree Acquisition Corp."
-  },
-  {
-      ticker: "OAC.WS",
-      name: "Oaktree Acquisition Corp."
-  },
-  {
-      ticker: "OAK",
-      name: "Oaktree Capital Group, LLC"
-  },
-  {
-      ticker: "OAS",
-      name: "Oasis Petroleum Inc."
-  },
-  {
-      ticker: "OBE",
-      name: "Obsidian Energy Ltd."
-  },
-  {
-      ticker: "OC",
-      name: "Owens Corning Inc"
-  },
-  {
-      ticker: "OCN",
-      name: "Ocwen Financial Corporation"
-  },
-  {
-      ticker: "ODC",
-      name: "Oil-Dri Corporation Of America"
-  },
-  {
-      ticker: "OEC",
-      name: "Orion Engineered Carbons S.A"
-  },
-  {
-      ticker: "OFC",
-      name: "Corporate Office Properties Trust"
-  },
-  {
-      ticker: "OFG",
-      name: "OFG Bancorp"
-  },
-  {
-      ticker: "OGE",
-      name: "OGE Energy Corp"
-  },
-  {
-      ticker: "OGS",
-      name: "ONE Gas, Inc."
-  },
-  {
-      ticker: "OHI",
-      name: "Omega Healthcare Investors, Inc."
-  },
-  {
-      ticker: "OI",
-      name: "Owens-Illinois, Inc."
-  },
-  {
-      ticker: "OIA",
-      name: "Invesco Municipal Income Opportunities Trust"
-  },
-  {
-      ticker: "OIBR.C",
-      name: "Oi S.A."
-  },
-  {
-      ticker: "OII",
-      name: "Oceaneering International, Inc."
-  },
-  {
-      ticker: "OIS",
-      name: "Oil States International, Inc."
-  },
-  {
-      ticker: "OKE",
-      name: "ONEOK, Inc."
-  },
-  {
-      ticker: "OLN",
-      name: "Olin Corporation"
-  },
-  {
-      ticker: "OLP",
-      name: "One Liberty Properties, Inc."
-  },
-  {
-      ticker: "OMC",
-      name: "Omnicom Group Inc."
-  },
-  {
-      ticker: "OMF",
-      name: "OneMain Holdings, Inc."
-  },
-  {
-      ticker: "OMI",
-      name: "Owens & Minor, Inc."
-  },
-  {
-      ticker: "OMN",
-      name: "OMNOVA Solutions Inc."
-  },
-  {
-      ticker: "OMP",
-      name: "Oasis Midstream Partners LP"
-  },
-  {
-      ticker: "ONDK",
-      name: "On Deck Capital, Inc."
-  },
-  {
-      ticker: "ONE",
-      name: "OneSmart International Education Group Limited"
-  },
-  {
-      ticker: "OOMA",
-      name: "Ooma, Inc."
-  },
-  {
-      ticker: "OPP",
-      name: "RiverNorth/DoubleLine Strategic Opportunity Fund, Inc."
-  },
-  {
-      ticker: "OPY",
-      name: "Oppenheimer Holdings, Inc."
-  },
-  {
-      ticker: "OR",
-      name: "Osisko Gold Royalties Ltd"
-  },
-  {
-      ticker: "ORA",
-      name: "Ormat Technologies, Inc."
-  },
-  {
-      ticker: "ORAN",
-      name: "Orange"
-  },
-  {
-      ticker: "ORC",
-      name: "Orchid Island Capital, Inc."
-  },
-  {
-      ticker: "ORCC",
-      name: "Owl Rock Capital Corporation"
-  },
-  {
-      ticker: "ORCL",
-      name: "Oracle Corporation"
-  },
-  {
-      ticker: "ORI",
-      name: "Old Republic International Corporation"
-  },
-  {
-      ticker: "ORN",
-      name: "Orion Group Holdings, Inc."
-  },
-  {
-      ticker: "OSB",
-      name: "Norbord Inc."
-  },
-  {
-      ticker: "OSG",
-      name: "Overseas Shipholding Group, Inc."
-  },
-  {
-      ticker: "OSK",
-      name: "Oshkosh Corporation"
-  },
-  {
-      ticker: "OSLE",
-      name: "Oaktree Specialty Lending Corporation"
-  },
-  {
-      ticker: "OUT",
-      name: "OUTFRONT Media Inc."
-  },
-  {
-      ticker: "OXM",
-      name: "Oxford Industries, Inc."
-  },
-  {
-      ticker: "OXY",
-      name: "Occidental Petroleum Corporation"
-  },
-  {
-      ticker: "PAA",
-      name: "Plains All American Pipeline, L.P."
-  },
-  {
-      ticker: "PAC",
-      name: "Grupo Aeroportuario Del Pacifico, S.A. de C.V."
-  },
-  {
-      ticker: "PACD",
-      name: "Pacific Drilling S.A."
-  },
-  {
-      ticker: "PACK",
-      name: "Ranpak Holdings Corp"
-  },
-  {
-      ticker: "PACK.WS",
-      name: "Ranpak Holdings Corp"
-  },
-  {
-      ticker: "PAG",
-      name: "Penske Automotive Group, Inc."
-  },
-  {
-      ticker: "PAGP",
-      name: "Plains Group Holdings, L.P."
-  },
-  {
-      ticker: "PAGS",
-      name: "PagSeguro Digital Ltd."
-  },
-  {
-      ticker: "PAI",
-      name: "Western Asset Investment Grade Income Fund Inc."
-  },
-  {
-      ticker: "PAM",
-      name: "Pampa Energia S.A."
-  },
-  {
-      ticker: "PANW",
-      name: "Palo Alto Networks, Inc."
-  },
-  {
-      ticker: "PAR",
-      name: "PAR Technology Corporation"
-  },
-  {
-      ticker: "PARR",
-      name: "Par Pacific Holdings, Inc."
-  },
-  {
-      ticker: "PAYC",
-      name: "Paycom Software, Inc."
-  },
-  {
-      ticker: "PB",
-      name: "Prosperity Bancshares, Inc."
-  },
-  {
-      ticker: "PBA",
-      name: "Pembina Pipeline Corp."
-  },
-  {
-      ticker: "PBB",
-      name: "Prospect Capital Corporation"
-  },
-  {
-      ticker: "PBC",
-      name: "Prospect Capital Corporation"
-  },
-  {
-      ticker: "PBF",
-      name: "PBF Energy Inc."
-  },
-  {
-      ticker: "PBFX",
-      name: "PBF Logistics LP"
-  },
-  {
-      ticker: "PBH",
-      name: "Prestige Consumer Healthcare Inc."
-  },
-  {
-      ticker: "PBI",
-      name: "Pitney Bowes Inc."
-  },
-  {
-      ticker: "PBR",
-      name: "Petroleo Brasileiro S.A.- Petrobras"
-  },
-  {
-      ticker: "PBR.A",
-      name: "Petroleo Brasileiro S.A.- Petrobras"
-  },
-  {
-      ticker: "PBT",
-      name: "Permian Basin Royalty Trust"
-  },
-  {
-      ticker: "PBY",
-      name: "Prospect Capital Corporation"
-  },
-  {
-      ticker: "PCF",
-      name: "High Income Securities Fund"
-  },
-  {
-      ticker: "PCG",
-      name: "Pacific Gas & Electric Co."
-  },
-  {
-      ticker: "PCI",
-      name: "PIMCO Dynamic Credit and Mortgage Income Fund"
-  },
-  {
-      ticker: "PCK",
-      name: "Pimco California Municipal Income Fund II"
-  },
-  {
-      ticker: "PCM",
-      name: "PIMCO Commercial Mortgage Securities Trust, Inc."
-  },
-  {
-      ticker: "PCN",
-      name: "Pimco Corporate & Income Stategy Fund"
-  },
-  {
-      ticker: "PCQ",
-      name: "PIMCO California Municipal Income Fund"
-  },
-  {
-      ticker: "PD",
-      name: "PagerDuty, Inc."
-  },
-  {
-      ticker: "PDI",
-      name: "PIMCO Dynamic Income Fund"
-  },
-  {
-      ticker: "PDM",
-      name: "Piedmont Office Realty Trust, Inc."
-  },
-  {
-      ticker: "PDS",
-      name: "Precision Drilling Corporation"
-  },
-  {
-      ticker: "PDT",
-      name: "John Hancock Premium Dividend Fund"
-  },
-  {
-      ticker: "PE",
-      name: "Parsley Energy, Inc."
-  },
-  {
-      ticker: "PEB",
-      name: "Pebblebrook Hotel Trust"
-  },
-  {
-      ticker: "PEG",
-      name: "Public Service Enterprise Group Incorporated"
-  },
-  {
-      ticker: "PEI",
-      name: "Pennsylvania Real Estate Investment Trust"
-  },
-  {
-      ticker: "PEN",
-      name: "Penumbra, Inc."
-  },
-  {
-      ticker: "PEO",
-      name: "Adams Natural Resources Fund, Inc."
-  },
-  {
-      ticker: "PER",
-      name: "SandRidge Permian Trust"
-  },
-  {
-      ticker: "PFD",
-      name: "Flaherty & Crumrine Preferred and Income Fund Inco"
-  },
-  {
-      ticker: "PFE",
-      name: "Pfizer, Inc."
-  },
-  {
-      ticker: "PFGC",
-      name: "Performance Food Group Company"
-  },
-  {
-      ticker: "PFH",
-      name: "CABCO Series 2004-101 Trust"
-  },
-  {
-      ticker: "PFL",
-      name: "PIMCO Income Strategy Fund"
-  },
-  {
-      ticker: "PFN",
-      name: "PIMCO Income Strategy Fund II"
-  },
-  {
-      ticker: "PFO",
-      name: "Flaherty & Crumrine Preferred and Income Opportuni"
-  },
-  {
-      ticker: "PFS",
-      name: "Provident Financial Services, Inc"
-  },
-  {
-      ticker: "PFSI",
-      name: "PennyMac Financial Services, Inc."
-  },
-  {
-      ticker: "PG",
-      name: "Procter & Gamble Company (The)"
-  },
-  {
-      ticker: "PGP",
-      name: "Pimco Global Stocksplus & Income Fund"
-  },
-  {
-      ticker: "PGR",
-      name: "Progressive Corporation (The)"
-  },
-  {
-      ticker: "PGRE",
-      name: "Paramount Group, Inc."
-  },
-  {
-      ticker: "PGTI",
-      name: "PGT Innovations, Inc."
-  },
-  {
-      ticker: "PGZ",
-      name: "Principal Real Estate Income Fund"
-  },
-  {
-      ticker: "PH",
-      name: "Parker-Hannifin Corporation"
-  },
-  {
-      ticker: "PHD",
-      name: "Pioneer Floating Rate Trust"
-  },
-  {
-      ticker: "PHG",
-      name: "Koninklijke Philips N.V."
-  },
-  {
-      ticker: "PHI",
-      name: "PLDT Inc."
-  },
-  {
-      ticker: "PHK",
-      name: "Pimco High Income Fund"
-  },
-  {
-      ticker: "PHM",
-      name: "PulteGroup, Inc."
-  },
-  {
-      ticker: "PHR",
-      name: "Phreesia, Inc."
-  },
-  {
-      ticker: "PHT",
-      name: "Pioneer High Income Trust"
-  },
-  {
-      ticker: "PHX",
-      name: "Panhandle Royalty Company"
-  },
-  {
-      ticker: "PIC",
-      name: "Pivotal Investment Corporation II"
-  },
-  {
-      ticker: "PIC.U",
-      name: "Pivotal Investment Corporation II"
-  },
-  {
-      ticker: "PIC.WS",
-      name: "Pivotal Investment Corporation II"
-  },
-  {
-      ticker: "PII",
-      name: "Polaris Inc."
-  },
-  {
-      ticker: "PIM",
-      name: "Putnam Master Intermediate Income Trust"
-  },
-  {
-      ticker: "PINS",
-      name: "Pinterest, Inc."
-  },
-  {
-      ticker: "PIR",
-      name: "Pier 1 Imports, Inc."
-  },
-  {
-      ticker: "PIY",
-      name: "Merrill Lynch Depositor, Inc."
-  },
-  {
-      ticker: "PJC",
-      name: "Piper Jaffray Companies"
-  },
-  {
-      ticker: "PJH",
-      name: "Prudential Financial, Inc."
-  },
-  {
-      ticker: "PJT",
-      name: "PJT Partners Inc."
-  },
-  {
-      ticker: "PK",
-      name: "Park Hotels & Resorts Inc."
-  },
-  {
-      ticker: "PKD",
-      name: "Parker Drilling Company"
-  },
-  {
-      ticker: "PKE",
-      name: "Park Aerospace Corp."
-  },
-  {
-      ticker: "PKG",
-      name: "Packaging Corporation of America"
-  },
-  {
-      ticker: "PKI",
-      name: "PerkinElmer, Inc."
-  },
-  {
-      ticker: "PKO",
-      name: "Pimco Income Opportunity Fund"
-  },
-  {
-      ticker: "PKX",
-      name: "POSCO"
-  },
-  {
-      ticker: "PLAN",
-      name: "Anaplan, Inc."
-  },
-  {
-      ticker: "PLD",
-      name: "Prologis, Inc."
-  },
-  {
-      ticker: "PLNT",
-      name: "Planet Fitness, Inc."
-  },
-  {
-      ticker: "PLOW",
-      name: "Douglas Dynamics, Inc."
-  },
-  {
-      ticker: "PLT",
-      name: "Plantronics, Inc."
-  },
-  {
-      ticker: "PM",
-      name: "Philip Morris International Inc"
-  },
-  {
-      ticker: "PMF",
-      name: "PIMCO Municipal Income Fund"
-  },
-  {
-      ticker: "PML",
-      name: "Pimco Municipal Income Fund II"
-  },
-  {
-      ticker: "PMM",
-      name: "Putnam Managed Municipal Income Trust"
-  },
-  {
-      ticker: "PMO",
-      name: "Putnam Municipal Opportunities Trust"
-  },
-  {
-      ticker: "PMT",
-      name: "PennyMac Mortgage Investment Trust"
-  },
-  {
-      ticker: "PMX",
-      name: "PIMCO Municipal Income Fund III"
-  },
-  {
-      ticker: "PNC",
-      name: "PNC Financial Services Group, Inc. (The)"
-  },
-  {
-      ticker: "PNF",
-      name: "PIMCO New York Municipal Income Fund"
-  },
-  {
-      ticker: "PNI",
-      name: "Pimco New York Municipal Income Fund II"
-  },
-  {
-      ticker: "PNM",
-      name: "PNM Resources, Inc. (Holding Co.)"
-  },
-  {
-      ticker: "PNR",
-      name: "Pentair plc."
-  },
-  {
-      ticker: "PNW",
-      name: "Pinnacle West Capital Corporation"
-  },
-  {
-      ticker: "POL",
-      name: "PolyOne Corporation"
-  },
-  {
-      ticker: "POR",
-      name: "Portland General Electric Company"
-  },
-  {
-      ticker: "POST",
-      name: "Post Holdings, Inc."
-  },
-  {
-      ticker: "PPDF",
-      name: "PPDAI Group Inc."
-  },
-  {
-      ticker: "PPG",
-      name: "PPG Industries, Inc."
-  },
-  {
-      ticker: "PPL",
-      name: "PPL Corporation"
-  },
-  {
-      ticker: "PPR",
-      name: "Voya Prime Rate Trust"
-  },
-  {
-      ticker: "PPT",
-      name: "Putnam Premier Income Trust"
-  },
-  {
-      ticker: "PPX",
-      name: "PPL Capital Funding, Inc."
-  },
-  {
-      ticker: "PQG",
-      name: "PQ Group Holdings Inc."
-  },
-  {
-      ticker: "PRA",
-      name: "ProAssurance Corporation"
-  },
-  {
-      ticker: "PRGO",
-      name: "Perrigo Company"
-  },
-  {
-      ticker: "PRH",
-      name: "Prudential Financial, Inc."
-  },
-  {
-      ticker: "PRI",
-      name: "Primerica, Inc."
-  },
-  {
-      ticker: "PRLB",
-      name: "Proto Labs, Inc."
-  },
-  {
-      ticker: "PRO",
-      name: "PROS Holdings, Inc."
-  },
-  {
-      ticker: "PROS",
-      name: "ProSight Global, Inc."
-  },
-  {
-      ticker: "PRS",
-      name: "Prudential Financial, Inc."
-  },
-  {
-      ticker: "PRSP",
-      name: "Perspecta Inc."
-  },
-  {
-      ticker: "PRT",
-      name: "PermRock Royalty Trust"
-  },
-  {
-      ticker: "PRTY",
-      name: "Party City Holdco Inc."
-  },
-  {
-      ticker: "PRU",
-      name: "Prudential Financial, Inc."
-  },
-  {
-      ticker: "PSA",
-      name: "Public Storage"
-  },
-  {
-      ticker: "PSB",
-      name: "PS Business Parks, Inc."
-  },
-  {
-      ticker: "PSF",
-      name: "Cohen & Steers Select Preferred and Income Fund, Inc."
-  },
-  {
-      ticker: "PSN",
-      name: "Parsons Corporation"
-  },
-  {
-      ticker: "PSO",
-      name: "Pearson, Plc"
-  },
-  {
-      ticker: "PSTG",
-      name: "Pure Storage, Inc. "
-  },
-  {
-      ticker: "PSTL",
-      name: "Postal Realty Trust, Inc."
-  },
-  {
-      ticker: "PSV",
-      name: "Hermitage Offshore Services Ltd."
-  },
-  {
-      ticker: "PSX",
-      name: "Phillips 66"
-  },
-  {
-      ticker: "PSXP",
-      name: "Phillips 66 Partners LP"
-  },
-  {
-      ticker: "PTR",
-      name: "PetroChina Company Limited"
-  },
-  {
-      ticker: "PTY",
-      name: "Pimco Corporate & Income Opportunity Fund"
-  },
-  {
-      ticker: "PUK",
-      name: "Prudential Public Limited Company"
-  },
-  {
-      ticker: "PUMP",
-      name: "ProPetro Holding Corp."
-  },
-  {
-      ticker: "PVG",
-      name: "Pretium Resources, Inc."
-  },
-  {
-      ticker: "PVH",
-      name: "PVH Corp."
-  },
-  {
-      ticker: "PVL",
-      name: "Permianville Royalty Trust"
-  },
-  {
-      ticker: "PVT",
-      name: "Pivotal Acquisition Corp."
-  },
-  {
-      ticker: "PVTL",
-      name: "Pivotal Software, Inc."
-  },
-  {
-      ticker: "PVT.U",
-      name: "Pivotal Acquisition Corp."
-  },
-  {
-      ticker: "PVT.WS",
-      name: "Pivotal Acquisition Corp."
-  },
-  {
-      ticker: "PWR",
-      name: "Quanta Services, Inc."
-  },
-  {
-      ticker: "PXD",
-      name: "Pioneer Natural Resources Company"
-  },
-  {
-      ticker: "PYN",
-      name: "PIMCO New York Municipal Income Fund III"
-  },
-  {
-      ticker: "PYS",
-      name: "PPlus Trust"
-  },
-  {
-      ticker: "PYT",
-      name: "PPlus Trust"
-  },
-  {
-      ticker: "PYX",
-      name: "Pyxus International, Inc."
-  },
-  {
-      ticker: "PZC",
-      name: "PIMCO California Municipal Income Fund III"
-  },
-  {
-      ticker: "PZN",
-      name: "Pzena Investment Management Inc"
-  },
-  {
-      ticker: "QD",
-      name: "Qudian Inc."
-  },
-  {
-      ticker: "QEP",
-      name: "QEP Resources, Inc."
-  },
-  {
-      ticker: "QES",
-      name: "Quintana Energy Services Inc."
-  },
-  {
-      ticker: "QGEN",
-      name: "Qiagen N.V."
-  },
-  {
-      ticker: "QHC",
-      name: "Quorum Health Corporation"
-  },
-  {
-      ticker: "QSR",
-      name: "Restaurant Brands International Inc."
-  },
-  {
-      ticker: "QTS",
-      name: "QTS Realty Trust, Inc."
-  },
-  {
-      ticker: "QTWO",
-      name: "Q2 Holdings, Inc."
-  },
-  {
-      ticker: "QUAD",
-      name: "Quad Graphics, Inc"
-  },
-  {
-      ticker: "QUOT",
-      name: "Quotient Technology Inc."
-  },
-  {
-      ticker: "QVCD",
-      name: "QVC, Inc."
-  },
-  {
-      ticker: "R",
-      name: "Ryder System, Inc."
-  },
-  {
-      ticker: "RA",
-      name: "Brookfield Real Assets Income Fund Inc."
-  },
-  {
-      ticker: "RACE",
-      name: "Ferrari N.V."
-  },
-  {
-      ticker: "RAD",
-      name: "Rite Aid Corporation"
-  },
-  {
-      ticker: "RAMP",
-      name: "LiveRamp Holdings, Inc."
-  },
-  {
-      ticker: "RBA",
-      name: "Ritchie Bros. Auctioneers Incorporated"
-  },
-  {
-      ticker: "RBC",
-      name: "Regal Beloit Corporation"
-  },
-  {
-      ticker: "RBS",
-      name: "Royal Bank Scotland plc (The)"
-  },
-  {
-      ticker: "RC",
-      name: "Ready Capital Corporation"
-  },
-  {
-      ticker: "RCA",
-      name: "Ready Capital Corporation"
-  },
-  {
-      ticker: "RCB",
-      name: "Ready Capital Corporation"
-  },
-  {
-      ticker: "RCI",
-      name: "Rogers Communication, Inc."
-  },
-  {
-      ticker: "RCL",
-      name: "Royal Caribbean Cruises Ltd."
-  },
-  {
-      ticker: "RCP",
-      name: "Ready Capital Corporation"
-  },
-  {
-      ticker: "RCS",
-      name: "PIMCO Strategic Income Fund, Inc."
-  },
-  {
-      ticker: "RCUS",
-      name: "Arcus Biosciences, Inc."
-  },
-  {
-      ticker: "RDN",
-      name: "Radian Group Inc."
-  },
-  {
-      ticker: "RDS.A",
-      name: "Royal Dutch Shell PLC"
-  },
-  {
-      ticker: "RDS.B",
-      name: "Royal Dutch Shell PLC"
-  },
-  {
-      ticker: "RDY",
-      name: "Dr. Reddy&#39;s Laboratories Ltd"
-  },
-  {
-      ticker: "RE",
-      name: "Everest Re Group, Ltd."
-  },
-  {
-      ticker: "RELX",
-      name: "RELX PLC"
-  },
-  {
-      ticker: "RENN",
-      name: "Renren Inc."
-  },
-  {
-      ticker: "RES",
-      name: "RPC, Inc."
-  },
-  {
-      ticker: "RESI",
-      name: "Front Yard Residential Corporation"
-  },
-  {
-      ticker: "REV",
-      name: "Revlon, Inc."
-  },
-  {
-      ticker: "REVG",
-      name: "REV Group, Inc."
-  },
-  {
-      ticker: "REX",
-      name: "REX American Resources Corporation"
-  },
-  {
-      ticker: "REXR",
-      name: "Rexford Industrial Realty, Inc."
-  },
-  {
-      ticker: "REZI",
-      name: "Resideo Technologies, Inc."
-  },
-  {
-      ticker: "RF",
-      name: "Regions Financial Corporation"
-  },
-  {
-      ticker: "RFI",
-      name: "Cohen & Steers Total Return Realty Fund, Inc."
-  },
-  {
-      ticker: "RFP",
-      name: "Resolute Forest Products Inc."
-  },
-  {
-      ticker: "RGA",
-      name: "Reinsurance Group of America, Incorporated"
-  },
-  {
-      ticker: "RGR",
-      name: "Sturm, Ruger & Company, Inc."
-  },
-  {
-      ticker: "RGS",
-      name: "Regis Corporation"
-  },
-  {
-      ticker: "RGT",
-      name: "Royce Global Value Trust, Inc."
-  },
-  {
-      ticker: "RH",
-      name: "RH"
-  },
-  {
-      ticker: "RHI",
-      name: "Robert Half International Inc."
-  },
-  {
-      ticker: "RHP",
-      name: "Ryman Hospitality Properties, Inc."
-  },
-  {
-      ticker: "RIG",
-      name: "Transocean Ltd."
-  },
-  {
-      ticker: "RIO",
-      name: "Rio Tinto Plc"
-  },
-  {
-      ticker: "RIV",
-      name: "RiverNorth Opportunities Fund, Inc."
-  },
-  {
-      ticker: "RJF",
-      name: "Raymond James Financial, Inc."
-  },
-  {
-      ticker: "RL",
-      name: "Ralph Lauren Corporation"
-  },
-  {
-      ticker: "RLGY",
-      name: "Realogy Holdings Corp."
-  },
-  {
-      ticker: "RLH",
-      name: "Red Lion Hotels Corporation"
-  },
-  {
-      ticker: "RLI",
-      name: "RLI Corp."
-  },
-  {
-      ticker: "RLJ",
-      name: "RLJ Lodging Trust"
-  },
-  {
-      ticker: "RM",
-      name: "Regional Management Corp."
-  },
-  {
-      ticker: "RMAX",
-      name: "RE/MAX Holdings, Inc."
-  },
-  {
-      ticker: "RMD",
-      name: "ResMed Inc."
-  },
-  {
-      ticker: "RMED",
-      name: "Ra Medical Systems, Inc."
-  },
-  {
-      ticker: "RMG",
-      name: "RMG Acquisition Corp."
-  },
-  {
-      ticker: "RMG.U",
-      name: "RMG Acquisition Corp."
-  },
-  {
-      ticker: "RMG.WS",
-      name: "RMG Acquisition Corp."
-  },
-  {
-      ticker: "RMI",
-      name: "RiverNorth Opportunistic Municipal Income Fund, Inc."
-  },
-  {
-      ticker: "RMM",
-      name: "RiverNorth Managed Duration Municipal Income Fund, Inc."
-  },
-  {
-      ticker: "RMT",
-      name: "Royce Micro-Cap Trust, Inc."
-  },
-  {
-      ticker: "RNG",
-      name: "Ringcentral, Inc."
-  },
-  {
-      ticker: "RNGR",
-      name: "Ranger Energy Services, Inc."
-  },
-  {
-      ticker: "RNP",
-      name: "Cohen & Steers REIT and Preferred and Income Fund,"
-  },
-  {
-      ticker: "RNR",
-      name: "RenaissanceRe Holdings Ltd."
-  },
-  {
-      ticker: "ROAN",
-      name: "Roan Resources, Inc."
-  },
-  {
-      ticker: "ROG",
-      name: "Rogers Corporation"
-  },
-  {
-      ticker: "ROK",
-      name: "Rockwell Automation, Inc."
-  },
-  {
-      ticker: "ROL",
-      name: "Rollins, Inc."
-  },
-  {
-      ticker: "ROP",
-      name: "Roper Technologies, Inc."
-  },
-  {
-      ticker: "ROYT",
-      name: "Pacific Coast Oil Trust"
-  },
-  {
-      ticker: "RPAI",
-      name: "Retail Properties of America, Inc."
-  },
-  {
-      ticker: "RPLA",
-      name: "Replay Acquisition Corp."
-  },
-  {
-      ticker: "RPLA.U",
-      name: "Replay Acquisition Corp."
-  },
-  {
-      ticker: "RPLA.WS",
-      name: "Replay Acquisition Corp."
-  },
-  {
-      ticker: "RPM",
-      name: "RPM International Inc."
-  },
-  {
-      ticker: "RPT",
-      name: "RPT Realty"
-  },
-  {
-      ticker: "RQI",
-      name: "Cohen & Steers Quality Income Realty Fund Inc"
-  },
-  {
-      ticker: "RRC",
-      name: "Range Resources Corporation"
-  },
-  {
-      ticker: "RRD",
-      name: "R.R. Donnelley & Sons Company"
-  },
-  {
-      ticker: "RRTS",
-      name: "Roadrunner Transportation Systems, Inc."
-  },
-  {
-      ticker: "RS",
-      name: "Reliance Steel & Aluminum Co."
-  },
-  {
-      ticker: "RSF",
-      name: "RiverNorth Marketplace Lending Corporation"
-  },
-  {
-      ticker: "RSG",
-      name: "Republic Services, Inc."
-  },
-  {
-      ticker: "RST",
-      name: "Rosetta Stone"
-  },
-  {
-      ticker: "RTEC",
-      name: "Rudolph Technologies, Inc."
-  },
-  {
-      ticker: "RTN",
-      name: "Raytheon Company"
-  },
-  {
-      ticker: "RTW",
-      name: "RTW Retailwinds, Inc."
-  },
-  {
-      ticker: "RUBI",
-      name: "The Rubicon Project, Inc."
-  },
-  {
-      ticker: "RVI",
-      name: "Retail Value Inc."
-  },
-  {
-      ticker: "RVLV",
-      name: "Revolve Group, Inc."
-  },
-  {
-      ticker: "RVT",
-      name: "Royce Value Trust, Inc."
-  },
-  {
-      ticker: "RWGE",
-      name: "Regalwood Global Energy Ltd."
-  },
-  {
-      ticker: "RWGE.U",
-      name: "Regalwood Global Energy Ltd."
-  },
-  {
-      ticker: "RWGE.WS",
-      name: "Regalwood Global Energy Ltd."
-  },
-  {
-      ticker: "RWT",
-      name: "Redwood Trust, Inc."
-  },
-  {
-      ticker: "RXN",
-      name: "Rexnord Corporation"
-  },
-  {
-      ticker: "RY",
-      name: "Royal Bank Of Canada"
-  },
-  {
-      ticker: "RYAM",
-      name: "Rayonier Advanced Materials Inc."
-  },
-  {
-      ticker: "RYB",
-      name: "RYB Education, Inc."
-  },
-  {
-      ticker: "RYI",
-      name: "Ryerson Holding Corporation"
-  },
-  {
-      ticker: "RYN",
-      name: "Rayonier Inc."
-  },
-  {
-      ticker: "RZA",
-      name: "Reinsurance Group of America, Incorporated"
-  },
-  {
-      ticker: "RZB",
-      name: "Reinsurance Group of America, Incorporated"
-  },
-  {
-      ticker: "S",
-      name: "Sprint Corporation"
-  },
-  {
-      ticker: "SA",
-      name: "Seabridge Gold, Inc."
-  },
-  {
-      ticker: "SAB",
-      name: "Saratoga Investment Corp"
-  },
-  {
-      ticker: "SAF",
-      name: "Saratoga Investment Corp"
-  },
-  {
-      ticker: "SAFE",
-      name: "Safehold Inc."
-  },
-  {
-      ticker: "SAH",
-      name: "Sonic Automotive, Inc."
-  },
-  {
-      ticker: "SAIC",
-      name: "SCIENCE APPLICATIONS INTERNATIONAL CORPORATION"
-  },
-  {
-      ticker: "SAIL",
-      name: "SailPoint Technologies Holdings, Inc."
-  },
-  {
-      ticker: "SALT",
-      name: "Scorpio Bulkers Inc."
-  },
-  {
-      ticker: "SAM",
-      name: "Boston Beer Company, Inc. (The)"
-  },
-  {
-      ticker: "SAN",
-      name: "Banco Santander, S.A."
-  },
-  {
-      ticker: "SAP",
-      name: "SAP SE"
-  },
-  {
-      ticker: "SAR",
-      name: "Saratoga Investment Corp"
-  },
-  {
-      ticker: "SAVE",
-      name: "Spirit Airlines, Inc."
-  },
-  {
-      ticker: "SB",
-      name: "Safe Bulkers, Inc"
-  },
-  {
-      ticker: "SBE.U",
-      name: "Switchback Energy Acquisition Corporation"
-  },
-  {
-      ticker: "SBGL",
-      name: "Sibanye Gold Limited"
-  },
-  {
-      ticker: "SBH",
-      name: "Sally Beauty Holdings, Inc."
-  },
-  {
-      ticker: "SBI",
-      name: "Western Asset Intermediate Muni Fund Inc"
-  },
-  {
-      ticker: "SBNA",
-      name: "Scorpio Tankers Inc."
-  },
-  {
-      ticker: "SBOW",
-      name: "SilverBow Resorces, Inc."
-  },
-  {
-      ticker: "SBR",
-      name: "Sabine Royalty Trust"
-  },
-  {
-      ticker: "SBS",
-      name: "Companhia de saneamento Basico Do Estado De Sao Paulo - Sabesp"
-  },
-  {
-      ticker: "SC",
-      name: "Santander Consumer USA Holdings Inc."
-  },
-  {
-      ticker: "SCA",
-      name: "Stellus Capital Investment Corporation"
-  },
-  {
-      ticker: "SCCO",
-      name: "Southern Copper Corporation"
-  },
-  {
-      ticker: "SCD",
-      name: "LMP Capital and Income Fund Inc."
-  },
-  {
-      ticker: "SCHW",
-      name: "The Charles Schwab Corporation"
-  },
-  {
-      ticker: "SCI",
-      name: "Service Corporation International"
-  },
-  {
-      ticker: "SCL",
-      name: "Stepan Company"
-  },
-  {
-      ticker: "SCM",
-      name: "Stellus Capital Investment Corporation"
-  },
-  {
-      ticker: "SCPE",
-      name: "SC Health Corporation"
-  },
-  {
-      ticker: "SCPE.U",
-      name: "SC Health Corporation"
-  },
-  {
-      ticker: "SCPE.WS",
-      name: "SC Health Corporation"
-  },
-  {
-      ticker: "SCS",
-      name: "Steelcase Inc."
-  },
-  {
-      ticker: "SCX",
-      name: "L.S. Starrett Company (The)"
-  },
-  {
-      ticker: "SD",
-      name: "SandRidge Energy, Inc."
-  },
-  {
-      ticker: "SDR",
-      name: "SandRidge Mississippian Trust II"
-  },
-  {
-      ticker: "SDRL",
-      name: "Seadrill Limited"
-  },
-  {
-      ticker: "SDT",
-      name: "SandRidge Mississippian Trust I"
-  },
-  {
-      ticker: "SE",
-      name: "Sea Limited"
-  },
-  {
-      ticker: "SEAS",
-      name: "SeaWorld Entertainment, Inc."
-  },
-  {
-      ticker: "SEE",
-      name: "Sealed Air Corporation"
-  },
-  {
-      ticker: "SEM",
-      name: "Select Medical Holdings Corporation"
-  },
-  {
-      ticker: "SEMG",
-      name: "Semgroup Corporation"
-  },
-  {
-      ticker: "SERV",
-      name: "ServiceMaster Global Holdings, Inc."
-  },
-  {
-      ticker: "SF",
-      name: "Stifel Financial Corporation"
-  },
-  {
-      ticker: "SFB",
-      name: "Stifel Financial Corporation"
-  },
-  {
-      ticker: "SFE",
-      name: "Safeguard Scientifics, Inc."
-  },
-  {
-      ticker: "SFL",
-      name: "Ship Finance International Limited"
-  },
-  {
-      ticker: "SFUN",
-      name: "Fang Holdings Limited"
-  },
-  {
-      ticker: "SGU",
-      name: "Star Group, L.P."
-  },
-  {
-      ticker: "SHAK",
-      name: "Shake Shack, Inc."
-  },
-  {
-      ticker: "SHG",
-      name: "Shinhan Financial Group Co Ltd"
-  },
-  {
-      ticker: "SHI",
-      name: "SINOPEC Shangai Petrochemical Company, Ltd."
-  },
-  {
-      ticker: "SHLL",
-      name: "Tortoise Acquisition Corp."
-  },
-  {
-      ticker: "SHLL.U",
-      name: "Tortoise Acquisition Corp."
-  },
-  {
-      ticker: "SHLL.WS",
-      name: "Tortoise Acquisition Corp."
-  },
-  {
-      ticker: "SHLX",
-      name: "Shell Midstream Partners, L.P."
-  },
-  {
-      ticker: "SHO",
-      name: "Sunstone Hotel Investors, Inc."
-  },
-  {
-      ticker: "SHOP",
-      name: "Shopify Inc."
-  },
-  {
-      ticker: "SHW",
-      name: "Sherwin-Williams Company (The)"
-  },
-  {
-      ticker: "SID",
-      name: "National Steel Company"
-  },
-  {
-      ticker: "SIG",
-      name: "Signet Jewelers Limited"
-  },
-  {
-      ticker: "SITC",
-      name: "SITE Centers Corp."
-  },
-  {
-      ticker: "SITE",
-      name: "SiteOne Landscape Supply, Inc."
-  },
-  {
-      ticker: "SIX",
-      name: "Six Flags Entertainment Corporation New"
-  },
-  {
-      ticker: "SJI",
-      name: "South Jersey Industries, Inc."
-  },
-  {
-      ticker: "SJIU",
-      name: "South Jersey Industries, Inc."
-  },
-  {
-      ticker: "SJM",
-      name: "J.M. Smucker Company (The)"
-  },
-  {
-      ticker: "SJR",
-      name: "Shaw Communications Inc."
-  },
-  {
-      ticker: "SJT",
-      name: "San Juan Basin Royalty Trust"
-  },
-  {
-      ticker: "SJW",
-      name: "SJW Group"
-  },
-  {
-      ticker: "SKM",
-      name: "SK Telecom Co., Ltd."
-  },
-  {
-      ticker: "SKT",
-      name: "Tanger Factory Outlet Centers, Inc."
-  },
-  {
-      ticker: "SKX",
-      name: "Skechers U.S.A., Inc."
-  },
-  {
-      ticker: "SKY",
-      name: "Skyline Champion Corporation"
-  },
-  {
-      ticker: "SLB",
-      name: "Schlumberger N.V."
-  },
-  {
-      ticker: "SLCA",
-      name: "U.S. Silica Holdings, Inc."
-  },
-  {
-      ticker: "SLF",
-      name: "Sun Life Financial Inc."
-  },
-  {
-      ticker: "SLG",
-      name: "SL Green Realty Corp"
-  },
-  {
-      ticker: "SM",
-      name: "SM Energy Company"
-  },
-  {
-      ticker: "SMAR",
-      name: "Smartsheet Inc."
-  },
-  {
-      ticker: "SMFG",
-      name: "Sumitomo Mitsui Financial Group Inc"
-  },
-  {
-      ticker: "SMG",
-      name: "Scotts Miracle-Gro Company (The)"
-  },
-  {
-      ticker: "SMHI",
-      name: "SEACOR Marine Holdings Inc."
-  },
-  {
-      ticker: "SMLP",
-      name: "Summit Midstream Partners, LP"
-  },
-  {
-      ticker: "SMM",
-      name: "Salient Midstream & MLP Fund"
-  },
-  {
-      ticker: "SMP",
-      name: "Standard Motor Products, Inc."
-  },
-  {
-      ticker: "SMTA",
-      name: "Spirit MTA REIT"
-  },
-  {
-      ticker: "SNA",
-      name: "Snap-On Incorporated"
-  },
-  {
-      ticker: "SNAP",
-      name: "Snap Inc."
-  },
-  {
-      ticker: "SNDR",
-      name: "Schneider National, Inc."
-  },
-  {
-      ticker: "SNE",
-      name: "Sony Corp Ord"
-  },
-  {
-      ticker: "SNN",
-      name: "Smith & Nephew SNATS, Inc."
-  },
-  {
-      ticker: "SNP",
-      name: "China Petroleum & Chemical Corporation"
-  },
-  {
-      ticker: "SNR",
-      name: "New Senior Investment Group Inc."
-  },
-  {
-      ticker: "SNV",
-      name: "Synovus Financial Corp."
-  },
-  {
-      ticker: "SNX",
-      name: "Synnex Corporation"
-  },
-  {
-      ticker: "SO",
-      name: "Southern Company (The)"
-  },
-  {
-      ticker: "SOGO",
-      name: "Sogou Inc."
-  },
-  {
-      ticker: "SOI",
-      name: "Solaris Oilfield Infrastructure, Inc."
-  },
-  {
-      ticker: "SOJA",
-      name: "Southern Company (The)"
-  },
-  {
-      ticker: "SOJB",
-      name: "Southern Company (The)"
-  },
-  {
-      ticker: "SOJC",
-      name: "Southern Company (The)"
-  },
-  {
-      ticker: "SOL",
-      name: "Renesola Ltd."
-  },
-  {
-      ticker: "SOLN",
-      name: "Southern Company (The)"
-  },
-  {
-      ticker: "SON",
-      name: "Sonoco Products Company"
-  },
-  {
-      ticker: "SOR",
-      name: "Source Capital, Inc."
-  },
-  {
-      ticker: "SPAQ",
-      name: "Spartan Energy Acquisition Corp"
-  },
-  {
-      ticker: "SPAQ.U",
-      name: "Spartan Energy Acquisition Corp"
-  },
-  {
-      ticker: "SPAQ.WS",
-      name: "Spartan Energy Acquisition Corp"
-  },
-  {
-      ticker: "SPB           ",
-      name: "Spectrum Brands Holdings, Inc."
-  },
-  {
-      ticker: "SPE",
-      name: "Special Opportunities Fund Inc."
-  },
-  {
-      ticker: "SPG",
-      name: "Simon Property Group, Inc."
-  },
-  {
-      ticker: "SPGI",
-      name: "S&P Global Inc."
-  },
-  {
-      ticker: "SPH",
-      name: "Suburban Propane Partners, L.P."
-  },
-  {
-      ticker: "SPLP",
-      name: "Steel Partners Holdings LP"
-  },
-  {
-      ticker: "SPN",
-      name: "Superior Energy Services, Inc."
-  },
-  {
-      ticker: "SPOT",
-      name: "Spotify Technology S.A."
-  },
-  {
-      ticker: "SPR",
-      name: "Spirit Aerosystems Holdings, Inc."
-  },
-  {
-      ticker: "SPXC",
-      name: "SPX Corporation"
-  },
-  {
-      ticker: "SPXX",
-      name: "Nuveen S&P 500 Dynamic Overwrite Fund"
-  },
-  {
-      ticker: "SQ",
-      name: "Square, Inc."
-  },
-  {
-      ticker: "SQM",
-      name: "Sociedad Quimica y Minera S.A."
-  },
-  {
-      ticker: "SQNS",
-      name: "Sequans Communications S.A."
-  },
-  {
-      ticker: "SR",
-      name: "Spire Inc."
-  },
-  {
-      ticker: "SRC",
-      name: "Spirit Realty Capital, Inc."
-  },
-  {
-      ticker: "SRE",
-      name: "Sempra Energy"
-  },
-  {
-      ticker: "SREA",
-      name: "Sempra Energy"
-  },
-  {
-      ticker: "SRF",
-      name: "Cushing Energy Income Fund (The)"
-  },
-  {
-      ticker: "SRG",
-      name: "Seritage Growth Properties"
-  },
-  {
-      ticker: "SRI",
-      name: "Stoneridge, Inc."
-  },
-  {
-      ticker: "SRL",
-      name: "Scully Royalty Ltd."
-  },
-  {
-      ticker: "SRLP",
-      name: "Sprague Resources LP"
-  },
-  {
-      ticker: "SRT",
-      name: "StarTek, Inc."
-  },
-  {
-      ticker: "SRV",
-      name: "Cushing MLP & Infrastructure Total Return Fund"
-  },
-  {
-      ticker: "SSD",
-      name: "Simpson Manufacturing Company, Inc."
-  },
-  {
-      ticker: "SSI",
-      name: "Stage Stores, Inc."
-  },
-  {
-      ticker: "SSL",
-      name: "Sasol Ltd."
-  },
-  {
-      ticker: "SSTK",
-      name: "Shutterstock, Inc."
-  },
-  {
-      ticker: "SSW",
-      name: "Seaspan Corporation"
-  },
-  {
-      ticker: "SSWA",
-      name: "Seaspan Corporation"
-  },
-  {
-      ticker: "ST",
-      name: "Sensata Technologies Holding plc"
-  },
-  {
-      ticker: "STAG",
-      name: "Stag Industrial, Inc."
-  },
-  {
-      ticker: "STAR          ",
-      name: "iStar Inc."
-  },
-  {
-      ticker: "STC",
-      name: "Stewart Information Services Corporation"
-  },
-  {
-      ticker: "STE",
-      name: "STERIS plc"
-  },
-  {
-      ticker: "STG",
-      name: "Sunlands Technology Group"
-  },
-  {
-      ticker: "STI",
-      name: "SunTrust Banks, Inc."
-  },
-  {
-      ticker: "STK",
-      name: "Columbia Seligman Premium Technology Growth Fund, Inc"
-  },
-  {
-      ticker: "STL",
-      name: "Sterling Bancorp"
-  },
-  {
-      ticker: "STM",
-      name: "STMicroelectronics N.V."
-  },
-  {
-      ticker: "STN",
-      name: "Stantec Inc"
-  },
-  {
-      ticker: "STNG",
-      name: "Scorpio Tankers Inc."
-  },
-  {
-      ticker: "STON",
-      name: "StoneMor Partners L.P."
-  },
-  {
-      ticker: "STOR",
-      name: "STORE Capital Corporation"
-  },
-  {
-      ticker: "STT",
-      name: "State Street Corporation"
-  },
-  {
-      ticker: "STWD",
-      name: "STARWOOD PROPERTY TRUST, INC."
-  },
-  {
-      ticker: "STZ",
-      name: "Constellation Brands Inc"
-  },
-  {
-      ticker: "STZ.B",
-      name: "Constellation Brands Inc"
-  },
-  {
-      ticker: "SU",
-      name: "Suncor Energy  Inc."
-  },
-  {
-      ticker: "SUI",
-      name: "Sun Communities, Inc."
-  },
-  {
-      ticker: "SUM",
-      name: "Summit Materials, Inc."
-  },
-  {
-      ticker: "SUN",
-      name: "Sunoco LP"
-  },
-  {
-      ticker: "SUP",
-      name: "Superior Industries International, Inc."
-  },
-  {
-      ticker: "SUPV",
-      name: "Grupo Supervielle S.A."
-  },
-  {
-      ticker: "SUZ",
-      name: "Suzano S.A."
-  },
-  {
-      ticker: "SWCH",
-      name: "Switch, Inc."
-  },
-  {
-      ticker: "SWI",
-      name: "SolarWinds Corporation"
-  },
-  {
-      ticker: "SWJ",
-      name: "Stanley Black & Decker, Inc."
-  },
-  {
-      ticker: "SWK",
-      name: "Stanley Black & Decker, Inc."
-  },
-  {
-      ticker: "SWM",
-      name: "Schweitzer-Mauduit International, Inc."
-  },
-  {
-      ticker: "SWN",
-      name: "Southwestern Energy Company"
-  },
-  {
-      ticker: "SWP",
-      name: "Stanley Black & Decker, Inc."
-  },
-  {
-      ticker: "SWX",
-      name: "Southwest Gas Holdings, Inc."
-  },
-  {
-      ticker: "SWZ",
-      name: "Swiss Helvetia Fund, Inc. (The)"
-  },
-  {
-      ticker: "SXC",
-      name: "SunCoke Energy, Inc."
-  },
-  {
-      ticker: "SXI",
-      name: "Standex International Corporation"
-  },
-  {
-      ticker: "SXT",
-      name: "Sensient Technologies Corporation"
-  },
-  {
-      ticker: "SYF",
-      name: "Synchrony Financial"
-  },
-  {
-      ticker: "SYK",
-      name: "Stryker Corporation"
-  },
-  {
-      ticker: "SYX",
-      name: "Systemax Inc."
-  },
-  {
-      ticker: "SYY",
-      name: "Sysco Corporation"
-  },
-  {
-      ticker: "SZC",
-      name: "Cushing Renaissance Fund (The)"
-  },
-  {
-      ticker: "T",
-      name: "AT&T Inc."
-  },
-  {
-      ticker: "TAC",
-      name: "TransAlta Corporation"
-  },
-  {
-      ticker: "TAK",
-      name: "Takeda Pharmaceutical Company Limited"
-  },
-  {
-      ticker: "TAL",
-      name: "TAL Education Group"
-  },
-  {
-      ticker: "TALO",
-      name: "Talos Energy, Inc."
-  },
-  {
-      ticker: "TAP",
-      name: "Molson Coors Brewing  Company"
-  },
-  {
-      ticker: "TAP.A",
-      name: "Molson Coors Brewing  Company"
-  },
-  {
-      ticker: "TARO",
-      name: "Taro Pharmaceutical Industries Ltd."
-  },
-  {
-      ticker: "TBB",
-      name: "AT&T Inc."
-  },
-  {
-      ticker: "TBC",
-      name: "AT&T Inc."
-  },
-  {
-      ticker: "TBI",
-      name: "TrueBlue, Inc."
-  },
-  {
-      ticker: "TCI",
-      name: "Transcontinental Realty Investors, Inc."
-  },
-  {
-      ticker: "TCO",
-      name: "Taubman Centers, Inc."
-  },
-  {
-      ticker: "TCP",
-      name: "TC PipeLines, LP"
-  },
-  {
-      ticker: "TCRW",
-      name: "THL Credit, Inc."
-  },
-  {
-      ticker: "TCRZ",
-      name: "THL Credit, Inc."
-  },
-  {
-      ticker: "TCS",
-      name: "Container Store (The)"
-  },
-  {
-      ticker: "TD",
-      name: "Toronto Dominion Bank (The)"
-  },
-  {
-      ticker: "TDA",
-      name: "Telephone and Data Systems, Inc."
-  },
-  {
-      ticker: "TDC",
-      name: "Teradata Corporation"
-  },
-  {
-      ticker: "TDE",
-      name: "Telephone and Data Systems, Inc."
-  },
-  {
-      ticker: "TDF",
-      name: "Templeton Dragon Fund, Inc."
-  },
-  {
-      ticker: "TDG",
-      name: "Transdigm Group Incorporated"
-  },
-  {
-      ticker: "TDI",
-      name: "Telephone and Data Systems, Inc."
-  },
-  {
-      ticker: "TDJ",
-      name: "Telephone and Data Systems, Inc."
-  },
-  {
-      ticker: "TDOC",
-      name: "Teladoc Health, Inc."
-  },
-  {
-      ticker: "TDS",
-      name: "Telephone and Data Systems, Inc."
-  },
-  {
-      ticker: "TDW",
-      name: "Tidewater Inc."
-  },
-  {
-      ticker: "TDW.WS.A",
-      name: "Tidewater Inc."
-  },
-  {
-      ticker: "TDW.WS.B",
-      name: "Tidewater Inc."
-  },
-  {
-      ticker: "TDY",
-      name: "Teledyne Technologies Incorporated"
-  },
-  {
-      ticker: "TEAF",
-      name: "Tortoise Essential Assets Income Term Fund"
-  },
-  {
-      ticker: "TECK",
-      name: "Teck Resources Ltd"
-  },
-  {
-      ticker: "TEF",
-      name: "Telefonica SA"
-  },
-  {
-      ticker: "TEI",
-      name: "Templeton Emerging Markets Income Fund, Inc."
-  },
-  {
-      ticker: "TEL",
-      name: "TE Connectivity Ltd."
-  },
-  {
-      ticker: "TEN",
-      name: "Tenneco Inc."
-  },
-  {
-      ticker: "TEO",
-      name: "Telecom Argentina Stet - France Telecom S.A."
-  },
-  {
-      ticker: "TEVA",
-      name: "Teva Pharmaceutical Industries Limited"
-  },
-  {
-      ticker: "TEX",
-      name: "Terex Corporation"
-  },
-  {
-      ticker: "TFX",
-      name: "Teleflex Incorporated"
-  },
-  {
-      ticker: "TG",
-      name: "Tredegar Corporation"
-  },
-  {
-      ticker: "TGE",
-      name: "Tallgrass Energy, LP"
-  },
-  {
-      ticker: "TGH",
-      name: "Textainer Group Holdings Limited"
-  },
-  {
-      ticker: "TGI",
-      name: "Triumph Group, Inc."
-  },
-  {
-      ticker: "TGNA",
-      name: "TEGNA Inc."
-  },
-  {
-      ticker: "TGP",
-      name: "Teekay LNG Partners L.P."
-  },
-  {
-      ticker: "TGS",
-      name: "Transportadora De Gas Sa Ord B"
-  },
-  {
-      ticker: "TGT",
-      name: "Target Corporation"
-  },
-  {
-      ticker: "THC",
-      name: "Tenet Healthcare Corporation"
-  },
-  {
-      ticker: "THG",
-      name: "The Hanover Insurance Group, Inc."
-  },
-  {
-      ticker: "THGA",
-      name: "The Hanover Insurance Group, Inc."
-  },
-  {
-      ticker: "THO",
-      name: "Thor Industries, Inc."
-  },
-  {
-      ticker: "THQ",
-      name: "Tekla Healthcare Opportunies Fund"
-  },
-  {
-      ticker: "THR",
-      name: "Thermon Group Holdings, Inc."
-  },
-  {
-      ticker: "THS",
-      name: "Treehouse Foods, Inc."
-  },
-  {
-      ticker: "THW",
-      name: "Tekla World Healthcare Fund"
-  },
-  {
-      ticker: "TIF",
-      name: "Tiffany & Co."
-  },
-  {
-      ticker: "TISI",
-      name: "Team, Inc."
-  },
-  {
-      ticker: "TJX",
-      name: "TJX Companies, Inc. (The)"
-  },
-  {
-      ticker: "TK",
-      name: "Teekay Corporation"
-  },
-  {
-      ticker: "TKC",
-      name: "Turkcell Iletisim Hizmetleri AS"
-  },
-  {
-      ticker: "TKR",
-      name: "Timken Company (The)"
-  },
-  {
-      ticker: "TLI",
-      name: "Western Asset Corporate Loan Fund Inc"
-  },
-  {
-      ticker: "TLK",
-      name: "PT Telekomunikasi Indonesia, Tbk"
-  },
-  {
-      ticker: "TLRA",
-      name: "Telaria, Inc."
-  },
-  {
-      ticker: "TLRD",
-      name: "Tailored Brands, Inc."
-  },
-  {
-      ticker: "TLYS",
-      name: "Tilly&#39;s, Inc."
-  },
-  {
-      ticker: "TM",
-      name: "Toyota Motor Corp Ltd Ord"
-  },
-  {
-      ticker: "TME",
-      name: "Tencent Music Entertainment Group"
-  },
-  {
-      ticker: "TMHC",
-      name: "Taylor Morrison Home Corporation"
-  },
-  {
-      ticker: "TMO",
-      name: "Thermo Fisher Scientific Inc"
-  },
-  {
-      ticker: "TMST",
-      name: "TimkenSteel Corporation"
-  },
-  {
-      ticker: "TNC",
-      name: "Tennant Company"
-  },
-  {
-      ticker: "TNET",
-      name: "TriNet Group, Inc."
-  },
-  {
-      ticker: "TNK",
-      name: "Teekay Tankers Ltd."
-  },
-  {
-      ticker: "TNP",
-      name: "Tsakos Energy Navigation Ltd"
-  },
-  {
-      ticker: "TOL",
-      name: "Toll Brothers, Inc."
-  },
-  {
-      ticker: "TOO",
-      name: "Teekay Offshore Partners L.P."
-  },
-  {
-      ticker: "TOT",
-      name: "Total S.A."
-  },
-  {
-      ticker: "TOWR",
-      name: "Tower International, Inc."
-  },
-  {
-      ticker: "TPB",
-      name: "Turning Point Brands, Inc."
-  },
-  {
-      ticker: "TPC",
-      name: "Tutor Perini Corporation"
-  },
-  {
-      ticker: "TPGH",
-      name: "TPG Pace Holdings Corp."
-  },
-  {
-      ticker: "TPGH.U",
-      name: "TPG Pace Holdings Corp."
-  },
-  {
-      ticker: "TPGH.WS",
-      name: "TPG Pace Holdings Corp."
-  },
-  {
-      ticker: "TPH",
-      name: "TRI Pointe Group, Inc."
-  },
-  {
-      ticker: "TPL",
-      name: "Texas Pacific Land Trust"
-  },
-  {
-      ticker: "TPR",
-      name: "Tapestry, Inc."
-  },
-  {
-      ticker: "TPRE",
-      name: "Third Point Reinsurance Ltd."
-  },
-  {
-      ticker: "TPVG",
-      name: "TriplePoint Venture Growth BDC Corp."
-  },
-  {
-      ticker: "TPVY",
-      name: "TriplePoint Venture Growth BDC Corp."
-  },
-  {
-      ticker: "TPX",
-      name: "Tempur Sealy International, Inc."
-  },
-  {
-      ticker: "TPZ",
-      name: "Tortoise Power and Energy Infrastructure Fund, Inc"
-  },
-  {
-      ticker: "TR",
-      name: "Tootsie Roll Industries, Inc."
-  },
-  {
-      ticker: "TRC",
-      name: "Tejon Ranch Co"
-  },
-  {
-      ticker: "TRCO",
-      name: "Tribune Media Company"
-  },
-  {
-      ticker: "TREC",
-      name: "Trecora Resources"
-  },
-  {
-      ticker: "TREX",
-      name: "Trex Company, Inc."
-  },
-  {
-      ticker: "TRGP",
-      name: "Targa Resources, Inc."
-  },
-  {
-      ticker: "TRI",
-      name: "Thomson Reuters Corp"
-  },
-  {
-      ticker: "TRK",
-      name: "Speedway Motorsports, Inc."
-  },
-  {
-      ticker: "TRN",
-      name: "Trinity Industries, Inc."
-  },
-  {
-      ticker: "TRNE",
-      name: "Trine Acquisition Corp."
-  },
-  {
-      ticker: "TRNE.U",
-      name: "Trine Acquisition Corp."
-  },
-  {
-      ticker: "TRNE.WS",
-      name: "Trine Acquisition Corp."
-  },
-  {
-      ticker: "TRNO",
-      name: "Terreno Realty Corporation"
-  },
-  {
-      ticker: "TROX",
-      name: "Tronox Holdings plc"
-  },
-  {
-      ticker: "TRP",
-      name: "TC Energy Corporation"
-  },
-  {
-      ticker: "TRQ",
-      name: "Turquoise Hill Resources Ltd."
-  },
-  {
-      ticker: "TRTN",
-      name: "Triton International Limited"
-  },
-  {
-      ticker: "TRTX",
-      name: "TPG RE Finance Trust, Inc."
-  },
-  {
-      ticker: "TRU",
-      name: "TransUnion"
-  },
-  {
-      ticker: "TRV",
-      name: "The Travelers Companies, Inc."
-  },
-  {
-      ticker: "TRWH",
-      name: "Twin River Worldwide Holdings, Inc."
-  },
-  {
-      ticker: "TS",
-      name: "Tenaris S.A."
-  },
-  {
-      ticker: "TSE",
-      name: "Trinseo S.A."
-  },
-  {
-      ticker: "TSI",
-      name: "TCW Strategic Income Fund, Inc."
-  },
-  {
-      ticker: "TSLF",
-      name: "THL Credit Senior Loan Fund"
-  },
-  {
-      ticker: "TSLX",
-      name: "TPG Specialty Lending, Inc."
-  },
-  {
-      ticker: "TSM",
-      name: "Taiwan Semiconductor Manufacturing Company Ltd."
-  },
-  {
-      ticker: "TSN",
-      name: "Tyson Foods, Inc."
-  },
-  {
-      ticker: "TSQ",
-      name: "Townsquare Media, Inc."
-  },
-  {
-      ticker: "TSS",
-      name: "Total System Services, Inc."
-  },
-  {
-      ticker: "TSU",
-      name: "TIM Participacoes S.A."
-  },
-  {
-      ticker: "TTC",
-      name: "Toro Company (The)"
-  },
-  {
-      ticker: "TTI",
-      name: "Tetra Technologies, Inc."
-  },
-  {
-      ticker: "TTM",
-      name: "Tata Motors Ltd"
-  },
-  {
-      ticker: "TTP",
-      name: "Tortoise Pipeline & Energy Fund, Inc."
-  },
-  {
-      ticker: "TU",
-      name: "TELUS Corporation"
-  },
-  {
-      ticker: "TUFN",
-      name: "Tufin Software Technologies Ltd."
-  },
-  {
-      ticker: "TUP",
-      name: "Tupperware Brands Corporation"
-  },
-  {
-      ticker: "TV",
-      name: "Grupo Televisa S.A."
-  },
-  {
-      ticker: "TVC",
-      name: "Tennessee Valley Authority"
-  },
-  {
-      ticker: "TVE",
-      name: "Tennessee Valley Authority"
-  },
-  {
-      ticker: "TWI",
-      name: "Titan International, Inc."
-  },
-  {
-      ticker: "TWLO",
-      name: "Twilio Inc."
-  },
-  {
-      ticker: "TWN",
-      name: "Taiwan Fund, Inc. (The)"
-  },
-  {
-      ticker: "TWO",
-      name: "Two Harbors Investments Corp"
-  },
-  {
-      ticker: "TWTR",
-      name: "Twitter, Inc."
-  },
-  {
-      ticker: "TX",
-      name: "Ternium S.A."
-  },
-  {
-      ticker: "TXT",
-      name: "Textron Inc."
-  },
-  {
-      ticker: "TY",
-      name: "Tri Continental Corporation"
-  },
-  {
-      ticker: "TYG",
-      name: "Tortoise Energy Infrastructure Corporation"
-  },
-  {
-      ticker: "TYL",
-      name: "Tyler Technologies, Inc."
-  },
-  {
-      ticker: "UA",
-      name: "Under Armour, Inc."
-  },
-  {
-      ticker: "UAA",
-      name: "Under Armour, Inc."
-  },
-  {
-      ticker: "UAN",
-      name: "CVR Partners, LP"
-  },
-  {
-      ticker: "UBA",
-      name: "Urstadt Biddle Properties Inc."
-  },
-  {
-      ticker: "UBER",
-      name: "Uber Technologies, Inc."
-  },
-  {
-      ticker: "UBP",
-      name: "Urstadt Biddle Properties Inc."
-  },
-  {
-      ticker: "UBS",
-      name: "UBS AG"
-  },
-  {
-      ticker: "UDR",
-      name: "UDR, Inc."
-  },
-  {
-      ticker: "UE",
-      name: "Urban Edge Properties"
-  },
-  {
-      ticker: "UFI",
-      name: "Unifi, Inc."
-  },
-  {
-      ticker: "UFS",
-      name: "Domtar Corporation"
-  },
-  {
-      ticker: "UGI",
-      name: "UGI Corporation"
-  },
-  {
-      ticker: "UGP",
-      name: "Ultrapar Participacoes S.A."
-  },
-  {
-      ticker: "UHS",
-      name: "Universal Health Services, Inc."
-  },
-  {
-      ticker: "UHT",
-      name: "Universal Health Realty Income Trust"
-  },
-  {
-      ticker: "UI",
-      name: "Ubiquiti Inc."
-  },
-  {
-      ticker: "UIS",
-      name: "Unisys Corporation"
-  },
-  {
-      ticker: "UL",
-      name: "Unilever PLC"
-  },
-  {
-      ticker: "UMC",
-      name: "United Microelectronics Corporation"
-  },
-  {
-      ticker: "UMH",
-      name: "UMH Properties, Inc."
-  },
-  {
-      ticker: "UN",
-      name: "Unilever NV"
-  },
-  {
-      ticker: "UNF",
-      name: "Unifirst Corporation"
-  },
-  {
-      ticker: "UNFI",
-      name: "United Natural Foods, Inc."
-  },
-  {
-      ticker: "UNH",
-      name: "UnitedHealth Group Incorporated"
-  },
-  {
-      ticker: "UNM",
-      name: "Unum Group"
-  },
-  {
-      ticker: "UNMA",
-      name: "Unum Group"
-  },
-  {
-      ticker: "UNP",
-      name: "Union Pacific Corporation"
-  },
-  {
-      ticker: "UNT",
-      name: "Unit Corporation"
-  },
-  {
-      ticker: "UNVR",
-      name: "Univar Solutions Inc."
-  },
-  {
-      ticker: "UPS",
-      name: "United Parcel Service, Inc."
-  },
-  {
-      ticker: "URI",
-      name: "United Rentals, Inc."
-  },
-  {
-      ticker: "USA",
-      name: "Liberty All-Star Equity Fund"
-  },
-  {
-      ticker: "USAC",
-      name: "USA Compression Partners, LP"
-  },
-  {
-      ticker: "USB",
-      name: "U.S. Bancorp"
-  },
-  {
-      ticker: "USDP",
-      name: "USD Partners LP"
-  },
-  {
-      ticker: "USFD",
-      name: "US Foods Holding Corp."
-  },
-  {
-      ticker: "USM",
-      name: "United States Cellular Corporation"
-  },
-  {
-      ticker: "USNA",
-      name: "USANA Health Sciences, Inc."
-  },
-  {
-      ticker: "USPH",
-      name: "U.S. Physical Therapy, Inc."
-  },
-  {
-      ticker: "USX",
-      name: "U.S. Xpress Enterprises, Inc."
-  },
-  {
-      ticker: "UTF",
-      name: "Cohen & Steers Infrastructure Fund, Inc"
-  },
-  {
-      ticker: "UTI",
-      name: "Universal Technical Institute Inc"
-  },
-  {
-      ticker: "UTL",
-      name: "UNITIL Corporation"
-  },
-  {
-      ticker: "UTX",
-      name: "United Technologies Corporation"
-  },
-  {
-      ticker: "UVE",
-      name: "UNIVERSAL INSURANCE HOLDINGS INC"
-  },
-  {
-      ticker: "UVV",
-      name: "Universal Corporation"
-  },
-  {
-      ticker: "UZA",
-      name: "United States Cellular Corporation"
-  },
-  {
-      ticker: "UZB",
-      name: "United States Cellular Corporation"
-  },
-  {
-      ticker: "UZC",
-      name: "United States Cellular Corporation"
-  },
-  {
-      ticker: "V",
-      name: "Visa Inc."
-  },
-  {
-      ticker: "VAC",
-      name: "Marriott Vacations Worldwide Corporation"
-  },
-  {
-      ticker: "VAL",
-      name: "Valaris plc"
-  },
-  {
-      ticker: "VALE",
-      name: "VALE S.A."
-  },
-  {
-      ticker: "VAM",
-      name: "The Vivaldi Opportunities Fund"
-  },
-  {
-      ticker: "VAPO",
-      name: "Vapotherm, Inc."
-  },
-  {
-      ticker: "VAR",
-      name: "Varian Medical Systems, Inc."
-  },
-  {
-      ticker: "VBF",
-      name: "Invesco Bond Fund"
-  },
-  {
-      ticker: "VCIF",
-      name: "Vertical Capital Income Fund"
-  },
-  {
-      ticker: "VCRA",
-      name: "Vocera Communications, Inc."
-  },
-  {
-      ticker: "VCV",
-      name: "Invesco California Value Municipal Income Trust"
-  },
-  {
-      ticker: "VEC",
-      name: "Vectrus, Inc."
-  },
-  {
-      ticker: "VEDL",
-      name: "Vedanta  Limited"
-  },
-  {
-      ticker: "VEEV",
-      name: "Veeva Systems Inc."
-  },
-  {
-      ticker: "VER",
-      name: "VEREIT Inc."
-  },
-  {
-      ticker: "VET",
-      name: "Vermilion Energy Inc."
-  },
-  {
-      ticker: "VFC",
-      name: "V.F. Corporation"
-  },
-  {
-      ticker: "VG",
-      name: "Vonage Holdings Corp."
-  },
-  {
-      ticker: "VGI",
-      name: "Virtus Global Multi-Sector Income Fund"
-  },
-  {
-      ticker: "VGM",
-      name: "Invesco Trust for Investment Grade Municipals"
-  },
-  {
-      ticker: "VGR",
-      name: "Vector Group Ltd."
-  },
-  {
-      ticker: "VHI",
-      name: "Valhi, Inc."
-  },
-  {
-      ticker: "VICI",
-      name: "VICI Properties Inc."
-  },
-  {
-      ticker: "VIPS",
-      name: "Vipshop Holdings Limited"
-  },
-  {
-      ticker: "VIST",
-      name: "Vista Oil & Gas, S.A.B. de C.V."
-  },
-  {
-      ticker: "VIV",
-      name: "Telefonica Brasil S.A."
-  },
-  {
-      ticker: "VJET",
-      name: "voxeljet AG"
-  },
-  {
-      ticker: "VKQ",
-      name: "Invesco Municipal Trust"
-  },
-  {
-      ticker: "VLO",
-      name: "Valero Energy Corporation"
-  },
-  {
-      ticker: "VLRS",
-      name: "Controladora Vuela Compania de Aviacion, S.A.B. de C.V."
-  },
-  {
-      ticker: "VLT",
-      name: "Invesco High Income Trust II"
-  },
-  {
-      ticker: "VMC",
-      name: "Vulcan Materials Company"
-  },
-  {
-      ticker: "VMI",
-      name: "Valmont Industries, Inc."
-  },
-  {
-      ticker: "VMO",
-      name: "Invesco Municipal Opportunity Trust"
-  },
-  {
-      ticker: "VMW",
-      name: "Vmware, Inc."
-  },
-  {
-      ticker: "VNCE",
-      name: "Vince Holding Corp."
-  },
-  {
-      ticker: "VNE",
-      name: "Veoneer, Inc."
-  },
-  {
-      ticker: "VNO",
-      name: "Vornado Realty Trust"
-  },
-  {
-      ticker: "VNTR",
-      name: "Venator Materials PLC"
-  },
-  {
-      ticker: "VOC",
-      name: "VOC Energy Trust"
-  },
-  {
-      ticker: "VOYA",
-      name: "Voya Financial, Inc."
-  },
-  {
-      ticker: "VPG",
-      name: "Vishay Precision Group, Inc."
-  },
-  {
-      ticker: "VPV",
-      name: "Invesco Pennsylvania Value Municipal Income Trust"
-  },
-  {
-      ticker: "VRS",
-      name: "Verso Corporation"
-  },
-  {
-      ticker: "VRTV",
-      name: "Veritiv Corporation"
-  },
-  {
-      ticker: "VSH",
-      name: "Vishay Intertechnology, Inc."
-  },
-  {
-      ticker: "VSI",
-      name: "Vitamin Shoppe, Inc"
-  },
-  {
-      ticker: "VSLR",
-      name: "Vivint Solar, Inc."
-  },
-  {
-      ticker: "VSM",
-      name: "Versum Materials, Inc."
-  },
-  {
-      ticker: "VST",
-      name: "Vistra Energy Corp."
-  },
-  {
-      ticker: "VSTO",
-      name: "Vista Outdoor Inc."
-  },
-  {
-      ticker: "VST.WS.A",
-      name: "Vistra Energy Corp."
-  },
-  {
-      ticker: "VTA",
-      name: "Invesco Credit Opportunities Fund"
-  },
-  {
-      ticker: "VTN",
-      name: "Invesco Trust  for Investment Grade New York Municipal"
-  },
-  {
-      ticker: "VTR",
-      name: "Ventas, Inc."
-  },
-  {
-      ticker: "VVI",
-      name: "Viad Corp"
-  },
-  {
-      ticker: "VVR",
-      name: "Invesco Senior Income Trust"
-  },
-  {
-      ticker: "VVV",
-      name: "Valvoline Inc."
-  },
-  {
-      ticker: "VZ",
-      name: "Verizon Communications Inc."
-  },
-  {
-      ticker: "W",
-      name: "Wayfair Inc."
-  },
-  {
-      ticker: "WAAS",
-      name: "AquaVenture Holdings Limited"
-  },
-  {
-      ticker: "WAB",
-      name: "Westinghouse Air Brake Technologies Corporation"
-  },
-  {
-      ticker: "WAIR",
-      name: "Wesco Aircraft Holdings, Inc."
-  },
-  {
-      ticker: "WAL",
-      name: "Western Alliance Bancorporation"
-  },
-  {
-      ticker: "WALA",
-      name: "Western Alliance Bancorporation"
-  },
-  {
-      ticker: "WAT",
-      name: "Waters Corporation"
-  },
-  {
-      ticker: "WBAI",
-      name: "500.com Limited"
-  },
-  {
-      ticker: "WBC",
-      name: "Wabco Holdings Inc."
-  },
-  {
-      ticker: "WBK",
-      name: "Westpac Banking Corporation"
-  },
-  {
-      ticker: "WBS",
-      name: "Webster Financial Corporation"
-  },
-  {
-      ticker: "WBT",
-      name: "Welbilt, Inc."
-  },
-  {
-      ticker: "WCC",
-      name: "WESCO International, Inc."
-  },
-  {
-      ticker: "WCG",
-      name: "WellCare Health Plans, Inc."
-  },
-  {
-      ticker: "WCN",
-      name: "Waste Connections, Inc."
-  },
-  {
-      ticker: "WD",
-      name: "Walker & Dunlop, Inc."
-  },
-  {
-      ticker: "WDR",
-      name: "Waddell & Reed Financial, Inc."
-  },
-  {
-      ticker: "WEA",
-      name: "Western Asset Bond Fund"
-  },
-  {
-      ticker: "WEC",
-      name: "WEC Energy Group, Inc."
-  },
-  {
-      ticker: "WEI",
-      name: "Weidai Ltd."
-  },
-  {
-      ticker: "WELL",
-      name: "Welltower Inc."
-  },
-  {
-      ticker: "WES",
-      name: "Western Midstream Partners, LP"
-  },
-  {
-      ticker: "WEX",
-      name: "WEX Inc."
-  },
-  {
-      ticker: "WF",
-      name: "Woori Bank"
-  },
-  {
-      ticker: "WFC",
-      name: "Wells Fargo & Company"
-  },
-  {
-      ticker: "WGO",
-      name: "Winnebago Industries, Inc."
-  },
-  {
-      ticker: "WH",
-      name: "Wyndham Hotels & Resorts, Inc."
-  },
-  {
-      ticker: "WHD",
-      name: "Cactus, Inc."
-  },
-  {
-      ticker: "WHG",
-      name: "Westwood Holdings Group Inc"
-  },
-  {
-      ticker: "WHR",
-      name: "Whirlpool Corporation"
-  },
-  {
-      ticker: "WIA",
-      name: "Western Asset/Claymore U.S. Treasury Inflation Prot Secs Fd"
-  },
-  {
-      ticker: "WIT",
-      name: "Wipro Limited"
-  },
-  {
-      ticker: "WIW",
-      name: "Western Asset/Claymore U.S Treasury Inflation Prot Secs Fd 2"
-  },
-  {
-      ticker: "WK",
-      name: "Workiva Inc."
-  },
-  {
-      ticker: "WLH",
-      name: "Lyon William Homes"
-  },
-  {
-      ticker: "WLK",
-      name: "Westlake Chemical Corporation"
-  },
-  {
-      ticker: "WLKP",
-      name: "Westlake Chemical Partners LP"
-  },
-  {
-      ticker: "WLL",
-      name: "Whiting Petroleum Corporation"
-  },
-  {
-      ticker: "WM",
-      name: "Waste Management, Inc."
-  },
-  {
-      ticker: "WMB",
-      name: "Williams Companies, Inc. (The)"
-  },
-  {
-      ticker: "WMC",
-      name: "Western Asset Mortgage Capital Corporation"
-  },
-  {
-      ticker: "WMK",
-      name: "Weis Markets, Inc."
-  },
-  {
-      ticker: "WMS",
-      name: "Advanced Drainage Systems, Inc."
-  },
-  {
-      ticker: "WMT",
-      name: "Walmart Inc."
-  },
-  {
-      ticker: "WNC",
-      name: "Wabash National Corporation"
-  },
-  {
-      ticker: "WNS",
-      name: "WNS (Holdings) Limited"
-  },
-  {
-      ticker: "WOR",
-      name: "Worthington Industries, Inc."
-  },
-  {
-      ticker: "WORK",
-      name: "Slack Technologies, Inc."
-  },
-  {
-      ticker: "WOW",
-      name: "WideOpenWest, Inc."
-  },
-  {
-      ticker: "WPC",
-      name: "W.P. Carey Inc."
-  },
-  {
-      ticker: "WPG",
-      name: "Washington Prime Group Inc."
-  },
-  {
-      ticker: "WPM",
-      name: "Wheaton Precious Metals Corp."
-  },
-  {
-      ticker: "WPP",
-      name: "WPP plc"
-  },
-  {
-      ticker: "WPX",
-      name: "WPX Energy, Inc."
-  },
-  {
-      ticker: "WRB",
-      name: "W.R. Berkley Corporation"
-  },
-  {
-      ticker: "WRE",
-      name: "Washington Real Estate Investment Trust"
-  },
-  {
-      ticker: "WRI",
-      name: "Weingarten Realty Investors"
-  },
-  {
-      ticker: "WRK",
-      name: "Westrock Company"
-  },
-  {
-      ticker: "WSM",
-      name: "Williams-Sonoma, Inc."
-  },
-  {
-      ticker: "WSO",
-      name: "Watsco, Inc."
-  },
-  {
-      ticker: "WSO.B",
-      name: "Watsco, Inc."
-  },
-  {
-      ticker: "WSR",
-      name: "Whitestone REIT"
-  },
-  {
-      ticker: "WST",
-      name: "West Pharmaceutical Services, Inc."
-  },
-  {
-      ticker: "WTI",
-      name: "W&T Offshore, Inc."
-  },
-  {
-      ticker: "WTM",
-      name: "White Mountains Insurance Group, Ltd."
-  },
-  {
-      ticker: "WTR",
-      name: "Aqua America, Inc."
-  },
-  {
-      ticker: "WTRU",
-      name: "Aqua America, Inc."
-  },
-  {
-      ticker: "WTS",
-      name: "Watts Water Technologies, Inc."
-  },
-  {
-      ticker: "WTTR",
-      name: "Select Energy Services, Inc."
-  },
-  {
-      ticker: "WU",
-      name: "Western Union Company (The)"
-  },
-  {
-      ticker: "WUBA",
-      name: "58.com Inc."
-  },
-  {
-      ticker: "WWE",
-      name: "World Wrestling Entertainment, Inc."
-  },
-  {
-      ticker: "WWW",
-      name: "Wolverine World Wide, Inc."
-  },
-  {
-      ticker: "WY",
-      name: "Weyerhaeuser Company"
-  },
-  {
-      ticker: "WYND",
-      name: "Wyndham Destinations, Inc."
-  },
-  {
-      ticker: "X",
-      name: "United States Steel Corporation"
-  },
-  {
-      ticker: "XAN",
-      name: "Exantas Capital Corp."
-  },
-  {
-      ticker: "XEC",
-      name: "Cimarex Energy Co"
-  },
-  {
-      ticker: "XFLT",
-      name: "XAI Octagon Floating Rate & Alternative Income Term Trust"
-  },
-  {
-      ticker: "XHR",
-      name: "Xenia Hotels & Resorts, Inc."
-  },
-  {
-      ticker: "XIN",
-      name: "Xinyuan Real Estate Co Ltd"
-  },
-  {
-      ticker: "XOM",
-      name: "Exxon Mobil Corporation"
-  },
-  {
-      ticker: "XPO",
-      name: "XPO Logistics, Inc."
-  },
-  {
-      ticker: "XRF",
-      name: "China Rapid Finance Limited"
-  },
-  {
-      ticker: "XRX",
-      name: "Xerox Holdings Corporation"
-  },
-  {
-      ticker: "XYF",
-      name: "X Financial"
-  },
-  {
-      ticker: "XYL",
-      name: "Xylem Inc."
-  },
-  {
-      ticker: "Y",
-      name: "Alleghany Corporation"
-  },
-  {
-      ticker: "YELP",
-      name: "Yelp Inc."
-  },
-  {
-      ticker: "YETI",
-      name: "YETI Holdings, Inc."
-  },
-  {
-      ticker: "YEXT",
-      name: "Yext, Inc."
-  },
-  {
-      ticker: "YPF",
-      name: "YPF Sociedad Anonima"
-  },
-  {
-      ticker: "YRD",
-      name: "Yirendai Ltd."
-  },
-  {
-      ticker: "YUM",
-      name: "Yum! Brands, Inc."
-  },
-  {
-      ticker: "YUMC",
-      name: "Yum China Holdings, Inc."
-  },
-  {
-      ticker: "ZAYO",
-      name: "Zayo Group Holdings, Inc."
-  },
-  {
-      ticker: "ZBH",
-      name: "Zimmer Biomet Holdings, Inc."
-  },
-  {
-      ticker: "ZBK",
-      name: "Zions Bancorporation N.A."
-  },
-  {
-      ticker: "ZEN",
-      name: "Zendesk, Inc."
-  },
-  {
-      ticker: "ZF",
-      name: "Virtus Total Return Fund Inc."
-  },
-  {
-      ticker: "ZNH",
-      name: "China Southern Airlines Company Limited"
-  },
-  {
-      ticker: "ZTO",
-      name: "ZTO Express (Cayman) Inc."
-  },
-  {
-      ticker: "ZTR",
-      name: "Virtus Global Dividend & Income Fund Inc."
-  },
-  {
-      ticker: "ZTS",
-      name: "Zoetis Inc."
-  },
-  {
-      ticker: "ZUO",
-      name: "Zuora, Inc."
-  },
-  {
-      ticker: "ZYME",
-      name: "Zymeworks Inc."
-  }
-]
+const tickers: {
+    [key: string]: string 
+} = {
+  A: "Agilent Technologies, Inc.",
+  AA: "Alcoa Corporation",
+  AAC: "AAC Holdings, Inc.",
+  AAN: "Aaron&#39;s,  Inc.",
+  AAP: "Advance Auto Parts Inc",
+  AAPL: "Apple Inc.",
+  AAT: "American Assets Trust, Inc.",
+  AB: "AllianceBernstein Holding L.P.",
+  ABB: "ABB Ltd",
+  ABBV: "AbbVie Inc.",
+  ABC: "AmerisourceBergen Corporation (Holding Co)",
+  ABEV: "Ambev S.A.",
+  SBUX: "Starbucks",
+  ABG: "Asbury Automotive Group Inc",
+  ABM: "ABM Industries Incorporated",
+  ABR: "Arbor Realty Trust",
+  ABT: "Abbott Laboratories",
+  AC: "Associated Capital Group, Inc.",
+  ACA: "Arcosa, Inc.",
+  ACB: "Aurora Cannabis Inc.",
+  ACC: "American Campus Communities Inc",
+  ACCO: "Acco Brands Corporation",
+  ACH: "Aluminum Corporation of China Limited",
+  ACM: "AECOM",
+  ACN: "Accenture plc",
+  ACP: "Aberdeen Income Credit Strategies Fund",
+  ACRE: "Ares Commercial Real Estate Corporation",
+  ACV: "AllianzGI Diversified Income & Convertible Fund",
+  ADC: "Agree Realty Corporation",
+  ADM: "Archer-Daniels-Midland Company",
+  ADNT: "Adient plc",
+  ADS: "Alliance Data Systems Corporation",
+  ADSW: "Advanced Disposal Services, Inc.",
+  ADT: "ADT Inc.",
+  ADX: "Adams Diversified Equity Fund, Inc.",
+  AEB: "Aegon NV",
+  AEE: "Ameren Corporation",
+  AEG: "Aegon NV",
+  AEH: "Aegon NV",
+  AEL: "American Equity Investment Life Holding Company",
+  AEM: "Agnico Eagle Mines Limited",
+  AEO: "American Eagle Outfitters, Inc.",
+  AEP: "American Electric Power Company, Inc.",
+  AER: "Aercap Holdings N.V.",
+  AES: "The AES Corporation",
+  AFB: "Alliance National Municipal Income Fund Inc",
+  AFC: "Ares Capital Corporation",
+  AFG: "American Financial Group, Inc.",
+  AFGB: "American Financial Group, Inc.",
+  AFGE: "American Financial Group, Inc.",
+  AFGH: "American Financial Group, Inc.",
+  AFI: "Armstrong Flooring, Inc.",
+  AFL: "Aflac Incorporated",
+  AFT: "Apollo Senior Floating Rate Fund Inc.",
+  AG: "First Majestic Silver Corp.",
+  AGCO: "AGCO Corporation",
+  AGD: "Aberdeen Global Dynamic Dividend Fund",
+  AGI: "Alamos Gold Inc.",
+  AGO: "Assured Guaranty Ltd.",
+  AGR: "Avangrid, Inc.",
+  AGRO: "Adecoagro S.A.",
+  AGS: "PlayAGS, Inc.",
+  AGX: "Argan, Inc.",
+  AHC: "A.H. Belo Corporation",
+  AHH: "Armada Hoffler Properties, Inc.",
+  AHT: "Ashford Hospitality Trust Inc",
+  AI: "Arlington Asset Investment Corp",
+  AIC: "Arlington Asset Investment Corp",
+  AIF: "Apollo Tactical Income Fund Inc.",
+  AIG: "American International Group, Inc.",
+  AIN: "Albany International Corporation",
+  AIR: "AAR Corp.",
+  AIT: "Applied Industrial Technologies, Inc.",
+  AIV: "Apartment Investment and Management Company",
+  AIW: "Arlington Asset Investment Corp",
+  AIZ: "Assurant, Inc.",
+  AIZP: "Assurant, Inc.",
+  AJG: "Arthur J. Gallagher & Co.",
+  AJRD: "Aerojet Rocketdyne Holdings, Inc. ",
+  AJX: "Great Ajax Corp.",
+  AJXA: "Great Ajax Corp.",
+  AKO: "Embotelladora Andina S.A.",
+  AKR: "Acadia Realty Trust",
+  AKS: "AK Steel Holding Corporation",
+  AL: "Air Lease Corporation",
+  ALB: "Albemarle Corporation",
+  ALC: "Alcon Inc.",
+  AMZN: "Amazon",
+  ALE: "Allete, Inc.",
+  ALEX: "Alexander & Baldwin, Inc.",
+  ALG: "Alamo Group, Inc.",
+  ALK: "Alaska Air Group, Inc.",
+  ALL: "Allstate Corporation (The)",
+  ALLE: "Allegion plc",
+  ALLY: "Ally Financial Inc.",
+  ALSN: "Allison Transmission Holdings, Inc.",
+  ALV: "Autoliv, Inc.",
+  ALX: "Alexander&#39;s, Inc.",
+  AM: "Antero Midstream Corporation",
+  AMC: "AMC Entertainment Holdings, Inc.",
+  AMCR: "Amcor plc",
+  AME: "AMTEK, Inc.",
+  AMG: "Affiliated Managers Group, Inc.",
+  AMH: "American Homes 4 Rent",
+  AMK: "AssetMark Financial Holdings, Inc.",
+  AMN: "AMN Healthcare Services Inc",
+  AMOV: "America Movil, S.A.B. de C.V.",
+  AMP: "AMERIPRISE FINANCIAL SERVICES, INC.",
+  AMPY: "MIDSTATES PETROLEUM COMPANY, INC.",
+  AMRC: "Ameresco, Inc.",
+  AMRX: "Amneal Pharmaceuticals, Inc.",
+  AMT: "American Tower Corporation (REIT)",
+  AMX: "America Movil, S.A.B. de C.V.",
+  AN: "AutoNation, Inc.",
+  ANET: "Arista Networks, Inc.",
+  ANF: "Abercrombie & Fitch Company",
+  ANFI: "Amira Nature Foods Ltd",
+  ANH: "Anworth Mortgage Asset  Corporation",
+  ANTM: "Anthem, Inc.",
+  AOD: "Aberdeen Total Dynamic Dividend Fund",
+  AON: "Aon plc",
+  AOS: "A.O Smith Corporation",
+  AP: "Ampco-Pittsburgh Corporation",
+  APA: "Apache Corporation",
+  APAM: "Artisan Partners Asset Management Inc.",
+  APD: "Air Products and Chemicals, Inc.",
+  APH: "Amphenol Corporation",
+  APHA: "Aphria Inc.",
+  APLE: "Apple Hospitality REIT, Inc.",
+  APO: "Apollo Global Management, Inc",
+  APRN: "Blue Apron Holdings, Inc.",
+  APTS: "Preferred Apartment Communities, Inc.",
+  APTV: "Aptiv PLC",
+  APY: "Apergy Corporation",
+  AQ: "Aquantia Corp.",
+  AQN: "Algonquin Power & Utilities Corp.",
+  AQNA: "Algonquin Power & Utilities Corp.",
+  AQNB: "Algonquin Power & Utilities Corp.",
+  AQUA: "Evoqua Water Technologies Corp.",
+  AR: "Antero Resources Corporation",
+  ARA: "American Renal Associates Holdings, Inc",
+  ARC: "ARC Document Solutions, Inc.",
+  ARCH: "Arch Coal, Inc.",
+  ARCO: "Arcos Dorados Holdings Inc.",
+  ARD: "Ardagh Group S.A.",
+  ARDC: "Ares Dynamic Credit Allocation Fund, Inc.",
+  ARE: "Alexandria Real Estate Equities, Inc.",
+  ARES: "Ares Management Corporation",
+  ARGD: "Argo Group International Holdings, Ltd.",
+  ARGO: "Argo Group International Holdings, Ltd.",
+  ARI: "Apollo Commercial Real Estate Finance",
+  ARL: "American Realty Investors, Inc.",
+  ARLO: "Arlo Technologies, Inc.",
+  ARMK: "Aramark",
+  ARNC: "Arconic Inc.",
+  AROC: "Archrock, Inc.",
+  META: "Meta Inc.",
+  ARR: "ARMOUR Residential REIT, Inc.",
+  ARW: "Arrow Electronics, Inc.",
+  ASA: "ASA Gold and Precious Metals Limited",
+  ASB: "Associated Banc-Corp",
+  ASC: "Ardmore Shipping Corporation",
+  ASG: "Liberty All-Star Growth Fund, Inc.",
+  ASGN: "ASGN Incorporated",
+  ASH: "Ashland Global Holdings Inc.",
+  ASIX: "AdvanSix Inc.",
+  ASPN: "Aspen Aerogels, Inc.",
+  ASR: "Grupo Aeroportuario del Sureste, S.A. de C.V.",
+  ASX: "ASE Technology Holding Co., Ltd.",
+  AT: "Atlantic Power Corporation",
+  ATEN: "A10 Networks, Inc.",
+  ATGE: "Adtalem Global Education Inc.",
+  ATH: "Athene Holding Ltd.",
+  ATHM: "Autohome Inc.",
+  ATI: "Allegheny Technologies Incorporated",
+  ATKR: "Atkore International Group Inc.",
+  ATO: "Atmos Energy Corporation",
+  ATR: "AptarGroup, Inc.",
+  ATTO: "Atento S.A.",
+  ATU: "Actuant Corporation",
+  ATUS: "Altice USA, Inc.",
+  NVDA: "NVIDIA Inc.",
+  ATVI: "Acorn International, Inc.",
+  AU: "AngloGold Ashanti Limited",
+  AUO: "AU Optronics Corp",
+  AUY: "Yamana Gold Inc.",
+  AVA: "Avista Corporation",
+  AVAL: "Grupo Aval Acciones y Valores S.A.",
+  AVB: "AvalonBay Communities, Inc.",
+  AVD: "American Vanguard Corporation",
+  AVH: "Avianca Holdings S.A.",
+  AVK: "Advent Convertible and Income Fund",
+  AVLR: "Avalara, Inc.",
+  AVNS: "Avanos Medical, Inc.",
+  AVP: "Avon Products, Inc.",
+  AVTR: "Avantor, Inc.",
+  AVX: "AVX Corporation",
+  AVY: "Avery Dennison Corporation",
+  AVYA: "Avaya Holdings Corp.",
+  AWF: "Alliance World Dollar Government Fund II",
+  AWI: "Armstrong World Industries Inc",
+  AWK: "American Water Works",
+  AWP: "Aberdeen Global Premier Properties Fund",
+  AWR: "American States Water Company",
+  AX: "Axos Financial, Inc.",
+  AXE: "Anixter International Inc.",
+  AXL: "American Axle & Manufacturing Holdings, Inc.",
+  AXO: "Axos Financial, Inc.",
+  AXP: "American Express Company",
+  AXR: "AMREP Corporation",
+  AXS: "Axis Capital Holdings Limited",
+  AXTA: "Axalta Coating Systems Ltd.",
+  AYI: "Acuity Brands, Inc. ",
+  AYR: "Aircastle Limited",
+  AYX: "Alteryx, Inc.",
+  AZN: "Astrazeneca PLC",
+  AZO: "AutoZone, Inc.",
+  AZRE: "Azure Power Global Limited",
+  AZUL: "Azul S.A.",
+  AZZ: "AZZ Inc.",
+  B: "Barnes Group, Inc.",
+  BA: "Boeing Company (The)",
+  BABA: "Alibaba Group Holding Limited",
+  BAC: "Bank of America Corporation",
+  BAF: "BlackRock Income Investment Quality Trust",
+  BAH: "Booz Allen Hamilton Holding Corporation",
+  BAM: "Brookfield Asset Management Inc",
+  BANC: "Banc of California, Inc.",
+  BAP: "Credicorp Ltd.",
+  BAS: "Basic Energy Services, Inc.",
+  BAX: "Baxter International Inc.",
+  BB: "BlackBerry Limited",
+  BBAR: "BBVA Banco Frances S.A.",
+  BBD: "Banco Bradesco Sa",
+  BBDC: "Barings BDC, Inc.",
+  BBDO: "Banco Bradesco Sa",
+  BBF: "BlackRock Municipal Income Investment Trust",
+  BBK: "Blackrock Municipal Bond Trust",
+  BBL: "BHP Group Plc",
+  BBN: "BalckRock Taxable Municipal Bond Trust",
+  BBT: "BB&T Corporation",
+  BBU: "Brookfield Business Partners L.P.",
+  BBVA: "Banco Bilbao Viscaya Argentaria S.A.",
+  BBW: "Build-A-Bear Workshop, Inc.",
+  BBX: "BBX Capital Corporation",
+  BBY: "Best Buy Co., Inc.",
+  BC: "Brunswick Corporation",
+  BCC: "Boise Cascade, L.L.C.",
+  BCE: "BCE, Inc.",
+  BCEI: "Bonanza Creek Energy, Inc.",
+  BCH: "Banco De Chile",
+  BCO: "Brink&#39;s Company (The)",
+  BCRH: "Blue Capital Reinsurance Holdings Ltd.",
+  BCS: "Barclays PLC",
+  BCSF: "Bain Capital Specialty Finance, Inc.",
+  BCX: "BlackRock Resources",
+  BDC: "Belden Inc",
+  BDJ: "Blackrock Enhanced Equity Dividend Trust",
+  BDN: "Brandywine Realty Trust",
+  BDX: "Becton, Dickinson and Company",
+  BDXA: "Becton, Dickinson and Company",
+  BE: "Bloom Energy Corporation",
+  BEDU: "Bright Scholar Education Holdings Limited",
+  BEN: "Franklin Resources, Inc.",
+  BEP: "Brookfield Renewable Partners L.P.",
+  BERY: "Berry Global Group, Inc.",
+  BEST: "BEST Inc.",
+  BFAM: "Bright Horizons Family Solutions Inc.",
+  BFK: "BlackRock Municipal Income Trust",
+  BFO: "Blackrock Florida Municipal 2020 Term Trust",
+  BFS: "Saul Centers, Inc.",
+  BFY: "BlackRock New York Municipal Income Trust II",
+  BFZ: "BlackRock California Municipal Income Trust",
+  BG: "Bunge Limited",
+  BGB: "Blackstone / GSO Strategic Credit Fund",
+  BGG: "Briggs & Stratton Corporation",
+  BGH: "Babson Global Short Duration High Yield Fund",
+  BGIO: "BlackRock 2022 Global Income Opportunity Trust",
+  BGR: "BlackRock Energy and Resources Trust",
+  BGS: "B&G Foods, Inc.",
+  BGT: "Blackrock Global",
+  BGX: "Blackstone GSO Long Short Credit Income Fund",
+  BGY: "BLACKROCK INTERNATIONAL, LTD.",
+  BH: "Biglari Holdings Inc.",
+  BHC: "Bausch Health Companies Inc.",
+  BHE: "Benchmark Electronics, Inc.",
+  BHGE: "Baker Hughes, a GE company",
+  BHK: "Blackrock Core Bond Trust",
+  BHLB: "Berkshire Hills Bancorp, Inc.",
+  BHP: "BHP Group Limited",
+  BHR: "Braemar Hotels & Resorts Inc.",
+  BHV: "BlackRock Virginia Municipal Bond Trust",
+  BHVN: "Biohaven Pharmaceutical Holding Company Ltd.",
+  BID: "Sotheby&#39;s",
+  BIF: "USLIFE Income Fund, Inc.",
+  BIG: "Big Lots, Inc.",
+  BIO: "Bio-Rad Laboratories, Inc.",
+  BIP: "Brookfield Infrastructure Partners LP",
+  BIT: "BlackRock Multi-Sector Income Trust",
+  BITA: "Bitauto Holdings Limited",
+  BJ: "BJ&#39;s Wholesale Club Holdings, Inc.",
+  BK: "Bank Of New York Mellon Corporation (The)",
+  BKD: "Brookdale Senior Living Inc.",
+  BKE: "Buckle, Inc. (The)",
+  BKH: "Black Hills Corporation",
+  BKI: "Black Knight, Inc.",
+  BKK: "Blackrock Municipal 2020 Term Trust",
+  BKN: "BlackRock Investment Quality Municipal Trust Inc. (The)",
+  BKT: "BlackRock Income Trust Inc. (The)",
+  BKU: "BankUnited, Inc.",
+  BLD: "TopBuild Corp.",
+  BLE: "BlackRock Municipal Income Trust II",
+  BLK: "BlackRock, Inc.",
+  BLL: "Ball Corporation",
+  BLW: "Citigroup Inc.",
+  BLX: "Banco Latinoamericano de Comercio Exterior, S.A.",
+  BMA: "Macro Bank Inc.",
+  BME: "Blackrock Health Sciences Trust",
+  BMI: "Badger Meter, Inc.",
+  BMO: "Bank Of Montreal",
+  BMY: "Bristol-Myers Squibb Company",
+  BNED: "Barnes & Noble Education, Inc",
+  BNS: "Bank of Nova Scotia (The)",
+  BNY: "BlackRock New York Investment Quality Municipal Trust Inc. (Th",
+  BOE: "Blackrock Global",
+  BOH: "Bank of Hawaii Corporation",
+  BOOT: "Boot Barn Holdings, Inc.",
+  BORR: "Borr Drilling Limited",
+  BOX: "Box, Inc.",
+  BP: "BP p.l.c.",
+  BPL: "Buckeye Partners L.P.",
+  BPMP: "BP Midstream Partners LP",
+  BPT: "BP Prudhoe Bay Royalty Trust",
+  BQH: "Blackrock New York Municipal Bond Trust",
+  BR: "Broadridge Financial Solutions, Inc.",
+  BRC: "Brady Corporation",
+  BRFS: "BRF S.A.",
+  BRO: "Brown & Brown, Inc.",
+  BRPM: "B. Riley Principal Merger Corp.",
+  BRT: "BRT Apartments Corp.",
+  BRX: "Brixmor Property Group Inc.",
+  BSA: "BrightSphere Investment Group Inc.",
+  BSAC: "Banco Santander Chile",
+  BSBR: "Banco Santander Brasil SA",
+  BSD: "BlackRock Strategic Municipal Trust Inc. (The)",
+  BSE: "Blackrock New York Municipal Income Quality Trust",
+  BSIG: "BrightSphere Investment Group Inc.",
+  BSL: "Blackstone GSO Senior Floating Rate Term Fund",
+  BSM: "Black Stone Minerals, L.P.",
+  BSMX: "Banco Santander Mexico, S.A., Institucion de Ban",
+  BST: "BlackRock Science and Technology Trust",
+  BSTZ: "BlackRock Science and Technology Trust II",
+  BSX: "Boston Scientific Corporation",
+  BT: "BT Group plc",
+  BTA: "BlackRock Long-Term Municipal Advantage Trust",
+  BTE: "Baytex Energy Corp",
+  BTI: "British American Tobacco p.l.c.",
+  BTO: "John Hancock Financial Opportunities Fund",
+  BTT: "BlackRock Municipal Target Term Trust Inc. (The)",
+  BTU: "Peabody Energy Corporation",
+  BTZ: "BlackRock Credit Allocation Income Trust",
+  BUD: "Anheuser-Busch Inbev SA",
+  BUI: "BlackRock Utility, Infrastructure & Power Opportun",
+  BURL: "Burlington Stores, Inc.",
+  BV: "BrightView Holdings, Inc.",
+  BVN: "Buenaventura Mining Company Inc.",
+  BW: "Babcock",
+  BWA: "BorgWarner Inc.",
+  BWG: "BrandywineGLOBAL Global Income Opportunities Fund ",
+  BWXT: "BWX Technologies, Inc.",
+  BX: "The Blackstone Group Inc.",
+  BXC: "BlueLinx Holdings Inc.",
+  BXG: "Bluegreen Vacations Corporation",
+  BXMT: "Capital Trust, Inc.",
+  BXMX: "Nuveen S&P 500 Buy-Write Income Fund",
+  BXP: "Boston Properties, Inc.",
+  BXS: "BancorpSouth Bank",
+  BY: "Byline Bancorp, Inc.",
+  BYD: "Boyd Gaming Corporation",
+  BYM: "Blackrock Municipal Income Quality Trust",
+  BZH: "Beazer Homes USA, Inc.",
+  BZM: "BlackRock Maryland Municipal Bond Trust",
+  C: "Citigroup Inc.",
+  CAAP: "Corporacion America Airports SA",
+  CABO: "Cable One, Inc.",
+  CACI: "CACI International, Inc.",
+  CADE: "Cadence Bancorporation",
+  CAE: "CAE Inc",
+  CAF: "Morgan Stanley China A Share Fund Inc.",
+  CAG: "ConAgra Brands, Inc.",
+  CAH: "Cardinal Health, Inc.",
+  CAI: "CAI International, Inc.",
+  CAJ: "Canon, Inc.",
+  CAL: "Caleres, Inc.",
+  CALX: "Calix, Inc",
+  CANG: "Cango Inc.",
+  CAPL: "CrossAmerica Partners LP",
+  CARS: "Cars.com Inc.",
+  CAT: "Caterpillar, Inc.",
+  CATO: "Cato Corporation (The)",
+  CB: "Chubb Limited",
+  CBB: "Cincinnati Bell Inc",
+  CBD: "Companhia Brasileira de Distribuicao",
+  CBH: "AllianzGI Convertible & Income 2024 Target Term Fund",
+  CBL: "CBL & Associates Properties, Inc.",
+  CBM: "Cambrex Corporation",
+  CBO: "CBO (Listing Market - NYSE - Networks A/E)",
+  CBPX: "Continental Building Products, Inc.",
+  CBRE: "CBRE Group, Inc.",
+  CBS: "CBS Corporation",
+  CBT: "Cabot Corporation",
+  CBU: "Community Bank System, Inc.",
+  CBX: "CBX (Listing Market NYSE Networks AE",
+  CBZ: "CBIZ, Inc.",
+  CC: "Chemours Company (The)",
+  CCC: "Clarivate Analytics Plc",
+  CCEP: "Coca-Cola European Partners plc",
+  CCH: "Collier Creek Holdings",
+  CCI: "Crown Castle International Corporation",
+  CCJ: "Cameco Corporation",
+  CCK: "Crown Holdings, Inc.",
+  CCL: "Carnival Corporation",
+  CCM: "Concord Medical Services Holdings Limited",
+  CCO: "Clear Channel Outdoor Holdings, Inc.",
+  CCR: "CONSOL Coal Resources LP",
+  CCS: "Century Communities, Inc.",
+  CCU: "Compania Cervecerias Unidas, S.A.",
+  CCX: "Churchill Capital Corp II",
+  CCZ: "Comcast Corporation",
+  CDAY: "Ceridian HCM Holding Inc.",
+  CDE: "Coeur Mining, Inc.",
+  CDR: "Cedar Realty Trust, Inc.",
+  CE: "Celanese Corporation",
+  CEA: "China Eastern Airlines Corporation Ltd.",
+  CEE: "The Central and Eastern Europe Fund, Inc.",
+  CEIX: "CNX Resources Corporation",
+  CEL: "Cellcom Israel, Ltd.",
+  CELP: "Cypress Energy Partners, L.P.",
+  CEM: "ClearBridge MLP and Midstream Fund Inc.",
+  CEN: "Center Coast Brookfield MLP & Energy Infrastructur",
+  CEO: "CNOOC Limited",
+  CEPU: "Central Puerto S.A.",
+  CEQP: "Crestwood Equity Partners LP",
+  CF: "CF Industries Holdings, Inc.",
+  CFG: "Citizens Financial Group, Inc.",
+  CFR: "Cullen/Frost Bankers, Inc.",
+  CFX: "Colfax Corporation",
+  CFXA: "Colfax Corporation",
+  CGA: "China Green Agriculture, Inc.",
+  CGC: "Canopy Growth Corporation",
+  CHA: "China Telecom Corp Ltd",
+  CHAP: "Chaparral Energy, Inc.",
+  CHCT: "Community Healthcare Trust Incorporated",
+  CHD: "Church & Dwight Company, Inc.",
+  CHE: "Chemed Corp.",
+  CHGG: "Chegg, Inc.",
+  CHH: "Choice Hotels International, Inc.",
+  CHK: "Chesapeake Energy Corporation",
+  CHKR: "Chesapeake Granite Wash Trust",
+  CHL: "China Mobile (Hong Kong) Ltd.",
+  CHMI: "Cherry Hill Mortgage Investment Corporation",
+  CHN: "China Fund, Inc. (The)",
+  CHRA: "Charah Solutions, Inc.",
+  CHS: "Chico&#39;s FAS, Inc.",
+  CHSP: "Chesapeake Lodging Trust",
+  CHT: "Chunghwa Telecom Co., Ltd.",
+  CHU: "China Unicom (Hong Kong) Ltd",
+  CHWY: "Chewy, Inc.",
+  CI: "Cigna Corporation",
+  CIA: "Citizens, Inc.",
+  CIB: "BanColombia S.A.",
+  CIEN: "Ciena Corporation",
+  CIF: "Colonial Intermediate High Income Fund",
+  CIG: "Comp En De Mn Cemig ADS",
+  CII: "Blackrock Capital and Income Strategies Fund Inc",
+  CIM: "Chimera Investment Corporation",
+  CINR: "Ciner Resources LP",
+  CIO: "City Office REIT, Inc.",
+  CIR: "CIRCOR International, Inc.",
+  CISN: "Cision Ltd.",
+  CIT: "CIT Group Inc (DEL)",
+  CJ: "C&J Energy Services, Inc",
+  CKH: "SEACOR Holdings, Inc.",
+  CL: "Colgate-Palmolive Company",
+  CLB: "Core Laboratories N.V.",
+  CLDR: "Cloudera, Inc.",
+  CLDT: "Chatham Lodging Trust (REIT)",
+  CLF: "Cleveland-Cliffs Inc.",
+  CLGX: "CoreLogic, Inc.",
+  CLH: "Clean Harbors, Inc.",
+  CLI: "Mack-Cali Realty Corporation",
+  CLNC: "Colony Credit Real Estate, Inc.",
+  CLNY: "Colony Capital, Inc.",
+  CLPR: "Clipper Realty Inc.",
+  CLR: "Continental Resources, Inc.",
+  CLS: "Celestica, Inc.",
+  CLW: "Clearwater Paper Corporation",
+  CLX: "Clorox Company (The)",
+  CM: "Canadian Imperial Bank of Commerce",
+  CMA: "Comerica Incorporated",
+  CMC: "Commercial Metals Company",
+  CMCM: "Cheetah Mobile Inc.",
+  CMD: "Cantel Medical Corp.",
+  CMG: "Chipotle Mexican Grill, Inc.",
+  CMI: "Cummins Inc.",
+  CMO: "Capstead Mortgage Corporation",
+  CMP: "Compass Minerals International, Inc.",
+  CMRE: "Costamare Inc.",
+  CMS: "CMS Energy Corporation",
+  CMSA: "CMS Energy Corporation",
+  CMSC: "CMS Energy Corporation",
+  CMSD: "CMS Energy Corporation",
+  CMU: "Colonial Municipal Income Trust",
+  CNA: "CNA Financial Corporation",
+  CNC: "Centene Corporation",
+  CNDT: "Conduent Incorporated",
+  CNF: "CNFinance Holdings Limited",
+  CNHI: "CNH Industrial N.V.",
+  CNI: "Canadian National Railway Company",
+  CNK: "Cinemark Holdings Inc",
+  CNNE: "Cannae Holdings, Inc.",
+  CNO: "CNO Financial Group, Inc.",
+  CNP: "CenterPoint Energy, Inc.",
+  CNQ: "Canadian Natural Resources Limited",
+  CNR: "Cornerstone Building Brands, Inc.",
+  CNS: "Cohen & Steers Inc",
+  CNX: "CNX Resources Corporation",
+  CNXM: "CNX Midstream Partners LP",
+  CO: "Global Cord Blood Corporation",
+  CODI: "Compass Diversified Holdings",
+  COE: "China Online Education Group",
+  COF: "Capital One Financial Corporation",
+  COG: "Cabot Oil & Gas Corporation",
+  COLD: "Americold Realty Trust",
+  COO: "The Cooper Companies, Inc. ",
+  COP: "ConocoPhillips",
+  COR: "CoreSite Realty Corporation",
+  CORR: "CorEnergy Infrastructure Trust, Inc.",
+  COT: "Cott Corporation",
+  COTY: "Coty Inc.",
+  CP: "Canadian Pacific Railway Limited",
+  CPA: "Copa Holdings, S.A.",
+  CPAC: "Cementos Pacasmayo S.A.A.",
+  CPB: "Campbell Soup Company",
+  CPE: "Callon Petroleum Company",
+  CPF: "CPB Inc.",
+  CPG: "Crescent Point Energy Corporation",
+  CPK: "Chesapeake Utilities Corporation",
+  CPL: "CPFL Energia S.A.",
+  CPLG: "CorePoint Lodging Inc.",
+  CPRI: "Capri Holdings Limited",
+  CPS: "Cooper-Standard Holdings Inc.",
+  CPT: "Camden Property Trust",
+  CR: "Crane Co.",
+  CRC: "California Resources Corporation",
+  CRCM: "Care.com, Inc.",
+  CRH: "CRH PLC",
+  CRI: "Carter&#39;s, Inc.",
+  CRK: "Comstock Resources, Inc.",
+  CRL: "Charles River Laboratories International, Inc.",
+  CRM: "Salesforce.com Inc",
+  CRR: "Carbo Ceramics, Inc.",
+  CRS: "Carpenter Technology Corporation",
+  CRT: "Cross Timbers Royalty Trust",
+  CRY: "CryoLife, Inc.",
+  CS: "Credit Suisse Group",
+  CSL: "Carlisle Companies Incorporated",
+  CSLT: "Castlight Health, inc.",
+  CSS: "CSS Industries, Inc.",
+  CSTM: "Constellium SE",
+  CSU: "Capital Senior Living Corporation",
+  CSV: "Carriage Services, Inc.",
+  CTAA: "Qwest Corporation",
+  CTB: "Cooper Tire & Rubber Company",
+  CTBB: "Qwest Corporation",
+  CTDD: "Qwest Corporation",
+  CTEST: "NYSE Test One",
+  CTK: "CooTek (Cayman) Inc.",
+  CTL: "CenturyLink, Inc.",
+  CTLT: "Catalent, Inc.",
+  CTR: "ClearBridge MLP and Midstream Total Return Fund In",
+  CTRA: "Contura Energy, Inc.",
+  CTS: "CTS Corporation",
+  CTVA: "Corteva, Inc.",
+  CTY: "Qwest Corporation",
+  CTZ: "Qwest Corporation",
+  CUB: "Cubic Corporation",
+  CUBE: "CubeSmart",
+  CUBI: "Customers Bancorp, Inc",
+  CUK: "Carnival Corporation",
+  CULP: "Culp, Inc.",
+  CURO: "CURO Group Holdings Corp.",
+  CUZ: "Cousins Properties Incorporated",
+  CVA: "Covanta Holding Corporation",
+  CVE: "Cenovus Energy Inc",
+  CVEO: "Civeo Corporation",
+  CVI: "CVR Energy Inc.",
+  CVIA: "Covia Holdings Corporation",
+  CVNA: "Carvana Co.",
+  CVS: "CVS Health Corporation",
+  CVX: "Chevron Corporation",
+  CW: "Curtiss-Wright Corporation",
+  CWEN: "Clearway Energy, Inc.",
+  CWH: "Camping World Holdings, Inc.",
+  CWK: "Cushman & Wakefield plc",
+  CWT: "California Water  Service Group Holding",
+  CX: "Cemex S.A.B. de C.V.",
+  CXE: "Colonial High Income Municipal Trust",
+  CXH: "Colonial Investment Grade Municipal Trust",
+  CXO: "Concho Resources Inc.",
+  CXP: "Columbia Property Trust, Inc.",
+  CXW: "CoreCivic, Inc.",
+  CYD: "China Yuchai International Limited",
+  CYH: "Community Health Systems, Inc.",
+  CZZ: "Cosan Limited",
+  D: "Dominion Energy, Inc.",
+  DAC: "Danaos Corporation",
+  DAL: "Delta Air Lines, Inc.",
+  DAN: "Dana Incorporated",
+  DAR: "Darling Ingredients Inc.",
+  DAVA: "Endava plc",
+  DB: "Deutsche Bank AG",
+  DBD: "Diebold Nixdorf Incorporated",
+  DBI: "Designer Brands Inc.",
+  DBL: "DoubleLine Opportunistic Credit Fund",
+  DCF: "BNY Mellon Alcentra Global Credit Income 2024 Target Term Fund",
+  DCI: "Donaldson Company, Inc.",
+  DCO: "Ducommun Incorporated",
+  DCP: "DCP Midstream LP",
+  DCUE: "Dominion Energy, Inc.",
+  DD: "DuPont de Nemours, Inc.",
+  DDD: "3D Systems Corporation",
+  DDF: "Delaware Investments Dividend & Income Fund, Inc.",
+  DDS: "Dillard&#39;s, Inc.",
+  DDT: "Dillard&#39;s, Inc.",
+  DE: "Deere & Company",
+  DEA: "Easterly Government Properties, Inc.",
+  DECK: "Deckers Outdoor Corporation",
+  DEI: "Douglas Emmett, Inc.",
+  DELL: "Dell Technologies Inc.",
+  DEO: "Diageo plc",
+  DESP: "Despegar.com, Corp.",
+  DEX: "Delaware Enhanced Global Dividend",
+  DF: "Dean Foods Company",
+  DFIN: "Donnelley Financial Solutions, Inc.",
+  DFP: "Flaherty & Crumrine Dynamic Preferred and Income Fund Inc.",
+  DFS: "Discover Financial Services",
+  DG: "Dollar General Corporation",
+  DGX: "Quest Diagnostics Incorporated",
+  DHF: "BNY Mellon High Yield Strategies Fund",
+  DHI: "D.R. Horton, Inc.",
+  DHR: "Danaher Corporation",
+  DHT: "DHT Holdings, Inc.",
+  DHX: "DHI Group, Inc.",
+  DIAX: "Nuveen Dow 30SM Dynamic Overwrite Fund",
+  DIN: "Dine Brands Global, Inc.",
+  DIS: "Walt Disney Company (The)",
+  DK: "Delek US Holdings, Inc.",
+  DKL: "Delek Logistics Partners, L.P.",
+  DKS: "Dick&#39;s Sporting Goods Inc",
+  DKT: "Deutsch Bk Contingent Cap Tr V",
+  DL: "China Distance Education Holdings Limited",
+  DLB: "Dolby Laboratories",
+  DLNG: "Dynagas LNG Partners LP",
+  DLPH: "Delphi Technologies PLC",
+  DLR: "Digital Realty Trust, Inc.",
+  DLX: "Deluxe Corporation",
+  DMB: "BNY Mellon Municipal Bond Infrastructure Fund, Inc",
+  DMO: "Western Asset Mortgage Defined Opportunity Fund Inc",
+  DNI: "Dividend and Income Fund",
+  DNOW: "NOW Inc.",
+  DNP: "Duff & Phelps Utilities Income, Inc.",
+  DNR: "Denbury Resources Inc.",
+  DO: "Diamond Offshore Drilling, Inc.",
+  DOC: "Physicians Realty Trust",
+  DOOR: "Masonite International Corporation",
+  DOV: "Dover Corporation",
+  DOW: "Dow Inc.",
+  DPG: "Duff & Phelps Global Utility Income Fund Inc.",
+  DPLO: "Diplomat Pharmacy, Inc.",
+  DPZ: "Domino&#39;s Pizza Inc",
+  DQ: "DAQO New Energy Corp.",
+  DRD: "DRDGOLD Limited",
+  DRE: "Duke Realty Corporation",
+  DRH: "Diamondrock Hospitality Company",
+  DRI: "Darden Restaurants, Inc.",
+  DRQ: "Dril-Quip, Inc.",
+  DRUA: "Dominion Energy, Inc.",
+  DS: "Drive Shack Inc.",
+  DSE: "Duff & Phelps Select MLP and Midstream Energy Fund",
+  DSL: "DoubleLine Income Solutions Fund",
+  DSM: "BNY Mellon Strategic Municipal Bond Fund, Inc.",
+  DSSI: "Diamond S Shipping Inc.",
+  DSU: "Blackrock Debt Strategies Fund, Inc.",
+  DSX: "Diana Shipping inc.",
+  DT: "Dynatrace, Inc.",
+  DTE: "DTE Energy Company",
+  DTF: "Duff & Phelps Utilities Tax-Free Income, Inc.",
+  DTJ: "DTE Energy Company",
+  DTQ: "DTE Energy Company",
+  DTV: "DTE Energy Company",
+  DTW: "DTE Energy Company",
+  DTY: "DTE Energy Company",
+  DUC: "Duff & Phelps Utility & Corporate Bond Trust, Inc.",
+  DUK: "Duke Energy Corporation",
+  DUKB: "Duke Energy Corporation",
+  DUKH: "Duke Energy Corporation",
+  DVA: "DaVita Inc.",
+  DVD: "Dover Motorsports, Inc.",
+  DVN: "Devon Energy Corporation",
+  DX: "Dynex Capital, Inc.",
+  DXB: "Deutsche Bank AG",
+  DXC: "DXC Technology Company",
+  DY: "Dycom Industries, Inc.",
+  E: "ENI S.p.A.",
+  EAB: "Entergy Arkansas, LLC",
+  EAE: "Entergy Arkansas, LLC",
+  EAF: "GrafTech International Ltd.",
+  EAI: "Entergy Arkansas, LLC",
+  EARN: "Ellington Residential Mortgage REIT",
+  EAT: "Brinker International, Inc.",
+  EB: "Eventbrite, Inc.",
+  EBF: "Ennis, Inc.",
+  EBR: "Centrais Electricas Brasileiras S.A.- Eletrobras",
+  EBS: "Emergent Biosolutions, Inc.",
+  EC: "Ecopetrol S.A.",
+  EDD: "Morgan Stanley Emerging Markets Domestic Debt Fund, Inc.",
+  EDF: "Stone Harbor Emerging Markets Income Fund",
+  EDI: "Stone Harbor Emerging Markets Total Income Fund",
+  EDN: "Empresa Distribuidora Y Comercializadora Norte S.A. (Edenor)",
+  EDU: "New Oriental Education & Technology Group, Inc.",
+  EE: "El Paso Electric Company",
+  EEA: "European Equity Fund, Inc. (The)",
+  EEX: "Emerald Expositions Events, Inc.",
+  EFC: "Ellington Financial Inc.",
+  EFF: "Eaton vance Floating-Rate Income Plus Fund",
+  EFL: "Eaton Vance Floating-Rate 2022 Target Term Trust",
+  EFR: "Eaton Vance Senior Floating-Rate Fund",
+  EFT: "Eaton Vance Floating Rate Income Trust",
+  EFX: "Equifax, Inc.",
+  EGF: "Blackrock Enhanced Government Fund, Inc",
+  EGHT: "8x8 Inc",
+  EGIF: "Eagle Growth and Income Opportunities Fund",
+  EGO: "Eldorado Gold Corporation",
+  EGP: "EastGroup Properties, Inc.",
+  EGY: "VAALCO Energy, Inc. ",
+  EHC: "Encompass Health Corporation",
+  EHI: "Western Asset Global High Income Fund Inc",
+  EHT: "Eaton Vance High Income 2021 Target Term Trust",
+  EIC: "Eagle Point Income Company Inc.",
+  EIG: "Employers Holdings Inc",
+  EIX: "Edison International",
+  EL: "Estee Lauder Companies, Inc. (The)",
+  ELAN: "Elanco Animal Health Incorporated",
+  ELC: "Entergy Louisiana, Inc.",
+  ELF: "e.l.f. Beauty, Inc.",
+  ELJ: "Entergy Louisiana, Inc.",
+  ELP: "Companhia Paranaense de Energia (COPEL)",
+  ELS: "Equity Lifestyle Properties, Inc.",
+  ELU: "Entergy Louisiana, Inc.",
+  ELVT: "Elevate Credit, Inc.",
+  ELY: "Callaway Golf Company",
+  EMD: "Western Asset Emerging Markets Debt Fund Inc",
+  EME: "EMCOR Group, Inc.",
+  EMF: "Templeton Emerging Markets Fund",
+  EMN: "Eastman Chemical Company",
+  EMO: "ClearBridge Energy Midstream Opportunity Fund Inc.",
+  EMP: "Entergy Mississippi, LLC",
+  EMR: "Emerson Electric Company",
+  ENB: "Enbridge Inc",
+  ENBA: "Enbridge Inc",
+  ENBL: "Enable Midstream Partners, LP",
+  ENIA: "Enel Americas S.A.",
+  ENIC: "Enel Chile S.A.",
+  ENJ: "Entergy New Orleans, LLC",
+  ENLC: "EnLink Midstream, LLC",
+  ENO: "Entergy New Orleans, LLC",
+  ENR: "Energizer Holdings, Inc.",
+  ENS: "Enersys",
+  ENV: "Envestnet, Inc",
+  ENVA: "Enova International, Inc.",
+  ENZ: "Enzo Biochem, Inc.",
+  EOD: "Wells Fargo Global Dividend Opportunity Fund",
+  EOG: "EOG Resources, Inc.",
+  EOI: "Eaton Vance Enhance Equity Income Fund",
+  EOS: "Eaton Vance Enhanced Equity Income Fund II",
+  EOT: "Eaton Vance Municipal Income Trust",
+  EPAM: "EPAM Systems, Inc.",
+  EPC: "Energizer Holdings, Inc.",
+  EPD: "Enterprise Products Partners L.P.",
+  EPR: "EPR Properties",
+  EPRT: "Essential Properties Realty Trust, Inc.",
+  EQC: "Equity Commonwealth",
+  EQH: "AXA Equitable Holdings, Inc.",
+  EQM: "EQM Midstream Partners, LP",
+  EQNR: "Equinor ASA",
+  EQR: "Equity Residential",
+  EQS: "Equus Total Return, Inc.",
+  EQT: "EQT Corporation",
+  ERA: "Era Group, Inc.",
+  ERF: "Enerplus Corporation",
+  ERJ: "Embraer S.A.",
+  EROS: "Eros International PLC",
+  ES: "Eversource Energy",
+  ESE: "ESCO Technologies Inc.",
+  ESI: "Element Solutions Inc.",
+  ESNT: "Essent Group Ltd.",
+  ESRT: "Empire State Realty Trust, Inc.",
+  ESS: "Essex Property Trust, Inc.",
+  ESTC: "Elastic N.V.",
+  ESTE: "Earthstone Energy, Inc.",
+  ET: "Energy Transfer L.P.",
+  ETB: "Eaton Vance Tax-Managed Buy-Write Income Fund",
+  ETG: "Eaton Vance Tax-Advantaged Global Dividend Income Fund",
+  ETH: "Ethan Allen Interiors Inc.",
+  ETJ: "Eaton Vance Risk-Managed Diversified Equity Income Fund",
+  ETM: "Entercom Communications Corp.",
+  ETN: "Eaton Corporation, PLC",
+  ETO: "Eaton Vance Tax-Advantage Global Dividend Opp",
+  ETR: "Entergy Corporation",
+  ETRN: "Equitrans Midstream Corporation",
+  EVA: "Enviva Partners, LP",
+  EVC: "Entravision Communications Corporation",
+  EVF: "Eaton Vance Senior Income Trust",
+  EVG: "Eaton Vance Short Diversified Income Fund",
+  EVH: "Evolent Health, Inc",
+  EVN: "Eaton Vance Municipal Income Trust",
+  EVR: "Evercore Inc.",
+  EVRG: "Evergy, Inc.",
+  EVRI: "Everi Holdings Inc.",
+  EVT: "Eaton Vance Tax Advantaged Dividend Income Fund",
+  EVTC: "Evertec, Inc.",
+  EW: "Edwards Lifesciences Corporation",
+  EXC: "Exelon Corporation",
+  EXD: "Eaton Vance Tax-Managed Buy-Write Strategy Fund",
+  EXG: "Eaton Vance Tax-Managed Global Diversified Equity Income Fund",
+  EXK: "Endeavour Silver Corporation",
+  EXP: "Eagle Materials Inc",
+  EXPR: "Express, Inc.",
+  EXR: "Extra Space Storage Inc",
+  EXTN: "Exterran Corporation",
+  EZT: "Entergy Texas Inc",
+  F: "Ford Motor Company",
+  FAF: "First American Corporation (The)",
+  FAM: "First Trust/Aberdeen Global Opportunity Income Fund",
+  FBC: "Flagstar Bancorp, Inc.",
+  FBHS: "Fortune Brands Home & Security, Inc.",
+  FBK: "FB Financial Corporation",
+  FBM: "Foundation Building Materials, Inc.",
+  FBP: "First BanCorp.",
+  FC: "Franklin Covey Company",
+  FCAU: "Fiat Chrysler Automobiles N.V.",
+  FCF: "First Commonwealth Financial Corporation",
+  FCN: "FTI Consulting, Inc.",
+  FCPT: "Four Corners Property Trust, Inc.",
+  FCT: "First Trust Senior Floating Rate Income Fund II",
+  FCX: "Freeport-McMoran, Inc.",
+  FDEU: "First Trust Dynamic Europe Equity Income Fund",
+  FDP: "Fresh Del Monte Produce, Inc.",
+  FDS: "FactSet Research Systems Inc.",
+  FDX: "FedEx Corporation",
+  FE: "FirstEnergy Corp.",
+  FEO: "First Trust/Aberdeen Emerging Opportunity Fund",
+  FET: "Forum Energy Technologies, Inc.",
+  FF: "FutureFuel Corp.",
+  FFA: "First Trust",
+  FFC: "Flaherty & Crumrine Preferred and Income Securitie",
+  FFG: "FBL Financial Group, Inc.",
+  FG: "FGL Holdings",
+  FGB: "First Trust Specialty Finance and Financial Opportunities Fund",
+  FGP: "Ferrellgas Partners, L.P.",
+  FHN: "First Horizon National Corporation",
+  FI: "Frank&#39;s International N.V.",
+  FICO: "Fair Isaac Corporation",
+  FIF: "First Trust Energy Infrastructure Fund",
+  FII: "Federated Investors, Inc.",
+  FINS: "Angel Oak Financial Strategies Income Term Trust",
+  FIS: "Fidelity National Information Services, Inc.",
+  FIT: "Fitbit, Inc.",
+  FIV: "First Trust Senior Floating Rate 2022 Target Term Fund",
+  FIX: "Comfort Systems USA, Inc.",
+  FL: "Foot Locker, Inc.",
+  FLC: "Flaherty & Crumrine Total Return Fund Inc",
+  FLNG: "FLEX LNG Ltd.",
+  FLO: "Flowers Foods, Inc.",
+  FLOW: "SPX FLOW, Inc.",
+  FLR: "Fluor Corporation",
+  FLS: "Flowserve Corporation",
+  FLT: "FleetCor Technologies, Inc.",
+  FLY: "Fly Leasing Limited",
+  FMC: "FMC Corporation",
+  FMN: "Federated Premier Municipal Income Fund",
+  FMO: "Fiduciary/Claymore Energy Infrastructure Fund",
+  FMS: "Fresenius Medical Care Corporation",
+  FMX: "Fomento Economico Mexicano S.A.B. de C.V.",
+  FMY: "First Trust",
+  FN: "Fabrinet",
+  FNB: "F.N.B. Corporation",
+  FND: "Floor & Decor Holdings, Inc.",
+  FNF: "Fidelity National Financial, Inc.",
+  FNV: "Franco-Nevada Corporation",
+  FOE: "Ferro Corporation",
+  FOF: "Cohen & Steers Closed-End Opportunity Fund, Inc.",
+  FOR: "Forestar Group Inc",
+  FPAC: "Far Point Acquisition Corporation",
+  FPF: "First Trust Intermediate Duration Preferred & Income Fund",
+  FPH: "Five Point Holdings, LLC",
+  FPI: "Farmland Partners Inc.",
+  FPL: "First Trust New Opportunities MLP & Energy Fund",
+  FR: "First Industrial Realty Trust, Inc.",
+  FRA: "Blackrock Floating Rate Income Strategies Fund Inc",
+  FRAC: "Keane Group, Inc.",
+  FRC: "FIRST REPUBLIC BANK",
+  FRO: "Frontline Ltd.",
+  FRT: "Federal Realty Investment Trust",
+  FSB: "Franklin Financial Network, Inc.",
+  FSD: "First Trust High Income Long Short Fund",
+  FSK: "FS KKR Capital Corp.",
+  FSLY: "Fastly, Inc.",
+  FSM: "Fortuna Silver Mines Inc.",
+  FSS: "Federal Signal Corporation",
+  FT: "Franklin Universal Trust",
+  FTAI: "Fortress Transportation and Infrastructure Investors LLC",
+  FTCH: "Farfetch Limited",
+  FTI: "TechnipFMC plc",
+  FTK: "Flotek Industries, Inc.",
+  FTS: "Fortis Inc.",
+  FTSI: "FTS International, Inc.",
+  FTV: "Fortive Corporation",
+  FUL: "H. B. Fuller Company",
+  FUN: "Cedar Fair, L.P.",
+  FVRR: "Fiverr International Ltd.",
+  G: "Genpact Limited",
+  GAB: "Gabelli Equity Trust, Inc. (The)",
+  GAM: "General American Investors, Inc.",
+  GATX: "GATX Corporation",
+  GBAB: "Guggenheim Taxable Municipal Managed Duration Trst",
+  GBL: "Gamco Investors, Inc.",
+  GBX: "Greenbrier Companies, Inc. (The)",
+  GCAP: "GAIN Capital Holdings, Inc.",
+  GCI: "TEGNA Inc.",
+  GCO: "Genesco Inc.",
+  GCP: "GCP Applied Technologies Inc.",
+  GCV: "Gabelli Convertible and Income Securities Fund, Inc. (The)",
+  GD: "General Dynamics Corporation",
+  GDDY: "GoDaddy Inc.",
+  GDI: "Gardner Denver Holdings, Inc.",
+  GDL: "The GDL Fund",
+  GDO: "Western Asset Global Corporate Defined Opportunity Fund Inc.",
+  GDOT: "Green Dot Corporation",
+  GDV: "The Gabelli Dividend & Income Trust",
+  GE: "General Electric Company",
+  GEF: "Greif Bros. Corporation",
+  GFF: "Griffon Corporation",
+  GFI: "Gold Fields Limited",
+  GFY: "Western Asset Variable Rate Strategic Fund Inc.",
+  GGB: "Gerdau S.A.",
+  GGG: "Graco Inc.",
+  GGM: "Guggenheim Credit Allocation Fund",
+  GGT: "Gabelli Multi-Media Trust Inc. (The)",
+  GGZ: "Gabelli Global Small and Mid Cap Value Trust (The)",
+  GHC: "Graham Holdings Company",
+  GHG: "GreenTree Hospitality Group Ltd.",
+  GHL: "Greenhill & Co., Inc.",
+  GHM: "Graham Corporation",
+  GHY: "PGIM Global High Yield Fund, Inc.",
+  GIB: "CGI Inc.",
+  GJP: "Synthetic Fixed-Income Securities, Inc.",
+  GJR: "Synthetic Fixed-Income Securities, Inc.",
+  GJS: "STRATS Trust",
+  GJT: "Synthetic Fixed-Income Securities, Inc.",
+  GJV: "Synthetic Fixed-Income Securities, Inc.",
+  GKOS: "Glaukos Corporation",
+  GL: "Globe Life Inc.",
+  GLOB: "Globant S.A.",
+  GLOG: "GasLog LP.",
+  GLOP: "GasLog Partners LP",
+  GLP: "Global Partners LP",
+  GLT: "Glatfelter",
+  GLW: "Corning Incorporated",
+  GM: "General Motors Company",
+  GME: "Gamestop Corporation",
+  GMED: "Globus Medical, Inc.",
+  GMRE: "Global Medical REIT Inc.",
+  GMS: "GMS Inc.",
+  GMTA: "GATX Corporation",
+  GMZ: "Goldman Sachs MLP Income Opportunities Fund",
+  GNC: "GNC Holdings, Inc.",
+  GNE: "Genie Energy Ltd.",
+  GNK: "Genco Shipping & Trading Limited ",
+  GNL: "Global Net Lease, Inc.",
+  GNRC: "Generac Holdlings Inc.",
+  GNT: "GAMCO Natural Resources, Gold & Income Tust ",
+  GNW: "Genworth Financial Inc",
+  GOF: "Guggenheim Strategic Opportunities Fund",
+  GOL: "Gol Linhas Aereas Inteligentes S.A.",
+  GOLD: "Barrick Gold Corporation",
+  GOLF: "Acushnet Holdings Corp.",
+  GOOS: "Canada Goose Holdings Inc.",
+  GPC: "Genuine Parts Company",
+  GPI: "Group 1 Automotive, Inc.",
+  GPJA: "Georgia Power Company",
+  GPK: "Graphic Packaging Holding Company",
+  GPM: "Guggenheim Enhanced Equity Income Fund",
+  GPMT: "Granite Point Mortgage Trust Inc.",
+  GPN: "Global Payments Inc.",
+  GPRK: "Geopark Ltd",
+  GPS: "Gap, Inc. (The)",
+  GPX: "GP Strategies Corporation",
+  GRA: "W.R. Grace & Co.",
+  GRAF: "Graf Industrial Corp.",
+  GRAM: "Grana y Montero S.A.A.",
+  GRC: "Gorman-Rupp Company (The)",
+  GRUB: "GrubHub Inc.",
+  GRX: "The Gabelli Healthcare & Wellness Trust",
+  GS: "Goldman Sachs Group, Inc. (The)",
+  GSAH: "GS Acquisition Holdings Corp.",
+  GSBD: "Goldman Sachs BDC, Inc.",
+  GSH: "Guangshen Railway Company Limited",
+  GSK: "GlaxoSmithKline PLC",
+  GSL: "Global Ship Lease, Inc.",
+  GSX: "GSX Techedu Inc.",
+  GTES: "Gates Industrial Corporation plc",
+  GTN: "Gray Television, Inc.",
+  GTS: "Triple-S Management Corporation",
+  GTT: "GTT Communications, Inc.",
+  GTX: "Garrett Motion Inc.",
+  GTY: "Getty Realty Corporation",
+  GUT: "Gabelli Utility Trust (The)",
+  GVA: "Granite Construction Incorporated",
+  GWB: "Great Western Bancorp, Inc.",
+  GWR: "Genesee & Wyoming, Inc.",
+  GWRE: "Guidewire Software, Inc.",
+  GWW: "W.W. Grainger, Inc.",
+  GYB: "CABCO Series 2004-101 Trust",
+  GYC: "Corporate Asset Backed Corp CABCO",
+  H: "Hyatt Hotels Corporation",
+  HAE: "Haemonetics Corporation",
+  HAL: "Halliburton Company",
+  HASI: "Hannon Armstrong Sustainable Infrastructure Capital, Inc.",
+  HBB: "Hamilton Beach Brands Holding Company",
+  HBI: "Hanesbrands Inc.",
+  HBM: "Hudbay Minerals Inc.",
+  HCA: "HCA Healthcare, Inc.",
+  HCC: "Warrior Met Coal, Inc.",
+  HCFT: "Hunt Companies Finance Trust, Inc.",
+  HCHC: "HC2 Holdings, Inc.",
+  HCI: "HCI Group, Inc.",
+  HCP: "HCP, Inc.",
+  HCR: "Hi-Crush Inc.",
+  HCXY: "Hercules Capital, Inc.",
+  HCXZ: "Hercules Capital, Inc.",
+  HD: "Home Depot, Inc. (The)",
+  HDB: "HDFC Bank Limited",
+  HE: "Hawaiian Electric Industries, Inc.",
+  HEI: "Heico Corporation",
+  HEP: "Holly Energy Partners, L.P.",
+  HEQ: "John Hancock Hedged Equity & Income Fund",
+  HES: "Hess Corporation",
+  HESM: "Hess Midstream Partners LP",
+  HEXO: "HEXO Corp.",
+  HFC: "HollyFrontier Corporation",
+  HFRO: "Highland Income Fund",
+  HGH: "Hartford Financial Services Group, Inc. (The)",
+  HGLB: "Highland Global Allocation Fund",
+  HGV: "Hilton Grand Vacations Inc.",
+  HHC: "Howard Hughes Corporation (The)",
+  HHS: "Harte-Hanks, Inc.",
+  HI: "Hillenbrand Inc",
+  HIE: "Miller/Howard High Income Equity Fund",
+  HIG: "Hartford Financial Services Group, Inc. (The)",
+  HII: "Huntington Ingalls Industries, Inc.",
+  HIL: "Hill International, Inc.",
+  HIO: "Western Asset High Income Opportunity Fund, Inc.",
+  HIW: "Highwoods Properties, Inc.",
+  HIX: "Western Asset High Income Fund II Inc.",
+  HJV: "MS Structured Asset Corp Saturns GE Cap Corp Series 2002-14",
+  HKIB: "AMTD International Inc.",
+  HL: "Hecla Mining Company",
+  HLF: "Herbalife Nutrition Ltd.",
+  HLI: "Houlihan Lokey, Inc.",
+  HLT: "Hilton Worldwide Holdings Inc.",
+  HLX: "Helix Energy Solutions Group, Inc.",
+  HMC: "Honda Motor Company, Ltd.",
+  HMI: "Huami Corporation",
+  HMLP: "Hoegh LNG Partners LP",
+  HMN: "Horace Mann Educators Corporation",
+  HMY: "Harmony Gold Mining Company Limited",
+  HNGR: "Hanger, Inc.",
+  HNI: "HNI Corporation",
+  HNP: "Huaneng Power International, Inc.",
+  HOG: "Harley-Davidson, Inc.",
+  HOME: "At Home Group Inc.",
+  HON: "Honeywell International Inc.",
+  HOS: "Hornbeck Offshore Services",
+  HOV: "Hovnanian Enterprises Inc",
+  HP: "Helmerich & Payne, Inc.",
+  HPE: "Hewlett Packard Enterprise Company",
+  HPF: "John Hancock Pfd Income Fund II",
+  HPI: "John Hancock Preferred Income Fund",
+  HPP: "Hudson Pacific Properties, Inc.",
+  HPQ: "HP Inc.",
+  HPR: "HighPoint Resources Corporation",
+  HPS: "John Hancock Preferred Income Fund III",
+  HQH: "Tekla Healthcare Investors",
+  HQL: "Tekla Life Sciences Investors",
+  HR: "Healthcare Realty Trust Incorporated",
+  HRB: "H&R Block, Inc.",
+  HRC: "Hill-Rom Holdings Inc",
+  HRI: "Herc Holdings Inc.",
+  HRL: "Hormel Foods Corporation",
+  HRTG: "Heritage Insurance Holdings, Inc.",
+  HSBC: "HSBC Holdings plc",
+  HSC: "Harsco Corporation",
+  HST: "Host Hotels & Resorts, Inc.",
+  HSY: "Hershey Company (The)",
+  HT: "Hersha Hospitality Trust",
+  HTA: "Healthcare Trust of America, Inc.",
+  HTD: "John Hancock Tax Advantaged Dividend Income Fund",
+  HTFA: "Horizon Technology Finance Corporation",
+  HTGC: "Hercules Capital, Inc.",
+  HTH: "Hilltop Holdings Inc.",
+  HTY: "John Hancock Tax-Advantaged Global Shareholder Yield Fund",
+  HTZ: "Hertz Global Holdings, Inc",
+  HUBB: "Hubbell Inc",
+  HUBS: "HubSpot, Inc.",
+  HUD: "Hudson Ltd.",
+  HUM: "Humana Inc.",
+  HUN: "Huntsman Corporation",
+  HUYA: "HUYA Inc.",
+  HVT: "Haverty Furniture Companies, Inc.",
+  HXL: "Hexcel Corporation",
+  HY: "Hyster-Yale Materials Handling, Inc.",
+  HYB: "New America High Income Fund, Inc. (The)",
+  HYI: "Western Asset High Yield Defined Opportunity Fund Inc.",
+  HYT: "Blackrock Corporate High Yield Fund, Inc.",
+  HZN: "Horizon Global Corporation",
+  HZO: "MarineMax, Inc.",
+  I: "Intelsat S.A.",
+  IAA: "IAA, Inc.",
+  IAE: "Voya Asia Pacific High Dividend Equity Income Fund",
+  IAG: "Iamgold Corporation",
+  IBA: "Industrias Bachoco, S.A. de C.V.",
+  IBM: "International Business Machines Corporation",
+  IBN: "ICICI Bank Limited",
+  IBP: "Installed Building Products, Inc.",
+  ICD: "Independence Contract Drilling, Inc.",
+  ICE: "Intercontinental Exchange Inc.",
+  ICL: "Israel Chemicals Shs",
+  IDA: "IDACORP, Inc.",
+  IDE: "Voya Infrastructure, Industrials and Materials Fund",
+  IDT: "IDT Corporation",
+  IEX: "IDEX Corporation",
+  IFF: "International Flavors & Fragrances, Inc.",
+  IFFT: "International Flavors & Fragrances, Inc.",
+  IFN: "India Fund, Inc. (The)",
+  IFS: "Intercorp Financial Services Inc.",
+  IGA: "Voya Global Advantage and Premium Opportunity Fund",
+  IGD: "Voya Global Equity Dividend and Premium Opportunity Fund",
+  IGI: "Western Asset Investment Grade Defined Opportunity Trust Inc.",
+  IGR: "CBRE Clarion Global Real Estate Income Fund",
+  IGT: "International Game Technology",
+  IHC: "Independence Holding Company",
+  IHD: "Voya Emerging Markets High Income Dividend Equity Fund",
+  IHG: "Intercontinental Hotels Group",
+  IHIT: "Invesco High Income 2023 Target Term Fund",
+  IHTA: "Invesco High Income 2024 Target Term Fund",
+  IID: "Voya International High Dividend Equity Income Fund",
+  IIF: "Morgan Stanley India Investment Fund, Inc.",
+  IIM: "Invesco Value Municipal Income Trust",
+  IIPR: "Innovative Industrial Properties, Inc.",
+  IMAX: "Imax Corporation",
+  INB: "Cohen & Steers Global Income Builder, Inc.",
+  INF: "Brookfield Global Listed Infrastructure Income Fund",
+  INFO: "IHS Markit Ltd.",
+  INFY: "Infosys Limited",
+  ING: "ING Group, N.V.",
+  INGR: "Ingredion Incorporated",
+  INN: "Summit Hotel Properties, Inc.",
+  INSI: "Insight Select Income Fund",
+  INSP: "Inspire Medical Systems, Inc.",
+  INST: "Instructure, Inc.",
+  INSW: "International Seaways, Inc.",
+  INT: "World Fuel Services Corporation",
+  INVH: "Invitation Homes Inc.",
+  INXN: "InterXion Holding N.V.",
+  IO: "Ion Geophysical Corporation",
+  IP: "International Paper Company",
+  IPG: "Interpublic Group of Companies, Inc. (The)",
+  IPHI: "Inphi Corporation",
+  IPI: "Intrepid Potash, Inc",
+  IPOA: "Social Capital Hedosophia Holdings Corp.",
+  IQI: "Invesco Quality Municipal Income Trust",
+  IQV: "IQVIA Holdings, Inc.",
+  IR: "Ingersoll-Rand plc (Ireland)",
+  IRET: "Investors Real Estate Trust",
+  IRL: "New Ireland Fund, Inc. (The)",
+  IRM: "Iron Mountain Incorporated",
+  IRR: "Voya Natural Resources Equity Income Fund",
+  IRS: "IRSA Inversiones Y Representaciones S.A.",
+  IRT: "Independence Realty Trust, Inc.",
+  ISD: "PGIM High Yield Bond Fund, Inc.",
+  ISG: "ING Group, N.V.",
+  IT: "Gartner, Inc.",
+  ITCB: "Ita? CorpBanca",
+  ITGR: "Integer Holdings Corporation",
+  ITT: "ITT Inc.",
+  ITUB: "Itau Unibanco Banco Holding SA",
+  ITW: "Illinois Tool Works Inc.",
+  IVC: "Invacare Corporation",
+  IVH: "Ivy High Income Opportunities Fund",
+  IVR: "INVESCO MORTGAGE CAPITAL INC",
+  IVZ: "Invesco Plc",
+  IX: "Orix Corp Ads",
+  JAG: "Jagged Peak Energy Inc.",
+  JAX: "J. Alexander&#39;s Holdings, Inc.",
+  JBGS: "JBG SMITH Properties",
+  JBK: "Lehman ABS Corporation",
+  JBL: "Jabil Inc.",
+  JBN: "Select Asset Inc.",
+  JBR: "Select Asset Inc.",
+  JBT: "John Bean Technologies Corporation",
+  JCAP: "Jernigan Capital, Inc.",
+  JCE: "Nuveen Core Equity Alpha Fund",
+  JCI: "Johnson Controls International plc",
+  JCO: "Nuveen Credit Opportunities 2022 Target Term Fund",
+  JCP: "J.C. Penney Company, Inc. Holding Company",
+  JDD: "Nuveen Diversified Dividend and Income Fund",
+  JE: "Just Energy Group, Inc.",
+  JEC: "Jacobs Engineering Group Inc.",
+  JEF: "Jefferies Financial Group Inc.",
+  JELD: "JELD-WEN Holding, Inc.",
+  JEMD: "Nuveen Emerging Markets Debt 2022 Target Term Fund",
+  JEQ: "Aberdeen Japan Equity Fund, Inc. ",
+  JFR: "Nuveen Floating Rate Income Fund",
+  JGH: "Nuveen Global High Income Fund",
+  JHAA: "Nuveen High Income 2023 Target Term Fund",
+  JHB: "Nuveen High Income November 2021 Target Term Fund",
+  JHD: "Nuveen High Income December 2019 Target Term Fund",
+  JHG: "Janus Henderson Group plc",
+  JHI: "John Hancock Investors Trust",
+  JHS: "John Hancock Income Securities Trust",
+  JHX: "James Hardie Industries plc.",
+  JHY: "Nuveen High Income 2020 Target Term Fund",
+  JILL: "J. Jill, Inc.",
+  JKS: "JinkoSolar Holding Company Limited",
+  JLL: "Jones Lang LaSalle Incorporated",
+  JLS: "Nuveen Mortgage Opportunity Term Fund",
+  JMEI: "Jumei International Holding Limited",
+  JMF: "Nuveen Energy MLP Total Return Fund",
+  JMIA: "Jumia Technologies AG",
+  JMLP: "Nuveen All Cap Energy MLP Opportunities Fund",
+  JMM: "Nuveen Multi-Market Income Fund",
+  JMP: "JMP Group LLC",
+  JMPB: "JMP Group LLC",
+  JMPD: "JMP Group LLC",
+  JMT: "Nuven Mortgage Opportunity Term Fund 2",
+  JNJ: "Johnson & Johnson",
+  JNPR: "Juniper Networks, Inc.",
+  JOE: "St. Joe Company (The)",
+  JOF: "Japan Smaller Capitalization Fund Inc",
+  JP: "Jupai Holdings Limited",
+  JPC: "Nuveen Preferred & Income Opportunities Fund",
+  JPI: "Nuveen Preferred and Income Term Fund",
+  JPM: "J P Morgan Chase & Co",
+  JPS: "Nuveen Preferred & Income Securities Fund",
+  JPT: "Nuveen Preferred and Income 2022 Term Fund",
+  JQC: "Nuveen Credit Strategies Income Fund",
+  JRI: "Nuveen Real Asset Income and Growth Fund",
+  JRO: "Nuveen Floating Rate Income Opportuntiy Fund",
+  JRS: "Nuveen Real Estate Fund",
+  JSD: "Nuveen Short Duration Credit Opportunities Fund",
+  JT: "Jianpu Technology Inc.",
+  JTA: "Nuveen Tax-Advantaged Total Return Strategy Fund",
+  JTD: "Nuveen Tax-Advantaged Dividend Growth Fund",
+  JWN: "Nordstrom, Inc.",
+  K: "Kellogg Company",
+  KAI: "Kadant Inc",
+  KAMN: "Kaman Corporation",
+  KAR: "KAR Auction Services, Inc",
+  KB: "KB Financial Group Inc",
+  KBH: "KB Home",
+  KBR: "KBR, Inc.",
+  PEP: "Pepsi Co.",
+  KDMN: "Kadmon Holdings, Inc.",
+  KDP: "Keurig Dr Pepper Inc.",
+  KEG: "Key Energy Services, Inc.",
+  KEM: "Kemet Corporation",
+  KEN: "Kenon Holdings Ltd.",
+  KEP: "Korea Electric Power Corporation",
+  KEX: "Kirby Corporation",
+  KEY: "KeyCorp",
+  KEYS: "Keysight Technologies Inc.",
+  KF: "Korea Fund, Inc. (The)",
+  KFS: "Kingsway Financial Services, Inc.",
+  KFY: "Korn Ferry ",
+  KGC: "Kinross Gold Corporation",
+  KIM: "Kimco Realty Corporation",
+  KIO: "KKR Income Opportunities Fund",
+  KKR: "KKR & Co. Inc.",
+  KL: "Kirkland Lake Gold Ltd.",
+  KMB: "Kimberly-Clark Corporation",
+  KMF: "Kayne Anderson Midstream Energy Fund, Inc",
+  KMI: "Kinder Morgan, Inc.",
+  KMPR: "Kemper Corporation",
+  KMT: "Kennametal Inc.",
+  KMX: "CarMax Inc",
+  KN: "Knowles Corporation",
+  KNL: "Knoll, Inc.",
+  KNOP: "KNOT Offshore Partners LP",
+  KNX: "Knight Transportation, Inc.",
+  KO: "Coca-Cola Company (The)",
+  KODK: "Eastman Kodak Company",
+  KOF: "Coca Cola Femsa S.A.B. de C.V.",
+  KOP: "Koppers Holdings Inc.",
+  KOS: "Kosmos Energy Ltd.",
+  KR: "Kroger Company (The)",
+  KRA: "Kraton Corporation",
+  KRC: "Kilroy Realty Corporation",
+  KREF: "KKR Real Estate Finance Trust Inc.",
+  KRG: "Kite Realty Group Trust",
+  KRO: "Kronos Worldwide Inc",
+  KRP: "Kimbell Royalty Partners",
+  KSM: "Scudder Strategic Municiple Income Trust",
+  KSS: "Kohl&#39;s Corporation",
+  KSU: "Kansas City Southern",
+  KT: "KT Corporation",
+  KTB: "Kontoor Brands, Inc.",
+  KTF: "Scudder Municiple Income Trust",
+  KTH: "Lehman ABS Corporation",
+  KTN: "Lehman ABS Corporation",
+  KTP: "Lehman ABS Corporation",
+  KW: "Kennedy-Wilson Holdings Inc.",
+  KWR: "Quaker Chemical Corporation",
+  KYN: "Kayne Anderson MLP/Midstream Investment Company",
+  L: "Loews Corporation",
+  LAC: "Lithium Americas Corp.",
+  LAD: "Lithia Motors, Inc.",
+  LADR: "Ladder Capital Corp",
+  LAIX: "LAIX Inc.",
+  LAZ: "Lazard Ltd.",
+  LB: "L Brands, Inc.",
+  LBRT: "Liberty Oilfield Services Inc.",
+  LC: "LendingClub Corporation",
+  LCI: "Lannett Co Inc",
+  LCII: "LCI Industries ",
+  LDL: "Lydall, Inc.",
+  LDOS: "Leidos Holdings, Inc.",
+  LDP: "Cohen & Steers Limited Duration Preferred and Income Fund, Inc",
+  LEA: "Lear Corporation",
+  LEAF: "Leaf Group Ltd.",
+  LEE: "Lee Enterprises, Incorporated",
+  LEG: "Leggett & Platt, Incorporated",
+  LEJU: "Leju Holdings Limited",
+  LEN: "Lennar Corporation",
+  LEO: "BNY Mellon Strategic Municipals, Inc.",
+  LEVI: "Levi Strauss & Co",
+  LFC: "China Life Insurance Company Limited",
+  LGC: "Legacy Acquisition Corp.",
+  LGI: "Lazard Global Total Return and Income Fund",
+  LH: "Laboratory Corporation of America Holdings",
+  LHC: "Leo Holdings Corp.",
+  LHX: "L3Harris Technologies, Inc.",
+  LII: "Lennox International, Inc.",
+  LIN: "Linde plc",
+  LINX: "Linx S.A.",
+  LITB: "LightInTheBox Holding Co., Ltd.",
+  LKSD: "LSC Communications, Inc.",
+  LL: "Lumber Liquidators Holdings, Inc",
+  LLY: "Eli Lilly and Company",
+  LM: "Legg Mason, Inc.",
+  LMHA: "Legg Mason, Inc.",
+  LMHB: "Legg Mason, Inc.",
+  LMT: "Lockheed Martin Corporation",
+  LN: "LINE Corporation",
+  LNC: "Lincoln National Corporation",
+  LND: "Brasilagro Cia Brasileira De Propriedades Agricolas",
+  LNN: "Lindsay Corporation",
+  LOMA: "Loma Negra Compania Industrial Argentina Sociedad Anonima",
+  LOR: "Lazard World Dividend & Income Fund, Inc.",
+  LOW: "Lowe&#39;s Companies, Inc.",
+  LPG: "Dorian LPG Ltd.",
+  LPI: "Laredo Petroleum, Inc.",
+  LPL: "LG Display Co., Ltd.",
+  LPT: "Liberty Property Trust",
+  LPX: "Louisiana-Pacific Corporation",
+  LRN: "K12 Inc",
+  LSI: "Life Storage, Inc.",
+  LTC: "LTC Properties, Inc.",
+  LTHM: "Livent Corporation",
+  LTM: "LATAM Airlines Group S.A.",
+  LUB: "Luby&#39;s, Inc.",
+  LUV: "Southwest Airlines Company",
+  LVS: "Las Vegas Sands Corp.",
+  LW: "Lamb Weston Holdings, Inc.",
+  LXFR: "Luxfer Holdings PLC",
+  LXP: "Lexington Realty Trust",
+  LXU: "Lsb Industries Inc.",
+  LYB: "LyondellBasell Industries NV",
+  LYG: "Lloyds Banking Group Plc",
+  LYV: "Live Nation Entertainment, Inc.",
+  LZB: "La-Z-Boy Incorporated",
+  M: "Macy&#39;s Inc",
+  MA: "Mastercard Incorporated",
+  MAA: "Mid-America Apartment Communities, Inc.",
+  MAC: "Macerich Company (The)",
+  MAIN: "Main Street Capital Corporation",
+  MAN: "ManpowerGroup",
+  MANU: "Manchester United Ltd.",
+  MAS: "Masco Corporation",
+  MATX: "Matson, Inc.",
+  MAV: "Pioneer Municipal High Income Advantage Trust",
+  MAXR: "Maxar Technologies Inc.",
+  MBI: "MBIA, Inc.",
+  MBT: "Mobile TeleSystems OJSC",
+  MC: "Moelis & Company",
+  MCA: "Blackrock MuniYield California Insured Fund, Inc.",
+  MCB: "Metropolitan Bank Holding Corp.",
+  MCC: "Medley Capital Corporation",
+  MCD: "McDonald&#39;s Corporation",
+  MCI: "Barings Corporate Investors",
+  MCK: "McKesson Corporation",
+  MCN: "Madison Covered Call & Equity Strategy Fund",
+  MCO: "Moody&#39;s Corporation",
+  MCR: "MFS Charter Income Trust",
+  MCRN: "Milacron Holdings Corp.",
+  CSCO: "Cisco Corp.",
+  MCS: "Marcus Corporation (The)",
+  MCV: "Medley Capital Corporation",
+  MCX: "Medley Capital Corporation",
+  MCY: "Mercury General Corporation",
+  MD: "Mednax, Inc",
+  MDC: "M.D.C. Holdings, Inc.",
+  MDLA: "Medallia, Inc.",
+  MDLQ: "Medley LLC",
+  MDLX: "Medley LLC",
+  MDLY: "Medley Management Inc.",
+  MDP: "Meredith Corporation",
+  MDR: "McDermott International, Inc.",
+  MDT: "Medtronic plc",
+  MDU: "MDU Resources Group, Inc.",
+  MEC: "Mayville Engineering Company, Inc.",
+  MED: "MEDIFAST INC",
+  MEI: "Methode Electronics, Inc.",
+  MEN: "Blackrock MuniEnhanced Fund, Inc.",
+  MET: "MetLife, Inc.",
+  MFA: "MFA Financial, Inc.",
+  MFAC: "Megalith Financial Acquisition Corp.",
+  MFC: "Manulife Financial Corp",
+  MFD: "Macquarie First Trust Global",
+  MFG: "Mizuho Financial Group, Inc.",
+  MFGP: "Micro Focus Intl PLC",
+  MFL: "Blackrock MuniHoldings Investment Quality Fund",
+  MFM: "MFS Municipal Income Trust",
+  MFO: "MFA Financial, Inc.",
+  MFT: "Blackrock MuniYield Investment QualityFund",
+  MFV: "MFS Special Value Trust",
+  MG: "Mistras Group Inc",
+  MGA: "Magna International, Inc.",
+  MGF: "MFS Government Markets Income Trust",
+  MGM: "MGM Resorts International",
+  MGP: "MGM Growth Properties LLC",
+  MGR: "Affiliated Managers Group, Inc.",
+  MGU: "Macquarie Global Infrastructure Total Return Fund Inc.",
+  MGY: "Magnolia Oil & Gas Corporation",
+  MHD: "Blackrock MuniHoldings Fund, Inc.",
+  MHE: "BlackRock Massachusetts Tax-Exempt Trust",
+  MHF: "Western Asset Municipal High Income Fund, Inc.",
+  MHI: "Pioneer Municipal High Income Trust",
+  MHK: "Mohawk Industries, Inc.",
+  MHLA: "Maiden Holdings, Ltd.",
+  MHN: "Blackrock MuniHoldings New York Quality Fund, Inc.",
+  MHNC: "Maiden Holdings, Ltd.",
+  MHO: "M/I Homes, Inc.",
+  MIC: "Macquarie Infrastructure Corporation ",
+  MIE: "Cohen & Steers MLP Income and Energy Opportunity Fund, Inc.",
+  MIN: "MFS Intermediate Income Trust",
+  MITT: "AG Mortgage Investment Trust, Inc.",
+  MIXT: "MiX Telematics Limited",
+  MIY: "Blackrock MuniYield Michigan Quality Fund, Inc.",
+  MKC: "McCormick & Company, Incorporated",
+  MKL: "Markel Corporation",
+  MLI: "Mueller Industries, Inc.",
+  MLM: "Martin Marietta Materials, Inc.",
+  MLP: "Maui Land & Pineapple Company, Inc.",
+  MLR: "Miller Industries, Inc.",
+  MMC: "Marsh & McLennan Companies, Inc.",
+  MMD: "MainStay MacKay DefinedTerm Municipal Opportunitie",
+  MMI: "Marcus & Millichap, Inc.",
+  MMM: "3M Company",
+  MMP: "Magellan Midstream Partners L.P.",
+  MMS: "Maximus, Inc.",
+  MMT: "MFS Multimarket Income Trust",
+  MMU: "Western Asset Managed Municipals Fund, Inc.",
+  MN: "Manning & Napier, Inc.",
+  MNE: "Blackrock Muni New York Intermediate Duration Fund Inc",
+  MNK: "Mallinckrodt plc",
+  MNP: "Western Asset Municipal Partners Fund, Inc.",
+  MNR: "Monmouth Real Estate Investment Corporation",
+  MNRL: "Brigham Minerals, Inc.",
+  MO: "Altria Group",
+  MOD: "Modine Manufacturing Company",
+  MODN: "Model N, Inc.",
+  MOGU: "MOGU Inc.",
+  MOH: "Molina Healthcare Inc",
+  MOS: "Mosaic Company (The)",
+  MOSC: "Mosaic Acquisition Corp.",
+  MOV: "Movado Group Inc.",
+  ADBE: "Adobe Corp.",
+  MPA: "Blackrock MuniYield Pennsylvania Quality Fund",
+  MPC: "Marathon Petroleum Corporation",
+  MPLX: "MPLX LP",
+  MPV: "Barings Participation Investors",
+  MPW: "Medical Properties Trust, Inc.",
+  MPX: "Marine Products Corporation",
+  MQT: "Blackrock MuniYield Quality Fund II, Inc.",
+  MQY: "Blackrock MuniYield Quality Fund, Inc.",
+  MR: "Montage Resources Corporation",
+  MRC: "MRC Global Inc.",
+  MRK: "Merck & Company, Inc.",
+  MRO: "Marathon Oil Corporation",
+  MS: "Morgan Stanley",
+  MSA: "MSA Safety Incorporporated",
+  MSB: "Mesabi Trust",
+  MSC: "Studio City International Holdings Limited",
+  MSCI: "MSCI Inc",
+  MSD: "Morgan Stanley Emerging Markets Debt Fund, Inc.",
+  MSG: "The Madison Square Garden Company",
+  MSGN: "MSG Networks Inc.",
+  MSI: "Motorola Solutions, Inc.",
+  MSL: "MidSouth Bancorp",
+  MSM: "MSC Industrial Direct Company, Inc.",
+  MT: "ArcelorMittal",
+  MTB: "M&T Bank Corporation",
+  MTD: "Mettler-Toledo International, Inc.",
+  MTDR: "Matador Resources Company",
+  MTG: "MGIC Investment Corporation",
+  MTH: "Meritage Corporation",
+  MTL: "Mechel PAO",
+  MTN: "Vail Resorts, Inc.",
+  MTOR: "Meritor, Inc.",
+  MTR: "Mesa Royalty Trust",
+  MTRN: "Materion Corporation",
+  MTT: "Western Asset Municipal Defined Opportunity Trust Inc",
+  MTW: "Manitowoc Company, Inc. (The)",
+  MTX: "Minerals Technologies Inc.",
+  MTZ: "MasTec, Inc.",
+  MUA: "Blackrock MuniAssets Fund, Inc.",
+  MUC: "Blackrock MuniHoldings California Quality Fund,  Inc.",
+  MUE: "Blackrock MuniHoldings Quality Fund II, Inc.",
+  MUFG: "Mitsubishi UFJ Financial Group Inc",
+  MUH: "Blackrock MuniHoldings Fund II, Inc.",
+  MUI: "Blackrock Muni Intermediate Duration Fund Inc",
+  MUJ: "Blackrock MuniHoldings New Jersey Insured Fund, Inc.",
+  MUR: "Murphy Oil Corporation",
+  MUS: "Blackrock MuniHoldings Quality Fund, Inc.",
+  MUSA: "Murphy USA Inc.",
+  MUX: "McEwen Mining Inc.",
+  MVC: "MVC Capital, Inc.",
+  MVCD: "MVC Capital, Inc.",
+  MVF: "MuniVest Fund, Inc.",
+  MVO: "MV Oil Trust",
+  MVT: "Blackrock MuniVest Fund II, Inc.",
+  MWA: "Mueller Water Products Inc",
+  MX: "MagnaChip Semiconductor Corporation",
+  MXE: "Mexico Equity and Income Fund, Inc. (The)",
+  MXF: "Mexico Fund, Inc. (The)",
+  MXL: "MaxLinear, Inc",
+  MYC: "Blackrock MuniYield California Fund, Inc.",
+  MYD: "Blackrock MuniYield Fund, Inc.",
+  MYE: "Myers Industries, Inc.",
+  MYF: "Blackrock MuniYield Investment Fund",
+  MYI: "Blackrock MuniYield Quality Fund III, Inc.",
+  MYJ: "Blackrock MuniYield New Jersey Fund, Inc.",
+  MYN: "Blackrock MuniYield New York Quality Fund, Inc.",
+  MYOV: "Myovant Sciences Ltd.",
+  MZA: "MuniYield Arizona Fund, Inc.",
+  NAC: "Nuveen California Quality Municipal Income Fund",
+  NAD: "Nuveen Quality Municipal Income Fund",
+  NAN: "Nuveen New York Quality Municipal Income Fund",
+  NAT: "Nordic American Tankers Limited",
+  NAV: "Navistar International Corporation",
+  NAZ: "Nuveen Arizona Quality Municipal Income Fund",
+  NBB: "Nuveen Taxable Municipal Income Fund",
+  NBHC: "National Bank Holdings Corporation",
+  NBL: "Noble Energy Inc.",
+  NBLX: "Noble Midstream Partners LP",
+  NBR: "Nabors Industries Ltd.",
+  NC: "NACCO Industries, Inc.",
+  NCA: "Nuveen California Municipal Value Fund, Inc.",
+  NCB: "Nuveen California Municipal Value Fund 2",
+  NCI: "Navigant Consulting, Inc.",
+  NCLH: "Norwegian Cruise Line Holdings Ltd.",
+  NCR: "NCR Corporation",
+  NCV: "AllianzGI Convertible & Income Fund",
+  NCZ: "AllianzGI Convertible & Income Fund II",
+  NDP: "Tortoise Energy Independence Fund, Inc.",
+  NE: "Noble Corporation",
+  NEA: "Nuveen AMT-Free Quality Municipal Income Fund",
+  NEE: "NextEra Energy, Inc.",
+  NEM: "Newmont Goldcorp Corporation",
+  NEP: "NextEra Energy Partners, LP",
+  NEU: "NewMarket Corporation",
+  NEV: "Nuveen Enhanced Municipal Value Fund",
+  NEW: "Puxin Limited",
+  NEWM: "New Media Investment Group Inc.",
+  NEWR: "New Relic, Inc.",
+  NEXA: "Nexa Resources S.A.",
+  NFC: "New Frontier Corporation",
+  NFG: "National Fuel Gas Company",
+  NFJ: "AllianzGI NFJ Dividend, Interest & Premium Strategy Fund",
+  NGG: "National Grid Transco, PLC",
+  NGL: "NGL ENERGY PARTNERS LP",
+  NGS: "Natural Gas Services Group, Inc.",
+  NGVC: "Natural Grocers by Vitamin Cottage, Inc.",
+  NGVT: "Ingevity Corporation",
+  NHA: "Nuveen Municipal 2021 Target Term Fund",
+  NHF: "NexPoint Strategic Opportunities Fund",
+  NHI: "National Health Investors, Inc.",
+  NI: "NiSource, Inc",
+  NID: "Nuveen Intermediate Duration Municipal Term Fund",
+  NIE: "AllianzGI Equity & Convertible Income Fund",
+  NIM: "Nuveen Select Maturities Municipal Fund",
+  NINE: "Nine Energy Service, Inc.",
+  NIO: "NIO Inc.",
+  NIQ: "Nuveenn Intermediate Duration Quality Municipal Term Fund",
+  NJR: "NewJersey Resources Corporation",
+  NJV: "Nuveen New Jersey Municipal Value Fund",
+  NKE: "Nike, Inc.",
+  NKG: "Nuveen Georgia Quality Municipal Income Fund ",
+  NKX: "Nuveen California AMT-Free Quality Municipal Income Fund",
+  NL: "NL Industries, Inc.",
+  NLS: "Nautilus Group, Inc. (The)",
+  NLSN: "Nielsen N.V.",
+  NLY: "Annaly Capital Management Inc",
+  NM: "Navios Maritime Holdings Inc.",
+  NMFC: "New Mountain Finance Corporation",
+  NMFX: "New Mountain Finance Corporation",
+  NMI: "Nuveen Municipal Income Fund, Inc.",
+  NMM: "Navios Maritime Partners LP",
+  NMR: "Nomura Holdings Inc ADR",
+  NMS: "Nuveen Minnesota Quality Municipal Income Fund",
+  NMT: "Nuveen Massachusetts Municipal Income Fund",
+  NMY: "Nuveen Maryland Quality Municipal Income Fund",
+  NMZ: "Nuveen Municipal High Income Opportunity Fund",
+  NNA: "Navios Maritime Acquisition Corporation",
+  NNC: "Nuveen North Carolina Quality Municipal Income Fd",
+  NNI: "Nelnet, Inc.",
+  NNN: "National Retail Properties",
+  NNY: "Nuveen New York Municipal Value Fund, Inc.",
+  NOA: "North American Construction Group Ltd.",
+  NOAH: "Noah Holdings Ltd.",
+  NOC: "Northrop Grumman Corporation",
+  NOK: "Nokia Corporation",
+  NOM: "Nuveen Missouri Quality Municipal Income Fund",
+  NOMD: "Nomad Foods Limited",
+  NOV: "National Oilwell Varco, Inc.",
+  NOVA: "Sunnova Energy International Inc.",
+  NOW: "ServiceNow, Inc.",
+  NP: "Neenah, Inc.",
+  NPK: "National Presto Industries, Inc.",
+  NPN: "Nuveen Pennsylvania Municipal Value Fund",
+  NPO: "EnPro Industries",
+  NPTN: "NeoPhotonics Corporation",
+  NPV: "Nuveen Virginia Quality Municipal Income Fund",
+  NQP: "Nuveen Pennsylvania Quality Municipal Income Fund",
+  NR: "Newpark Resources, Inc.",
+  NRE: "NorthStar Realty Europe Corp.",
+  NRG: "NRG Energy, Inc.",
+  NRGX: "PIMCO Energy and Tactical Credit Opportunities Fund",
+  NRK: "Nuveen New York AMT-Free Quality Municipal",
+  NRP: "Natural Resource Partners LP",
+  NRT: "North European Oil Royality Trust",
+  NRUC: "National Rural Utilities Cooperative Finance Corporation",
+  NRZ: "New Residential Investment Corp.",
+  NS: "Nustar Energy L.P.",
+  NSA: "National Storage Affiliates Trust",
+  NSC: "Norfolk Southern Corporation",
+  NSCO: "Nesco Holdings, Inc.",
+  NSL: "Nuveen Senior Income Fund",
+  NSP: "Insperity, Inc.",
+  NSS: "NuStar Logistics, L.P.",
+  NTB: "Bank of N.T. Butterfield & Son Limited (The)",
+  NTC: "Nuveen Connecticut Quality Municipal Income Fund",
+  NTEST: "NASDAQ TEST STOCK",
+  NTG: "Tortoise Midstream Energy Fund, Inc.",
+  NTP: "Nam Tai Property Inc.",
+  NTR: "Nutrien Ltd.",
+  NTX: "Nuveen Texas Quality Municipal Income Fund",
+  NTZ: "Natuzzi, S.p.A.",
+  NUE: "Nucor Corporation",
+  NUM: "Nuveen Michigan Quality Municipal Income Fund",
+  NUO: "Nuveen Ohio Quality Municipal Income Fund",
+  NUS: "Nu Skin Enterprises, Inc.",
+  NUV: "Nuveen AMT-Free Municipal Value Fund",
+  NUW: "Nuveen AMT-Free Municipal Value Fund",
+  NVG: "Nuveen AMT-Free Municipal Credit Income Fund",
+  NVGS: "Navigator Holdings Ltd.",
+  NVO: "Novo Nordisk A/S",
+  NVR: "NVR, Inc.",
+  NVRO: "Nevro Corp.",
+  NVS: "Novartis AG",
+  NVT: "nVent Electric plc",
+  NVTA: "Invitae Corporation",
+  NWE: "NorthWestern Corporation",
+  NWHM: "New Home Company Inc. (The)",
+  NWN: "Northwest Natural Holding Company",
+  NX: "Quanex Building Products Corporation",
+  NXC: "Nuveen Insured California Select Tax-Free Income Portfolio",
+  NXJ: "Nuveen New Jersey Quality Municipal Income Fund",
+  NXN: "Nuveen Insured New York Select Tax-Free Income Portfolio",
+  NXP: "Nuveen Select Tax Free Income Portfolio",
+  NXQ: "Nuveen Select Tax Free Income Portfolio II",
+  NXR: "Nuveen Select Tax Free Income Portfolio III",
+  NXRT: "NexPoint Residential Trust, Inc.",
+  NYCB: "New York Community Bancorp, Inc.",
+  NYT: "New York Times Company (The)",
+  NYV: "Nuveen New York Municipal Value Fund 2",
+  NZF: "Nuveen Municipal Credit Income Fund",
+  O: "Realty Income Corporation",
+  OAC: "Oaktree Acquisition Corp.",
+  OAK: "Oaktree Capital Group, LLC",
+  OAS: "Oasis Petroleum Inc.",
+  OBE: "Obsidian Energy Ltd.",
+  OC: "Owens Corning Inc",
+  OCN: "Ocwen Financial Corporation",
+  ODC: "Oil-Dri Corporation Of America",
+  OEC: "Orion Engineered Carbons S.A",
+  OFC: "Corporate Office Properties Trust",
+  OFG: "OFG Bancorp",
+  OGE: "OGE Energy Corp",
+  OGS: "ONE Gas, Inc.",
+  OHI: "Omega Healthcare Investors, Inc.",
+  OI: "Owens-Illinois, Inc.",
+  OIA: "Invesco Municipal Income Opportunities Trust",
+  OII: "Oceaneering International, Inc.",
+  OIS: "Oil States International, Inc.",
+  OKE: "ONEOK, Inc.",
+  OLN: "Olin Corporation",
+  OLP: "One Liberty Properties, Inc.",
+  OMC: "Omnicom Group Inc.",
+  OMF: "OneMain Holdings, Inc.",
+  OMI: "Owens & Minor, Inc.",
+  OMN: "OMNOVA Solutions Inc.",
+  OMP: "Oasis Midstream Partners LP",
+  ONDK: "On Deck Capital, Inc.",
+  ONE: "OneSmart International Education Group Limited",
+  OOMA: "Ooma, Inc.",
+  PYPL: "Paypal Inc.",
+  OPP: "RiverNorth/DoubleLine Strategic Opportunity Fund, Inc.",
+  OPY: "Oppenheimer Holdings, Inc.",
+  OR: "Osisko Gold Royalties Ltd",
+  ORA: "Ormat Technologies, Inc.",
+  ORAN: "Orange",
+  ORC: "Orchid Island Capital, Inc.",
+  ORCC: "Owl Rock Capital Corporation",
+  ORCL: "Oracle Corporation",
+  ORI: "Old Republic International Corporation",
+  ORN: "Orion Group Holdings, Inc.",
+  OSB: "Norbord Inc.",
+  OSG: "Overseas Shipholding Group, Inc.",
+  OSK: "Oshkosh Corporation",
+  OSLE: "Oaktree Specialty Lending Corporation",
+  OUT: "OUTFRONT Media Inc.",
+  OXM: "Oxford Industries, Inc.",
+  OXY: "Occidental Petroleum Corporation",
+  PAA: "Plains All American Pipeline, L.P.",
+  PAC: "Grupo Aeroportuario Del Pacifico, S.A. de C.V.",
+  PACD: "Pacific Drilling S.A.",
+  PACK: "Ranpak Holdings Corp",
+  PAG: "Penske Automotive Group, Inc.",
+  PAGP: "Plains Group Holdings, L.P.",
+  PAGS: "PagSeguro Digital Ltd.",
+  PAI: "Western Asset Investment Grade Income Fund Inc.",
+  PAM: "Pampa Energia S.A.",
+  PANW: "Palo Alto Networks, Inc.",
+  PAR: "PAR Technology Corporation",
+  PARR: "Par Pacific Holdings, Inc.",
+  PAYC: "Paycom Software, Inc.",
+  PB: "Prosperity Bancshares, Inc.",
+  PBA: "Pembina Pipeline Corp.",
+  PBB: "Prospect Capital Corporation",
+  PBC: "Prospect Capital Corporation",
+  PBF: "PBF Energy Inc.",
+  PBFX: "PBF Logistics LP",
+  PBH: "Prestige Consumer Healthcare Inc.",
+  PBI: "Pitney Bowes Inc.",
+  PBR: "Petroleo Brasileiro S.A.- Petrobras",
+  PBT: "Permian Basin Royalty Trust",
+  PBY: "Prospect Capital Corporation",
+  PCF: "High Income Securities Fund",
+  PCG: "Pacific Gas & Electric Co.",
+  PCI: "PIMCO Dynamic Credit and Mortgage Income Fund",
+  PCK: "Pimco California Municipal Income Fund II",
+  PCM: "PIMCO Commercial Mortgage Securities Trust, Inc.",
+  PCN: "Pimco Corporate & Income Stategy Fund",
+  PCQ: "PIMCO California Municipal Income Fund",
+  PD: "PagerDuty, Inc.",
+  PDI: "PIMCO Dynamic Income Fund",
+  PDM: "Piedmont Office Realty Trust, Inc.",
+  PDS: "Precision Drilling Corporation",
+  PDT: "John Hancock Premium Dividend Fund",
+  PE: "Parsley Energy, Inc.",
+  PEB: "Pebblebrook Hotel Trust",
+  PEG: "Public Service Enterprise Group Incorporated",
+  PEI: "Pennsylvania Real Estate Investment Trust",
+  PEN: "Penumbra, Inc.",
+  PEO: "Adams Natural Resources Fund, Inc.",
+  PER: "SandRidge Permian Trust",
+  PFD: "Flaherty & Crumrine Preferred and Income Fund Inco",
+  PFE: "Pfizer, Inc.",
+  PFGC: "Performance Food Group Company",
+  PFH: "CABCO Series 2004-101 Trust",
+  PFL: "PIMCO Income Strategy Fund",
+  PFN: "PIMCO Income Strategy Fund II",
+  PFO: "Flaherty & Crumrine Preferred and Income Opportuni",
+  PFS: "Provident Financial Services, Inc",
+  PFSI: "PennyMac Financial Services, Inc.",
+  PG: "Procter & Gamble Company (The)",
+  PGP: "Pimco Global Stocksplus & Income Fund",
+  PGR: "Progressive Corporation (The)",
+  PGRE: "Paramount Group, Inc.",
+  PGTI: "PGT Innovations, Inc.",
+  PGZ: "Principal Real Estate Income Fund",
+  PH: "Parker-Hannifin Corporation",
+  PHD: "Pioneer Floating Rate Trust",
+  PHG: "Koninklijke Philips N.V.",
+  PHI: "PLDT Inc.",
+  PHK: "Pimco High Income Fund",
+  PHM: "PulteGroup, Inc.",
+  PHR: "Phreesia, Inc.",
+  PHT: "Pioneer High Income Trust",
+  PHX: "Panhandle Royalty Company",
+  PIC: "Pivotal Investment Corporation II",
+  PII: "Polaris Inc.",
+  PIM: "Putnam Master Intermediate Income Trust",
+  PINS: "Pinterest, Inc.",
+  PIR: "Pier 1 Imports, Inc.",
+  PIY: "Merrill Lynch Depositor, Inc.",
+  PJC: "Piper Jaffray Companies",
+  PJH: "Prudential Financial, Inc.",
+  PJT: "PJT Partners Inc.",
+  PK: "Park Hotels & Resorts Inc.",
+  PKD: "Parker Drilling Company",
+  PKE: "Park Aerospace Corp.",
+  PKG: "Packaging Corporation of America",
+  PKI: "PerkinElmer, Inc.",
+  PKO: "Pimco Income Opportunity Fund",
+  PKX: "POSCO",
+  PLAN: "Anaplan, Inc.",
+  PLD: "Prologis, Inc.",
+  PLNT: "Planet Fitness, Inc.",
+  PLOW: "Douglas Dynamics, Inc.",
+  PLT: "Plantronics, Inc.",
+  PM: "Philip Morris International Inc",
+  PMF: "PIMCO Municipal Income Fund",
+  PML: "Pimco Municipal Income Fund II",
+  PMM: "Putnam Managed Municipal Income Trust",
+  PMO: "Putnam Municipal Opportunities Trust",
+  PMT: "PennyMac Mortgage Investment Trust",
+  PMX: "PIMCO Municipal Income Fund III",
+  PNC: "PNC Financial Services Group, Inc. (The)",
+  PNF: "PIMCO New York Municipal Income Fund",
+  PNI: "Pimco New York Municipal Income Fund II",
+  PNM: "PNM Resources, Inc. (Holding Co.)",
+  PNR: "Pentair plc.",
+  PNW: "Pinnacle West Capital Corporation",
+  POL: "PolyOne Corporation",
+  POR: "Portland General Electric Company",
+  POST: "Post Holdings, Inc.",
+  PPDF: "PPDAI Group Inc.",
+  PPG: "PPG Industries, Inc.",
+  PPL: "PPL Corporation",
+  PPR: "Voya Prime Rate Trust",
+  PPT: "Putnam Premier Income Trust",
+  PPX: "PPL Capital Funding, Inc.",
+  PQG: "PQ Group Holdings Inc.",
+  PRA: "ProAssurance Corporation",
+  PRGO: "Perrigo Company",
+  PRH: "Prudential Financial, Inc.",
+  PRI: "Primerica, Inc.",
+  PRLB: "Proto Labs, Inc.",
+  PRO: "PROS Holdings, Inc.",
+  PROS: "ProSight Global, Inc.",
+  PRS: "Prudential Financial, Inc.",
+  PRSP: "Perspecta Inc.",
+  PRT: "PermRock Royalty Trust",
+  PRTY: "Party City Holdco Inc.",
+  PRU: "Prudential Financial, Inc.",
+  PSA: "Public Storage",
+  PSB: "PS Business Parks, Inc.",
+  PSF: "Cohen & Steers Select Preferred and Income Fund, Inc.",
+  PSN: "Parsons Corporation",
+  PSO: "Pearson, Plc",
+  PSTG: "Pure Storage, Inc. ",
+  PSTL: "Postal Realty Trust, Inc.",
+  PSV: "Hermitage Offshore Services Ltd.",
+  PSX: "Phillips 66",
+  PSXP: "Phillips 66 Partners LP",
+  PTR: "PetroChina Company Limited",
+  PTY: "Pimco Corporate & Income Opportunity Fund",
+  PUK: "Prudential Public Limited Company",
+  PUMP: "ProPetro Holding Corp.",
+  PVG: "Pretium Resources, Inc.",
+  PVH: "PVH Corp.",
+  PVL: "Permianville Royalty Trust",
+  PVT: "Pivotal Acquisition Corp.",
+  PVTL: "Pivotal Software, Inc.",
+  PWR: "Quanta Services, Inc.",
+  PXD: "Pioneer Natural Resources Company",
+  PYN: "PIMCO New York Municipal Income Fund III",
+  PYS: "PPlus Trust",
+  PYT: "PPlus Trust",
+  PYX: "Pyxus International, Inc.",
+  PZC: "PIMCO California Municipal Income Fund III",
+  PZN: "Pzena Investment Management Inc",
+  QD: "Qudian Inc.",
+  QEP: "QEP Resources, Inc.",
+  QES: "Quintana Energy Services Inc.",
+  QGEN: "Qiagen N.V.",
+  QHC: "Quorum Health Corporation",
+  QSR: "Restaurant Brands International Inc.",
+  QTS: "QTS Realty Trust, Inc.",
+  QTWO: "Q2 Holdings, Inc.",
+  QUAD: "Quad Graphics, Inc",
+  QUOT: "Quotient Technology Inc.",
+  QVCD: "QVC, Inc.",
+  R: "Ryder System, Inc.",
+  RA: "Brookfield Real Assets Income Fund Inc.",
+  RACE: "Ferrari N.V.",
+  RAD: "Rite Aid Corporation",
+  RAMP: "LiveRamp Holdings, Inc.",
+  RBA: "Ritchie Bros. Auctioneers Incorporated",
+  RBC: "Regal Beloit Corporation",
+  RBS: "Royal Bank Scotland plc (The)",
+  RC: "Ready Capital Corporation",
+  RCA: "Ready Capital Corporation",
+  RCB: "Ready Capital Corporation",
+  RCI: "Rogers Communication, Inc.",
+  RCL: "Royal Caribbean Cruises Ltd.",
+  RCP: "Ready Capital Corporation",
+  RCS: "PIMCO Strategic Income Fund, Inc.",
+  RCUS: "Arcus Biosciences, Inc.",
+  RDN: "Radian Group Inc.",
+  RDY: "Dr. Reddy&#39;s Laboratories Ltd",
+  RE: "Everest Re Group, Ltd.",
+  RELX: "RELX PLC",
+  RENN: "Renren Inc.",
+  RES: "RPC, Inc.",
+  RESI: "Front Yard Residential Corporation",
+  REV: "Revlon, Inc.",
+  REVG: "REV Group, Inc.",
+  REX: "REX American Resources Corporation",
+  REXR: "Rexford Industrial Realty, Inc.",
+  REZI: "Resideo Technologies, Inc.",
+  RF: "Regions Financial Corporation",
+  RFI: "Cohen & Steers Total Return Realty Fund, Inc.",
+  RFP: "Resolute Forest Products Inc.",
+  RGA: "Reinsurance Group of America, Incorporated",
+  RGR: "Sturm, Ruger & Company, Inc.",
+  RGS: "Regis Corporation",
+  RGT: "Royce Global Value Trust, Inc.",
+  RH: "RH",
+  RHI: "Robert Half International Inc.",
+  RHP: "Ryman Hospitality Properties, Inc.",
+  RIG: "Transocean Ltd.",
+  RIO: "Rio Tinto Plc",
+  RIV: "RiverNorth Opportunities Fund, Inc.",
+  RJF: "Raymond James Financial, Inc.",
+  RL: "Ralph Lauren Corporation",
+  RLGY: "Realogy Holdings Corp.",
+  RLH: "Red Lion Hotels Corporation",
+  RLI: "RLI Corp.",
+  RLJ: "RLJ Lodging Trust",
+  RM: "Regional Management Corp.",
+  RMAX: "RE/MAX Holdings, Inc.",
+  RMD: "ResMed Inc.",
+  RMED: "Ra Medical Systems, Inc.",
+  RMG: "RMG Acquisition Corp.",
+  RMI: "RiverNorth Opportunistic Municipal Income Fund, Inc.",
+  RMM: "RiverNorth Managed Duration Municipal Income Fund, Inc.",
+  RMT: "Royce Micro-Cap Trust, Inc.",
+  RNG: "Ringcentral, Inc.",
+  RNGR: "Ranger Energy Services, Inc.",
+  RNP: "Cohen & Steers REIT and Preferred and Income Fund,",
+  RNR: "RenaissanceRe Holdings Ltd.",
+  ROAN: "Roan Resources, Inc.",
+  ROG: "Rogers Corporation",
+  ROK: "Rockwell Automation, Inc.",
+  ROL: "Rollins, Inc.",
+  ROP: "Roper Technologies, Inc.",
+  ROYT: "Pacific Coast Oil Trust",
+  RPAI: "Retail Properties of America, Inc.",
+  RPLA: "Replay Acquisition Corp.",
+  RPM: "RPM International Inc.",
+  RPT: "RPT Realty",
+  RQI: "Cohen & Steers Quality Income Realty Fund Inc",
+  RRC: "Range Resources Corporation",
+  RRD: "R.R. Donnelley & Sons Company",
+  RRTS: "Roadrunner Transportation Systems, Inc.",
+  RS: "Reliance Steel & Aluminum Co.",
+  RSF: "RiverNorth Marketplace Lending Corporation",
+  RSG: "Republic Services, Inc.",
+  RST: "Rosetta Stone",
+  RTEC: "Rudolph Technologies, Inc.",
+  RTN: "Raytheon Company",
+  RTW: "RTW Retailwinds, Inc.",
+  RUBI: "The Rubicon Project, Inc.",
+  RVI: "Retail Value Inc.",
+  RVLV: "Revolve Group, Inc.",
+  RVT: "Royce Value Trust, Inc.",
+  RWGE: "Regalwood Global Energy Ltd.",
+  RWT: "Redwood Trust, Inc.",
+  RXN: "Rexnord Corporation",
+  RY: "Royal Bank Of Canada",
+  RYAM: "Rayonier Advanced Materials Inc.",
+  RYB: "RYB Education, Inc.",
+  RYI: "Ryerson Holding Corporation",
+  RYN: "Rayonier Inc.",
+  RZA: "Reinsurance Group of America, Incorporated",
+  RZB: "Reinsurance Group of America, Incorporated",
+  S: "Sprint Corporation",
+  SA: "Seabridge Gold, Inc.",
+  SAB: "Saratoga Investment Corp",
+  SAF: "Saratoga Investment Corp",
+  SAFE: "Safehold Inc.",
+  SAH: "Sonic Automotive, Inc.",
+  SAIC: "SCIENCE APPLICATIONS INTERNATIONAL CORPORATION",
+  SAIL: "SailPoint Technologies Holdings, Inc.",
+  SALT: "Scorpio Bulkers Inc.",
+  SAM: "Boston Beer Company, Inc. (The)",
+  SAN: "Banco Santander, S.A.",
+  SAP: "SAP SE",
+  SAR: "Saratoga Investment Corp",
+  SAVE: "Spirit Airlines, Inc.",
+  SB: "Safe Bulkers, Inc",
+  SBGL: "Sibanye Gold Limited",
+  SBH: "Sally Beauty Holdings, Inc.",
+  SBI: "Western Asset Intermediate Muni Fund Inc",
+  SBNA: "Scorpio Tankers Inc.",
+  SBOW: "SilverBow Resorces, Inc.",
+  SBR: "Sabine Royalty Trust",
+  SBS: "Companhia de saneamento Basico Do Estado De Sao Paulo - Sabesp",
+  SC: "Santander Consumer USA Holdings Inc.",
+  SCA: "Stellus Capital Investment Corporation",
+  SCCO: "Southern Copper Corporation",
+  SCD: "LMP Capital and Income Fund Inc.",
+  SCHW: "The Charles Schwab Corporation",
+  SCI: "Service Corporation International",
+  SCL: "Stepan Company",
+  SCM: "Stellus Capital Investment Corporation",
+  SCPE: "SC Health Corporation",
+  SCS: "Steelcase Inc.",
+  SCX: "L.S. Starrett Company (The)",
+  SD: "SandRidge Energy, Inc.",
+  SDR: "SandRidge Mississippian Trust II",
+  SDRL: "Seadrill Limited",
+  SDT: "SandRidge Mississippian Trust I",
+  SE: "Sea Limited",
+  SEAS: "SeaWorld Entertainment, Inc.",
+  SEE: "Sealed Air Corporation",
+  SEM: "Select Medical Holdings Corporation",
+  SEMG: "Semgroup Corporation",
+  SERV: "ServiceMaster Global Holdings, Inc.",
+  SF: "Stifel Financial Corporation",
+  SFB: "Stifel Financial Corporation",
+  SFE: "Safeguard Scientifics, Inc.",
+  SFL: "Ship Finance International Limited",
+  SFUN: "Fang Holdings Limited",
+  SGU: "Star Group, L.P.",
+  SHAK: "Shake Shack, Inc.",
+  SHG: "Shinhan Financial Group Co Ltd",
+  SHI: "SINOPEC Shangai Petrochemical Company, Ltd.",
+  SHLL: "Tortoise Acquisition Corp.",
+  SHLX: "Shell Midstream Partners, L.P.",
+  SHO: "Sunstone Hotel Investors, Inc.",
+  SHOP: "Shopify Inc.",
+  SHW: "Sherwin-Williams Company (The)",
+  SID: "National Steel Company",
+  SIG: "Signet Jewelers Limited",
+  SITC: "SITE Centers Corp.",
+  SITE: "SiteOne Landscape Supply, Inc.",
+  SIX: "Six Flags Entertainment Corporation New",
+  SJI: "South Jersey Industries, Inc.",
+  SJIU: "South Jersey Industries, Inc.",
+  SJM: "J.M. Smucker Company (The)",
+  SJR: "Shaw Communications Inc.",
+  SJT: "San Juan Basin Royalty Trust",
+  SJW: "SJW Group",
+  SKM: "SK Telecom Co., Ltd.",
+  SKT: "Tanger Factory Outlet Centers, Inc.",
+  SKX: "Skechers U.S.A., Inc.",
+  SKY: "Skyline Champion Corporation",
+  SLB: "Schlumberger N.V.",
+  SLCA: "U.S. Silica Holdings, Inc.",
+  SLF: "Sun Life Financial Inc.",
+  SLG: "SL Green Realty Corp",
+  SM: "SM Energy Company",
+  SMAR: "Smartsheet Inc.",
+  SMFG: "Sumitomo Mitsui Financial Group Inc",
+  SMG: "Scotts Miracle-Gro Company (The)",
+  SMHI: "SEACOR Marine Holdings Inc.",
+  SMLP: "Summit Midstream Partners, LP",
+  SMM: "Salient Midstream & MLP Fund",
+  SMP: "Standard Motor Products, Inc.",
+  SMTA: "Spirit MTA REIT",
+  SNA: "Snap-On Incorporated",
+  SNAP: "Snap Inc.",
+  SNDR: "Schneider National, Inc.",
+  SNE: "Sony Corp Ord",
+  SONY: "Sony Corp Ord",
+  SNN: "Smith & Nephew SNATS, Inc.",
+  SNP: "China Petroleum & Chemical Corporation",
+  SNR: "New Senior Investment Group Inc.",
+  SNV: "Synovus Financial Corp.",
+  SNX: "Synnex Corporation",
+  SO: "Southern Company (The)",
+  SOGO: "Sogou Inc.",
+  SOI: "Solaris Oilfield Infrastructure, Inc.",
+  SOJA: "Southern Company (The)",
+  SOJB: "Southern Company (The)",
+  SOJC: "Southern Company (The)",
+  SOL: "Renesola Ltd.",
+  SOLN: "Southern Company (The)",
+  SON: "Sonoco Products Company",
+  SOR: "Source Capital, Inc.",
+  SPAQ: "Spartan Energy Acquisition Corp",
+  SPE: "Special Opportunities Fund Inc.",
+  SPG: "Simon Property Group, Inc.",
+  SPGI: "S&P Global Inc.",
+  SPH: "Suburban Propane Partners, L.P.",
+  SPLP: "Steel Partners Holdings LP",
+  SPN: "Superior Energy Services, Inc.",
+  SPOT: "Spotify Technology S.A.",
+  SPR: "Spirit Aerosystems Holdings, Inc.",
+  SPXC: "SPX Corporation",
+  SPXX: "Nuveen S&P 500 Dynamic Overwrite Fund",
+  SQ: "Square, Inc.",
+  SQM: "Sociedad Quimica y Minera S.A.",
+  SQNS: "Sequans Communications S.A.",
+  SR: "Spire Inc.",
+  SRC: "Spirit Realty Capital, Inc.",
+  SRE: "Sempra Energy",
+  SREA: "Sempra Energy",
+  SRF: "Cushing Energy Income Fund (The)",
+  SRG: "Seritage Growth Properties",
+  SRI: "Stoneridge, Inc.",
+  SRL: "Scully Royalty Ltd.",
+  SRLP: "Sprague Resources LP",
+  SRT: "StarTek, Inc.",
+  SRV: "Cushing MLP & Infrastructure Total Return Fund",
+  SSD: "Simpson Manufacturing Company, Inc.",
+  SSI: "Stage Stores, Inc.",
+  SSL: "Sasol Ltd.",
+  SSTK: "Shutterstock, Inc.",
+  SSW: "Seaspan Corporation",
+  SSWA: "Seaspan Corporation",
+  ST: "Sensata Technologies Holding plc",
+  STI: "SunTrust Banks, Inc.",
+  STK: "Columbia Seligman Premium Technology Growth Fund, Inc",
+  STL: "Sterling Bancorp",
+  STM: "STMicroelectronics N.V.",
+  STN: "Stantec Inc",
+  STNG: "Scorpio Tankers Inc.",
+  STON: "StoneMor Partners L.P.",
+  STOR: "STORE Capital Corporation",
+  STT: "State Street Corporation",
+  STWD: "STARWOOD PROPERTY TRUST, INC.",
+  STZ: "Constellation Brands Inc",
+  SU: "Suncor Energy  Inc.",
+  SUI: "Sun Communities, Inc.",
+  SUM: "Summit Materials, Inc.",
+  SUN: "Sunoco LP",
+  SUP: "Superior Industries International, Inc.",
+  SUPV: "Grupo Supervielle S.A.",
+  SUZ: "Suzano S.A.",
+  SWCH: "Switch, Inc.",
+  SWI: "SolarWinds Corporation",
+  SWJ: "Stanley Black & Decker, Inc.",
+  SWK: "Stanley Black & Decker, Inc.",
+  SWM: "Schweitzer-Mauduit International, Inc.",
+  SWN: "Southwestern Energy Company",
+  SWP: "Stanley Black & Decker, Inc.",
+  SWX: "Southwest Gas Holdings, Inc.",
+  SWZ: "Swiss Helvetia Fund, Inc. (The)",
+  SXC: "SunCoke Energy, Inc.",
+  SXI: "Standex International Corporation",
+  SXT: "Sensient Technologies Corporation",
+  SYF: "Synchrony Financial",
+  SYK: "Stryker Corporation",
+  SYX: "Systemax Inc.",
+  SYY: "Sysco Corporation",
+  SZC: "Cushing Renaissance Fund (The)",
+  T: "AT&T Inc.",
+  TAC: "TransAlta Corporation",
+  TAK: "Takeda Pharmaceutical Company Limited",
+  TAL: "TAL Education Group",
+  TALO: "Talos Energy, Inc.",
+  TAP: "Molson Coors Brewing  Company",
+  TARO: "Taro Pharmaceutical Industries Ltd.",
+  TBB: "AT&T Inc.",
+  TBC: "AT&T Inc.",
+  TBI: "TrueBlue, Inc.",
+  TCI: "Transcontinental Realty Investors, Inc.",
+  TCO: "Taubman Centers, Inc.",
+  TCP: "TC PipeLines, LP",
+  TCRW: "THL Credit, Inc.",
+  TCRZ: "THL Credit, Inc.",
+  TCS: "Container Store (The)",
+  TD: "Toronto Dominion Bank (The)",
+  TDA: "Telephone and Data Systems, Inc.",
+  TDC: "Teradata Corporation",
+  TDE: "Telephone and Data Systems, Inc.",
+  TDF: "Templeton Dragon Fund, Inc.",
+  TDG: "Transdigm Group Incorporated",
+  TDI: "Telephone and Data Systems, Inc.",
+  TDJ: "Telephone and Data Systems, Inc.",
+  TDOC: "Teladoc Health, Inc.",
+  TDS: "Telephone and Data Systems, Inc.",
+  TDW: "Tidewater Inc.",
+  TDY: "Teledyne Technologies Incorporated",
+  TEAF: "Tortoise Essential Assets Income Term Fund",
+  TECK: "Teck Resources Ltd",
+  TEF: "Telefonica SA",
+  TEI: "Templeton Emerging Markets Income Fund, Inc.",
+  TEL: "TE Connectivity Ltd.",
+  TEN: "Tenneco Inc.",
+  TEO: "Telecom Argentina Stet - France Telecom S.A.",
+  TEVA: "Teva Pharmaceutical Industries Limited",
+  TEX: "Terex Corporation",
+  TFX: "Teleflex Incorporated",
+  TG: "Tredegar Corporation",
+  TGE: "Tallgrass Energy, LP",
+  TGH: "Textainer Group Holdings Limited",
+  TGI: "Triumph Group, Inc.",
+  TGNA: "TEGNA Inc.",
+  TGP: "Teekay LNG Partners L.P.",
+  TGS: "Transportadora De Gas Sa Ord B",
+  TGT: "Target Corporation",
+  THC: "Tenet Healthcare Corporation",
+  THG: "The Hanover Insurance Group, Inc.",
+  THGA: "The Hanover Insurance Group, Inc.",
+  THO: "Thor Industries, Inc.",
+  THQ: "Tekla Healthcare Opportunies Fund",
+  THR: "Thermon Group Holdings, Inc.",
+  THS: "Treehouse Foods, Inc.",
+  THW: "Tekla World Healthcare Fund",
+  TIF: "Tiffany & Co.",
+  TISI: "Team, Inc.",
+  TJX: "TJX Companies, Inc. (The)",
+  TK: "Teekay Corporation",
+  TKC: "Turkcell Iletisim Hizmetleri AS",
+  TKR: "Timken Company (The)",
+  TLI: "Western Asset Corporate Loan Fund Inc",
+  TLK: "PT Telekomunikasi Indonesia, Tbk",
+  TLRA: "Telaria, Inc.",
+  TLRD: "Tailored Brands, Inc.",
+  TLYS: "Tilly&#39;s, Inc.",
+  TM: "Toyota Motor Corp Ltd Ord",
+  TME: "Tencent Music Entertainment Group",
+  TMHC: "Taylor Morrison Home Corporation",
+  TMO: "Thermo Fisher Scientific Inc",
+  TMST: "TimkenSteel Corporation",
+  TNC: "Tennant Company",
+  TNET: "TriNet Group, Inc.",
+  TNK: "Teekay Tankers Ltd.",
+  TNP: "Tsakos Energy Navigation Ltd",
+  TOL: "Toll Brothers, Inc.",
+  TOO: "Teekay Offshore Partners L.P.",
+  TOT: "Total S.A.",
+  TOWR: "Tower International, Inc.",
+  TPB: "Turning Point Brands, Inc.",
+  TPC: "Tutor Perini Corporation",
+  TPGH: "TPG Pace Holdings Corp.",
+  TPH: "TRI Pointe Group, Inc.",
+  TPL: "Texas Pacific Land Trust",
+  TPR: "Tapestry, Inc.",
+  TPRE: "Third Point Reinsurance Ltd.",
+  TPVG: "TriplePoint Venture Growth BDC Corp.",
+  TPVY: "TriplePoint Venture Growth BDC Corp.",
+  TPX: "Tempur Sealy International, Inc.",
+  TPZ: "Tortoise Power and Energy Infrastructure Fund, Inc",
+  TR: "Tootsie Roll Industries, Inc.",
+  TRC: "Tejon Ranch Co",
+  TRCO: "Tribune Media Company",
+  TREC: "Trecora Resources",
+  TREX: "Trex Company, Inc.",
+  TRGP: "Targa Resources, Inc.",
+  TRI: "Thomson Reuters Corp",
+  TRK: "Speedway Motorsports, Inc.",
+  TRN: "Trinity Industries, Inc.",
+  TRNE: "Trine Acquisition Corp.",
+  TRNO: "Terreno Realty Corporation",
+  TROX: "Tronox Holdings plc",
+  TRP: "TC Energy Corporation",
+  TRQ: "Turquoise Hill Resources Ltd.",
+  TRTN: "Triton International Limited",
+  TRTX: "TPG RE Finance Trust, Inc.",
+  TRU: "TransUnion",
+  TRV: "The Travelers Companies, Inc.",
+  TRWH: "Twin River Worldwide Holdings, Inc.",
+  TS: "Tenaris S.A.",
+  TSE: "Trinseo S.A.",
+  TSLA: "Tesla",
+  TSI: "TCW Strategic Income Fund, Inc.",
+  TSLF: "THL Credit Senior Loan Fund",
+  TSLX: "TPG Specialty Lending, Inc.",
+  TSM: "Taiwan Semiconductor Manufacturing Company Ltd.",
+  TSN: "Tyson Foods, Inc.",
+  TSQ: "Townsquare Media, Inc.",
+  TSS: "Total System Services, Inc.",
+  TSU: "TIM Participacoes S.A.",
+  TTC: "Toro Company (The)",
+  TTI: "Tetra Technologies, Inc.",
+  TTM: "Tata Motors Ltd",
+  TTP: "Tortoise Pipeline & Energy Fund, Inc.",
+  TU: "TELUS Corporation",
+  TUFN: "Tufin Software Technologies Ltd.",
+  TUP: "Tupperware Brands Corporation",
+  TV: "Grupo Televisa S.A.",
+  TVC: "Tennessee Valley Authority",
+  TVE: "Tennessee Valley Authority",
+  TWI: "Titan International, Inc.",
+  TWLO: "Twilio Inc.",
+  TWN: "Taiwan Fund, Inc. (The)",
+  TWO: "Two Harbors Investments Corp",
+  TWTR: "Twitter, Inc.",
+  TX: "Ternium S.A.",
+  TXT: "Textron Inc.",
+  TY: "Tri Continental Corporation",
+  TYG: "Tortoise Energy Infrastructure Corporation",
+  TYL: "Tyler Technologies, Inc.",
+  UA: "Under Armour, Inc.",
+  UAA: "Under Armour, Inc.",
+  UAN: "CVR Partners, LP",
+  UBA: "Urstadt Biddle Properties Inc.",
+  UBER: "Uber Technologies, Inc.",
+  UBP: "Urstadt Biddle Properties Inc.",
+  UBS: "UBS AG",
+  UDR: "UDR, Inc.",
+  UE: "Urban Edge Properties",
+  UFI: "Unifi, Inc.",
+  UFS: "Domtar Corporation",
+  UGI: "UGI Corporation",
+  UGP: "Ultrapar Participacoes S.A.",
+  UHS: "Universal Health Services, Inc.",
+  UHT: "Universal Health Realty Income Trust",
+  UI: "Ubiquiti Inc.",
+  UIS: "Unisys Corporation",
+  UL: "Unilever PLC",
+  UMC: "United Microelectronics Corporation",
+  UMH: "UMH Properties, Inc.",
+  UN: "Unilever NV",
+  UNF: "Unifirst Corporation",
+  UNFI: "United Natural Foods, Inc.",
+  UNH: "UnitedHealth Group Incorporated",
+  UNM: "Unum Group",
+  UNMA: "Unum Group",
+  UNP: "Union Pacific Corporation",
+  UNT: "Unit Corporation",
+  UNVR: "Univar Solutions Inc.",
+  UPS: "United Parcel Service, Inc.",
+  URI: "United Rentals, Inc.",
+  USA: "Liberty All-Star Equity Fund",
+  USAC: "USA Compression Partners, LP",
+  USB: "U.S. Bancorp",
+  USDP: "USD Partners LP",
+  USFD: "US Foods Holding Corp.",
+  USM: "United States Cellular Corporation",
+  USNA: "USANA Health Sciences, Inc.",
+  USPH: "U.S. Physical Therapy, Inc.",
+  USX: "U.S. Xpress Enterprises, Inc.",
+  UTF: "Cohen & Steers Infrastructure Fund, Inc",
+  UTI: "Universal Technical Institute Inc",
+  UTL: "UNITIL Corporation",
+  UTX: "United Technologies Corporation",
+  UVE: "UNIVERSAL INSURANCE HOLDINGS INC",
+  UVV: "Universal Corporation",
+  UZA: "United States Cellular Corporation",
+  UZB: "United States Cellular Corporation",
+  UZC: "United States Cellular Corporation",
+  V: "Visa Inc.",
+  VAC: "Marriott Vacations Worldwide Corporation",
+  VAL: "Valaris plc",
+  VALE: "VALE S.A.",
+  VAM: "The Vivaldi Opportunities Fund",
+  VAPO: "Vapotherm, Inc.",
+  VAR: "Varian Medical Systems, Inc.",
+  VBF: "Invesco Bond Fund",
+  VCIF: "Vertical Capital Income Fund",
+  VCRA: "Vocera Communications, Inc.",
+  VCV: "Invesco California Value Municipal Income Trust",
+  VEC: "Vectrus, Inc.",
+  VEDL: "Vedanta  Limited",
+  VEEV: "Veeva Systems Inc.",
+  VER: "VEREIT Inc.",
+  VET: "Vermilion Energy Inc.",
+  VFC: "V.F. Corporation",
+  VG: "Vonage Holdings Corp.",
+  VGI: "Virtus Global Multi-Sector Income Fund",
+  VGM: "Invesco Trust for Investment Grade Municipals",
+  VGR: "Vector Group Ltd.",
+  VHI: "Valhi, Inc.",
+  VICI: "VICI Properties Inc.",
+  VIPS: "Vipshop Holdings Limited",
+  VIST: "Vista Oil & Gas, S.A.B. de C.V.",
+  VIV: "Telefonica Brasil S.A.",
+  VJET: "voxeljet AG",
+  VKQ: "Invesco Municipal Trust",
+  VLO: "Valero Energy Corporation",
+  VLRS: "Controladora Vuela Compania de Aviacion, S.A.B. de C.V.",
+  VLT: "Invesco High Income Trust II",
+  VMC: "Vulcan Materials Company",
+  VMI: "Valmont Industries, Inc.",
+  VMO: "Invesco Municipal Opportunity Trust",
+  VMW: "Vmware, Inc.",
+  VNCE: "Vince Holding Corp.",
+  VNE: "Veoneer, Inc.",
+  VNO: "Vornado Realty Trust",
+  VNTR: "Venator Materials PLC",
+  VOC: "VOC Energy Trust",
+  VOYA: "Voya Financial, Inc.",
+  VPG: "Vishay Precision Group, Inc.",
+  VPV: "Invesco Pennsylvania Value Municipal Income Trust",
+  VRS: "Verso Corporation",
+  VRTV: "Veritiv Corporation",
+  VSH: "Vishay Intertechnology, Inc.",
+  VSI: "Vitamin Shoppe, Inc",
+  VSLR: "Vivint Solar, Inc.",
+  VSM: "Versum Materials, Inc.",
+  VST: "Vistra Energy Corp.",
+  VSTO: "Vista Outdoor Inc.",
+  VTA: "Invesco Credit Opportunities Fund",
+  VTN: "Invesco Trust  for Investment Grade New York Municipal",
+  VTR: "Ventas, Inc.",
+  VVI: "Viad Corp",
+  VVR: "Invesco Senior Income Trust",
+  VVV: "Valvoline Inc.",
+  VZ: "Verizon Communications Inc.",
+  W: "Wayfair Inc.",
+  WAAS: "AquaVenture Holdings Limited",
+  WAB: "Westinghouse Air Brake Technologies Corporation",
+  WAIR: "Wesco Aircraft Holdings, Inc.",
+  WAL: "Western Alliance Bancorporation",
+  WALA: "Western Alliance Bancorporation",
+  WAT: "Waters Corporation",
+  WBAI: "500.com Limited",
+  WBC: "Wabco Holdings Inc.",
+  WBK: "Westpac Banking Corporation",
+  WBS: "Webster Financial Corporation",
+  WBT: "Welbilt, Inc.",
+  WCC: "WESCO International, Inc.",
+  WCG: "WellCare Health Plans, Inc.",
+  WCN: "Waste Connections, Inc.",
+  WD: "Walker & Dunlop, Inc.",
+  WDR: "Waddell & Reed Financial, Inc.",
+  WEA: "Western Asset Bond Fund",
+  WEC: "WEC Energy Group, Inc.",
+  WEI: "Weidai Ltd.",
+  WELL: "Welltower Inc.",
+  WES: "Western Midstream Partners, LP",
+  WEX: "WEX Inc.",
+  WF: "Woori Bank",
+  WFC: "Wells Fargo & Company",
+  WGO: "Winnebago Industries, Inc.",
+  WH: "Wyndham Hotels & Resorts, Inc.",
+  WHD: "Cactus, Inc.",
+  WHG: "Westwood Holdings Group Inc",
+  WHR: "Whirlpool Corporation",
+  NFLX: "Netflix Corporation",
+  WIA: "Western Asset/Claymore U.S. Treasury Inflation Prot Secs Fd",
+  WIT: "Wipro Limited",
+  WIW: "Western Asset/Claymore U.S Treasury Inflation Prot Secs Fd 2",
+  WK: "Workiva Inc.",
+  WLH: "Lyon William Homes",
+  WLK: "Westlake Chemical Corporation",
+  WLKP: "Westlake Chemical Partners LP",
+  WLL: "Whiting Petroleum Corporation",
+  WM: "Waste Management, Inc.",
+  WMB: "Williams Companies, Inc. (The)",
+  WMC: "Western Asset Mortgage Capital Corporation",
+  WMK: "Weis Markets, Inc.",
+  WMS: "Advanced Drainage Systems, Inc.",
+  WMT: "Walmart Inc.",
+  WNC: "Wabash National Corporation",
+  WNS: "WNS (Holdings) Limited",
+  WOR: "Worthington Industries, Inc.",
+  WORK: "Slack Technologies, Inc.",
+  WOW: "WideOpenWest, Inc.",
+  WPC: "W.P. Carey Inc.",
+  WPG: "Washington Prime Group Inc.",
+  WPM: "Wheaton Precious Metals Corp.",
+  WPP: "WPP plc",
+  WPX: "WPX Energy, Inc.",
+  WRB: "W.R. Berkley Corporation",
+  WRE: "Washington Real Estate Investment Trust",
+  WRI: "Weingarten Realty Investors",
+  WRK: "Westrock Company",
+  WSM: "Williams-Sonoma, Inc.",
+  WSO: "Watsco, Inc.",
+  WSR: "Whitestone REIT",
+  WST: "West Pharmaceutical Services, Inc.",
+  WTI: "W&T Offshore, Inc.",
+  WTM: "White Mountains Insurance Group, Ltd.",
+  WTR: "Aqua America, Inc.",
+  WTRU: "Aqua America, Inc.",
+  WTS: "Watts Water Technologies, Inc.",
+  WTTR: "Select Energy Services, Inc.",
+  WU: "Western Union Company (The)",
+  WUBA: "58.com Inc.",
+  WWE: "World Wrestling Entertainment, Inc.",
+  WWW: "Wolverine World Wide, Inc.",
+  WY: "Weyerhaeuser Company",
+  WYND: "Wyndham Destinations, Inc.",
+  X: "United States Steel Corporation",
+  XAN: "Exantas Capital Corp.",
+  XEC: "Cimarex Energy Co",
+  XFLT: "XAI Octagon Floating Rate & Alternative Income Term Trust",
+  XHR: "Xenia Hotels & Resorts, Inc.",
+  XIN: "Xinyuan Real Estate Co Ltd",
+  XOM: "Exxon Mobil Corporation",
+  XPO: "XPO Logistics, Inc.",
+  XRF: "China Rapid Finance Limited",
+  XRX: "Xerox Holdings Corporation",
+  XYF: "X Financial",
+  XYL: "Xylem Inc.",
+  Y: "Alleghany Corporation",
+  YELP: "Yelp Inc.",
+  YETI: "YETI Holdings, Inc.",
+  YEXT: "Yext, Inc.",
+  YPF: "YPF Sociedad Anonima",
+  YRD: "Yirendai Ltd.",
+  YUM: "Yum! Brands, Inc.",
+  YUMC: "Yum China Holdings, Inc.",
+  ZAYO: "Zayo Group Holdings, Inc.",
+  ZBH: "Zimmer Biomet Holdings, Inc.",
+  ZBK: "Zions Bancorporation N.A.",
+  ZEN: "Zendesk, Inc.",
+  ZF: "Virtus Total Return Fund Inc.",
+  ZNH: "China Southern Airlines Company Limited",
+  ZTO: "ZTO Express (Cayman) Inc.",
+  ZTR: "Virtus Global Dividend & Income Fund Inc.",
+  ZTS: "Zoetis Inc.",
+  ZUO: "Zuora, Inc.",
+  ZYME: "Zymeworks Inc.",
+};
 
-export default tickers
+export default tickers;

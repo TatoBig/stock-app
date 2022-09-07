@@ -13,9 +13,28 @@ datasource db {
 }
 
 model Company {
-  id      Int    @id @default(autoincrement())
-  name    String
-  ticker  String
-  country String
-  sector  String
+  id                    String           @id
+  name                  String
+  sector                String
+  country               String
+  full_time_employees   Int
+  compensation_risk     Int
+  audit_risk            Int
+  board_risk            Int
+  overall_risk          Int
+  long_business_summary String
+  city                  String
+  state                 String
+  website               String
+  HistoricalData        HistoricalData[]
+}
+
+model HistoricalData {
+  id        Int     @id @default(autoincrement())
+  company   Company @relation(fields: [companyId], references: [id])
+  companyId String
+  open      Float
+  high      Float
+  volume    BigInt
+  date      String
 }

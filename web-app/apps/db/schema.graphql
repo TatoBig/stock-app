@@ -3,12 +3,36 @@
 
 
 type Company {
+  audit_risk: Int!
+  board_risk: Int!
+  city: String!
+  compensation_risk: Int!
   country: String!
+  full_time_employees: Int!
   id: String!
+  long_business_summary: String!
   name: String!
+  overall_risk: Int!
   sector: String!
+  state: String!
+  website: String!
+}
+
+type HistoricalData {
+  company: String!
+  date: String!
+  high: Float!
+  open: Float!
+  volume: String!
+}
+
+type Mutation {
+  addCompany(ticker: String!): Boolean!
+  addHistoricalData(ticker: String!): Boolean!
 }
 
 type Query {
-  companies: [Company!]!
+  mongodb_companies: [Company!]!
+  sql_companies: [Company!]!
+  sql_historical_data: [HistoricalData!]!
 }

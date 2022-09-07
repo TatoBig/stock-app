@@ -4,7 +4,7 @@
  */
 
 
-
+import type { Context } from "./src/context"
 
 
 
@@ -29,11 +29,28 @@ export interface NexusGenScalars {
 
 export interface NexusGenObjects {
   Company: { // root type
+    audit_risk: number; // Int!
+    board_risk: number; // Int!
+    city: string; // String!
+    compensation_risk: number; // Int!
     country: string; // String!
+    full_time_employees: number; // Int!
     id: string; // String!
+    long_business_summary: string; // String!
     name: string; // String!
+    overall_risk: number; // Int!
     sector: string; // String!
+    state: string; // String!
+    website: string; // String!
   }
+  HistoricalData: { // root type
+    company: string; // String!
+    date: string; // String!
+    high: number; // Float!
+    open: number; // Float!
+    volume: string; // String!
+  }
+  Mutation: {};
   Query: {};
 }
 
@@ -49,29 +66,81 @@ export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
   Company: { // field return type
+    audit_risk: number; // Int!
+    board_risk: number; // Int!
+    city: string; // String!
+    compensation_risk: number; // Int!
     country: string; // String!
+    full_time_employees: number; // Int!
     id: string; // String!
+    long_business_summary: string; // String!
     name: string; // String!
+    overall_risk: number; // Int!
     sector: string; // String!
+    state: string; // String!
+    website: string; // String!
+  }
+  HistoricalData: { // field return type
+    company: string; // String!
+    date: string; // String!
+    high: number; // Float!
+    open: number; // Float!
+    volume: string; // String!
+  }
+  Mutation: { // field return type
+    addCompany: boolean; // Boolean!
+    addHistoricalData: boolean; // Boolean!
   }
   Query: { // field return type
-    companies: NexusGenRootTypes['Company'][]; // [Company!]!
+    mongodb_companies: NexusGenRootTypes['Company'][]; // [Company!]!
+    sql_companies: NexusGenRootTypes['Company'][]; // [Company!]!
+    sql_historical_data: NexusGenRootTypes['HistoricalData'][]; // [HistoricalData!]!
   }
 }
 
 export interface NexusGenFieldTypeNames {
   Company: { // field return type name
+    audit_risk: 'Int'
+    board_risk: 'Int'
+    city: 'String'
+    compensation_risk: 'Int'
     country: 'String'
+    full_time_employees: 'Int'
     id: 'String'
+    long_business_summary: 'String'
     name: 'String'
+    overall_risk: 'Int'
     sector: 'String'
+    state: 'String'
+    website: 'String'
+  }
+  HistoricalData: { // field return type name
+    company: 'String'
+    date: 'String'
+    high: 'Float'
+    open: 'Float'
+    volume: 'String'
+  }
+  Mutation: { // field return type name
+    addCompany: 'Boolean'
+    addHistoricalData: 'Boolean'
   }
   Query: { // field return type name
-    companies: 'Company'
+    mongodb_companies: 'Company'
+    sql_companies: 'Company'
+    sql_historical_data: 'HistoricalData'
   }
 }
 
 export interface NexusGenArgTypes {
+  Mutation: {
+    addCompany: { // args
+      ticker: string; // String!
+    }
+    addHistoricalData: { // args
+      ticker: string; // String!
+    }
+  }
 }
 
 export interface NexusGenAbstractTypeMembers {
@@ -105,7 +174,7 @@ export type NexusGenFeaturesConfig = {
 }
 
 export interface NexusGenTypes {
-  context: any;
+  context: Context;
   inputTypes: NexusGenInputs;
   rootTypes: NexusGenRootTypes;
   inputTypeShapes: NexusGenInputs & NexusGenEnums & NexusGenScalars;

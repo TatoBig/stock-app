@@ -51,7 +51,7 @@ def getHistoricalData_resolver(obj, info, ticker):
                 "date": historical_data["date"][i],
                 "open": historical_data["open"][i],
                 "high": historical_data["high"][i],
-                "volume": historical_data["volume"][i],
+                "volume": str(historical_data["volume"][i]),
                 "ticker": historical_data["ticker"][i]
             }
             data.append(temp)
