@@ -90,6 +90,7 @@ export interface NexusGenFieldTypes {
   Mutation: { // field return type
     addCompany: boolean; // Boolean!
     addHistoricalData: boolean; // Boolean!
+    executeScript: boolean; // Boolean!
   }
   Query: { // field return type
     mongodb_companies: NexusGenRootTypes['Company'][]; // [Company!]!
@@ -124,6 +125,7 @@ export interface NexusGenFieldTypeNames {
   Mutation: { // field return type name
     addCompany: 'Boolean'
     addHistoricalData: 'Boolean'
+    executeScript: 'Boolean'
   }
   Query: { // field return type name
     mongodb_companies: 'Company'

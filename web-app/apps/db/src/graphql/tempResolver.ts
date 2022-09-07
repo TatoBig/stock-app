@@ -49,13 +49,17 @@ export const TempResolver = extendType({
     t.nonNull.field("executeScript", {
       type: "Boolean",
       async resolve(parent, args, context) {
-        tempTickers.forEach(async (ticker) => {
-          try {
+        try {
+          for (const ticker of tempTickers) {
             const responseCompany = (
               await request(process.env.API_URL!, queryCompany(ticker))
             ).getCompanyInfo;
 
-            if (responseCompany.success) {
+            const responseHistoricalData = (
+              await request(process.env.API_URL!, queryHistoricalData(ticker))
+            ).getHistoricalData;
+
+            if (responseCompany.success && responseHistoricalData.success) {
               const dataCompany = responseCompany.data;
 
               const description = dataCompany.long_business_summary.substring(
@@ -83,45 +87,39 @@ export const TempResolver = extendType({
               });
               console.log(created);
 
-              const responseHistoricalData = (
-                await request(process.env.API_URL!, queryHistoricalData(ticker))
-              ).getHistoricalData;
+              const data = responseHistoricalData.data;
 
-              if (responseHistoricalData.success) {
-                const data = responseHistoricalData.data;
-
-                const foundCompany = await CompanyModel.findById(ticker);
-                if (!foundCompany) {
-                  return new Error("La compañia no fue encontrada");
-                }
-
-                foundCompany.historical_data = data;
-                await foundCompany.save();
-
-                for (let i = 0; i < data.length; i++) {
-                  const created = await context.prisma.historicalData.create({
-                    data: {
-                      date: data[i].date,
-                      high: data[i].high,
-                      open: data[i].open,
-                      volume: BigInt(data[i].volume),
-                      companyId: ticker,
-                    },
-                  });
-                  console.log(created);
-                }
-
-                return true;
+              const foundCompany = await CompanyModel.findById(ticker);
+              if (!foundCompany) {
+                return new Error("La compañia no fue encontrada");
               }
-              console.log(responseCompany.errors);
-              console.log(responseHistoricalData.errors);
-              return false;
+
+              foundCompany.historical_data = data;
+              await foundCompany.save();
+
+              for (let i = 0; i < data.length; i++) {
+                const created = await context.prisma.historicalData.create({
+                  data: {
+                    date: data[i].date,
+                    high: data[i].high,
+                    open: data[i].open,
+                    volume: BigInt(data[i].volume),
+                    companyId: ticker,
+                  },
+                });
+                console.log(created);
+              }
+
+              return true;
             }
-          } catch (e) {
-            console.log(e);
+            console.log(responseHistoricalData.errors);
+            console.log(responseCompany.errors);
             return false;
           }
-        });
+        } catch (e) {
+          console.log(e);
+          return false;
+        }
       },
     });
   },

@@ -29,6 +29,7 @@ type HistoricalData {
 type Mutation {
   addCompany(ticker: String!): Boolean!
   addHistoricalData(ticker: String!): Boolean!
+  executeScript: Boolean!
 }
 
 type Query {

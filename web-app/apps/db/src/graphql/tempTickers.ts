@@ -1,17 +1,17 @@
 const tempTickers = [
-  "AMZN",
-  "TSLA",
-  "META",
-  "V",
-  "JNJ",
-  "WMT",
-  "NVDA",
-  "MA",
-  "CVX",
-  "HD",
-  "KO",
-  "PFE",
-  "ABBV",
+  "ORCL",
+  "MCD",
+  "ADBE",
+  "NKE",
+  "IBM",
+  "PYPL",
+  "NFLX",
+  "SBUX",
+  "CAT",
+  "PGR",
+  "CL",
+  "F",
+  "ATVI",
 ];
 
-export default tempTickers
+export default tempTickers;
