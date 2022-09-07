@@ -27,7 +27,7 @@ type HistorialData {
     date: String
     open: Float
     high: Float
-    volume: Int
+    volume: String
     ticker: String
 }
 

@@ -1,3 +1,17 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+  import { getClient, query, mutation } from "svelte-apollo";
+  import { GET_TODOS } from "@queries"
+  
+  const client = getClient();
+  const todos = query(client, { query: GET_TODOS });
 
+</script>
+
+<div>
+  <div>
+    Hello World
+  </div>
+  <button>
+    
+  </button>
+</div>

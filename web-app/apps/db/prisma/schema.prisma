@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+model Company {
+  id                    String           @id
+  name                  String
+  sector                String
+  country               String
+  full_time_employees   Int
+  compensation_risk     Int
+  audit_risk            Int
+  board_risk            Int
+  overall_risk          Int
+  long_business_summary String
+  city                  String
+  state                 String
+  website               String
+  HistoricalData        HistoricalData[]
+}
+
+model HistoricalData {
+  id        Int     @id @default(autoincrement())
+  company   Company @relation(fields: [companyId], references: [id])
+  companyId String
+  open      Float
+  high      Float
+  volume    BigInt
+  date      String
+}

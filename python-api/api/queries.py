@@ -6,7 +6,6 @@ from yahoo_fin.stock_info import *
 def getCompanyInfo_resolver(obj, info, ticker):
     try:
         company = get_company_info(ticker).to_dict()["Value"]
-        print(company)
         payload = {
             "success": True,
             "data": {
@@ -37,6 +36,7 @@ def getCompanyInfo_resolver(obj, info, ticker):
         }
     return payload
 
+
 def getHistoricalData_resolver(obj, info, ticker):
     try:
         historical_data = get_data(ticker)
@@ -51,7 +51,7 @@ def getHistoricalData_resolver(obj, info, ticker):
                 "date": historical_data["date"][i],
                 "open": historical_data["open"][i],
                 "high": historical_data["high"][i],
-                "volume": historical_data["volume"][i],
+                "volume": str(historical_data["volume"][i]),
                 "ticker": historical_data["ticker"][i]
             }
             data.append(temp)
