@@ -21,32 +21,30 @@ import {
 import { useState } from 'react';
 
 export async function getServerSideProps() {
-  // const { data } = await apolloClient.query({
-  //   query: gql`
-  //   query Query {
-  //     companies {
-  //       id
-  //       name
-  //       sector
-  //       country
-  //       full_time_employees
-  //       compensation_risk
-  //       audit_risk
-  //       board_risk
-  //       overall_risk
-  //       long_business_summary
-  //       city
-  //       state
-  //       website
-  //     }
-  //   }
-  //   `,
-  // });
-
-  const data = CompaniesMock;
+  const { data } = await apolloClient.query({
+    query: gql`
+    query Query {
+      companies {
+        id
+        name
+        sector
+        country
+        full_time_employees
+        compensation_risk
+        audit_risk
+        board_risk
+        overall_risk
+        long_business_summary
+        city
+        state
+        website
+      }
+    }
+    `,
+  });
 
   return {
-    props: { data },
+    props: { data: data.companies },
   };
 }
 
@@ -65,6 +63,8 @@ const Line = () => {
 };
 
 const Home: NextPage = ({ data }: { data: Array<Mock> }) => {
+  console.log(data)
+
   const [field, setField] = useState('name');
   const [order, setOrder] = useState<'asc' | 'desc'>('asc');
   const router = useRouter();
