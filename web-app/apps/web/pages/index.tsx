@@ -7,7 +7,18 @@ import { CompanyMock } from 'services/CompanyMock';
 import CompaniesMock from 'services/CompaniesMock';
 import { useRouter } from 'next/router';
 import { orderBy } from 'lodash';
-import { Table, TableCaption, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr } from '@chakra-ui/react';
+import {
+  Table,
+  TableCaption,
+  TableContainer,
+  Tbody,
+  Td,
+  Tfoot,
+  Th,
+  Thead,
+  Tr,
+} from '@chakra-ui/react';
+import { useState } from 'react';
 
 export async function getServerSideProps() {
   // const { data } = await apolloClient.query({
@@ -54,7 +65,22 @@ const Line = () => {
 };
 
 const Home: NextPage = ({ data }: { data: Array<Mock> }) => {
+  const [field, setField] = useState('name');
+  const [order, setOrder] = useState<'asc' | 'desc'>('asc');
   const router = useRouter();
+
+  const handleTable = (newField: string) => {
+    if (field !== newField) {
+      setField(newField);
+      setOrder('asc');
+    } else {
+      setOrder('desc');
+      if (order === 'desc') {
+        setOrder('asc');
+      }
+    }
+  };
+
   return (
     <div className="overflow-hidden">
       <div className="flex min-h-screen flex-col items-center justify-center py-2">
@@ -84,7 +110,7 @@ const Home: NextPage = ({ data }: { data: Array<Mock> }) => {
         </motion.div>
         <motion.div
           className="text-xl mt-2 text-gray-100"
-          initial={{ opacity: 0.1 }}
+          initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, ease: 'easeInOut', delay: 0.7 }}
         >
@@ -95,58 +121,111 @@ const Home: NextPage = ({ data }: { data: Array<Mock> }) => {
       <div className="flex items-center flex-col">
         <div className="flex w-[90%] flex-col ml-20 ">
           <Line />
-          <span className=" text-6xl flex mb-8">Estadísticas</span>
-          {orderBy(data, ['overall_risk'], ['asc']).map(company => (
-            <li>{company.overall_risk}</li>
-          ))}
-
+          <span className=" text-6xl flex mb-8">Compañías</span>
           <TableContainer>
             <Table variant="simple">
-              <TableCaption>Imperial to metric conversion factors</TableCaption>
+              <TableCaption>
+                Haga click en el titulo de la columna para ordenar
+              </TableCaption>
               <Thead>
                 <Tr>
-                  <Th>To convert</Th>
-                  <Th>into</Th>
-                  <Th isNumeric>multiply by</Th>
+                  <Th
+                    onClick={() => handleTable('name')}
+                    className="hover:text-blue-500 cursor-pointer hover:underline hover:italic"
+                  >
+                    Compañía
+                  </Th>
+                  <Th
+                    onClick={() => handleTable('sector')}
+                    className="hover:text-blue-500 cursor-pointer hover:underline hover:italic"
+                  >
+                    Sector
+                  </Th>
+                  <Th
+                    onClick={() => handleTable('city')}
+                    className="hover:text-blue-500 cursor-pointer hover:underline hover:italic"
+                  >
+                    Ubicación
+                  </Th>
+                  <Th
+                    isNumeric
+                    onClick={() => handleTable('full_time_employees')}
+                    className="hover:text-blue-500 cursor-pointer hover:underline hover:italic"
+                  >
+                    Empleados
+                  </Th>
+                  <Th
+                    isNumeric
+                    onClick={() => handleTable('overall_risk')}
+                    className="hover:text-blue-500 cursor-pointer hover:underline hover:italic"
+                  >
+                    Riesgo
+                  </Th>
+                  <Th>Ver detalles</Th>
                 </Tr>
               </Thead>
               <Tbody>
-                <Tr>
-                  <Td>inches</Td>
-                  <Td>millimetres (mm)</Td>
-                  <Td isNumeric>25.4</Td>
-                </Tr>
-                <Tr>
-                  <Td>feet</Td>
-                  <Td>centimetres (cm)</Td>
-                  <Td isNumeric>30.48</Td>
-                </Tr>
-                <Tr>
-                  <Td>yards</Td>
-                  <Td>metres (m)</Td>
-                  <Td isNumeric>0.91444</Td>
-                </Tr>
+                {orderBy(data, [field], [order]).map(company => (
+                  <Tr key={company.id} className="hover:bg-gray-100 transition-all">
+                    <Td>
+                      {company.name} ({company.id})
+                    </Td>
+                    <Td>{company.sector}</Td>
+                    <Td>
+                      {company.city} ({company.state}), {company.country}
+                    </Td>
+                    <Td isNumeric>{company.full_time_employees}</Td>
+                    <Td isNumeric>{company.overall_risk}</Td>
+                    <Td
+                      onClick={() => router.push(`/${company.id}`)}
+                      className="flex items-center justify-center cursor-pointer hover:scale-150 transition-all"
+                    >
+                      📰
+                    </Td>
+                  </Tr>
+                ))}
               </Tbody>
               <Tfoot>
                 <Tr>
-                  <Th>To convert</Th>
-                  <Th>into</Th>
-                  <Th isNumeric>multiply by</Th>
+                  <Th
+                    onClick={() => handleTable('name')}
+                    className="hover:text-blue-500 cursor-pointer hover:underline hover:italic"
+                  >
+                    Compañía
+                  </Th>
+                  <Th
+                    onClick={() => handleTable('sector')}
+                    className="hover:text-blue-500 cursor-pointer hover:underline hover:italic"
+                  >
+                    Sector
+                  </Th>
+                  <Th
+                    onClick={() => handleTable('city')}
+                    className="hover:text-blue-500 cursor-pointer hover:underline hover:italic"
+                  >
+                    Ubicación
+                  </Th>
+                  <Th
+                    isNumeric
+                    onClick={() => handleTable('full_time_employees')}
+                    className="hover:text-blue-500 cursor-pointer hover:underline hover:italic"
+                  >
+                    Empleados
+                  </Th>
+                  <Th
+                    isNumeric
+                    onClick={() => handleTable('overall_risk')}
+                    className="hover:text-blue-500 cursor-pointer hover:underline hover:italic"
+                  >
+                    Riesgo
+                  </Th>
+                  <Th>Ver detalles</Th>
                 </Tr>
               </Tfoot>
             </Table>
           </TableContainer>
 
           <Line />
-          <span className=" text-6xl flex mb-8">Listado de compañías</span>
-          {data.map(company => (
-            <li
-              className="hover:text-blue-500 hover:cursor-pointer hover:underline hover:italic transition-all text-xl"
-              onClick={() => router.push(`/${company.id}`)}
-            >
-              {company.name} ({company.id})
-            </li>
-          ))}
         </div>
       </div>
     </div>
