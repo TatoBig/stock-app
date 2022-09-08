@@ -7,7 +7,7 @@ require("dotenv").config();
 export const HistoricalData = objectType({
   name: "HistoricalData",
   definition(t) {
-    t.nonNull.string("company");
+    t.string("companyId");
     t.nonNull.float("open");
     t.nonNull.float("high");
     t.nonNull.string("volume");

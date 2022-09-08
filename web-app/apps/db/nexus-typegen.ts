@@ -29,6 +29,7 @@ export interface NexusGenScalars {
 
 export interface NexusGenObjects {
   Company: { // root type
+    HistoricalData?: Array<NexusGenRootTypes['HistoricalData'] | null> | null; // [HistoricalData]
     audit_risk: number; // Int!
     board_risk: number; // Int!
     city: string; // String!
@@ -44,7 +45,7 @@ export interface NexusGenObjects {
     website: string; // String!
   }
   HistoricalData: { // root type
-    company: string; // String!
+    companyId?: string | null; // String
     date: string; // String!
     high: number; // Float!
     open: number; // Float!
@@ -66,6 +67,7 @@ export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
   Company: { // field return type
+    HistoricalData: Array<NexusGenRootTypes['HistoricalData'] | null> | null; // [HistoricalData]
     audit_risk: number; // Int!
     board_risk: number; // Int!
     city: string; // String!
@@ -81,7 +83,7 @@ export interface NexusGenFieldTypes {
     website: string; // String!
   }
   HistoricalData: { // field return type
-    company: string; // String!
+    companyId: string | null; // String
     date: string; // String!
     high: number; // Float!
     open: number; // Float!
@@ -93,14 +95,15 @@ export interface NexusGenFieldTypes {
     executeScript: boolean; // Boolean!
   }
   Query: { // field return type
-    mongodb_companies: NexusGenRootTypes['Company'][]; // [Company!]!
-    sql_companies: NexusGenRootTypes['Company'][]; // [Company!]!
+    companies: NexusGenRootTypes['Company'][]; // [Company!]!
+    company: NexusGenRootTypes['Company']; // Company!
     sql_historical_data: NexusGenRootTypes['HistoricalData'][]; // [HistoricalData!]!
   }
 }
 
 export interface NexusGenFieldTypeNames {
   Company: { // field return type name
+    HistoricalData: 'HistoricalData'
     audit_risk: 'Int'
     board_risk: 'Int'
     city: 'String'
@@ -116,7 +119,7 @@ export interface NexusGenFieldTypeNames {
     website: 'String'
   }
   HistoricalData: { // field return type name
-    company: 'String'
+    companyId: 'String'
     date: 'String'
     high: 'Float'
     open: 'Float'
@@ -128,8 +131,8 @@ export interface NexusGenFieldTypeNames {
     executeScript: 'Boolean'
   }
   Query: { // field return type name
-    mongodb_companies: 'Company'
-    sql_companies: 'Company'
+    companies: 'Company'
+    company: 'Company'
     sql_historical_data: 'HistoricalData'
   }
 }
@@ -140,6 +143,11 @@ export interface NexusGenArgTypes {
       ticker: string; // String!
     }
     addHistoricalData: { // args
+      ticker: string; // String!
+    }
+  }
+  Query: {
+    company: { // args
       ticker: string; // String!
     }
   }

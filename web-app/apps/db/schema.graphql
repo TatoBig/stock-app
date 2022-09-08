@@ -3,6 +3,7 @@
 
 
 type Company {
+  HistoricalData: [HistoricalData]
   audit_risk: Int!
   board_risk: Int!
   city: String!
@@ -19,7 +20,7 @@ type Company {
 }
 
 type HistoricalData {
-  company: String!
+  companyId: String
   date: String!
   high: Float!
   open: Float!
@@ -33,7 +34,7 @@ type Mutation {
 }
 
 type Query {
-  mongodb_companies: [Company!]!
-  sql_companies: [Company!]!
+  companies: [Company!]!
+  company(ticker: String!): Company!
   sql_historical_data: [HistoricalData!]!
 }

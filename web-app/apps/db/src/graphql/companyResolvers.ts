@@ -3,6 +3,7 @@ import CompanyModel from "../mongo/CompanyModel";
 import { NexusGenObjects } from "../../nexus-typegen";
 import request, { gql } from "graphql-request";
 import tickers from "../tickers";
+import { HistoricalData } from "./historicalDataResolver";
 require("dotenv").config();
 
 export const Company = objectType({
@@ -21,6 +22,9 @@ export const Company = objectType({
     t.nonNull.string("city");
     t.nonNull.string("state");
     t.nonNull.string("website");
+    t.nullable.list.field("HistoricalData", {
+      type: HistoricalData,
+    });
   },
 });
 
@@ -49,10 +53,10 @@ query Query {
 export const MongoCompanyQuery = extendType({
   type: "Query",
   definition(t) {
-    t.nonNull.list.nonNull.field("mongodb_companies", {
+    t.nonNull.list.nonNull.field("companies", {
       type: "Company",
       async resolve(parent, args, context, info) {
-        return [];
+        return context.prisma.company.findMany();
       },
     });
   },
@@ -61,11 +65,31 @@ export const MongoCompanyQuery = extendType({
 export const SQLCompanyQuery = extendType({
   type: "Query",
   definition(t) {
-    t.nonNull.list.nonNull.field("sql_companies", {
+    t.nonNull.field("company", {
       type: "Company",
-      resolve(parent, args, context) {
-        console.log(context.prisma.company.findMany());
-        return context.prisma.company.findMany();
+      args: {
+        ticker: nonNull(stringArg()),
+      },
+      async resolve(parent, args, context) {
+        console.log("Start");
+        const company = await context.prisma.company.findUnique({
+          where: {
+            id: args.ticker,
+          },
+          include: {
+            HistoricalData: true,
+          },
+        });
+        company.HistoricalData = company?.HistoricalData.map(
+          (historicalData) => {
+            return {
+              ...historicalData,
+              volume: historicalData.volume.toString()
+            };
+          }
+        );
+        console.log(company);
+        return company;
       },
     });
   },
@@ -99,7 +123,7 @@ export const CompanyMutation = extendType({
               ...data,
             });
 
-            await mongoCompany.save()
+            await mongoCompany.save();
 
             const created = await context.prisma.company.create({
               data: {
@@ -112,7 +136,7 @@ export const CompanyMutation = extendType({
             console.log(created);
             return true;
           }
-          console.log(response.errors)
+          console.log(response.errors);
           return false;
         } catch (e) {
           console.log(e);
