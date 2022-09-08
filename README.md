@@ -17,20 +17,31 @@
 * Turborepo
 * ESLint
 * Typescript
+* AWS
+* Nginx
 
 Database management:
 * Prisma
 * Mongoose
+* Nexus
+* Apollo Server
+* Node Js
 
 Web client:
-* Svelte
-* Sveltekit
+* React
+* NextJs
+* Apollo Client
+* Chakra UI
+* TailWind
+* React Charts 2
+* Framer Motion
 
 ### Credits
 
 * Santiago José Navas Maldonado 1551619
 * Paolo Giovanni Veliz Sulecio 1543219
 * Jeffrey Manrique Reyes Váquez 1603719
+* Alison Silvia Carolina Ramos Carrera 1510819
 
 ### Installation
 * Create a virtual enviroment using 
